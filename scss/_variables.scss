@@ -1,0 +1,18 @@
+// Color palette
+
+$color-text-dark: #394664;
+$color-text-light: #FFFFFF;
+$color-light: #F6F8FB;
+$color-lightest: #FFFFFF;
+$color-primary: #52658F;
+$color-primary-dark: #415072;
+$color-primary-darker: #333A56;
+$color-primary-darkest: #202839;
+$color-primary-light: #7483a5;
+
+// Bootstrap overrides
+
+$primary: $color-primary;
+$body-bg: $color-light;
+$body-color: $color-text-dark;
+$font-family-base: 'Roboto', sans-serif;
