@@ -1,0 +1,6 @@
+User-agent: *
+Disallow:
+Sitemap: http://ivanobilenchi.com/sitemap.xml
+Sitemap: http://www.ivanobilenchi.com/sitemap.xml
+Sitemap: https://ivanobilenchi.com/sitemap.xml
+Sitemap: https://www.ivanobilenchi.com/sitemap.xml
