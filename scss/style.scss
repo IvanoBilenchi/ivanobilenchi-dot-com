@@ -3,7 +3,14 @@
 
 /* Body */
 
+html {
+	height: 100%;
+}
+
 body {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -127,11 +134,27 @@ nav {
 /* Footer */
 
 footer {
+	flex-shrink: 0;
 	background-color: $color-primary-darkest;
 	color: $color-text-light;
 	text-align: center;
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
+}
+
+/* Section */
+
+section {
+	flex: 1 0 auto;
+	padding: 2rem 0;
+
+	&:first-of-type {
+		padding-top: 3rem;
+	}
+
+	&:last-of-type {
+		padding-bottom: 3rem;
+	}
 }
 
 /* Nav social strip */
@@ -437,18 +460,6 @@ footer {
 }
 
 /* Sections */
-
-section {
-	padding: 2rem 0;
-
-	&:first-of-type {
-		padding-top: 3rem;
-	}
-
-	&:last-of-type {
-		padding-bottom: 3rem;
-	}
-}
 
 .primary-section {
 	background-color: $color-light;

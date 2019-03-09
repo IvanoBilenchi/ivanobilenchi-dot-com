@@ -9841,7 +9841,14 @@ h3 {
   }
 }
 /* Body */
+html {
+  height: 100%;
+}
+
 body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -9940,11 +9947,24 @@ nav {
 }
 /* Footer */
 footer {
+  flex-shrink: 0;
   background-color: #202839;
   color: #FFFFFF;
   text-align: center;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+/* Section */
+section {
+  flex: 1 0 auto;
+  padding: 2rem 0;
+}
+section:first-of-type {
+  padding-top: 3rem;
+}
+section:last-of-type {
+  padding-bottom: 3rem;
 }
 
 /* Nav social strip */
@@ -10160,16 +10180,6 @@ footer {
 }
 
 /* Sections */
-section {
-  padding: 2rem 0;
-}
-section:first-of-type {
-  padding-top: 3rem;
-}
-section:last-of-type {
-  padding-bottom: 3rem;
-}
-
 .primary-section, .press-section, .pubs-section {
   background-color: #F6F8FB;
 }
