@@ -1,6 +1,6 @@
 // Configuration
 
-const AS_SCROLL_END_TIMEOUT = 500.0;
+const AS_SCROLL_END_TIMEOUT = 500;
 const AS_THRESHOLD = 250.0;
 const AS_SPEED = .03;
 
@@ -45,7 +45,7 @@ function autoScrollInit(element) {
     () => autoScrollStart(element)
   );
 
-  $(element).on('touchmove', () => {
+  $(element).on('touchstart touchmove', () => {
     autoScrollStop(element);
   });
 
@@ -72,6 +72,12 @@ function autoScrollDeinit(element) {
   autoScrollStop(element);
 }
 
+function autoScrollDeinitAll() {
+  $(".auto-scroll").each(function() {
+    autoScrollDeinit(this);
+  });
+}
+
 function autoScrollInitAll() {
   $(".auto-scroll").each(function() {
     if (this.scrollWidth - this.clientWidth > AS_THRESHOLD) {
@@ -84,5 +90,11 @@ function autoScrollInitAll() {
 
 // Hooks
 
-$(document).ready(autoScrollInitAll)
-$(window).on("resize", autoScrollInitAll)
+$(document).ready(() => {
+  autoScrollInitAll();
+
+  $(window).on("resize", () => {
+    autoScrollDeinitAll();
+    autoScrollInitAll();
+  });
+});
