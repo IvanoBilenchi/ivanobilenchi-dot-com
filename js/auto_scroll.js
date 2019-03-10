@@ -2,7 +2,7 @@
 
 const AS_SCROLL_END_TIMEOUT = 500;
 const AS_THRESHOLD = 250.0;
-const AS_SPEED = .03;
+const AS_SPEED = .05;
 
 // Functions
 
@@ -90,11 +90,9 @@ function autoScrollInitAll() {
 
 // Hooks
 
-$(document).ready(() => {
-  autoScrollInitAll();
+$(window).on("load", autoScrollInitAll);
 
-  $(window).on("resize", () => {
-    autoScrollDeinitAll();
-    autoScrollInitAll();
-  });
+$(window).on("resize", () => {
+  autoScrollDeinitAll();
+  autoScrollInitAll();
 });
