@@ -572,6 +572,16 @@ section {
 	}
 }
 
+/* Projects */
+
+.projects-section {
+	@extend .primary-section;
+
+	& .card-text {
+		text-align: center;
+	}
+}
+
 /* Publications */
 
 .pubs-section {

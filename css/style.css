@@ -10180,7 +10180,7 @@ section:last-of-type {
 }
 
 /* Sections */
-.primary-section, .press-section, .pubs-section {
+.primary-section, .press-section, .pubs-section, .projects-section {
   background-color: #F6F8FB;
 }
 
@@ -10275,6 +10275,11 @@ section:last-of-type {
   max-width: 250px;
   max-height: 100%;
   margin-right: 40px;
+}
+
+/* Projects */
+.projects-section .card-text {
+  text-align: center;
 }
 
 /* Publications */
