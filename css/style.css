@@ -9955,6 +9955,11 @@ footer {
   padding-bottom: 0.5rem;
 }
 
+/* Modal */
+.modal {
+  color: #394664;
+}
+
 /* Section */
 section {
   flex: 1 0 auto;
