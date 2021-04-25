@@ -15,24 +15,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/* Palette classes */
-
-.palette-bg-primary {
-	background-color: $color-primary;
-}
-
-.palette-bg-primary-dark {
-	background-color: $color-primary-dark;
-}
-
-.palette-bg-primary-darker {
-	background-color: $color-primary-darker;
-}
-
-.palette-bg-primary-darkest {
-	background-color: $color-primary-darkest;
-}
-
 /* Header */
 
 header {
@@ -470,6 +452,11 @@ section {
 
 .primary-section {
 	background-color: $color-light;
+	background-image: linear-gradient(
+		to top,
+		rgba(0,0,20%,0.03) 0px,
+		rgba(0,0,20%,0) 50px
+	);
 }
 
 .secondary-section {
@@ -479,8 +466,24 @@ section {
 .section-description {
 	text-align: center;
 
-	& > h3 {
+	& h3 {
 		font-weight: 700;
+	}
+
+	& > a {
+		color: $color-text-dark;
+
+		&:hover {
+			text-decoration: none;
+			color: lighten($color-text-dark, 25%);
+		}
+
+		& > h3:after {
+			content: " \f054";
+			font-family: "Font Awesome 5 Free";
+			position: relative;
+			top: 2px;
+		}
 	}
 
 	& > p {
@@ -672,7 +675,7 @@ section {
 		border-top: $height solid $foreground-color;
 
 		@if $direction == up-right {
-			border-left:  $width solid $background-color;
+			border-left: $width solid $background-color;
 		} @else if $direction == up-left {
 			border-right: $width solid $background-color;
 		}
@@ -682,7 +685,7 @@ section {
 		border-bottom: $height solid $foreground-color;
 
 		@if $direction == down-right {
-			border-left:  $width solid $background-color;
+			border-left: $width solid $background-color;
 		} @else if $direction == down-left {
 			border-right: $width solid $background-color;
 		}

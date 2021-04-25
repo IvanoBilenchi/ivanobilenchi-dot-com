@@ -10107,23 +10107,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Palette classes */
-.palette-bg-primary {
-  background-color: #52658F;
-}
-
-.palette-bg-primary-dark {
-  background-color: #415072;
-}
-
-.palette-bg-primary-darker {
-  background-color: #333A56;
-}
-
-.palette-bg-primary-darkest {
-  background-color: #202839;
-}
-
 /* Header */
 header {
   background-color: #52658F;
@@ -10442,6 +10425,7 @@ section:last-of-type {
 /* Sections */
 .primary-section, .press-section, .pubs-section, .projects-section {
   background-color: #F6F8FB;
+  background-image: linear-gradient(to top, rgba(0, 0, 51, 0.03) 0px, rgba(0, 0, 51, 0) 50px);
 }
 
 .secondary-section {
@@ -10451,8 +10435,21 @@ section:last-of-type {
 .section-description {
   text-align: center;
 }
-.section-description > h3 {
+.section-description h3 {
   font-weight: 700;
+}
+.section-description > a {
+  color: #394664;
+}
+.section-description > a:hover {
+  text-decoration: none;
+  color: #6f82ad;
+}
+.section-description > a > h3:after {
+  content: " ";
+  font-family: "Font Awesome 5 Free";
+  position: relative;
+  top: 2px;
 }
 .section-description > p {
   font-size: 1.2rem;
