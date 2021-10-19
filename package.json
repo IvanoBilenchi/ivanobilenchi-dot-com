@@ -1,0 +1,17 @@
+{
+  "name": "ivanobilenchi.com",
+  "version": "1.0.0",
+  "description": "Ivano Bilenchi's website",
+  "main": "index.html",
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "isotope-layout": "^3.0.6",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivano Bilenchi",
+  "license": "MIT"
+}
