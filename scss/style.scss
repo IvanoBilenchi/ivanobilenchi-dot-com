@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
 
@@ -650,7 +651,7 @@ section {
 
 	@if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) {
 
-		$width: $width / 2;
+		$width: math.div($width, 2);
 
 		@if $direction == up {
 			border-left: $width solid $background-color;
