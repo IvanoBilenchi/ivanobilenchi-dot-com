@@ -10201,7 +10201,8 @@ nav {
   padding: 0;
   border-radius: 0;
 }
-.navbar-toggler .fa {
+.navbar-toggler .fa-solid {
+  font-size: 1em;
   color: #FFFFFF;
 }
 
@@ -10218,6 +10219,9 @@ nav {
   #navigation > ul > li {
     margin-right: 1rem;
   }
+}
+#navigation > ul > li .fa-solid {
+  top: -1.5px;
 }
 #navigation .active {
   font-weight: 600;
@@ -10324,6 +10328,15 @@ section:last-of-type {
 .btn-cta-container {
   text-align: center;
 }
+/* Icons */
+.fa-solid {
+  font-size: 0.75em;
+  vertical-align: middle;
+  position: relative;
+  top: -0.1em;
+  margin: 0 0.25em;
+}
+
 /* Full-div href */
 .full-div-href > a, .material-hover > a, .material-media > a, .material-card-hover > a {
   position: absolute;
@@ -10451,7 +10464,7 @@ section:last-of-type {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, white, rgba(255, 255, 255, 0.35) 5%, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0) 90%, rgba(255, 255, 255, 0.35) 95%, white 100%);
+  background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0.35) 5%, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0) 90%, rgba(255, 255, 255, 0.35) 95%, rgb(255, 255, 255) 100%);
   pointer-events: none;
 }
 

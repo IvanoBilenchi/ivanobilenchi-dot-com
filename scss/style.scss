@@ -67,7 +67,8 @@ nav {
 	padding: 0;
 	border-radius: 0;
 
-	& .fa {
+	& .fa-solid {
+		font-size: 1em;
 		color: $color-text-light;
 	}
 }
@@ -88,6 +89,10 @@ nav {
 				margin-right: 1rem;
 			}
 			@extend .nav-item;
+
+			& .fa-solid {
+				top: -1.5px;
+			}
 		}
 	}
 
@@ -227,6 +232,16 @@ section {
 		@extend .btn-cta;
 		@extend .btn-primary;
 	}
+}
+
+/* Icons */
+
+.fa-solid {
+	font-size: .75em;
+	vertical-align: middle;
+	position: relative;
+	top: -.1em;
+	margin: 0 .25em;
 }
 
 /* Full-div href */
