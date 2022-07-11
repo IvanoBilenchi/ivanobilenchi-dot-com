@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tests &mdash; uLib 0.1.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Version" href="version.html" />
+    <link rel="prev" title="Streams" href="streams.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> uLib
+          </a>
+              <div class="version">
+                0.1.4
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Howto</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Tests</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tests">
+<h1>Tests<a class="headerlink" href="#tests" title="Permalink to this headline"></a></h1>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416utest_leak_startv">
+<span id="_CPPv316utest_leak_startv"></span><span id="_CPPv216utest_leak_startv"></span><span id="utest_leak_start__void"></span><span class="target" id="group__test_1ga7bebc72d7af8f51e47793cc2fc0d4b70"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_leak_start</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416utest_leak_startv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Start detection of memory leaks. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if detection started successfully, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414utest_leak_endv">
+<span id="_CPPv314utest_leak_endv"></span><span id="_CPPv214utest_leak_endv"></span><span id="utest_leak_end__void"></span><span class="target" id="group__test_1ga516aa998edd1f69cb567db85f8002daf"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_leak_end</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414utest_leak_endv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Ends detection of memory leaks and prints detected leaks to the console. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if no leaks were detected, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_main">
+<span class="target" id="group__test_1ga152bc6533aaa0258301687dbe91138e6"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_main</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CODE</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_main" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Defines the main test function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CODE</strong> – Code to execute, generally a sequence of utest_run statements. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_run">
+<span class="target" id="group__test_1ga76c0c22d3be6382bfd29fcc9dae6214d"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_run</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">NAME</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_run" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Runs a test batch. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>NAME</strong> – Name of the test batch (must be a string literal). </p></li>
+<li><p><strong>...</strong> – Comma separated list of [void] -&gt; bool test functions. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert">
+<span class="target" id="group__test_1ga88c88a1329120fb415cbd9571eabadcc"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that the specified expression must be true. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>EXP</strong> – Boolean expression. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_false">
+<span class="target" id="group__test_1gaedb8963a865bc73529704a28d0c2324a"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_false</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_false" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that the specified expression must be false. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>EXP</strong> – Boolean expression. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_not_null">
+<span class="target" id="group__test_1ga03e2f81ef69989ee2639e94eabb2f64d"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_not_null</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_not_null" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that the specified expression must not be NULL. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>EXP</strong> – Expression returning any pointer. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_int">
+<span class="target" id="group__test_1gab9eae2c8fb498133882aa85a1085909c"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_int</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">A</span></span>, <span class="n"><span class="pre">OP</span></span>, <span class="n"><span class="pre">B</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_int" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">OP</span> <span class="pre">B</span></code> must be true, where <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> are integers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – [long long] First integer. </p></li>
+<li><p><strong>OP</strong> – Comparison operator. </p></li>
+<li><p><strong>B</strong> – [long long] Second integer. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_uint">
+<span class="target" id="group__test_1gaf21e0a5d75c614300a887560b35ce026"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_uint</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">A</span></span>, <span class="n"><span class="pre">OP</span></span>, <span class="n"><span class="pre">B</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_uint" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">OP</span> <span class="pre">B</span></code> must be true, where <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> are unsigned integers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – [unsigned long long] First integer. </p></li>
+<li><p><strong>OP</strong> – Comparison operator. </p></li>
+<li><p><strong>B</strong> – [unsigned long long] Second integer. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_float">
+<span class="target" id="group__test_1ga2cbcb61a64b708837cb6b8d067fc2270"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_float</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">A</span></span>, <span class="n"><span class="pre">OP</span></span>, <span class="n"><span class="pre">B</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_float" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">OP</span> <span class="pre">B</span></code> must be true, where <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> are floating point numbers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – [double] First float. </p></li>
+<li><p><strong>OP</strong> – Comparison operator. </p></li>
+<li><p><strong>B</strong> – [double] Second float. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_ptr">
+<span class="target" id="group__test_1gaa903d2caeaeab018ac4d120b2571a138"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_ptr</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">A</span></span>, <span class="n"><span class="pre">OP</span></span>, <span class="n"><span class="pre">B</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_ptr" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">OP</span> <span class="pre">B</span></code> must be true, where <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> are pointers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – [void *] First pointer. </p></li>
+<li><p><strong>OP</strong> – Comparison operator. </p></li>
+<li><p><strong>B</strong> – [void *] Second pointer. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_string">
+<span class="target" id="group__test_1gad141c44c0cc68a2ef68c44c9282cb4a3"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_string</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">A</span></span>, <span class="n"><span class="pre">OP</span></span>, <span class="n"><span class="pre">B</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_string" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">strcmp(A,</span> <span class="pre">B)</span> <span class="pre">OP</span> <span class="pre">0</span></code> must be true. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – [char const *] First string. </p></li>
+<li><p><strong>OP</strong> – Comparison operator. </p></li>
+<li><p><strong>B</strong> – [char const *] Second string. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_buf">
+<span class="target" id="group__test_1gabe15fc8cced7c353aab8c14eee6d6ab7"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_buf</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">A</span></span>, <span class="n"><span class="pre">OP</span></span>, <span class="n"><span class="pre">B</span></span>, <span class="n"><span class="pre">SIZE</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_buf" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">memcmp(A,</span> <span class="pre">B,</span> <span class="pre">SIZE)</span> <span class="pre">OP</span> <span class="pre">0</span></code> must be true. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – [void *] First buffer. </p></li>
+<li><p><strong>OP</strong> – Comparison operator. </p></li>
+<li><p><strong>B</strong> – [void *] Second buffer. </p></li>
+<li><p><strong>SIZE</strong> – [size_t] Buffer size. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_ustring">
+<span class="target" id="group__test_1ga9a29c355b6d124c2bce849f6bf28cf8b"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_ustring</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">A</span></span>, <span class="n"><span class="pre">OP</span></span>, <span class="n"><span class="pre">B</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_ustring" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">ustring_compare(A,</span> <span class="pre">B)</span> <span class="pre">OP</span> <span class="pre">0</span></code> must be true. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – [<a class="reference internal" href="base.html#struct_u_string"><span class="std std-ref">UString</span></a>] First string. </p></li>
+<li><p><strong>OP</strong> – Comparison operator. </p></li>
+<li><p><strong>B</strong> – [<a class="reference internal" href="base.html#struct_u_string"><span class="std std-ref">UString</span></a>] Second string. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_critical">
+<span class="target" id="group__test_1gabc14574410ca915a8dd4cb59001af888"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_critical</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_critical" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Assert that the specified expression must be true. </p>
+<p>Abort the tests if it is false.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>EXP</strong> – Boolean expression. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.utest_assert_wrap">
+<span class="target" id="group__test_1ga93bd901798b7c42b5ae1efd7b6880060"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_wrap</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span>, <span class="n"><span class="pre">CODE</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_wrap" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Utility macro for test assertions. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>EXP</strong> – Expression. </p></li>
+<li><p><strong>CODE</strong> – Any custom code to run after printing the failure reason. </p></li>
+<li><p><strong>...</strong> – Failure reason as printf arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="streams.html" class="btn btn-neutral float-left" title="Streams" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="version.html" class="btn btn-neutral float-right" title="Version" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2022, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

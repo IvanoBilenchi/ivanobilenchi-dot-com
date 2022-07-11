@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macros &mdash; uLib 0.1.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Time" href="time.html" />
+    <link rel="prev" title="Base Types" href="base.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> uLib
+          </a>
+              <div class="version">
+                0.1.4
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Howto</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base Types</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Macros</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="macros">
+<h1>Macros<a class="headerlink" href="#macros" title="Permalink to this headline"></a></h1>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_min">
+<span class="target" id="group__macros_1ga6d6e28147947b76733909149c14f28c1"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_min</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_min" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the minimum between two numbers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – First number. </p></li>
+<li><p><strong>b</strong> – Second number. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Minimum between the two numbers. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_max">
+<span class="target" id="group__macros_1ga542a02f8ff73fc7d593e07cfbe2c39dc"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_max</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_max" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the maximum between two numbers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – First number. </p></li>
+<li><p><strong>b</strong> – Second number. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Maximum between the two numbers. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_abs">
+<span class="target" id="group__macros_1ga0e6e0fcdcf17500d43592cab0a1c146f"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_abs</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_abs" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the absolute value of a number. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – The number. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Absolute value of the number. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_clamp">
+<span class="target" id="group__macros_1ga68da8f6b1a82c1e38f7e358d4d797ad9"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_clamp</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">x</span></span>, <span class="n"><span class="pre">xmin</span></span>, <span class="n"><span class="pre">xmax</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_clamp" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Clamps a number between two values. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – The number. </p></li>
+<li><p><strong>xmin</strong> – Minumum value. </p></li>
+<li><p><strong>xmax</strong> – Maximum value. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Clamped value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_diff">
+<span class="target" id="group__macros_1ga7551f1a8c39388033a1bda5e2861b97a"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_diff</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_diff" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the absolute difference between two numbers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – First number. </p></li>
+<li><p><strong>b</strong> – Second number. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Absolute difference. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_swap">
+<span class="target" id="group__macros_1gaac10a14d995670ddb954d386c1361f29"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_swap</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">x</span></span>, <span class="n"><span class="pre">y</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_swap" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Swaps the contents of two variables. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Variable type. </p></li>
+<li><p><strong>x</strong> – First variable. </p></li>
+<li><p><strong>y</strong> – Second variable. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_array_count">
+<span class="target" id="group__macros_1ga516e32580bc9524169248b5f266dc29e"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_array_count</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">array</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_array_count" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the number of elements of an array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> – The array. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of elements. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_vla_init">
+<span class="target" id="group__macros_1ga4ea156483da44cbca6ba9ec0b1ca1350"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_vla_init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">name</span></span>, <span class="n"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_vla_init" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Declares and initializes a variable-length array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Type of the elements. </p></li>
+<li><p><strong>name</strong> – Name of the array variable. </p></li>
+<li><p><strong>count</strong> – Number of elements. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_vla_deinit">
+<span class="target" id="group__macros_1ga3770d3a8c4ade9f0eb54ddab95a2046a"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_vla_deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_vla_deinit" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Deinitializes a variable-length array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Name of the array variable. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="base.html" class="btn btn-neutral float-left" title="Base Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="time.html" class="btn btn-neutral float-right" title="Time" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2022, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

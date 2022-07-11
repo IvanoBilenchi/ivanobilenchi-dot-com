@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Base Types &mdash; uLib 0.1.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Macros" href="macros.html" />
+    <link rel="prev" title="Memory allocation" href="alloc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> uLib
+          </a>
+              <div class="version">
+                0.1.4
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Howto</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Base Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#integers">Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#floating-point-numbers">Floating point numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bitmasks">Bitmasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#strings">Strings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Base Types</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="base-types">
+<h1>Base Types<a class="headerlink" href="#base-types" title="Permalink to this headline"></a></h1>
+<section id="integers">
+<h2>Integers<a class="headerlink" href="#integers" title="Permalink to this headline"></a></h2>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv49ulib_uint">
+<span id="_CPPv39ulib_uint"></span><span id="_CPPv29ulib_uint"></span><span id="ulib_uint"></span><span class="target" id="ubase_8h_1a62787235bc3a0124ca9c57ef7852f5eb"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint</span></span></span><a class="headerlink" href="#_CPPv49ulib_uint" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Unsigned integer type. </p>
+<p>The size of this type can be controlled through the <em>ULIB_TINY</em> and <em>ULIB_HUGE</em> preprocessor definitions:</p>
+<p><ul class="simple">
+<li><p><strong>No definitions</strong> (<em>default</em>): 4 bytes (<em>uint32_t</em>)</p></li>
+<li><p><strong>ULIB_TINY</strong>: 2 bytes (<em>uint16_t</em>)</p></li>
+<li><p><strong>ULIB_HUGE</strong>: 8 bytes (<em>uint64_t</em>) </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_UINT_MIN">
+<span class="target" id="ubase_8h_1a4d6667f386b831f5799fa457ade3a9dc"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_UINT_MIN</span></span></span><a class="headerlink" href="#c.ULIB_UINT_MIN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Minimum value of a ulib_uint variable. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_UINT_MAX">
+<span class="target" id="ubase_8h_1af34471f49871ac90a530a9598ddce7c4"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_UINT_MAX</span></span></span><a class="headerlink" href="#c.ULIB_UINT_MAX" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Maximum value of a ulib_uint variable. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_UINT_FMT">
+<span class="target" id="ubase_8h_1a705934e5cd0871951e03a87f1b42da6f"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_UINT_FMT</span></span></span><a class="headerlink" href="#c.ULIB_UINT_FMT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Format string for ulib_uint variables. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_uint_next_power_2">
+<span class="target" id="ubase_8h_1a8a1fa04530f20c60197965b394470900"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint_next_power_2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint_next_power_2" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Changes the specified unsigned integer into the next power of two. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – [ulib_uint] Unsigned integer. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv48ulib_int">
+<span id="_CPPv38ulib_int"></span><span id="_CPPv28ulib_int"></span><span id="ulib_int"></span><span class="target" id="ubase_8h_1ac7fa5fad3bc621932f47cfa4b3e9714b"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_int</span></span></span><a class="headerlink" href="#_CPPv48ulib_int" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Integer type. </p>
+<p>The size of this type can be controlled through the <em>ULIB_TINY</em> and <em>ULIB_HUGE</em> preprocessor definitions:</p>
+<p><ul class="simple">
+<li><p><strong>No definitions</strong> (<em>default</em>): 4 bytes (<em>int32_t</em>)</p></li>
+<li><p><strong>ULIB_TINY</strong>: 2 bytes (<em>int16_t</em>)</p></li>
+<li><p><strong>ULIB_HUGE</strong>: 8 bytes (<em>int64_t</em>) </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_INT_MIN">
+<span class="target" id="ubase_8h_1abaab19d200efa41f17054bdee1e92d49"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_INT_MIN</span></span></span><a class="headerlink" href="#c.ULIB_INT_MIN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Minimum value of a ulib_int variable. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_INT_MAX">
+<span class="target" id="ubase_8h_1a4b4f635a41206ba2e1e1b2cf52981466"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_INT_MAX</span></span></span><a class="headerlink" href="#c.ULIB_INT_MAX" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Maximum value of a ulib_int variable. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_INT_FMT">
+<span class="target" id="ubase_8h_1acb27c3b5436f68c8b1abc51f6f4896e1"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_INT_FMT</span></span></span><a class="headerlink" href="#c.ULIB_INT_FMT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Format string for ulib_int variables. </p>
+</dd></dl>
+
+</section>
+<section id="floating-point-numbers">
+<h2>Floating point numbers<a class="headerlink" href="#floating-point-numbers" title="Permalink to this headline"></a></h2>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv410ulib_float">
+<span id="_CPPv310ulib_float"></span><span id="_CPPv210ulib_float"></span><span id="ulib_float"></span><span class="target" id="ubase_8h_1a55284febfef032485d55b690fa0f59d4"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_float</span></span></span><a class="headerlink" href="#_CPPv410ulib_float" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Float type. </p>
+<p>The size of this type can be controlled through the <em>ULIB_TINY</em> and <em>ULIB_HUGE</em> preprocessor definitions:</p>
+<p><ul class="simple">
+<li><p><strong>No definitions</strong> or <strong>ULIB_HUGE</strong> (<em>default</em>): <em>double</em></p></li>
+<li><p><strong>ULIB_TINY</strong>: <em>float</em> </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_FLOAT_MIN">
+<span class="target" id="ubase_8h_1a2cd33022d0fb3b7beff9d756ea0cd5de"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_FLOAT_MIN</span></span></span><a class="headerlink" href="#c.ULIB_FLOAT_MIN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Minimum positive value of a ulib_float variable. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_FLOAT_MAX">
+<span class="target" id="ubase_8h_1aa89c25812b3c3cc2d5dfbbb2fbf97524"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_FLOAT_MAX</span></span></span><a class="headerlink" href="#c.ULIB_FLOAT_MAX" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Maximum value of a ulib_float variable. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_FLOAT_EPSILON">
+<span class="target" id="ubase_8h_1a12af85779377695613e55bf4c629e00c"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_FLOAT_EPSILON</span></span></span><a class="headerlink" href="#c.ULIB_FLOAT_EPSILON" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Difference between 1 and the least value greater than 1 that is representable by a ulib_float variable. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ULIB_FLOAT_FMT">
+<span class="target" id="ubase_8h_1ac4945863cfabe5a5ca5d1142b78c1712"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_FLOAT_FMT</span></span></span><a class="headerlink" href="#c.ULIB_FLOAT_FMT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Format string for ulib_float variables. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_float_prev">
+<span class="target" id="ubase_8h_1a3628c87a1d4b9e84f0782b4aff6763da"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_float_prev</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_float_prev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the previous representable float value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – [ulib_float] Float number. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Previous representable float value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ulib_float_next">
+<span class="target" id="ubase_8h_1a159b44a43ca9d1e598770e1f3a88a032"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_float_next</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_float_next" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the next representable float value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – [ulib_float] Float number. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Next representable float value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="bitmasks">
+<h2>Bitmasks<a class="headerlink" href="#bitmasks" title="Permalink to this headline"></a></h2>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.UFlags">
+<span class="target" id="group__flags_1ga9208e4c84e43b71f57dfc57d0539b8f7"></span><span class="sig-name descname"><span class="n"><span class="pre">UFlags</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UFlags" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Bitmask type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. Allowed values: 8, 16, 32 and 64. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_none">
+<span class="target" id="group__flags_1ga376892f2e9d581fcdd3e9b2ce85dee7e"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_none</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_none" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Bitmask with all bits set to zero. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with all bits set to zero. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_all">
+<span class="target" id="group__flags_1ga34406763333f8b9fff7563f1c9c9cfbd"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_all" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Bitmask with all bits set to one. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with all bits set to one. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_bit">
+<span class="target" id="group__flags_1ga189748f1634b4bd754fb64dcf73a9d74"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_bit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">BIT</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_bit" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a bitmask with the specified bit set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>BIT</strong> – Bit to set. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with the specified bit set. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_is_set">
+<span class="target" id="group__flags_1gae1357db9f7334ce60966124c722eec68"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_is_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_is_set" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether a bitmask has specific bits set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+<li><p><strong>FLAG</strong> – Bit(s) to check. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the bits are set, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_is_any_set">
+<span class="target" id="group__flags_1ga68b61a9c68abd6db5b5922da4912d9ef"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_is_any_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_is_any_set" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether a bitmask has any of the specified bits set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+<li><p><strong>FLAG</strong> – Bit(s) to check. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if at least one of the specified bits is set, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_set">
+<span class="target" id="group__flags_1gae005d1bc86541b804978dfd85c408821"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_set" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Sets bits in a bitmask. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+<li><p><strong>FLAG</strong> – Bit(s) to set. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_unset">
+<span class="target" id="group__flags_1ga8d50527e6e82d1dd52be4f7143ade061"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_unset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_unset" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Unsets bits in a bitmask. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+<li><p><strong>FLAG</strong> – Bit(s) to unset. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_set_bool">
+<span class="target" id="group__flags_1ga13f3d93ea9d72d20f8d303a7c0a640e3"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_set_bool</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span>, <span class="n"><span class="pre">BOOL</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_set_bool" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Sets or unsets bits in a bitmask. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+<li><p><strong>FLAG</strong> – Bit(s) to set or unset. </p></li>
+<li><p><strong>BOOL</strong> – True to set, false to unset. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_toggle">
+<span class="target" id="group__flags_1ga03572dda859011ca5ca0a3cd7614565a"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_toggle</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_toggle" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Toggles bits in a bitmask. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+<li><p><strong>FLAG</strong> – Bit(s) to toggle. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_count_set">
+<span class="target" id="group__flags_1gac766f77fb8725e1978e9e29bd9abee8f"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_count_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_count_set" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the number of bits that are set in a bitmask. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of set bits. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uflags_count_unset">
+<span class="target" id="group__flags_1ga5e044ec9225cb26268faf9345743a63f"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_count_unset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_count_unset" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the number of bigs that are not set in a bitmask. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of unset bits. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="strings">
+<h2>Strings<a class="headerlink" href="#strings" title="Permalink to this headline"></a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv47UString">
+<span id="_CPPv37UString"></span><span id="_CPPv27UString"></span><span id="UString"></span><span class="target" id="struct_u_string"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UString</span></span></span><a class="headerlink" href="#_CPPv47UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>A counted string. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString14ustring_assignEPKc6size_t">
+<span id="_CPPv3N7UString14ustring_assignEPKc6size_t"></span><span id="_CPPv2N7UString14ustring_assignEPKc6size_t"></span><span id="UString::ustring_assign__cCP.s"></span><span class="target" id="struct_u_string_1a02a40c235f52a515a40f595b718b17d7"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_assign</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">cstring</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString14ustring_assignEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by taking ownership of the specified buffer, which must have been dynamically allocated. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to the internals of <a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>, you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cstring</strong> – String buffer. </p></li>
+<li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString12ustring_copyEPKc6size_t">
+<span id="_CPPv3N7UString12ustring_copyEPKc6size_t"></span><span id="_CPPv2N7UString12ustring_copyEPKc6size_t"></span><span id="UString::ustring_copy__cCP.s"></span><span class="target" id="struct_u_string_1a65ec3128041956b3a83f1fb78c17a706"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_copy</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">cstring</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_copyEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by copying the specified buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cstring</strong> – String buffer. </p></li>
+<li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString12ustring_wrapEPKc6size_t">
+<span id="_CPPv3N7UString12ustring_wrapEPKc6size_t"></span><span id="_CPPv2N7UString12ustring_wrapEPKc6size_t"></span><span id="UString::ustring_wrap__cCP.s"></span><span class="target" id="struct_u_string_1a114ba1a460574ec6c36a4eeff1180491"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_wrap</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">cstring</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_wrapEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by wrapping the specified buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cstring</strong> – String buffer. </p></li>
+<li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString11ustring_dupE7UString">
+<span id="_CPPv3N7UString11ustring_dupE7UString"></span><span id="_CPPv2N7UString11ustring_dupE7UString"></span><span id="UString::ustring_dup__UString"></span><span class="target" id="struct_u_string_1a9f0f6d96df3209499b82268e9801d0d2"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_dup</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString11ustring_dupE7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Duplicates the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> – String to duplicate. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Duplicated string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString19ustring_with_formatEPKcz">
+<span id="_CPPv3N7UString19ustring_with_formatEPKcz"></span><span id="_CPPv2N7UString19ustring_with_formatEPKcz"></span><span id="UString::ustring_with_format__cCP.z"></span><span class="target" id="struct_u_string_1ae945c2e5ebb0efa03e010fa9a5099ba1"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_with_format</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString19ustring_with_formatEPKcz" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string with the specified format. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString24ustring_with_format_listEPKc7va_list">
+<span id="_CPPv3N7UString24ustring_with_format_listEPKc7va_list"></span><span id="_CPPv2N7UString24ustring_with_format_listEPKc7va_list"></span><span id="UString::ustring_with_format_list__cCP.va_list"></span><span class="target" id="struct_u_string_1aef8c003a942eef8fafae45bc1eecf8c7"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_with_format_list</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">format</span></span>, <span class="n"><span class="pre">va_list</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">args</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString24ustring_with_format_listEPKc7va_list" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string with the specified format. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>args</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString14ustring_concatEPK7UString9ulib_uint">
+<span id="_CPPv3N7UString14ustring_concatEPK7UString9ulib_uint"></span><span id="_CPPv2N7UString14ustring_concatEPK7UString9ulib_uint"></span><span id="UString::ustring_concat__UStringCP.ulib_uint"></span><span class="target" id="struct_u_string_1a77d266f33ed307bd0f392e30c3fba3f5"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_concat</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">strings</span></span>, <a class="reference internal" href="#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString14ustring_concatEPK7UString9ulib_uint" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Concatenates the specified strings. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strings</strong> – Strings to concatenate. </p></li>
+<li><p><strong>count</strong> – Number of strings. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Concatenation of the specified strings. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString12ustring_joinEPK7UString9ulib_uint7UString">
+<span id="_CPPv3N7UString12ustring_joinEPK7UString9ulib_uint7UString"></span><span id="_CPPv2N7UString12ustring_joinEPK7UString9ulib_uint7UString"></span><span id="UString::ustring_join__UStringCP.ulib_uint.UString"></span><span class="target" id="struct_u_string_1a91a112ed873cc22b5625d48b728bc6f8"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_join</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">strings</span></span>, <a class="reference internal" href="#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span>, <a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">sep</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_joinEPK7UString9ulib_uint7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Joins the specified strings with a separator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strings</strong> – Strings to join. </p></li>
+<li><p><strong>count</strong> – Number of strings. </p></li>
+<li><p><strong>sep</strong> – Separator. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Strings joined with the specified separator. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString17ustring_repeatingE7UString9ulib_uint">
+<span id="_CPPv3N7UString17ustring_repeatingE7UString9ulib_uint"></span><span id="_CPPv2N7UString17ustring_repeatingE7UString9ulib_uint"></span><span id="UString::ustring_repeating__UString.ulib_uint"></span><span class="target" id="struct_u_string_1a856dde662022f0a0bdfef39abc08b8c0"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_repeating</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <a class="reference internal" href="#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">times</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString17ustring_repeatingE7UString9ulib_uint" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a new string obtained by repeating the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to repeat. </p></li>
+<li><p><strong>times</strong> – Number of repetitions. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString16ustring_index_ofE7UStringc">
+<span id="_CPPv3N7UString16ustring_index_ofE7UStringc"></span><span id="_CPPv2N7UString16ustring_index_ofE7UStringc"></span><span id="UString::ustring_index_of__UString.c"></span><span class="target" id="struct_u_string_1a74f4db44c296804d35733604ae0b8faf"></span><a class="reference internal" href="#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_index_of</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">needle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString16ustring_index_ofE7UStringc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the index of the first occurrence of the specified character. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to search into. </p></li>
+<li><p><strong>needle</strong> – Character to find. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Index of the first occurrence of the specified character. If it cannot be found, returns an index greater than or equal to the string’s length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString12ustring_findE7UString7UString">
+<span id="_CPPv3N7UString12ustring_findE7UString7UString"></span><span id="_CPPv2N7UString12ustring_findE7UString7UString"></span><span id="UString::ustring_find__UString.UString"></span><span class="target" id="struct_u_string_1aef43c2009b3312fd537a3e46d463f536"></span><a class="reference internal" href="#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_find</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">needle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_findE7UString7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the index of the first occurrence of the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to search into. </p></li>
+<li><p><strong>needle</strong> – String to find. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Index of the first occurrence of the specified string. If it cannot be found, returns an index greater than or equal to the string’s length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString19ustring_starts_withE7UString7UString">
+<span id="_CPPv3N7UString19ustring_starts_withE7UString7UString"></span><span id="_CPPv2N7UString19ustring_starts_withE7UString7UString"></span><span id="UString::ustring_starts_with__UString.UString"></span><span class="target" id="struct_u_string_1aaf3354c3520b50c78845fe3ea0e65bba"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_starts_with</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">prefix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString19ustring_starts_withE7UString7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether the string starts with the specified prefix. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>prefix</strong> – Prefix. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the string starts with the specified prefix, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString17ustring_ends_withE7UString7UString">
+<span id="_CPPv3N7UString17ustring_ends_withE7UString7UString"></span><span id="_CPPv2N7UString17ustring_ends_withE7UString7UString"></span><span id="UString::ustring_ends_with__UString.UString"></span><span class="target" id="struct_u_string_1a92fb5a1f583523866ddba0db522ecac0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_ends_with</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">suffix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString17ustring_ends_withE7UString7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether the string ends with the specified suffix. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>suffix</strong> – Suffix. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the string ends with the specified suffix, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString14ustring_equalsE7UString7UString">
+<span id="_CPPv3N7UString14ustring_equalsE7UString7UString"></span><span id="_CPPv2N7UString14ustring_equalsE7UString7UString"></span><span id="UString::ustring_equals__UString.UString"></span><span class="target" id="struct_u_string_1af0de88152669519a2f0c3b561558e2b5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_equals</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">lhs</span></span>, <a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString14ustring_equalsE7UString7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether two strings are equal. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – First string. </p></li>
+<li><p><strong>rhs</strong> – Second string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the two strings are equal, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString16ustring_precedesE7UString7UString">
+<span id="_CPPv3N7UString16ustring_precedesE7UString7UString"></span><span id="_CPPv2N7UString16ustring_precedesE7UString7UString"></span><span id="UString::ustring_precedes__UString.UString"></span><span class="target" id="struct_u_string_1ab1d54b96971eb9c41b3d992e3668a0a4"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_precedes</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">lhs</span></span>, <a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString16ustring_precedesE7UString7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether lhs precedes rhs in lexicographic order. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – First string. </p></li>
+<li><p><strong>rhs</strong> – Second string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if lhs precedes rhs, False otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString15ustring_compareE7UString7UString">
+<span id="_CPPv3N7UString15ustring_compareE7UString7UString"></span><span id="_CPPv2N7UString15ustring_compareE7UString7UString"></span><span id="UString::ustring_compare__UString.UString"></span><span class="target" id="struct_u_string_1ac319860041d38e553978417dd68941b2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_compare</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">lhs</span></span>, <a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString15ustring_compareE7UString7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Compares lhs and rhs in lexicographic order. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – First string. </p></li>
+<li><p><strong>rhs</strong> – Second string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>-1 if lhs comes before rhs, 0 if they are equal, 1 if lhs comes after rhs. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString12ustring_hashE7UString">
+<span id="_CPPv3N7UString12ustring_hashE7UString"></span><span id="_CPPv2N7UString12ustring_hashE7UString"></span><span id="UString::ustring_hash__UString"></span><span class="target" id="struct_u_string_1ab31cab0063a81bd594a20318cf70e92b"></span><a class="reference internal" href="#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_hash</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_hashE7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the hash of the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> – String. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Hash. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString14ustring_deinitE7UString">
+<span id="_CPPv3N7UString14ustring_deinitE7UString"></span><span id="_CPPv2N7UString14ustring_deinitE7UString"></span><span id="UString::ustring_deinit__UString"></span><span class="target" id="struct_u_string_1afd378b5f9b337945bdeb54ce8891a174"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_deinit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString14ustring_deinitE7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Deinitializes the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> – String to deinitialize. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString26ustring_deinit_return_dataE7UString">
+<span id="_CPPv3N7UString26ustring_deinit_return_dataE7UString"></span><span id="_CPPv2N7UString26ustring_deinit_return_dataE7UString"></span><span id="UString::ustring_deinit_return_data__UString"></span><span class="target" id="struct_u_string_1aa0d4dfd4daad5d54b50c2a55222beea2"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_deinit_return_data</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString26ustring_deinit_return_dataE7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Deinitializes the specified string, returning its underlying buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You are responsible for deallocating the returned buffer. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> – String to deinitialize. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-related">Related</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustring_size">
+<span class="target" id="struct_u_string_1adc92e7b6eb0c84610d847ea9cc1ece3a"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_size</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_size" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the size of the string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – [<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[ulib_uint] String size. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustring_length">
+<span class="target" id="struct_u_string_1a2abcb9886d39794a9479f6421c2889ef"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_length</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_length" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the length of the string, excluding the null terminator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – [<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[ulib_uint] String length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustring_data">
+<span class="target" id="struct_u_string_1a18fdc223c67745ba2a05599b24feff60"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_data</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_data" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the buffer backing the string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – [<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[char const *] String buffer. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustring_copy_literal">
+<span class="target" id="struct_u_string_1a622a5bb8f9d4b2a88a116d3fa49bb324"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_copy_literal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">literal</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_copy_literal" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by copying the specified string literal. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>literal</strong> – [char const []] String literal. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] Initialized string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustring_literal">
+<span class="target" id="struct_u_string_1a23fadb646661e189ab2231d859b7c251"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_literal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">literal</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_literal" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Wraps the specified literal in a string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must not deinitialize the resulting string. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>literal</strong> – [char const []] String literal. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] String.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustring_empty">
+<span class="target" id="struct_u_string_1a7f21fc741a8769ce2eac80ada294787d"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_empty</span></span></span><a class="headerlink" href="#c.ustring_empty" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes an empty string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>[<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] Empty string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustring_null">
+<span class="target" id="struct_u_string_1a39917d1b10cc711d874b3fd071a1a925"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_null</span></span></span><a class="headerlink" href="#c.ustring_null" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a string with a NULL buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>[<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] Null string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustring_is_null">
+<span class="target" id="struct_u_string_1ae833102762b563866e386e7d0c1812c4"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_is_null</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_is_null" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether the string has a NULL buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – [<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] String instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[bool] True if the string has a NULL buffer, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustring_is_empty">
+<span class="target" id="struct_u_string_1a3dfd45626bbf884ee90adda938da2d8d"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_is_empty</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_is_empty" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether the string is empty. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – [<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] String instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[bool] True if the string is empty, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString12ulib_str_dupEPKc6size_t">
+<span id="_CPPv3N7UString12ulib_str_dupEPKc6size_t"></span><span id="_CPPv2N7UString12ulib_str_dupEPKc6size_t"></span><span id="UString::ulib_str_dup__cCP.s"></span><span class="target" id="struct_u_string_1a4b9b7e63d5afcc61ae7f885ae584fda0"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_dup</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">string</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ulib_str_dupEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Duplicates the specified string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You are responsible for deallocating the returned string via <code class="docutils literal notranslate"><span class="pre">ulib_free</span></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to duplicate. </p></li>
+<li><p><strong>length</strong> – Length of the string to duplicate. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Duplicated string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString16ulib_str_flengthEPKcz">
+<span id="_CPPv3N7UString16ulib_str_flengthEPKcz"></span><span id="_CPPv2N7UString16ulib_str_flengthEPKcz"></span><span id="UString::ulib_str_flength__cCP.z"></span><span class="target" id="struct_u_string_1a93b6960cf2e429d5b0424efaf8846c02"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_flength</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString16ulib_str_flengthEPKcz" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the length of the specified formatted string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Length of the formatted string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString21ulib_str_flength_listEPKc7va_list">
+<span id="_CPPv3N7UString21ulib_str_flength_listEPKc7va_list"></span><span id="_CPPv2N7UString21ulib_str_flength_listEPKc7va_list"></span><span id="UString::ulib_str_flength_list__cCP.va_list"></span><span class="target" id="struct_u_string_1ac1b0de01a7a6cf2b3635898c070813c6"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_flength_list</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">format</span></span>, <span class="n"><span class="pre">va_list</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">args</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString21ulib_str_flength_listEPKc7va_list" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the length of the specified formatted string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>args</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Length of the formatted string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv47UStrBuf">
+<span id="_CPPv37UStrBuf"></span><span id="_CPPv27UStrBuf"></span><span id="UStrBuf"></span><span class="target" id="struct_u_str_buf"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UStrBuf</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="collections.html#_CPPv44UVec" title="UVec"><span class="n"><span class="pre">UVec</span></span></a><a class="headerlink" href="#_CPPv47UStrBuf" title="Permalink to this definition"></a><br /></dt>
+<dd><p>A mutable string buffer. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UStrBuf21ustrbuf_append_formatEP7UStrBufPKcz">
+<span id="_CPPv3N7UStrBuf21ustrbuf_append_formatEP7UStrBufPKcz"></span><span id="_CPPv2N7UStrBuf21ustrbuf_append_formatEP7UStrBufPKcz"></span><span id="UStrBuf::ustrbuf_append_format__UStrBufP.cCP.z"></span><span class="target" id="struct_u_str_buf_1ad5c9fc1715be20a81508c8de90dbd5da"></span><a class="reference internal" href="collections.html#_CPPv48uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_format</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UStrBuf21ustrbuf_append_formatEP7UStrBufPKcz" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Appends the specified formatted string to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>UVEC_OK on success, otherwise UVEC_ERR. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UStrBuf26ustrbuf_append_format_listEP7UStrBufPKc7va_list">
+<span id="_CPPv3N7UStrBuf26ustrbuf_append_format_listEP7UStrBufPKc7va_list"></span><span id="_CPPv2N7UStrBuf26ustrbuf_append_format_listEP7UStrBufPKc7va_list"></span><span id="UStrBuf::ustrbuf_append_format_list__UStrBufP.cCP.va_list"></span><span class="target" id="struct_u_str_buf_1a9b2d0c1c90c4dce82f364b3b9c674c69"></span><a class="reference internal" href="collections.html#_CPPv48uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_format_list</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">format</span></span>, <span class="n"><span class="pre">va_list</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">args</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UStrBuf26ustrbuf_append_format_listEP7UStrBufPKc7va_list" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Appends the specified formatted string to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>args</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>UVEC_OK on success, otherwise UVEC_ERR. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UStrBuf18ustrbuf_to_ustringEP7UStrBuf">
+<span id="_CPPv3N7UStrBuf18ustrbuf_to_ustringEP7UStrBuf"></span><span id="_CPPv2N7UStrBuf18ustrbuf_to_ustringEP7UStrBuf"></span><span id="UStrBuf::ustrbuf_to_ustring__UStrBufP"></span><span class="target" id="struct_u_str_buf_1a690e60a86107b203b8f6ec1f87fa626e"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_to_ustring</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UStrBuf18ustrbuf_to_ustringEP7UStrBuf" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Converts the string buffer into a <a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a> and deinitializes the buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After calling this function, the string buffer must not be used anymore. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>buf</strong> – String buffer. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>String.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-related">Related</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustrbuf_init">
+<span class="target" id="struct_u_str_buf_1a8277f6ebf20f55104f42aa300dd99fea"></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_init</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_init" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Initialized string buffer. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustrbuf_deinit">
+<span class="target" id="struct_u_str_buf_1a052b8c4ed911723cc0b198e9b8b24bd9"></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_deinit" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Deinitializes a string buffer previously initialized with ustrbuf_init. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – [<a class="reference internal" href="#struct_u_str_buf"><span class="std std-ref">UStrBuf</span></a>] String buffer. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustrbuf_size">
+<span class="target" id="struct_u_str_buf_1ac7bb56e30ff9796649b5dd5da1ead320"></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_size</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_size" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the size of the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – [<a class="reference internal" href="#struct_u_str_buf"><span class="std std-ref">UStrBuf</span></a> *] String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Size. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustrbuf_length">
+<span class="target" id="struct_u_str_buf_1a3edf7f0edc45e601489a5bb9ff7e8d83"></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_length</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_length" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the number of characters in the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – [<a class="reference internal" href="#struct_u_str_buf"><span class="std std-ref">UStrBuf</span></a> *] String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of characters. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustrbuf_data">
+<span class="target" id="struct_u_str_buf_1a75efde24b8a346cf999e1eb87ebcf882"></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_data</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_data" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a pointer to the first character of the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – [<a class="reference internal" href="#struct_u_str_buf"><span class="std std-ref">UStrBuf</span></a> *] String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Pointer to the first character. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustrbuf_append_literal">
+<span class="target" id="struct_u_str_buf_1a68279f4a011056b5b0c7e75ec27486d2"></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_literal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">literal</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_append_literal" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Appends the specified string literal to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – [<a class="reference internal" href="#struct_u_str_buf"><span class="std std-ref">UStrBuf</span></a> *] String buffer. </p></li>
+<li><p><strong>literal</strong> – [char const []] String literal to append. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[uvec_ret] UVEC_OK on success, otherwise UVEC_ERR. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustrbuf_append_string">
+<span class="target" id="struct_u_str_buf_1aa19434f8519bd196f36f62f04d594c40"></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_string</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">string</span></span>, <span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_append_string" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Appends the specified string to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – [<a class="reference internal" href="#struct_u_str_buf"><span class="std std-ref">UStrBuf</span></a> *] String buffer. </p></li>
+<li><p><strong>string</strong> – [char const *] String to append. </p></li>
+<li><p><strong>length</strong> – [ulib_uint] Length of the string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[uvec_ret] UVEC_OK on success, otherwise UVEC_ERR. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ustrbuf_append_ustring">
+<span class="target" id="struct_u_str_buf_1a461bb084804667554818e21b7115979f"></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_ustring</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_append_ustring" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Appends the specified uString to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – [<a class="reference internal" href="#struct_u_str_buf"><span class="std std-ref">UStrBuf</span></a> *] String buffer. </p></li>
+<li><p><strong>string</strong> – [<a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>] String to append. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[uvec_ret] UVEC_OK on success, otherwise UVEC_ERR. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="alloc.html" class="btn btn-neutral float-left" title="Memory allocation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macros.html" class="btn btn-neutral float-right" title="Macros" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2022, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
