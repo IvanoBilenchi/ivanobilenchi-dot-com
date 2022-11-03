@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collections &mdash; uLib 0.1.4 documentation</title>
+  <title>Collections &mdash; uLib 0.2.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
             <a href="../index.html" class="icon icon-home"> uLib
           </a>
               <div class="version">
-                0.1.4
+                0.2.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -56,6 +56,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -322,9 +323,9 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-memory-management">Memory management</p>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_alloc">
-<span class="target" id="struct_u_vec_1ad4b079b6278e5a4c9176bbe1fd352fa1"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_alloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_alloc" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Allocates a new vector. </p>
+<dt class="sig sig-object cpp" id="c.uvec">
+<span class="target" id="struct_u_vec_1a4b31bec234c8c822e8d6ec7850a22912"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new vector. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -332,21 +333,38 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance, or NULL on error. </p>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Initialized vector instance. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_free">
-<span class="target" id="struct_u_vec_1ad8ae420e483af219928e72e2fe5cde73"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_free</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_free" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Deallocates the specified vector. </p>
+<dt class="sig sig-object cpp" id="c.uvec_deinit">
+<span class="target" id="struct_u_vec_1a64748420bc937652a6eb100fc4f65337"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_deinit" title="Permalink to this definition"></a><br /></dt>
+<dd><p>De-initializes a vector previously initialized via <a class="reference internal" href="#struct_u_vec_1a4b31bec234c8c822e8d6ec7850a22912"><span class="std std-ref">uvec(T)</span></a>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to free. </p></li>
+<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to de-initialize. </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uvec_move">
+<span class="target" id="struct_u_vec_1af0670d5307b8e2a7393fbefa3ea73f2a"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_move</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_move" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Invalidates the vector and returns its storage. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
+<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector whose storage should be returned. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Vector storage. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -383,35 +401,6 @@
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
 <li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to copy. </p></li>
 <li><p><strong>array</strong> – [T*] Array to copy the elements into.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_init">
-<span class="target" id="struct_u_vec_1af1d0ff7e318793b3844c594510228b9f"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_init" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Initializes a new vector on the stack. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Initialized vector instance. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_deinit">
-<span class="target" id="struct_u_vec_1a854d05fbfb6e45aadbece0214b011998"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_deinit" title="Permalink to this definition"></a><br /></dt>
-<dd><p>De-initializes a vector previously initialized via uvec_init. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Vector to de-initialize. </p></li>
 </ul>
 </dd>
 </dl>
@@ -560,32 +549,30 @@
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uvec_count">
-<span class="target" id="struct_u_vec_1a860346062d66ab9499f3e6f3851aebc3"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_count</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_count" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_vec_1a917e34f469c98af6e5137f87d31a6bc6"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_count</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_count" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Returns the number of elements in the vector. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For convenience, this macro returns ‘0’ for NULL vectors. </p>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
 <li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[ulib_uint] Number of elements.</p>
+<dd class="field-even"><p>[ulib_uint] Number of elements. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uvec_size">
-<span class="target" id="struct_u_vec_1abd354fed42ec3934a42161cccc244243"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_size</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_size" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_vec_1a86b950f3e86c12dee4f999f50b13e1e9"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_size</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_size" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Returns the maximum number of elements that can be held by the raw array backing the vector, i.e. </p>
 <p>the vector’s capacity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
 <li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
 </ul>
 </dd>
@@ -597,11 +584,12 @@
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uvec_index_is_valid">
-<span class="target" id="struct_u_vec_1ad5a2c02d184a73c7018061bf9462ca3d"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_index_is_valid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_index_is_valid" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_vec_1a4674536d13a195c6ab0a2d3b8e622727"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_index_is_valid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_index_is_valid" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Checks if the specified index is valid. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
 <li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
 <li><p><strong>idx</strong> – [ulib_uint] Index. </p></li>
 </ul>
@@ -736,19 +724,68 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_append_items">
-<span class="target" id="struct_u_vec_1a06e77a8dd3bf806b90d81de68fd6f147"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_append_items</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_append_items" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Appends multiple items to the specified vector. </p>
+<dt class="sig sig-object cpp" id="c.uvec_get_range">
+<span class="target" id="struct_u_vec_1a813c7cc2e9e87f96bc107e91eb75f741"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_get_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">start</span></span>, <span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_get_range" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a read-only range over the specified vector. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Mutating the range object is undefined behavior. </p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
 <li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
-<li><p><strong>...</strong> – [T] Elements to append. </p></li>
+<li><p><strong>start</strong> – [ulib_uint] Start index of the range. </p></li>
+<li><p><strong>len</strong> – [ulib_uint] Length of the range. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[uvec_ret] UVEC_OK on success, otherwise UVEC_ERR. </p>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Range.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uvec_get_range_from">
+<span class="target" id="struct_u_vec_1abfcd0825857009c18651c1513081862e"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_get_range_from</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">start</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_get_range_from" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a read-only range over the specified vector. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Mutating the range object is undefined behavior. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
+<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>start</strong> – [ulib_uint] Start index of the range. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Range.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uvec_get_range_to">
+<span class="target" id="struct_u_vec_1a5fa926e63e3adaef541e30303462f5cd"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_get_range_to</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_get_range_to" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a read-only range over the specified vector. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Mutating the range object is undefined behavior. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
+<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>len</strong> – [ulib_uint] Length of the range. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Range.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -791,50 +828,15 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-iteration">Iteration</p>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_iterate">
-<span class="target" id="struct_u_vec_1a08bc7dd5014a5c1fee836a7f55474aa1"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_iterate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">item_name</span></span>, <span class="n"><span class="pre">idx_name</span></span>, <span class="n"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_iterate" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Iterates over the vector, executing the specified code block for each element. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
-<li><p><strong>item_name</strong> – [symbol] Name of the element variable. </p></li>
-<li><p><strong>idx_name</strong> – [symbol] Name of the index variable. </p></li>
-<li><p><strong>code</strong> – [code] Code block to execute. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_iterate_reverse">
-<span class="target" id="struct_u_vec_1a5aae326949e462119d051bba6f229992"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_iterate_reverse</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">item_name</span></span>, <span class="n"><span class="pre">idx_name</span></span>, <span class="n"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_iterate_reverse" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Iterates over the vector in reverse order, executing the specified code block for each element. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
-<li><p><strong>item_name</strong> – [symbol] Name of the element variable. </p></li>
-<li><p><strong>idx_name</strong> – [symbol] Name of the index variable. </p></li>
-<li><p><strong>code</strong> – [code] Code block to execute. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uvec_foreach">
-<span class="target" id="struct_u_vec_1a75d265801ea93ce07f4a27d806f71b78"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_foreach</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">item_name</span></span>, <span class="n"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_foreach" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_vec_1a68db27a3f4cb0e15e917f8043a39e209"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_foreach</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">enum_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_foreach" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Iterates over the vector, executing the specified code block for each element. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
 <li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
-<li><p><strong>item_name</strong> – [symbol] Name of the element variable. </p></li>
-<li><p><strong>code</strong> – [code] Code block to execute. </p></li>
+<li><p><strong>enum_name</strong> – [symbol] Name of the variable holding the current item and its index. </p></li>
 </ul>
 </dd>
 </dl>
@@ -842,15 +844,14 @@
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uvec_foreach_reverse">
-<span class="target" id="struct_u_vec_1ad22185a4fd247549dee2b5098a28113d"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_foreach_reverse</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">item_name</span></span>, <span class="n"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_foreach_reverse" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_vec_1abf1604e19ae2115c13dbc72b716819a8"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_foreach_reverse</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">enum_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_foreach_reverse" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Iterates over the vector in reverse order, executing the specified code block for each element. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
 <li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
-<li><p><strong>item_name</strong> – [symbol] Name of the element variable. </p></li>
-<li><p><strong>code</strong> – [code] Code block to execute. </p></li>
+<li><p><strong>enum_name</strong> – [symbol] Name of the variable holding the current item and its index. </p></li>
 </ul>
 </dd>
 </dl>
@@ -1150,67 +1151,6 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>[bool] True if the element was found and removed, false otherwise. </p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-higher-order">Higher order</p>
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_first_index_where">
-<span class="target" id="struct_u_vec_1a057fa4db5bd87b92611bc1169e6fa74a"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_first_index_where</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">idx_var</span></span>, <span class="n"><span class="pre">bool_exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_first_index_where" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Returns the index of the first element that matches the specified boolean expression. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
-<li><p><strong>idx_var</strong> – <strong>[out]</strong> [ulib_uint] Out variable (must be declared in outer scope). </p></li>
-<li><p><strong>bool_exp</strong> – [expression] Boolean expression. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_qsort">
-<span class="target" id="struct_u_vec_1a2629b9df3f1a97a84261eb78ba2df064"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_qsort</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">comp_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_qsort" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Sorts the vector via qsort. </p>
-<p><div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>qsort </p>
-</div>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
-<li><p><strong>comp_func</strong> – [(const void *, const void *) -&gt; int] qsort-compatible sorting function.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uvec_qsort_range">
-<span class="target" id="struct_u_vec_1a5bc9389f68de1f717e92943f22b18212"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_qsort_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">start</span></span>, <span class="n"><span class="pre">len</span></span>, <span class="n"><span class="pre">comp_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_qsort_range" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Sorts the elements in the specified range via qsort. </p>
-<p><div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>qsort </p>
-</div>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
-<li><p><strong>start</strong> – [ulib_uint] Range start index. </p></li>
-<li><p><strong>len</strong> – [ulib_uint] Range length. </p></li>
-<li><p><strong>comp_func</strong> – [(const void *, const void *) -&gt; int] qsort-compatible sorting function.</p></li>
-</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1562,15 +1502,32 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-memory-management">Memory management</p>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uhash_free">
-<span class="target" id="struct_u_hash_1a812338604f7b153bd315a73bd1bef34a"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_free</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_free" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Deallocates the specified hash table. </p>
+<dt class="sig sig-object cpp" id="c.uhash_deinit">
+<span class="target" id="struct_u_hash_1a821ee1aa6e61a44dc50f2a1a878a5b4a"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_deinit" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Deinitializes the specified hash table. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table to deallocate. </p></li>
+<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table to deinitialize. </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uhash_move">
+<span class="target" id="struct_u_hash_1a9f413cafc535e7a97cb88a37be3583d1"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_move</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_move" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Invalidates the hash table and returns its storage. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
+<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table whose storage should be returned. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table storage. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1632,6 +1589,23 @@
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-primitives">Primitives</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uhash_is_map">
+<span class="target" id="struct_u_hash_1abe8feaec8f0d636625310c1f21f2df59"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_is_map</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_is_map" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether the hash table is a map. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
+<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the hash table is a map, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uhash_put">
 <span class="target" id="struct_u_hash_1a39a7e06c13776bfaf957fb56045969b0"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_put</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">k</span></span>, <span class="n"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_put" title="Permalink to this definition"></a><br /></dt>
@@ -1704,11 +1678,12 @@
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uhash_exists">
-<span class="target" id="struct_u_hash_1af7e7a0614813114fc42fdabb13d6ebd4"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_exists</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_exists" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_hash_1adbaea1f1ae17966c47f58c157487a420"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_exists</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_exists" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Tests whether a bucket contains data. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
 <li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
 <li><p><strong>x</strong> – [ulib_uint] Index of the bucket to test. </p></li>
 </ul>
@@ -1721,11 +1696,12 @@
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uhash_key">
-<span class="target" id="struct_u_hash_1ac7f0a481503057e08b1e3f761eec8e86"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_key</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_key" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_hash_1acb6a8d6b1c366b03763c403740becdf7"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_key</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_key" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Retrieves the key at the specified index. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
 <li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
 <li><p><strong>x</strong> – [ulib_uint] Index of the bucket whose key should be retrieved. </p></li>
 </ul>
@@ -1738,7 +1714,7 @@
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uhash_value">
-<span class="target" id="struct_u_hash_1a37fa73a0addd86f450a6291ca0464dd8"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_value</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_value" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_hash_1a9fd368e04e63a088886dccd3c0e000fd"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_value</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_value" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Retrieves the value at the specified index. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1747,6 +1723,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
 <li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
 <li><p><strong>x</strong> – [ulib_uint] Index of the bucket whose value should be retrieved. </p></li>
 </ul>
@@ -1758,53 +1735,35 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uhash_begin">
-<span class="target" id="struct_u_hash_1af3dd4166d154f19b2a985ccbb62c1f85"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_begin</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_begin" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Retrieves the start index. </p>
+<dt class="sig sig-object cpp" id="c.uhash_size">
+<span class="target" id="struct_u_hash_1a14f57344ef3500eabd7ffd32d17aee04"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_size</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_size" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the maximum number of elements that can be held by the hash table. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
 <li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[ulib_uint] Start index. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uhash_end">
-<span class="target" id="struct_u_hash_1a20ba8dd55e74f751001418b6c91129e8"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_end</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_end" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Retrieves the end index. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[ulib_uint] End index. </p>
+<dd class="field-even"><p>[ulib_uint] Maximum number of elements. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uhash_count">
-<span class="target" id="struct_u_hash_1a018a967cef037ec625467b009ac4248d"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_count</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_count" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_hash_1aac658dfccee2322300db5da4cce4eed7"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_count</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_count" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Returns the number of elements in the hash table. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For convenience, this macro returns ‘0’ for NULL hash tables. </p>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
 <li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[ulib_uint] Number of elements.</p>
+<dd class="field-even"><p>[ulib_uint] Number of elements. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1827,9 +1786,9 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-map-specific-api">Map-specific API</p>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uhmap_alloc">
-<span class="target" id="struct_u_hash_1a6c88bbbd5c7721f2a6d3da0bbd022937"></span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_alloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_alloc" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Allocates a new hash map. </p>
+<dt class="sig sig-object cpp" id="c.uhmap">
+<span class="target" id="struct_u_hash_1a184750f4277794957b08386debd83a4b"></span><span class="sig-name descname"><span class="n"><span class="pre">uhmap</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new hash map. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1837,15 +1796,15 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table instance. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uhmap_alloc_pi">
-<span class="target" id="struct_u_hash_1a2db202c395be49ac3b65377a8325edce"></span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_alloc_pi</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">hash_func</span></span>, <span class="n"><span class="pre">equal_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_alloc_pi" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Allocates a new hash map with per-instance hash and equality functions. </p>
+<dt class="sig sig-object cpp" id="c.uhmap_pi">
+<span class="target" id="struct_u_hash_1a22502940728321f4b4595f7b8f0ee7fb"></span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_pi</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">hash_func</span></span>, <span class="n"><span class="pre">equal_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_pi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new hash map with per-instance hash and equality functions. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1855,7 +1814,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table instance. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1981,9 +1940,9 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-set-specific-api">Set-specific API</p>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uhset_alloc">
-<span class="target" id="struct_u_hash_1ad7b2d7f466ec5c5a40c8585189d922bc"></span><span class="sig-name descname"><span class="n"><span class="pre">uhset_alloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_alloc" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Allocates a new hash set. </p>
+<dt class="sig sig-object cpp" id="c.uhset">
+<span class="target" id="struct_u_hash_1a434abeee306ab9b0c41e861a8544f3b6"></span><span class="sig-name descname"><span class="n"><span class="pre">uhset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new hash set. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1991,15 +1950,15 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table instance. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uhset_alloc_pi">
-<span class="target" id="struct_u_hash_1af30e4ee473ee3717a7ace6582248a268"></span><span class="sig-name descname"><span class="n"><span class="pre">uhset_alloc_pi</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">hash_func</span></span>, <span class="n"><span class="pre">equal_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_alloc_pi" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Allocates a new hash set with per-instance hash and equality functions. </p>
+<dt class="sig sig-object cpp" id="c.uhset_pi">
+<span class="target" id="struct_u_hash_1a768e7dbb5810fe32ffae0c8278543bce"></span><span class="sig-name descname"><span class="n"><span class="pre">uhset_pi</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">hash_func</span></span>, <span class="n"><span class="pre">equal_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_pi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new hash set with per-instance hash and equality functions. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2009,7 +1968,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p>
+<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table instance. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2239,49 +2198,33 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-iteration">Iteration</p>
 <dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.uhash_next">
+<span class="target" id="struct_u_hash_1a84b92fbb1bd61b5feb808575d858ee05"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_next</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_next" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the index of the first bucket starting from (and including) <code class="docutils literal notranslate"><span class="pre">i</span></code> which contains data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
+<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>i</strong> – [ulib_uint] Index of the bucket to start searching from. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Index of the first bucket containing data. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uhash_foreach">
-<span class="target" id="struct_u_hash_1afdab52f1f761d4b41f6679f9a8a5bf6e"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_foreach</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">key_name</span></span>, <span class="n"><span class="pre">val_name</span></span>, <span class="n"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_foreach" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="struct_u_hash_1a0d943526049e34b534ff3c1402446c17"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_foreach</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">ht</span></span>, <span class="n"><span class="pre">enum_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_foreach" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Iterates over the entries in the hash table. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
-<li><p><strong>key_name</strong> – [symbol] Name of the variable to which the key will be assigned. </p></li>
-<li><p><strong>val_name</strong> – [symbol] Name of the variable to which the value will be assigned. </p></li>
-<li><p><strong>code</strong> – [code] Code block to execute. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uhash_foreach_key">
-<span class="target" id="struct_u_hash_1a798db1d953c14c8c1974bc2124a52b6e"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_foreach_key</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">key_name</span></span>, <span class="n"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_foreach_key" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Iterates over the keys in the hash table. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
-<li><p><strong>key_name</strong> – [symbol] Name of the variable to which the key will be assigned. </p></li>
-<li><p><strong>code</strong> – [code] Code block to execute. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uhash_foreach_value">
-<span class="target" id="struct_u_hash_1aa8cb525d016767c23524a78764c1fdb8"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_foreach_value</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">h</span></span>, <span class="n"><span class="pre">val_name</span></span>, <span class="n"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_foreach_value" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Iterates over the values in the hash table. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
-<li><p><strong>val_name</strong> – [symbol] Name of the variable to which the value will be assigned. </p></li>
-<li><p><strong>code</strong> – [code] Code block to execute. </p></li>
+<li><p><strong>ht</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>enum_name</strong> – [symbol] Name of the variable holding the current index, key and value. </p></li>
 </ul>
 </dd>
 </dl>

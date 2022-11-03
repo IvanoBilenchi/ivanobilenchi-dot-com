@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random generators &mdash; uLib 0.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tests" href="test.html" />
+    <link rel="prev" title="Streams" href="streams.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> uLib
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Howto</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Random generators</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="random-generators">
+<h1>Random generators<a class="headerlink" href="#random-generators" title="Permalink to this headline"></a></h1>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414urand_set_seed9ulib_uint">
+<span id="_CPPv314urand_set_seed9ulib_uint"></span><span id="_CPPv214urand_set_seed9ulib_uint"></span><span id="urand_set_seed__ulib_uint"></span><span class="target" id="group__rand_1ga1fd28fe9d1d3827bafc7a75d6f9a8215"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">urand_set_seed</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="base.html#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">seed</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414urand_set_seed9ulib_uint" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Sets the seed of the random number generator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>seed</strong> – Seed. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421urand_default_charsetv">
+<span id="_CPPv321urand_default_charsetv"></span><span id="_CPPv221urand_default_charsetv"></span><span id="urand_default_charset__void"></span><span class="target" id="group__rand_1ga4c3d1265cf7b1cfb7b17aa3c0c9976a3"></span><a class="reference internal" href="base.html#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">urand_default_charset</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421urand_default_charsetv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the default character set used by random string generators. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Default character set. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv45urandv">
+<span id="_CPPv35urandv"></span><span id="_CPPv25urandv"></span><span id="urand__void"></span><span class="target" id="group__rand_1ga780d723850cc813a837d2c3e77926e8e"></span><a class="reference internal" href="base.html#_CPPv48ulib_int" title="ulib_int"><span class="n"><span class="pre">ulib_int</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">urand</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv45urandv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a random integer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Random integer. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411urand_range8ulib_int9ulib_uint">
+<span id="_CPPv311urand_range8ulib_int9ulib_uint"></span><span id="_CPPv211urand_range8ulib_int9ulib_uint"></span><span id="urand_range__ulib_int.ulib_uint"></span><span class="target" id="group__rand_1ga0f0a5588ffdef7d11acfa819da3406e3"></span><a class="reference internal" href="base.html#_CPPv48ulib_int" title="ulib_int"><span class="n"><span class="pre">ulib_int</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">urand_range</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="base.html#_CPPv48ulib_int" title="ulib_int"><span class="n"><span class="pre">ulib_int</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">start</span></span>, <a class="reference internal" href="base.html#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411urand_range8ulib_int9ulib_uint" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a random integer in the specified range. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – Start of the range. </p></li>
+<li><p><strong>len</strong> – Length of the range. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Random integer. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412urand_string9ulib_uintPK7UString">
+<span id="_CPPv312urand_string9ulib_uintPK7UString"></span><span id="_CPPv212urand_string9ulib_uintPK7UString"></span><span id="urand_string__ulib_uint.UStringCP"></span><span class="target" id="group__rand_1ga927af529a052cac7813c645a74339a28"></span><a class="reference internal" href="base.html#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">urand_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="base.html#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span>, <a class="reference internal" href="base.html#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">charset</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412urand_string9ulib_uintPK7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a random string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>len</strong> – Length of the string. </p></li>
+<li><p><strong>charset</strong> – Character set, or NULL for the default alphanumeric character set. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Random string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv49urand_str9ulib_uintPcPK7UString">
+<span id="_CPPv39urand_str9ulib_uintPcPK7UString"></span><span id="_CPPv29urand_str9ulib_uintPcPK7UString"></span><span id="urand_str__ulib_uint.cP.UStringCP"></span><span class="target" id="group__rand_1ga516fbbee1e6f0b047c42ae3b00b9197f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">urand_str</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="base.html#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <a class="reference internal" href="base.html#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">charset</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49urand_str9ulib_uintPcPK7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Populates the buffer with a random string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>len</strong> – Length of the random string. </p></li>
+<li><p><strong>buf</strong> – Buffer to populate. </p></li>
+<li><p><strong>charset</strong> – Character set, or NULL for the default alphanumeric character set. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="streams.html" class="btn btn-neutral float-left" title="Streams" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="test.html" class="btn btn-neutral float-right" title="Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2022, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

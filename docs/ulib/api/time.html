@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time &mdash; uLib 0.1.4 documentation</title>
+  <title>Time &mdash; uLib 0.2.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
             <a href="../index.html" class="icon icon-home"> uLib
           </a>
               <div class="version">
-                0.1.4
+                0.2.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -52,6 +52,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -342,6 +343,37 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418utime_is_leap_yearx">
+<span id="_CPPv318utime_is_leap_yearx"></span><span id="_CPPv218utime_is_leap_yearx"></span><span id="utime_is_leap_year__l-l"></span><span class="target" id="group__time_1gadc230d5dc5ee0af23dc4d72036dddfbf"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_is_leap_year</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">year</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418utime_is_leap_yearx" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks whether the specified year is a leap year. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>year</strong> – Year. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the specified year is a leap year, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419utime_days_in_monthxj">
+<span id="_CPPv319utime_days_in_monthxj"></span><span id="_CPPv219utime_days_in_monthxj"></span><span id="utime_days_in_month__l-l.unsigned"></span><span class="target" id="group__time_1gaa4f9c551fb2cd82df48f7015aa64902a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_days_in_month</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">year</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">month</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419utime_days_in_monthxj" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the number of days in the specified month. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> – Year. </p></li>
+<li><p><strong>month</strong> – Month. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of days in the specified month. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv419utime_get_timestampv">
 <span id="_CPPv319utime_get_timestampv"></span><span id="_CPPv219utime_get_timestampv"></span><span id="utime_get_timestamp__void"></span><span class="target" id="group__time_1ga99bbafdd60453810de7618046b24089b"></span><a class="reference internal" href="#_CPPv411utime_stamp" title="utime_stamp"><span class="n"><span class="pre">utime_stamp</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_get_timestamp</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419utime_get_timestampv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Retrieves a timestamp expressed as seconds since January 1 1970, 00:00:00. </p>
@@ -415,39 +447,6 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Time interval in string form.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.utime_is_leap_year">
-<span class="target" id="group__time_1ga0662fef5c70c46087242a604cfced4e5"></span><span class="sig-name descname"><span class="n"><span class="pre">utime_is_leap_year</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">y</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_is_leap_year" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Checks whether the specified year is a leap year. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>y</strong> – [long long] Year. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>True if the specified year is a leap year, false otherwise. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.utime_days_in_month">
-<span class="target" id="group__time_1ga55d046ebbfa2b5cd2784314ae997455c"></span><span class="sig-name descname"><span class="n"><span class="pre">utime_days_in_month</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">y</span></span>, <span class="n"><span class="pre">m</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_days_in_month" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Returns the number of days in the specified month. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>y</strong> – [long long] Year. </p></li>
-<li><p><strong>m</strong> – [unsigned] Month. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Number of days in the specified month. </p>
 </dd>
 </dl>
 </dd></dl>

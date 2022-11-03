@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streams &mdash; uLib 0.1.4 documentation</title>
+  <title>Streams &mdash; uLib 0.2.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,7 +17,7 @@
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tests" href="test.html" />
+    <link rel="next" title="Random generators" href="rand.html" />
     <link rel="prev" title="Collections" href="collections.html" /> 
 </head>
 
@@ -29,7 +29,7 @@
             <a href="../index.html" class="icon icon-home"> uLib
           </a>
               <div class="version">
-                0.1.4
+                0.2.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -57,6 +57,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#return-codes">Return codes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -139,6 +140,17 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8UIStream12uistream_stdEv">
+<span id="_CPPv3N8UIStream12uistream_stdEv"></span><span id="_CPPv2N8UIStream12uistream_stdEv"></span><span id="UIStream::uistream_std__void"></span><span class="target" id="struct_u_i_stream_1a7dcd18ebb2030ef1862696d73106750a"></span><a class="reference internal" href="#_CPPv48UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uistream_std</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UIStream12uistream_stdEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a stream that reads from the standard input. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Standard input stream. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -323,10 +335,10 @@
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-related">Related</p>
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uistream_init">
-<span class="target" id="struct_u_i_stream_1abafcdaaddf5a7b03f4bbab40cd778ece"></span><span class="sig-name descname"><span class="n"><span class="pre">uistream_init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">read_func</span></span>, <span class="n"><span class="pre">reset_func</span></span>, <span class="n"><span class="pre">free_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_init" title="Permalink to this definition"></a><br /></dt>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8UIStream8uistreamEPvPF11ustream_retPvPv6size_tP6size_tEPF11ustream_retPvEPF11ustream_retPvE">
+<span id="_CPPv3N8UIStream8uistreamEPvPF11ustream_retPvPv6size_tP6size_tEPF11ustream_retPvEPF11ustream_retPvE"></span><span id="_CPPv2N8UIStream8uistreamEPvPF11ustream_retPvPv6size_tP6size_tEPF11ustream_retPvEPF11ustream_retPvE"></span><span class="target" id="struct_u_i_stream_1a8c27619497835ad7f596edb19db4335c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">read_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">reset_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">free_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UIStream8uistreamEPvPF11ustream_retPvPv6size_tP6size_tEPF11ustream_retPvEPF11ustream_retPvE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initializes an input stream. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -515,6 +527,28 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8UOStream12uostream_stdEv">
+<span id="_CPPv3N8UOStream12uostream_stdEv"></span><span id="_CPPv2N8UOStream12uostream_stdEv"></span><span id="UOStream::uostream_std__void"></span><span class="target" id="struct_u_o_stream_1a379baece522adcf32b9b6741fa837b38"></span><a class="reference internal" href="#_CPPv48UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_std</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UOStream12uostream_stdEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a stream that writes to the standard output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Standard output stream. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8UOStream13uostream_nullEv">
+<span id="_CPPv3N8UOStream13uostream_nullEv"></span><span id="_CPPv2N8UOStream13uostream_nullEv"></span><span id="UOStream::uostream_null__void"></span><span class="target" id="struct_u_o_stream_1afb0774b982d84fa0fd02fab2f2e49db0"></span><a class="reference internal" href="#_CPPv48UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_null</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UOStream13uostream_nullEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a stream that discards its output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Null output stream. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8UOStream16uostream_to_pathEP8UOStreamPKc">
 <span id="_CPPv3N8UOStream16uostream_to_pathEP8UOStreamPKc"></span><span id="_CPPv2N8UOStream16uostream_to_pathEP8UOStreamPKc"></span><span id="UOStream::uostream_to_path__UOStreamP.cCP"></span><span class="target" id="struct_u_o_stream_1a556c88f1c086ccde67f3cb4544dd1c1f"></span><a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_to_path</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">stream</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UOStream16uostream_to_pathEP8UOStreamPKc" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initializes a stream that writes to the file at the specified path. </p>
@@ -587,20 +621,6 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Return code.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8UOStream16uostream_to_nullEP8UOStream">
-<span id="_CPPv3N8UOStream16uostream_to_nullEP8UOStream"></span><span id="_CPPv2N8UOStream16uostream_to_nullEP8UOStream"></span><span id="UOStream::uostream_to_null__UOStreamP"></span><span class="target" id="struct_u_o_stream_1af47a6439daa86efed7208b1db07ebd28"></span><a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_to_null</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">stream</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UOStream16uostream_to_nullEP8UOStream" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Initializes a stream that discards its output. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>stream</strong> – Output stream. </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Return code. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -753,10 +773,10 @@
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-related">Related</p>
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uostream_init">
-<span class="target" id="struct_u_o_stream_1aa86bf16584444a4fd5debc9c4ac5df70"></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">write_func</span></span>, <span class="n"><span class="pre">writef_func</span></span>, <span class="n"><span class="pre">flush_func</span></span>, <span class="n"><span class="pre">free_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_init" title="Permalink to this definition"></a><br /></dt>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8UOStream8uostreamEPvPF11ustream_retPvPKv6size_tP6size_tEPF11ustream_retPvP6size_tPKc7va_listEPF11ustream_retPvEPF11ustream_retPvE">
+<span id="_CPPv3N8UOStream8uostreamEPvPF11ustream_retPvPKv6size_tP6size_tEPF11ustream_retPvP6size_tPKc7va_listEPF11ustream_retPvEPF11ustream_retPvE"></span><span id="_CPPv2N8UOStream8uostreamEPvPF11ustream_retPvPKv6size_tP6size_tEPF11ustream_retPvP6size_tPKc7va_listEPF11ustream_retPvEPF11ustream_retPvE"></span><span class="target" id="struct_u_o_stream_1a2c252b2967858d858574a778272338ba"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">write_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">writef_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">va_list</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">flush_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">free_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UOStream8uostreamEPvPF11ustream_retPvPKv6size_tP6size_tEPF11ustream_retPvP6size_tPKc7va_listEPF11ustream_retPvEPF11ustream_retPvE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initializes an output stream. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -774,6 +794,9 @@
 </dl>
 </dd></dl>
 
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-related">Related</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uostream_write_literal">
 <span class="target" id="struct_u_o_stream_1a242e96e2c72eb2debf3c363b126ec572"></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_write_literal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">stream</span></span>, <span class="n"><span class="pre">literal</span></span>, <span class="n"><span class="pre">written</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_write_literal" title="Permalink to this definition"></a><br /></dt>
@@ -831,6 +854,12 @@
 </div>
 </dd></dl>
 
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N11ustream_ret11USTREAM_ERRE">
+<span id="_CPPv3N11ustream_ret11USTREAM_ERRE"></span><span id="_CPPv2N11ustream_ret11USTREAM_ERRE"></span><span class="target" id="ustream_8h_1a5c00cd2945b15785775e4e930ddb1154a0ecc32af2eadc5ef4e7451f755b6f4bb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USTREAM_ERR</span></span></span><a class="headerlink" href="#_CPPv4N11ustream_ret11USTREAM_ERRE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Generic error. </p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -841,7 +870,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="collections.html" class="btn btn-neutral float-left" title="Collections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="test.html" class="btn btn-neutral float-right" title="Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rand.html" class="btn btn-neutral float-right" title="Random generators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
