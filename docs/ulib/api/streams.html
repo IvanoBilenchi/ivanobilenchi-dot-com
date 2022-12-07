@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streams &mdash; uLib 0.2.0 documentation</title>
+  <title>Streams &mdash; uLib 0.2.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
             <a href="../index.html" class="icon icon-home"> uLib
           </a>
               <div class="version">
-                0.2.0
+                0.2.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -265,6 +265,12 @@
 <dt class="sig sig-object cpp" id="_CPPv4N8UIStream5stateE">
 <span id="_CPPv3N8UIStream5stateE"></span><span id="_CPPv2N8UIStream5stateE"></span><span id="UIStream::state__ustream_ret"></span><span class="target" id="struct_u_i_stream_1a179312992b9cb32ab02619cde9ab1973"></span><a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">state</span></span></span><a class="headerlink" href="#_CPPv4N8UIStream5stateE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Stream state. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8UIStream10read_bytesE">
+<span id="_CPPv3N8UIStream10read_bytesE"></span><span id="_CPPv2N8UIStream10read_bytesE"></span><span id="UIStream::read_bytes__s"></span><span class="target" id="struct_u_i_stream_1a74467c872526a815c26b19d19e3b7482"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_bytes</span></span></span><a class="headerlink" href="#_CPPv4N8UIStream10read_bytesE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Bytes read since the last <code class="docutils literal notranslate"><span class="pre">reset</span></code> call. </p>
 </dd></dl>
 
 <dl class="cpp var">
@@ -538,6 +544,17 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8UOStream15uostream_stderrEv">
+<span id="_CPPv3N8UOStream15uostream_stderrEv"></span><span id="_CPPv2N8UOStream15uostream_stderrEv"></span><span id="UOStream::uostream_stderr__void"></span><span class="target" id="struct_u_o_stream_1a4296fde9d51b7441dd8a9f8f7a09d703"></span><a class="reference internal" href="#_CPPv48UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_stderr</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UOStream15uostream_stderrEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a stream that writes to the standard error. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Standard error stream. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8UOStream13uostream_nullEv">
 <span id="_CPPv3N8UOStream13uostream_nullEv"></span><span id="_CPPv2N8UOStream13uostream_nullEv"></span><span id="UOStream::uostream_null__void"></span><span class="target" id="struct_u_o_stream_1afb0774b982d84fa0fd02fab2f2e49db0"></span><a class="reference internal" href="#_CPPv48UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_null</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UOStream13uostream_nullEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Returns a stream that discards its output. </p>
@@ -676,6 +693,12 @@
 <dt class="sig sig-object cpp" id="_CPPv4N8UOStream5stateE">
 <span id="_CPPv3N8UOStream5stateE"></span><span id="_CPPv2N8UOStream5stateE"></span><span id="UOStream::state__ustream_ret"></span><span class="target" id="struct_u_o_stream_1a74c2fae851d4ec4ba256b1271e85a145"></span><a class="reference internal" href="#_CPPv411ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">state</span></span></span><a class="headerlink" href="#_CPPv4N8UOStream5stateE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Stream state. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8UOStream13written_bytesE">
+<span id="_CPPv3N8UOStream13written_bytesE"></span><span id="_CPPv2N8UOStream13written_bytesE"></span><span id="UOStream::written_bytes__s"></span><span class="target" id="struct_u_o_stream_1a93f0c6c901aee29d3a626e5a6082e157"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">written_bytes</span></span></span><a class="headerlink" href="#_CPPv4N8UOStream13written_bytesE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Bytes written since the last <code class="docutils literal notranslate"><span class="pre">flush</span></code> call. </p>
 </dd></dl>
 
 <dl class="cpp var">

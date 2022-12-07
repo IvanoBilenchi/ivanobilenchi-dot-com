@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Base Types &mdash; uLib 0.2.0 documentation</title>
+  <title>Base Types &mdash; uLib 0.2.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
             <a href="../index.html" class="icon icon-home"> uLib
           </a>
               <div class="version">
-                0.2.0
+                0.2.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -242,8 +242,8 @@
 <section id="bitmasks">
 <h2>Bitmasks<a class="headerlink" href="#bitmasks" title="Permalink to this headline"></a></h2>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.UFlags">
-<span class="target" id="group__flags_1ga9208e4c84e43b71f57dfc57d0539b8f7"></span><span class="sig-name descname"><span class="n"><span class="pre">UFlags</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UFlags" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.UBit">
+<span class="target" id="group__bits_1ga20cce9ab2c883eb1ca5816ac1f42242d"></span><span class="sig-name descname"><span class="n"><span class="pre">UBit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UBit" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Bitmask type. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -255,8 +255,25 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_none">
-<span class="target" id="group__flags_1ga376892f2e9d581fcdd3e9b2ce85dee7e"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_none</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_none" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit">
+<span class="target" id="group__bits_1ga9518d8d605c36062af57d5d3aaf986c0"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a bitmask given its integer representation. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>mask</strong> – Integer representation of the bitmask. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with the specified integer representation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ubit_none">
+<span class="target" id="group__bits_1gad4b3b35576f7e0582581ea4bfd54faab"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_none</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_none" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Bitmask with all bits set to zero. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -271,8 +288,8 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_all">
-<span class="target" id="group__flags_1ga34406763333f8b9fff7563f1c9c9cfbd"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_all" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_all">
+<span class="target" id="group__bits_1ga171b54a655ce11ac2dcb37f9236ed665"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_all" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Bitmask with all bits set to one. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -287,14 +304,50 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_bit">
-<span class="target" id="group__flags_1ga189748f1634b4bd754fb64dcf73a9d74"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_bit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">BIT</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_bit" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_lshift">
+<span class="target" id="group__bits_1ga9d168671530c6bfa2aaf96a49b683317"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_lshift</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span>, <span class="n"><span class="pre">shift</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_lshift" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Performs a left-shift operation on the specified bitmask. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>mask</strong> – Bitmask to shift. </p></li>
+<li><p><strong>shift</strong> – Number of places to shift. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result of the shift operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ubit_rshift">
+<span class="target" id="group__bits_1ga1b81d3a60eaa5ff747c72536247d0660"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_rshift</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span>, <span class="n"><span class="pre">shift</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_rshift" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Performs a right-shift operation on the specified bitmask. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>mask</strong> – Bitmask to shift. </p></li>
+<li><p><strong>shift</strong> – Number of places to shift. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result of the shift operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ubit_bit">
+<span class="target" id="group__bits_1ga9f52f874807a58e6cd875105741cf5e2"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_bit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">bit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_bit" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Returns a bitmask with the specified bit set. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Bitmask size in bits. </p></li>
-<li><p><strong>BIT</strong> – Bit to set. </p></li>
+<li><p><strong>bit</strong> – Bit to set. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -304,15 +357,33 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_is_set">
-<span class="target" id="group__flags_1gae1357db9f7334ce60966124c722eec68"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_is_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_is_set" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_range">
+<span class="target" id="group__bits_1gae087e798c897ab68ce161d4f6639d4d8"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">start</span></span>, <span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_range" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns a bitmask that has len bits set starting from start. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>start</strong> – Range start. </p></li>
+<li><p><strong>len</strong> – Range length. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with len bits set starting from start. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ubit_is_set">
+<span class="target" id="group__bits_1gabcca46956c5e957eabede7561c7a6f6e"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_is_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span>, <span class="n"><span class="pre">bits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_is_set" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Checks whether a bitmask has specific bits set. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Bitmask size in bits. </p></li>
-<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
-<li><p><strong>FLAG</strong> – Bit(s) to check. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
+<li><p><strong>bits</strong> – Bit(s) to check. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -322,15 +393,15 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_is_any_set">
-<span class="target" id="group__flags_1ga68b61a9c68abd6db5b5922da4912d9ef"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_is_any_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_is_any_set" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_is_any_set">
+<span class="target" id="group__bits_1ga4014c3b1bb76bf7031f54cac1e8d2152"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_is_any_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span>, <span class="n"><span class="pre">bits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_is_any_set" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Checks whether a bitmask has any of the specified bits set. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Bitmask size in bits. </p></li>
-<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
-<li><p><strong>FLAG</strong> – Bit(s) to check. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
+<li><p><strong>bits</strong> – Bit(s) to check. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -340,75 +411,107 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_set">
-<span class="target" id="group__flags_1gae005d1bc86541b804978dfd85c408821"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_set" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_set">
+<span class="target" id="group__bits_1gaf7acbe3793a529160238a73ed96f887c"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span>, <span class="n"><span class="pre">bits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_set" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Sets bits in a bitmask. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Bitmask size in bits. </p></li>
-<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
-<li><p><strong>FLAG</strong> – Bit(s) to set. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
+<li><p><strong>bits</strong> – Bit(s) to set. </p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with the specified bits set. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_unset">
-<span class="target" id="group__flags_1ga8d50527e6e82d1dd52be4f7143ade061"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_unset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_unset" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_unset">
+<span class="target" id="group__bits_1gaf661983436136a232f4dea1917ec7c67"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_unset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span>, <span class="n"><span class="pre">bits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_unset" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Unsets bits in a bitmask. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Bitmask size in bits. </p></li>
-<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
-<li><p><strong>FLAG</strong> – Bit(s) to unset. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
+<li><p><strong>bits</strong> – Bit(s) to unset. </p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with the specified bits unset. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_set_bool">
-<span class="target" id="group__flags_1ga13f3d93ea9d72d20f8d303a7c0a640e3"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_set_bool</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span>, <span class="n"><span class="pre">BOOL</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_set_bool" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_set_bool">
+<span class="target" id="group__bits_1gacb0338b85d465629c39dd0df3319a0fe"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_set_bool</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span>, <span class="n"><span class="pre">bits</span></span>, <span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_set_bool" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Sets or unsets bits in a bitmask. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Bitmask size in bits. </p></li>
-<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
-<li><p><strong>FLAG</strong> – Bit(s) to set or unset. </p></li>
-<li><p><strong>BOOL</strong> – True to set, false to unset. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
+<li><p><strong>bits</strong> – Bit(s) to set or unset. </p></li>
+<li><p><strong>exp</strong> – True to set, false to unset. </p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with the specified bits set or unset. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_toggle">
-<span class="target" id="group__flags_1ga03572dda859011ca5ca0a3cd7614565a"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_toggle</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span>, <span class="n"><span class="pre">FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_toggle" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_toggle">
+<span class="target" id="group__bits_1gad0baa1ae6965ef91abae40f169a8bd19"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_toggle</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span>, <span class="n"><span class="pre">bits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_toggle" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Toggles bits in a bitmask. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Bitmask size in bits. </p></li>
-<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
-<li><p><strong>FLAG</strong> – Bit(s) to toggle. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
+<li><p><strong>bits</strong> – Bit(s) to toggle. </p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with the specified bits toggled. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_count_set">
-<span class="target" id="group__flags_1gac766f77fb8725e1978e9e29bd9abee8f"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_count_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_count_set" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_overwrite">
+<span class="target" id="group__bits_1ga835cb05e877d235b44b64dbdb7268103"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_overwrite</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span>, <span class="n"><span class="pre">n_mask</span></span>, <span class="n"><span class="pre">bits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_overwrite" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Overwrites the bits in the bitmask with those from another bitmask. </p>
+<p>Example: if mask = 0101 0101, n_mask = 1010 1010 and mask = 0111 0000, the output is 0010 0101.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
+<li><p><strong>n_mask</strong> – Other bitmask. </p></li>
+<li><p><strong>bits</strong> – Bitmask indicating the bits that should be overwritten. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bitmask with the specified bits overwritten. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ubit_count_set">
+<span class="target" id="group__bits_1gaa06dd72257982d61145538d8bdc252cf"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_count_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_count_set" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Returns the number of bits that are set in a bitmask. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Bitmask size in bits. </p></li>
-<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -418,14 +521,14 @@
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.uflags_count_unset">
-<span class="target" id="group__flags_1ga5e044ec9225cb26268faf9345743a63f"></span><span class="sig-name descname"><span class="n"><span class="pre">uflags_count_unset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">FLAGS</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uflags_count_unset" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="c.ubit_count_unset">
+<span class="target" id="group__bits_1ga4b2dbee5d744c4d543f4833d7792c64c"></span><span class="sig-name descname"><span class="n"><span class="pre">ubit_count_unset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">N</span></span>, <span class="n"><span class="pre">mask</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_count_unset" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Returns the number of bigs that are not set in a bitmask. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>N</strong> – Bitmask size in bits. </p></li>
-<li><p><strong>FLAGS</strong> – Bitmask. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -445,16 +548,20 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7UString14ustring_assignEPKc6size_t">
-<span id="_CPPv3N7UString14ustring_assignEPKc6size_t"></span><span id="_CPPv2N7UString14ustring_assignEPKc6size_t"></span><span id="UString::ustring_assign__cCP.s"></span><span class="target" id="struct_u_string_1a02a40c235f52a515a40f595b718b17d7"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_assign</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">cstring</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString14ustring_assignEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N7UString14ustring_assignEPKc6size_t"></span><span id="_CPPv2N7UString14ustring_assignEPKc6size_t"></span><span id="UString::ustring_assign__cCP.s"></span><span class="target" id="struct_u_string_1ab73f55eeceec111d4f38b85812d6f327"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_assign</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString14ustring_assignEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initializes a new string by taking ownership of the specified buffer, which must have been dynamically allocated. </p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Due to the internals of <a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>, you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cstring</strong> – String buffer. </p></li>
+<li><p><strong>buf</strong> – String buffer. </p></li>
 <li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
 </ul>
 </dd>
@@ -466,34 +573,50 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7UString12ustring_copyEPKc6size_t">
-<span id="_CPPv3N7UString12ustring_copyEPKc6size_t"></span><span id="_CPPv2N7UString12ustring_copyEPKc6size_t"></span><span id="UString::ustring_copy__cCP.s"></span><span class="target" id="struct_u_string_1a65ec3128041956b3a83f1fb78c17a706"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_copy</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">cstring</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_copyEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N7UString12ustring_copyEPKc6size_t"></span><span id="_CPPv2N7UString12ustring_copyEPKc6size_t"></span><span id="UString::ustring_copy__cCP.s"></span><span class="target" id="struct_u_string_1abc6346e552ce8f7a050725b6cfa16196"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_copy</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_copyEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initializes a new string by copying the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cstring</strong> – String buffer. </p></li>
+<li><p><strong>buf</strong> – String buffer. </p></li>
 <li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>New string. </p>
+<dd class="field-even"><p>New string.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7UString12ustring_wrapEPKc6size_t">
-<span id="_CPPv3N7UString12ustring_wrapEPKc6size_t"></span><span id="_CPPv2N7UString12ustring_wrapEPKc6size_t"></span><span id="UString::ustring_wrap__cCP.s"></span><span class="target" id="struct_u_string_1a114ba1a460574ec6c36a4eeff1180491"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_wrap</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">cstring</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_wrapEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N7UString12ustring_wrapEPKc6size_t"></span><span id="_CPPv2N7UString12ustring_wrapEPKc6size_t"></span><span id="UString::ustring_wrap__cCP.s"></span><span class="target" id="struct_u_string_1a6c98ce4379387715a96b89bc9f7982bb"></span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_wrap</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_wrapEPKc6size_t" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initializes a new string by wrapping the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the buffer has been dynamically allocated, you are responsible for its deallocation. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must not call <code class="docutils literal notranslate"><span class="pre">ustring_deinit</span></code> on a string initialized with this function. </p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cstring</strong> – String buffer. </p></li>
+<li><p><strong>buf</strong> – String buffer. </p></li>
 <li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>New string. </p>
+<dd class="field-even"><p>New string.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -503,9 +626,9 @@
 <span id="_CPPv3N7UString7ustringEP7UString6size_t"></span><span id="_CPPv2N7UString7ustringEP7UString6size_t"></span><span id="UString::ustring__UStringP.s"></span><span class="target" id="struct_u_string_1aaeba96a96a65ad292568b2faf9e2a662"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ustring</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">string</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString7ustringEP7UString6size_t" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Initializes a new string of the specified length and returns its underlying buffer. </p>
 <p>This allows direct initialization of the buffer, avoiding unnecessary allocations or copies.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The buffer is null-terminated but otherwise uninitialized. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned buffer is null-terminated but otherwise uninitialized. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -638,6 +761,23 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString21ustring_index_of_lastE7UStringc">
+<span id="_CPPv3N7UString21ustring_index_of_lastE7UStringc"></span><span id="_CPPv2N7UString21ustring_index_of_lastE7UStringc"></span><span id="UString::ustring_index_of_last__UString.c"></span><span class="target" id="struct_u_string_1aa6cee248f60ae35f40011da33f95fbb1"></span><a class="reference internal" href="#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_index_of_last</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">needle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString21ustring_index_of_lastE7UStringc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the index of the last occurrence of the specified character. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to search into. </p></li>
+<li><p><strong>needle</strong> – Character to find. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Index of the last occurrence of the specified character. If it cannot be found, returns an index greater than or equal to the string’s length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7UString12ustring_findE7UString7UString">
 <span id="_CPPv3N7UString12ustring_findE7UString7UString"></span><span id="_CPPv2N7UString12ustring_findE7UString7UString"></span><span id="UString::ustring_find__UString.UString"></span><span class="target" id="struct_u_string_1aef43c2009b3312fd537a3e46d463f536"></span><a class="reference internal" href="#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_find</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">needle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString12ustring_findE7UString7UString" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Returns the index of the first occurrence of the specified string. </p>
@@ -650,6 +790,23 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Index of the first occurrence of the specified string. If it cannot be found, returns an index greater than or equal to the string’s length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString17ustring_find_lastE7UString7UString">
+<span id="_CPPv3N7UString17ustring_find_lastE7UString7UString"></span><span id="_CPPv2N7UString17ustring_find_lastE7UString7UString"></span><span id="UString::ustring_find_last__UString.UString"></span><span class="target" id="struct_u_string_1ada92a242eb7642efd5b8e6612d71a29f"></span><a class="reference internal" href="#_CPPv49ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_find_last</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">needle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString17ustring_find_lastE7UString7UString" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the index of the last occurrence of the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to search into. </p></li>
+<li><p><strong>needle</strong> – String to find. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Index of the last occurrence of the specified string. If it cannot be found, returns an index greater than or equal to the string’s length. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -814,6 +971,72 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString18ustring_assign_bufEPKc">
+<span id="_CPPv3N7UString18ustring_assign_bufEPKc"></span><span id="_CPPv2N7UString18ustring_assign_bufEPKc"></span><span id="UString::ustring_assign_buf__cCP"></span><span class="target" id="struct_u_string_1a7019ae1a17bf21421b34f7d54e84325a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_assign_buf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString18ustring_assign_bufEPKc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by taking ownership of the specified buffer, which must have been dynamically allocated. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to the internals of <a class="reference internal" href="#struct_u_string"><span class="std std-ref">UString</span></a>, you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>buf</strong> – String buffer. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString16ustring_copy_bufEPKc">
+<span id="_CPPv3N7UString16ustring_copy_bufEPKc"></span><span id="_CPPv2N7UString16ustring_copy_bufEPKc"></span><span id="UString::ustring_copy_buf__cCP"></span><span class="target" id="struct_u_string_1af6f3255b9d419ea2f0eee19ba0be52f3"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_copy_buf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString16ustring_copy_bufEPKc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by copying the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>buf</strong> – String buffer. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7UString16ustring_wrap_bufEPKc">
+<span id="_CPPv3N7UString16ustring_wrap_bufEPKc"></span><span id="_CPPv2N7UString16ustring_wrap_bufEPKc"></span><span id="UString::ustring_wrap_buf__cCP"></span><span class="target" id="struct_u_string_1a3b75f70c9af2d5aa09bff867f4546aa2"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_wrap_buf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString16ustring_wrap_bufEPKc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by wrapping the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the buffer has been dynamically allocated, you are responsible for its deallocation. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must not call <code class="docutils literal notranslate"><span class="pre">ustring_deinit</span></code> on a string initialized with this function. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>buf</strong> – String buffer. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7UString15ustring_is_nullE7UString">
 <span id="_CPPv3N7UString15ustring_is_nullE7UString"></span><span id="_CPPv2N7UString15ustring_is_nullE7UString"></span><span id="UString::ustring_is_null__UString"></span><span class="target" id="struct_u_string_1a2419f7110364e16b378e390fc55bca24"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_is_null</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7UString15ustring_is_nullE7UString" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Checks whether the string has a NULL buffer. </p>
@@ -898,7 +1121,7 @@
 <dd><p>Wraps the specified literal in a string. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You must not deinitialize the resulting string. </p>
+<p>You must not call <code class="docutils literal notranslate"><span class="pre">ustring_deinit</span></code> on a string initialized with this function. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
