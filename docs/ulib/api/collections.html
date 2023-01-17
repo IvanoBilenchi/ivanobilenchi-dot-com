@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collections &mdash; uLib 0.2.1 documentation</title>
+  <title>Collections &mdash; uLib 0.2.2 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -14,7 +14,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Streams" href="streams.html" />
@@ -29,7 +31,7 @@
             <a href="../index.html" class="icon icon-home"> uLib
           </a>
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -74,8 +76,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Collections</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Collections</li>
       <li class="wy-breadcrumbs-aside">
               <!-- User defined GitHub URL -->
               <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
@@ -87,9 +89,9 @@
            <div itemprop="articleBody">
              
   <section id="collections">
-<h1>Collections<a class="headerlink" href="#collections" title="Permalink to this headline"></a></h1>
+<h1>Collections<a class="headerlink" href="#collections" title="Permalink to this heading"></a></h1>
 <section id="vector">
-<h2>Vector<a class="headerlink" href="#vector" title="Permalink to this headline"></a></h2>
+<h2>Vector<a class="headerlink" href="#vector" title="Permalink to this heading"></a></h2>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv44UVec">
 <span id="_CPPv34UVec"></span><span id="_CPPv24UVec"></span><span id="UVec"></span><span class="target" id="struct_u_vec"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVec</span></span></span><a class="headerlink" href="#_CPPv44UVec" title="Permalink to this definition"></a><br /></dt>
@@ -333,7 +335,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Initialized vector instance. </p>
+<dd class="field-even"><p>[UVec(T)] Initialized vector instance. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -341,12 +343,12 @@
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.uvec_deinit">
 <span class="target" id="struct_u_vec_1a64748420bc937652a6eb100fc4f65337"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_deinit" title="Permalink to this definition"></a><br /></dt>
-<dd><p>De-initializes a vector previously initialized via <a class="reference internal" href="#struct_u_vec_1a4b31bec234c8c822e8d6ec7850a22912"><span class="std std-ref">uvec(T)</span></a>. </p>
+<dd><p>De-initializes a vector previously initialized via uvec(T). </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to de-initialize. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector to de-initialize. </p></li>
 </ul>
 </dd>
 </dl>
@@ -360,11 +362,11 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector whose storage should be returned. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector whose storage should be returned. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Vector storage. </p>
+<dd class="field-even"><p>[UVec(T)] Vector storage. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -377,8 +379,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>src</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to copy. </p></li>
-<li><p><strong>dest</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to copy into. </p></li>
+<li><p><strong>src</strong> – [UVec(T)*] Vector to copy. </p></li>
+<li><p><strong>dest</strong> – [UVec(T)*] Vector to copy into. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -399,7 +401,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to copy. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector to copy. </p></li>
 <li><p><strong>array</strong> – [T*] Array to copy the elements into.</p></li>
 </ul>
 </dd>
@@ -414,7 +416,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>size</strong> – [ulib_uint] Number of elements the vector should be able to hold. </p></li>
 </ul>
 </dd>
@@ -432,7 +434,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to expand. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector to expand. </p></li>
 <li><p><strong>size</strong> – [ulib_uint] Number of additional elements the vector should be able to hold. </p></li>
 </ul>
 </dd>
@@ -450,7 +452,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to shrink. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector to shrink. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -470,7 +472,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -487,7 +489,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>idx</strong> – [ulib_uint] Index. </p></li>
 </ul>
 </dd>
@@ -505,7 +507,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>idx</strong> – [ulib_uint] Index. </p></li>
 <li><p><strong>item</strong> – [T] Replacement element. </p></li>
 </ul>
@@ -521,7 +523,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -538,7 +540,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -555,7 +557,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -573,7 +575,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -590,7 +592,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>idx</strong> – [ulib_uint] Index. </p></li>
 </ul>
 </dd>
@@ -608,7 +610,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to push. </p></li>
 </ul>
 </dd>
@@ -626,7 +628,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -643,7 +645,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>idx</strong> – [ulib_uint] Index of the element to remove. </p></li>
 </ul>
 </dd>
@@ -661,7 +663,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>idx</strong> – [ulib_uint] Index at which the element should be inserted. </p></li>
 <li><p><strong>item</strong> – [T] Element to insert. </p></li>
 </ul>
@@ -680,7 +682,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 </dl>
@@ -694,8 +696,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
-<li><p><strong>src</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector to append. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
+<li><p><strong>src</strong> – [UVec(T)*] Vector to append. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -712,7 +714,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>array</strong> – [T*] Array to append. </p></li>
 <li><p><strong>n</strong> – [ulib_uint] Number of elements to append. </p></li>
 </ul>
@@ -735,13 +737,13 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>start</strong> – [ulib_uint] Start index of the range. </p></li>
 <li><p><strong>len</strong> – [ulib_uint] Length of the range. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Range.</p>
+<dd class="field-even"><p>[UVec(T)] Range.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -758,12 +760,12 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>start</strong> – [ulib_uint] Start index of the range. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Range.</p>
+<dd class="field-even"><p>[UVec(T)] Range.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -780,12 +782,12 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>len</strong> – [ulib_uint] Length of the range. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>] Range.</p>
+<dd class="field-even"><p>[UVec(T)] Range.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -798,7 +800,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>array</strong> – [T*] Array containing the items. </p></li>
 <li><p><strong>start</strong> – [ulib_uint] Range start index. </p></li>
 <li><p><strong>n</strong> – [ulib_uint] Number of elements in the array. </p></li>
@@ -818,7 +820,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 </dl>
@@ -835,7 +837,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>enum_name</strong> – [symbol] Name of the variable holding the current item and its index. </p></li>
 </ul>
 </dd>
@@ -850,7 +852,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>enum_name</strong> – [symbol] Name of the variable holding the current item and its index. </p></li>
 </ul>
 </dd>
@@ -868,7 +870,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to search. </p></li>
 </ul>
 </dd>
@@ -886,7 +888,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to search. </p></li>
 </ul>
 </dd>
@@ -904,7 +906,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to search. </p></li>
 </ul>
 </dd>
@@ -922,7 +924,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to remove. </p></li>
 </ul>
 </dd>
@@ -941,8 +943,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec_a</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] First vector. </p></li>
-<li><p><strong>vec_b</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Second vector. </p></li>
+<li><p><strong>vec_a</strong> – [UVec(T)*] First vector. </p></li>
+<li><p><strong>vec_b</strong> – [UVec(T)*] Second vector. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -959,7 +961,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to push. </p></li>
 </ul>
 </dd>
@@ -980,7 +982,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -997,7 +999,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1015,7 +1017,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 </ul>
 </dd>
 </dl>
@@ -1030,7 +1032,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>start</strong> – [ulib_uint] Range start index. </p></li>
 <li><p><strong>len</strong> – [ulib_uint] Range length. </p></li>
 </ul>
@@ -1047,7 +1049,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element whose insertion index should be found. </p></li>
 </ul>
 </dd>
@@ -1070,7 +1072,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to search. </p></li>
 </ul>
 </dd>
@@ -1089,7 +1091,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to search. </p></li>
 </ul>
 </dd>
@@ -1107,7 +1109,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to insert. </p></li>
 <li><p><strong>idx</strong> – <strong>[out]</strong> [ulib_uint] Index of the inserted element. </p></li>
 </ul>
@@ -1126,7 +1128,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to insert. </p></li>
 <li><p><strong>idx</strong> – <strong>[out]</strong> [ulib_uint] Index of the inserted (or that of the already present) element. </p></li>
 </ul>
@@ -1145,7 +1147,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Vector type. </p></li>
-<li><p><strong>vec</strong> – [<a class="reference internal" href="#struct_u_vec_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref">UVec(T)</span></a>*] Vector instance. </p></li>
+<li><p><strong>vec</strong> – [UVec(T)*] Vector instance. </p></li>
 <li><p><strong>item</strong> – [T] Element to remove. </p></li>
 </ul>
 </dd>
@@ -1186,7 +1188,7 @@
 
 </section>
 <section id="hash-table">
-<h2>Hash table<a class="headerlink" href="#hash-table" title="Permalink to this headline"></a></h2>
+<h2>Hash table<a class="headerlink" href="#hash-table" title="Permalink to this heading"></a></h2>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv45UHash">
 <span id="_CPPv35UHash"></span><span id="_CPPv25UHash"></span><span id="UHash"></span><span class="target" id="struct_u_hash"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHash</span></span></span><a class="headerlink" href="#_CPPv45UHash" title="Permalink to this definition"></a><br /></dt>
@@ -1509,7 +1511,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table to deinitialize. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table to deinitialize. </p></li>
 </ul>
 </dd>
 </dl>
@@ -1523,11 +1525,11 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table whose storage should be returned. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table whose storage should be returned. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table storage. </p>
+<dd class="field-even"><p>[UHash(T)] Hash table storage. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1540,8 +1542,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>src</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table to copy. </p></li>
-<li><p><strong>dest</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table to copy into. </p></li>
+<li><p><strong>src</strong> – [UHash(T)*] Hash table to copy. </p></li>
+<li><p><strong>dest</strong> – [UHash(T)*] Hash table to copy into. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1558,8 +1560,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>src</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table to copy. </p></li>
-<li><p><strong>dest</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table to copy into. </p></li>
+<li><p><strong>src</strong> – [UHash(T)*] Hash table to copy. </p></li>
+<li><p><strong>dest</strong> – [UHash(T)*] Hash table to copy into. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1576,7 +1578,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table to resize. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table to resize. </p></li>
 <li><p><strong>s</strong> – [ulib_uint] Hash table size. </p></li>
 </ul>
 </dd>
@@ -1597,7 +1599,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1614,7 +1616,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] Key to insert. </p></li>
 <li><p><strong>i</strong> – <strong>[out]</strong> [ulib_uint*] Index of the inserted element. </p></li>
 </ul>
@@ -1633,7 +1635,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] Key whose index should be retrieved. </p></li>
 </ul>
 </dd>
@@ -1651,7 +1653,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [ulib_uint] Index of the bucket to delete. </p></li>
 </ul>
 </dd>
@@ -1666,7 +1668,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] Key to test. </p></li>
 </ul>
 </dd>
@@ -1684,7 +1686,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>x</strong> – [ulib_uint] Index of the bucket to test. </p></li>
 </ul>
 </dd>
@@ -1702,7 +1704,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>x</strong> – [ulib_uint] Index of the bucket whose key should be retrieved. </p></li>
 </ul>
 </dd>
@@ -1724,7 +1726,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>x</strong> – [ulib_uint] Index of the bucket whose value should be retrieved. </p></li>
 </ul>
 </dd>
@@ -1742,7 +1744,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1759,7 +1761,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1776,7 +1778,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 </ul>
 </dd>
 </dl>
@@ -1796,7 +1798,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table instance. </p>
+<dd class="field-even"><p>[UHash(T)] Hash table instance. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1814,7 +1816,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table instance. </p>
+<dd class="field-even"><p>[UHash(T)] Hash table instance. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1827,7 +1829,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] The key. </p></li>
 <li><p><strong>m</strong> – [uhash_T_val] Value to return if the key is missing. </p></li>
 </ul>
@@ -1846,7 +1848,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] The key. </p></li>
 <li><p><strong>v</strong> – [uhash_T_val] The value. </p></li>
 <li><p><strong>e</strong> – <strong>[out]</strong> [uhash_T_val*] Existing value, only set if key was already in the map. </p></li>
@@ -1866,7 +1868,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] The key. </p></li>
 <li><p><strong>v</strong> – [uhash_T_val] The value. </p></li>
 <li><p><strong>e</strong> – <strong>[out]</strong> [uhash_T_val*] Existing value, only set if key was already in the map. </p></li>
@@ -1886,7 +1888,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] The key. </p></li>
 <li><p><strong>v</strong> – [uhash_T_val] The value. </p></li>
 <li><p><strong>r</strong> – <strong>[out]</strong> [uhash_T_val*] Replaced value, only set if the return value is true. </p></li>
@@ -1906,7 +1908,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] The key. </p></li>
 </ul>
 </dd>
@@ -1924,7 +1926,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] The key. </p></li>
 <li><p><strong>dk</strong> – <strong>[out]</strong> [uhash_T_key*] Deleted key, only set if key was present in the map. </p></li>
 <li><p><strong>dv</strong> – <strong>[out]</strong> [uhash_T_val*] Deleted value, only set if key was present in the map. </p></li>
@@ -1950,7 +1952,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table instance. </p>
+<dd class="field-even"><p>[UHash(T)] Hash table instance. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1968,7 +1970,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>[<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>] Hash table instance. </p>
+<dd class="field-even"><p>[UHash(T)] Hash table instance. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1981,7 +1983,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] Element to insert. </p></li>
 </ul>
 </dd>
@@ -1999,7 +2001,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] Element to insert. </p></li>
 <li><p><strong>e</strong> – <strong>[out]</strong> [uhash_T_key*] Existing element, only set if it was already in the set. </p></li>
 </ul>
@@ -2022,7 +2024,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>a</strong> – [uhash_T_key*] Array of elements. </p></li>
 <li><p><strong>n</strong> – [ulib_uint] Size of the array. </p></li>
 </ul>
@@ -2041,7 +2043,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] Element to replace. </p></li>
 <li><p><strong>r</strong> – <strong>[out]</strong> [uhash_T_key*] Replaced element, only set if the return value is true. </p></li>
 </ul>
@@ -2060,7 +2062,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] Element to remove. </p></li>
 </ul>
 </dd>
@@ -2078,7 +2080,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>k</strong> – [uhash_T_key] Element to remove. </p></li>
 <li><p><strong>d</strong> – <strong>[out]</strong> [uhash_T_key*] Deleted element, only set if element was present in the set. </p></li>
 </ul>
@@ -2097,8 +2099,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h1</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Superset. </p></li>
-<li><p><strong>h2</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Subset. </p></li>
+<li><p><strong>h1</strong> – [UHash(T)*] Superset. </p></li>
+<li><p><strong>h2</strong> – [UHash(T)*] Subset. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2115,8 +2117,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h1</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Set to mutate. </p></li>
-<li><p><strong>h2</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Other set. </p></li>
+<li><p><strong>h1</strong> – [UHash(T)*] Set to mutate. </p></li>
+<li><p><strong>h2</strong> – [UHash(T)*] Other set. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2133,8 +2135,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h1</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Set to mutate. </p></li>
-<li><p><strong>h2</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Other set. </p></li>
+<li><p><strong>h1</strong> – [UHash(T)*] Set to mutate. </p></li>
+<li><p><strong>h2</strong> – [UHash(T)*] Other set. </p></li>
 </ul>
 </dd>
 </dl>
@@ -2148,8 +2150,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h1</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] LHS of the equality relation. </p></li>
-<li><p><strong>h2</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] RHS of the equality relation. </p></li>
+<li><p><strong>h1</strong> – [UHash(T)*] LHS of the equality relation. </p></li>
+<li><p><strong>h2</strong> – [UHash(T)*] RHS of the equality relation. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2167,7 +2169,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2184,7 +2186,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>m</strong> – [uhash_T_key] Value returned if the set is empty. </p></li>
 </ul>
 </dd>
@@ -2205,7 +2207,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>h</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>h</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>i</strong> – [ulib_uint] Index of the bucket to start searching from. </p></li>
 </ul>
 </dd>
@@ -2223,7 +2225,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – [symbol] Hash table name. </p></li>
-<li><p><strong>ht</strong> – [<a class="reference internal" href="#struct_u_hash_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref">UHash(T)</span></a>*] Hash table instance. </p></li>
+<li><p><strong>ht</strong> – [UHash(T)*] Hash table instance. </p></li>
 <li><p><strong>enum_name</strong> – [symbol] Name of the variable holding the current index, key and value. </p></li>
 </ul>
 </dd>
@@ -2279,7 +2281,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2022, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2023, Ivano Bilenchi.</p>
   </div>
 
    
