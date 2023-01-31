@@ -38,7 +38,7 @@
 				<li><a href="https://github.com/IvanoBilenchi"><i class="fa-brands fa-github"></i></a></li>
 			</ul>
 
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation">
 				<i class="fa-solid fa-bars"></i>
 			</button>
 
@@ -48,28 +48,24 @@
 					<li><a href="projects.html"><i class="fa-solid fa-hammer"></i> Projects</a></li>
 					<li><a href="publications.html"><i class="fa-solid fa-book"></i> Publications</a></li>
 					<li class="active"><a href="press.html"><i class="fa-solid fa-newspaper"></i> Press</a></li>
-					<li><a href="" data-toggle="modal" data-target="#contact-modal"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
+					<li><a href="" data-bs-toggle="modal" data-bs-target="#contact-modal"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
 				</ul>
 				<span id="slide-line"></span>
 			</div>
 
-			<div class="modal fade" id="contact-modal" tabindex="-1" role="dialog" aria-labelledby="contact-modal-label" aria-hidden="true">
-				<div class="modal-dialog" role="document">
+			<div class="modal fade" id="contact-modal" tabindex="-1" aria-labelledby="contact-modal-label" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="contact-modal-label">Hi there!</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
 							What do you need me for?
 						</div>
-						<div class="modal-footer">
-							<div class="btn-cta-container">
-								<a href="mailto:support@ib-soft.net">iCleaner support</a>
-								<a href="mailto:ivanobilenchi@gmail.com">Other inquiries</a>
-							</div>
+						<div class="modal-footer btn-cta-container">
+							<a href="mailto:support@ib-soft.net">iCleaner support</a>
+							<a href="mailto:ivanobilenchi@gmail.com">Other inquiries</a>
 						</div>
 					</div>
 				</div>
