@@ -11216,6 +11216,10 @@ section:last-of-type {
   width: 100%;
   text-align: center;
 }
+.pill-list > li {
+  width: 1.75rem;
+}
+
 /* Horizontal scroller */
 .horizontal-scroll {
   display: flex;

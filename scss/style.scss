@@ -372,6 +372,7 @@ section {
 	@extend .list-inline;
 
 	& > li {
+		width: 1.75rem;
 		@extend .list-inline-item;
 		@extend .badge;
 		@extend .rounded-pill;
