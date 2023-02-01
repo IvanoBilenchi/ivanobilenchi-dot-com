@@ -49,7 +49,7 @@ header {
 	font-size: 1.25rem;
 	max-width: 750px;
 
-	& > a {
+	> a {
 		@extend %link-alpha;
 	}
 }
@@ -71,7 +71,7 @@ nav {
 	padding: 0;
 	border-radius: 0;
 
-	& .fa-solid {
+	.fa-solid {
 		top: 0.5px;
 		font-size: 1em;
 		color: $color-text-light;
@@ -83,29 +83,29 @@ nav {
 	text-transform: uppercase;
 	@extend .navbar-collapse;
 
-	& > ul {
+	> ul {
 		@include media-breakpoint-up(lg) {
 			margin-left: auto;
 		}
 		@extend .navbar-nav;
 
-		& > li {
+		> li {
 			@include media-breakpoint-up(lg) {
 				margin-right: 1rem;
 			}
 			@extend .nav-item;
 
-			& .fa-solid {
+			.fa-solid {
 				top: -1.5px;
 			}
 		}
 	}
 
-	& a {
+	a {
 		@extend .nav-link;
 	}
 
-	& .active > a {
+	.active > a {
 		font-weight: 600;
 		color: rgba(255, 255, 255, 0.8);
 	}
@@ -141,7 +141,7 @@ footer {
 .modal {
 	color: $color-text-dark;
 
-	& .btn-cta {
+	.btn-cta {
 		@include media-breakpoint-up(lg) {
 			margin-right: 2rem;
 			&:last-of-type {
@@ -172,11 +172,11 @@ section {
 	margin-bottom: 0;
 	@extend .list-inline;
 
-	& li {
+	li {
 		@extend .list-inline-item;
 	}
 
-	& a {
+	a {
 		color: $white;
 		width: 32px;
 		height: 32px;
@@ -245,7 +245,7 @@ section {
 
 	@extend .container;
 
-	& > a {
+	> a {
 		@extend .btn-cta;
 		@extend .btn-primary;
 	}
@@ -264,7 +264,7 @@ section {
 /* Full-div href */
 
 .full-div-href {
-	& > a {
+	> a {
 		position: absolute;
 		z-index: 999;
 		top: 0;
@@ -333,20 +333,20 @@ section {
 	@extend .card;
 	@extend .material;
 
-	& > img {
+	> img {
 		width: 100%;
 		height: auto;
 	}
 
-	& > .card-body {
+	> .card-body {
 
-		& > .card-title {
+		> .card-title {
 			font-weight: 500;
 			text-align: center;
 			margin-bottom: 0.5rem;
 		}
 
-		& > .card-subtitle {
+		> .card-subtitle {
 			font-weight: 400;
 			margin-top: 0.5rem;
 			margin-bottom: 1rem;
@@ -371,7 +371,7 @@ section {
 
 	@extend .list-inline;
 
-	& > li {
+	> li {
 		width: 1.75rem;
 		@extend .list-inline-item;
 		@extend .badge;
@@ -394,7 +394,7 @@ section {
 	&::-webkit-scrollbar {
 		display: none;
 
-		& > * {
+		> * {
 			flex: 0 0 auto;
 			max-height: 100%;
 		}
@@ -440,7 +440,7 @@ section {
 		max-width: 50%;
 	}
 
-	& > button {
+	> button {
 		flex: 1;
 		background-color: $color-lightest;
 		border-width: 0 1px;
@@ -481,11 +481,11 @@ section {
 .section-description {
 	text-align: center;
 
-	& h3 {
+	h3 {
 		font-weight: 700;
 	}
 
-	& > a {
+	> a {
 		color: $color-text-dark;
 
 		&:hover {
@@ -493,7 +493,7 @@ section {
 			color: lighten($color-text-dark, 25%);
 		}
 
-		& > h3:after {
+		> h3:after {
 			content: " \f054";
 			font-family: "Font Awesome 5 Free";
 			position: relative;
@@ -501,7 +501,7 @@ section {
 		}
 	}
 
-	& > p {
+	> p {
 		font-size: 1.2rem;
 		margin-bottom: 3rem;
 	}
@@ -568,7 +568,7 @@ section {
 .profile-description {
 	margin-bottom: 1rem;
 
-	& > a {
+	> a {
 		@extend %link-alpha;
 	}
 }
@@ -584,7 +584,7 @@ section {
 	position: relative;
 	height: 75px;
 
-	& img {
+	img {
 		object-fit: contain;
 		width: auto;
 		height: auto;
@@ -599,7 +599,7 @@ section {
 .projects-section {
 	@extend .primary-section;
 
-	& .card-text {
+	.card-text {
 		text-align: center;
 	}
 }
@@ -609,12 +609,12 @@ section {
 .pubs-section {
 	@extend .primary-section;
 
-	& .card-title {
+	.card-title {
 		text-align: left !important;
 		padding-right: 45px;
 	}
 
-	& .card-subtitle {
+	.card-subtitle {
 		padding-right: 45px;
 	}
 }
@@ -624,7 +624,7 @@ section {
 .press-section {
 	@extend .primary-section;
 
-	& .material-card > img {
+	.material-card > img {
 		object-fit: contain;
 		width: auto;
 		height: auto;
