@@ -7,18 +7,14 @@ function initFilters() {
     layoutMode: 'fitRows',
   });
 
-  $('.filter-buttons').each(function(i, group) {
-    var $group = $(group);
+  $('.filter-buttons').each((i, group) => {
+    let $group = $(group);
 
-    $group.on('click', 'button', function() {
-
-      // Set active
-      $group.find('.active').removeClass('active');
-      $(this).addClass('active');
-
-      // Apply filter
-      let filterValue = $(this).attr('data-filter');
-      $filterList.isotope({filter: filterValue})
+    $group.on('click', 'button', () => {
+      let filters = $group.find('.active').map((i, button) => {
+        return $(button).attr('data-filter');
+      }).get();
+      $filterList.isotope({filter: filters.length ? filters.join('') : '*'});
     });
   });
 }

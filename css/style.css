@@ -48,7 +48,7 @@
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 57, 70, 100;
-  --bs-body-bg-rgb: 246, 248, 251;
+  --bs-body-bg-rgb: 247, 247, 248;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
@@ -57,7 +57,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #394664;
-  --bs-body-bg: #F6F8FB;
+  --bs-body-bg: #F7F7F8;
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #dee2e6;
@@ -597,7 +597,7 @@ progress {
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #F6F8FB;
+  background-color: #F7F7F8;
   border: 1px solid var(--bs-border-color);
   border-radius: 0.375rem;
   max-width: 100%;
@@ -1991,7 +1991,7 @@ progress {
   font-weight: 400;
   line-height: 1.5;
   color: #394664;
-  background-color: #F6F8FB;
+  background-color: #F7F7F8;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   appearance: none;
@@ -2011,7 +2011,7 @@ progress {
 }
 .form-control:focus {
   color: #394664;
-  background-color: #F6F8FB;
+  background-color: #F7F7F8;
   border-color: #a9b2c7;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(82, 101, 143, 0.25);
@@ -2134,7 +2134,7 @@ textarea.form-control-lg {
   font-weight: 400;
   line-height: 1.5;
   color: #394664;
-  background-color: #F6F8FB;
+  background-color: #F7F7F8;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -2209,7 +2209,7 @@ textarea.form-control-lg {
   height: 1em;
   margin-top: 0.25em;
   vertical-align: top;
-  background-color: #F6F8FB;
+  background-color: #F7F7F8;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -2315,10 +2315,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #F6F8FB, 0 0 0 0.25rem rgba(82, 101, 143, 0.25);
+  box-shadow: 0 0 0 1px #F7F7F8, 0 0 0 0.25rem rgba(82, 101, 143, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #F6F8FB, 0 0 0 0.25rem rgba(82, 101, 143, 0.25);
+  box-shadow: 0 0 0 1px #F7F7F8, 0 0 0 0.25rem rgba(82, 101, 143, 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;
@@ -2945,7 +2945,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #212529;
 }
 
-.btn-outline-primary {
+.btn-outline-primary, .filter-buttons > button {
   --bs-btn-color: #52658F;
   --bs-btn-border-color: #52658F;
   --bs-btn-hover-color: #fff;
@@ -3470,74 +3470,87 @@ textarea.form-control-lg {
   --bs-dropdown-header-color: #adb5bd;
 }
 
-.btn-group,
+.btn-group, .filter-buttons,
 .btn-group-vertical {
   position: relative;
   display: inline-flex;
   vertical-align: middle;
 }
-.btn-group > .btn, .filter-buttons.btn-group > button, .btn-group > .btn-cta, .btn-group > .profile-btn, .btn-cta-container.btn-group > a,
+.btn-group > .btn, .filter-buttons > .btn, .filter-buttons > button, .btn-group > .btn-cta, .btn-group > .profile-btn, .filter-buttons > .btn-cta, .filter-buttons > .profile-btn, .btn-cta-container.btn-group > a, .btn-cta-container.filter-buttons > a,
 .btn-group-vertical > .btn,
-.filter-buttons.btn-group-vertical > button,
 .btn-group-vertical > .btn-cta,
 .btn-group-vertical > .profile-btn,
 .btn-cta-container.btn-group-vertical > a {
   position: relative;
   flex: 1 1 auto;
 }
-.btn-group > .btn-check:checked + .btn, .filter-buttons.btn-group > .btn-check:checked + button, .btn-group > .btn-check:checked + .btn-cta, .btn-group > .btn-check:checked + .profile-btn, .btn-cta-container.btn-group > .btn-check:checked + a,
+.btn-group > .btn-check:checked + .btn, .filter-buttons > .btn-check:checked + .btn, .filter-buttons > .btn-check:checked + button, .btn-group > .btn-check:checked + .btn-cta, .btn-group > .btn-check:checked + .profile-btn, .filter-buttons > .btn-check:checked + .btn-cta, .filter-buttons > .btn-check:checked + .profile-btn, .btn-cta-container.btn-group > .btn-check:checked + a, .btn-cta-container.filter-buttons > .btn-check:checked + a,
 .btn-group > .btn-check:focus + .btn,
-.filter-buttons.btn-group > .btn-check:focus + button,
+.filter-buttons > .btn-check:focus + .btn,
+.filter-buttons > .btn-check:focus + button,
 .btn-group > .btn-check:focus + .btn-cta,
 .btn-group > .btn-check:focus + .profile-btn,
+.filter-buttons > .btn-check:focus + .btn-cta,
+.filter-buttons > .btn-check:focus + .profile-btn,
 .btn-cta-container.btn-group > .btn-check:focus + a,
+.btn-cta-container.filter-buttons > .btn-check:focus + a,
 .btn-group > .btn:hover,
-.filter-buttons.btn-group > button:hover,
+.filter-buttons > .btn:hover,
+.filter-buttons > button:hover,
 .btn-group > .btn-cta:hover,
 .btn-group > .profile-btn:hover,
+.filter-buttons > .btn-cta:hover,
+.filter-buttons > .profile-btn:hover,
 .btn-cta-container.btn-group > a:hover,
+.btn-cta-container.filter-buttons > a:hover,
 .btn-group > .btn:focus,
-.filter-buttons.btn-group > button:focus,
+.filter-buttons > .btn:focus,
+.filter-buttons > button:focus,
 .btn-group > .btn-cta:focus,
 .btn-group > .profile-btn:focus,
+.filter-buttons > .btn-cta:focus,
+.filter-buttons > .profile-btn:focus,
 .btn-cta-container.btn-group > a:focus,
+.btn-cta-container.filter-buttons > a:focus,
 .btn-group > .btn:active,
-.filter-buttons.btn-group > button:active,
+.filter-buttons > .btn:active,
+.filter-buttons > button:active,
 .btn-group > .btn-cta:active,
 .btn-group > .profile-btn:active,
+.filter-buttons > .btn-cta:active,
+.filter-buttons > .profile-btn:active,
 .btn-cta-container.btn-group > a:active,
+.btn-cta-container.filter-buttons > a:active,
 .btn-group > .btn.active,
-.filter-buttons.btn-group > button.active,
+.filter-buttons > .btn.active,
+.filter-buttons > button.active,
 .btn-group > .active.btn-cta,
 .btn-group > .active.profile-btn,
+.filter-buttons > .active.btn-cta,
+.filter-buttons > .active.profile-btn,
 .btn-cta-container.btn-group > a.active,
+.btn-cta-container.filter-buttons > a.active,
 .btn-group-vertical > .btn-check:checked + .btn,
-.filter-buttons.btn-group-vertical > .btn-check:checked + button,
 .btn-group-vertical > .btn-check:checked + .btn-cta,
 .btn-group-vertical > .btn-check:checked + .profile-btn,
 .btn-cta-container.btn-group-vertical > .btn-check:checked + a,
 .btn-group-vertical > .btn-check:focus + .btn,
-.filter-buttons.btn-group-vertical > .btn-check:focus + button,
 .btn-group-vertical > .btn-check:focus + .btn-cta,
 .btn-group-vertical > .btn-check:focus + .profile-btn,
 .btn-cta-container.btn-group-vertical > .btn-check:focus + a,
 .btn-group-vertical > .btn:hover,
-.filter-buttons.btn-group-vertical > button:hover,
 .btn-group-vertical > .btn-cta:hover,
 .btn-group-vertical > .profile-btn:hover,
 .btn-cta-container.btn-group-vertical > a:hover,
 .btn-group-vertical > .btn:focus,
-.filter-buttons.btn-group-vertical > button:focus,
 .btn-group-vertical > .btn-cta:focus,
 .btn-group-vertical > .profile-btn:focus,
 .btn-cta-container.btn-group-vertical > a:focus,
 .btn-group-vertical > .btn:active,
-.filter-buttons.btn-group-vertical > button:active,
 .btn-group-vertical > .btn-cta:active,
 .btn-group-vertical > .profile-btn:active,
 .btn-cta-container.btn-group-vertical > a:active,
 .btn-group-vertical > .btn.active,
-.filter-buttons.btn-group-vertical > button.active,
 .btn-group-vertical > .active.btn-cta,
 .btn-group-vertical > .active.profile-btn,
 .btn-cta-container.btn-group-vertical > a.active {
@@ -3553,38 +3566,75 @@ textarea.form-control-lg {
   width: auto;
 }
 
-.btn-group {
+.btn-group, .filter-buttons {
   border-radius: 0.375rem;
 }
-.btn-group > :not(.btn-check:first-child) + .btn, .filter-buttons.btn-group > :not(.btn-check:first-child) + button, .btn-group > :not(.btn-check:first-child) + .btn-cta, .btn-group > :not(.btn-check:first-child) + .profile-btn, .btn-cta-container.btn-group > :not(.btn-check:first-child) + a,
-.btn-group > .btn-group:not(:first-child) {
+.btn-group > :not(.btn-check:first-child) + .btn, .filter-buttons > :not(.btn-check:first-child) + .btn, .filter-buttons > :not(.btn-check:first-child) + button, .btn-group > :not(.btn-check:first-child) + .btn-cta, .btn-group > :not(.btn-check:first-child) + .profile-btn, .filter-buttons > :not(.btn-check:first-child) + .btn-cta, .filter-buttons > :not(.btn-check:first-child) + .profile-btn, .btn-cta-container.btn-group > :not(.btn-check:first-child) + a, .btn-cta-container.filter-buttons > :not(.btn-check:first-child) + a,
+.btn-group > .btn-group:not(:first-child),
+.filter-buttons > .btn-group:not(:first-child),
+.btn-group > .filter-buttons:not(:first-child),
+.filter-buttons > .filter-buttons:not(:first-child) {
   margin-left: -1px;
 }
-.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons.btn-group > button:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-cta:not(:last-child):not(.dropdown-toggle), .btn-group > .profile-btn:not(:last-child):not(.dropdown-toggle), .btn-cta-container.btn-group > a:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons > button:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-cta:not(:last-child):not(.dropdown-toggle), .btn-group > .profile-btn:not(:last-child):not(.dropdown-toggle), .filter-buttons > .btn-cta:not(:last-child):not(.dropdown-toggle), .filter-buttons > .profile-btn:not(:last-child):not(.dropdown-toggle), .btn-cta-container.btn-group > a:not(:last-child):not(.dropdown-toggle), .btn-cta-container.filter-buttons > a:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn.dropdown-toggle-split:first-child,
-.filter-buttons.btn-group > button.dropdown-toggle-split:first-child,
+.filter-buttons > .btn.dropdown-toggle-split:first-child,
+.filter-buttons > button.dropdown-toggle-split:first-child,
 .btn-group > .dropdown-toggle-split.btn-cta:first-child,
 .btn-group > .dropdown-toggle-split.profile-btn:first-child,
+.filter-buttons > .dropdown-toggle-split.btn-cta:first-child,
+.filter-buttons > .dropdown-toggle-split.profile-btn:first-child,
 .btn-cta-container.btn-group > a.dropdown-toggle-split:first-child,
+.btn-cta-container.filter-buttons > a.dropdown-toggle-split:first-child,
 .btn-group > .btn-group:not(:last-child) > .btn,
-.btn-group > .filter-buttons.btn-group:not(:last-child) > button,
+.filter-buttons > .btn-group:not(:last-child) > .btn,
+.btn-group > .filter-buttons:not(:last-child) > .btn,
+.btn-group > .filter-buttons:not(:last-child) > button,
+.filter-buttons > .filter-buttons:not(:last-child) > .btn,
+.filter-buttons > .filter-buttons:not(:last-child) > button,
 .btn-group > .btn-group:not(:last-child) > .btn-cta,
 .btn-group > .btn-group:not(:last-child) > .profile-btn,
-.btn-group > .btn-cta-container.btn-group:not(:last-child) > a {
+.filter-buttons > .btn-group:not(:last-child) > .btn-cta,
+.filter-buttons > .btn-group:not(:last-child) > .profile-btn,
+.btn-group > .filter-buttons:not(:last-child) > .btn-cta,
+.btn-group > .filter-buttons:not(:last-child) > .profile-btn,
+.filter-buttons > .filter-buttons:not(:last-child) > .btn-cta,
+.filter-buttons > .filter-buttons:not(:last-child) > .profile-btn,
+.btn-group > .btn-cta-container.btn-group:not(:last-child) > a,
+.filter-buttons > .btn-cta-container.btn-group:not(:last-child) > a,
+.btn-group > .btn-cta-container.filter-buttons:not(:last-child) > a,
+.filter-buttons > .btn-cta-container.filter-buttons:not(:last-child) > a {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.btn-group > .btn:nth-child(n+3), .filter-buttons.btn-group > button:nth-child(n+3), .btn-group > .btn-cta:nth-child(n+3), .btn-group > .profile-btn:nth-child(n+3), .btn-cta-container.btn-group > a:nth-child(n+3),
+.btn-group > .btn:nth-child(n+3), .filter-buttons > .btn:nth-child(n+3), .filter-buttons > button:nth-child(n+3), .btn-group > .btn-cta:nth-child(n+3), .btn-group > .profile-btn:nth-child(n+3), .filter-buttons > .btn-cta:nth-child(n+3), .filter-buttons > .profile-btn:nth-child(n+3), .btn-cta-container.btn-group > a:nth-child(n+3), .btn-cta-container.filter-buttons > a:nth-child(n+3),
 .btn-group > :not(.btn-check) + .btn,
-.filter-buttons.btn-group > :not(.btn-check) + button,
+.filter-buttons > :not(.btn-check) + .btn,
+.filter-buttons > :not(.btn-check) + button,
 .btn-group > :not(.btn-check) + .btn-cta,
 .btn-group > :not(.btn-check) + .profile-btn,
+.filter-buttons > :not(.btn-check) + .btn-cta,
+.filter-buttons > :not(.btn-check) + .profile-btn,
 .btn-cta-container.btn-group > :not(.btn-check) + a,
+.btn-cta-container.filter-buttons > :not(.btn-check) + a,
 .btn-group > .btn-group:not(:first-child) > .btn,
-.btn-group > .filter-buttons.btn-group:not(:first-child) > button,
+.filter-buttons > .btn-group:not(:first-child) > .btn,
+.btn-group > .filter-buttons:not(:first-child) > .btn,
+.btn-group > .filter-buttons:not(:first-child) > button,
+.filter-buttons > .filter-buttons:not(:first-child) > .btn,
+.filter-buttons > .filter-buttons:not(:first-child) > button,
 .btn-group > .btn-group:not(:first-child) > .btn-cta,
 .btn-group > .btn-group:not(:first-child) > .profile-btn,
-.btn-group > .btn-cta-container.btn-group:not(:first-child) > a {
+.filter-buttons > .btn-group:not(:first-child) > .btn-cta,
+.filter-buttons > .btn-group:not(:first-child) > .profile-btn,
+.btn-group > .filter-buttons:not(:first-child) > .btn-cta,
+.btn-group > .filter-buttons:not(:first-child) > .profile-btn,
+.filter-buttons > .filter-buttons:not(:first-child) > .btn-cta,
+.filter-buttons > .filter-buttons:not(:first-child) > .profile-btn,
+.btn-group > .btn-cta-container.btn-group:not(:first-child) > a,
+.filter-buttons > .btn-cta-container.btn-group:not(:first-child) > a,
+.btn-group > .btn-cta-container.filter-buttons:not(:first-child) > a,
+.filter-buttons > .btn-cta-container.filter-buttons:not(:first-child) > a {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -3616,28 +3666,38 @@ textarea.form-control-lg {
   justify-content: center;
 }
 .btn-group-vertical > .btn, .filter-buttons.btn-group-vertical > button, .btn-group-vertical > .btn-cta, .btn-group-vertical > .profile-btn, .btn-cta-container.btn-group-vertical > a,
-.btn-group-vertical > .btn-group {
+.btn-group-vertical > .btn-group,
+.btn-group-vertical > .filter-buttons {
   width: 100%;
 }
 .btn-group-vertical > .btn:not(:first-child), .filter-buttons.btn-group-vertical > button:not(:first-child), .btn-group-vertical > .btn-cta:not(:first-child), .btn-group-vertical > .profile-btn:not(:first-child), .btn-cta-container.btn-group-vertical > a:not(:first-child),
-.btn-group-vertical > .btn-group:not(:first-child) {
+.btn-group-vertical > .btn-group:not(:first-child),
+.btn-group-vertical > .filter-buttons:not(:first-child) {
   margin-top: -1px;
 }
 .btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons.btn-group-vertical > button:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .btn-cta:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .profile-btn:not(:last-child):not(.dropdown-toggle), .btn-cta-container.btn-group-vertical > a:not(:last-child):not(.dropdown-toggle),
 .btn-group-vertical > .btn-group:not(:last-child) > .btn,
-.btn-group-vertical > .filter-buttons.btn-group:not(:last-child) > button,
+.btn-group-vertical > .filter-buttons:not(:last-child) > .btn,
+.btn-group-vertical > .filter-buttons:not(:last-child) > button,
 .btn-group-vertical > .btn-group:not(:last-child) > .btn-cta,
 .btn-group-vertical > .btn-group:not(:last-child) > .profile-btn,
-.btn-group-vertical > .btn-cta-container.btn-group:not(:last-child) > a {
+.btn-group-vertical > .filter-buttons:not(:last-child) > .btn-cta,
+.btn-group-vertical > .filter-buttons:not(:last-child) > .profile-btn,
+.btn-group-vertical > .btn-cta-container.btn-group:not(:last-child) > a,
+.btn-group-vertical > .btn-cta-container.filter-buttons:not(:last-child) > a {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 .btn-group-vertical > .btn ~ .btn, .filter-buttons.btn-group-vertical > button ~ .btn, .filter-buttons.btn-group-vertical > .btn ~ button, .filter-buttons.btn-group-vertical > button ~ button, .btn-group-vertical > .btn-cta ~ .btn, .btn-group-vertical > .profile-btn ~ .btn, .filter-buttons.btn-group-vertical > .btn-cta ~ button, .filter-buttons.btn-group-vertical > .profile-btn ~ button, .btn-cta-container.btn-group-vertical > a ~ .btn, .filter-buttons.btn-cta-container.btn-group-vertical > a ~ button, .btn-group-vertical > .btn ~ .btn-cta, .btn-group-vertical > .btn ~ .profile-btn, .filter-buttons.btn-group-vertical > button ~ .btn-cta, .filter-buttons.btn-group-vertical > button ~ .profile-btn, .btn-cta-container.btn-group-vertical > .btn ~ a, .filter-buttons.btn-cta-container.btn-group-vertical > button ~ a, .btn-group-vertical > .btn-cta ~ .btn-cta, .btn-group-vertical > .profile-btn ~ .btn-cta, .btn-group-vertical > .btn-cta ~ .profile-btn, .btn-group-vertical > .profile-btn ~ .profile-btn, .btn-cta-container.btn-group-vertical > a ~ .btn-cta, .btn-cta-container.btn-group-vertical > a ~ .profile-btn, .btn-cta-container.btn-group-vertical > .btn-cta ~ a, .btn-cta-container.btn-group-vertical > .profile-btn ~ a, .btn-cta-container.btn-group-vertical > a ~ a,
 .btn-group-vertical > .btn-group:not(:first-child) > .btn,
-.btn-group-vertical > .filter-buttons.btn-group:not(:first-child) > button,
+.btn-group-vertical > .filter-buttons:not(:first-child) > .btn,
+.btn-group-vertical > .filter-buttons:not(:first-child) > button,
 .btn-group-vertical > .btn-group:not(:first-child) > .btn-cta,
 .btn-group-vertical > .btn-group:not(:first-child) > .profile-btn,
-.btn-group-vertical > .btn-cta-container.btn-group:not(:first-child) > a {
+.btn-group-vertical > .filter-buttons:not(:first-child) > .btn-cta,
+.btn-group-vertical > .filter-buttons:not(:first-child) > .profile-btn,
+.btn-group-vertical > .btn-cta-container.btn-group:not(:first-child) > a,
+.btn-group-vertical > .btn-cta-container.filter-buttons:not(:first-child) > a {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -3685,8 +3745,8 @@ textarea.form-control-lg {
   --bs-nav-tabs-border-radius: 0.375rem;
   --bs-nav-tabs-link-hover-border-color: #e9ecef #e9ecef #dee2e6;
   --bs-nav-tabs-link-active-color: #495057;
-  --bs-nav-tabs-link-active-bg: #F6F8FB;
-  --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #F6F8FB;
+  --bs-nav-tabs-link-active-bg: #F7F7F8;
+  --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #F7F7F8;
   border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
 }
 .nav-tabs .nav-link, .nav-tabs #navigation a, #navigation .nav-tabs a {
@@ -4402,7 +4462,7 @@ nav > .container-xxl {
 
 .accordion {
   --bs-accordion-color: #394664;
-  --bs-accordion-bg: #F6F8FB;
+  --bs-accordion-bg: #F7F7F8;
   --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
   --bs-accordion-border-color: var(--bs-border-color);
   --bs-accordion-border-width: 1px;
@@ -10961,8 +11021,9 @@ nav {
 #navigation > ul > li .fa-solid {
   top: -1.5px;
 }
-#navigation .active {
+#navigation .active > a {
   font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 #slide-line {
@@ -11096,7 +11157,7 @@ section:last-of-type {
 }
 
 /* Material effect */
-.material, .material-card, .material-card-hover, .material-hover {
+.material, .filter-buttons, .material-card, .material-card-hover, .material-hover {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
@@ -11191,28 +11252,36 @@ section:last-of-type {
 
 /* Filters */
 .filter-buttons {
-  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
+}
+@media (min-width: 992px) {
+  .filter-buttons {
+    max-width: 50%;
+  }
 }
 .filter-buttons > button {
-  background-color: transparent;
-  margin-right: 0.5rem;
+  flex: 1;
+  background-color: #FFFFFF;
+  border-width: 0 1px;
+  border-color: rgba(0, 0, 0, 0.075);
+  /* Directly setting CSS properties resulted in oddities when clicking the button */
+  --bs-btn-active-border-color: $color-light;
+  --bs-btn-hover-border-color: $color-light;
 }
-.filter-buttons > button:hover {
-  color: #FFFFFF;
-  background-color: #7483a5;
+.filter-buttons > button:first-of-type {
+  border-left-width: 0;
 }
-.filter-buttons > button.active {
-  color: #FFFFFF;
-  background-color: #52658F;
+.filter-buttons > button:last-of-type {
+  border-right-width: 0;
 }
 
 /* Sections */
 .primary-section, .press-section, .pubs-section, .projects-section {
-  background-color: #F6F8FB;
+  background-color: #F7F7F8;
   background-image: linear-gradient(to top, rgba(0, 0, 51, 0.03) 0px, rgba(0, 0, 51, 0) 50px);
 }
 

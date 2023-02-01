@@ -105,8 +105,9 @@ nav {
 		@extend .nav-link;
 	}
 
-	& .active {
+	& .active > a {
 		font-weight: 600;
+		color: rgba(255, 255, 255, 0.8);
 	}
 }
 
@@ -424,28 +425,40 @@ section {
 /* Filters */
 
 .filter-buttons {
-	width: 100%;
 	display: flex;
-	align-items: center;
 	justify-content: center;
 
-	margin-bottom: 1.5rem;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 3em;
+
+	@extend .btn-group;
+	@extend .material;
+
+	@include media-breakpoint-up(lg) {
+		max-width: 50%;
+	}
 
 	& > button {
-		background-color: transparent;
-		margin-right: 0.5rem;
+		flex: 1;
+		background-color: $color-lightest;
+		border-width: 0 1px;
+		border-color: rgba(0, 0, 0, 0.075);
+
+		/* Directly setting CSS properties resulted in oddities when clicking the button */
+		--bs-btn-active-border-color: $color-light;
+		--bs-btn-hover-border-color: $color-light;
+
+		&:first-of-type {
+			border-left-width: 0;
+		}
+
+		&:last-of-type {
+			border-right-width: 0;
+		}
 
 		@extend .btn;
-
-		&:hover {
-			color: $color-text-light;
-			background-color: $color-primary-light;
-		}
-
-		&.active {
-			color: $color-text-light;
-			background-color: $color-primary;
-		}
+		@extend .btn-outline-primary;
 	}
 }
 
