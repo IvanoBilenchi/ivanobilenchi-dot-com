@@ -50,7 +50,7 @@ header {
 	max-width: 750px;
 
 	> a {
-		@extend %link-alpha;
+		@extend %text-link;
 	}
 }
 
@@ -195,11 +195,11 @@ section {
 
 /* Links */
 
-%link-alpha {
-	color: rgba(0, 0, 0, 0.6);
+%text-link {
+	color: $color-primary-darkest;
 
 	&:hover {
-		color: rgba(0, 0, 0, 0.8);
+		text-decoration: underline;
 	}
 }
 
@@ -569,7 +569,7 @@ section {
 	margin-bottom: 1rem;
 
 	> a {
-		@extend %link-alpha;
+		@extend %text-link;
 	}
 }
 

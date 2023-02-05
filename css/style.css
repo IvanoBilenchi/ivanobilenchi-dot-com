@@ -11095,10 +11095,10 @@ section:last-of-type {
 
 /* Links */
 .profile-description > a, .header-description > a {
-  color: rgba(0, 0, 0, 0.6);
+  color: #202839;
 }
 .profile-description > a:hover, .header-description > a:hover {
-  color: rgba(0, 0, 0, 0.8);
+  text-decoration: underline;
 }
 
 /* Buttons */
