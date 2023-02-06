@@ -73,7 +73,6 @@ nav {
 
 	.fa-solid {
 		top: 0.5px;
-		font-size: 1em;
 		color: $color-text-light;
 	}
 }
@@ -96,7 +95,9 @@ nav {
 			@extend .nav-item;
 
 			.fa-solid {
-				top: -1.5px;
+				position: relative;
+				top: -1px;
+				font-size: .75em;
 			}
 		}
 	}
@@ -253,12 +254,16 @@ section {
 
 /* Icons */
 
-.fa-solid {
-	font-size: .75em;
-	vertical-align: middle;
-	position: relative;
-	top: -.1em;
-	margin: 0 .25em;
+.fa-solid, .fa-brands {
+	margin: 0 .2em;
+}
+
+h1, h2, h3, h4, h5 {
+	.fa-solid, .fa-brands {
+		font-size: .8em;
+		position: relative;
+		top: -.05em;
+	}
 }
 
 /* Full-div href */
@@ -372,7 +377,14 @@ section {
 	@extend .list-inline;
 
 	> li {
-		width: 1.75rem;
+		width: 1.3rem;
+		padding-left: 0;
+		padding-right: 0;
+
+		.fa-solid, .fa-brands {
+			margin: 0;
+		}
+
 		@extend .list-inline-item;
 		@extend .badge;
 		@extend .rounded-pill;
@@ -464,6 +476,11 @@ section {
 				border-right-width: 0;
 				border-top-right-radius: var(--bs-btn-border-radius);
 				border-bottom-right-radius: var(--bs-btn-border-radius);
+			}
+
+			@include media-breakpoint-down(xs) {
+				padding-left: 0;
+				padding-right: 0;
 			}
 
 			@extend .btn;
@@ -611,6 +628,21 @@ section {
 	.card-text {
 		text-align: center;
 	}
+
+	.filter-buttons > label {
+		&[for="filter-ios"]::after {
+			content: "  iOS";
+		}
+		&[for="filter-res"]::after {
+			content: "  Research";
+		}
+		&[for="filter-oss"]::after {
+			content: "  FOSS";
+			@include media-breakpoint-up(sm) {
+				content: "  Open Source";
+			}
+		}
+	}
 }
 
 /* Publications */
@@ -643,6 +675,15 @@ section {
 
 		@include media-breakpoint-up(lg) {
 			max-width: 100%;
+		}
+	}
+
+	.filter-buttons > label {
+		&[for="filter-local"]::after {
+			content: "  Local";
+		}
+		&[for="filter-tech"]::after {
+			content: "  Tech";
 		}
 	}
 }

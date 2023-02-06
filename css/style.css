@@ -11004,7 +11004,6 @@ nav {
 }
 .navbar-toggler .fa-solid {
   top: 0.5px;
-  font-size: 1em;
   color: #FFFFFF;
 }
 
@@ -11023,7 +11022,9 @@ nav {
   }
 }
 #navigation > ul > li .fa-solid {
-  top: -1.5px;
+  position: relative;
+  top: -1px;
+  font-size: 0.75em;
 }
 #navigation .active > a {
   font-weight: 600;
@@ -11142,12 +11143,14 @@ section:last-of-type {
   justify-content: center;
 }
 /* Icons */
-.fa-solid {
-  font-size: 0.75em;
-  vertical-align: middle;
+.fa-solid, .fa-brands {
+  margin: 0 0.2em;
+}
+
+h1 .fa-solid, .h1 .fa-solid, h1 .fa-brands, .h1 .fa-brands, h2 .fa-solid, .h2 .fa-solid, h2 .fa-brands, .h2 .fa-brands, h3 .fa-solid, .h3 .fa-solid, h3 .fa-brands, .h3 .fa-brands, h4 .fa-solid, .h4 .fa-solid, h4 .fa-brands, .h4 .fa-brands, h5 .fa-solid, .h5 .fa-solid, h5 .fa-brands, .h5 .fa-brands {
+  font-size: 0.8em;
   position: relative;
-  top: -0.1em;
-  margin: 0 0.25em;
+  top: -0.05em;
 }
 
 /* Full-div href */
@@ -11221,7 +11224,12 @@ section:last-of-type {
   text-align: center;
 }
 .pill-list > li {
-  width: 1.75rem;
+  width: 1.3rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+.pill-list > li .fa-solid, .pill-list > li .fa-brands {
+  margin: 0;
 }
 
 /* Horizontal scroller */
@@ -11280,6 +11288,8 @@ section:last-of-type {
   --bs-btn-active-bg: #52658F;
   --bs-btn-border-color: rgba(0, 0, 0, 0.075);
   --bs-btn-active-border-color: #F7F7F8;
+  padding-left: 0;
+  padding-right: 0;
 }
 .filter-buttons > input[type=checkbox] + label:first-of-type {
   border-left-width: 0;
@@ -11405,6 +11415,20 @@ section:last-of-type {
 .projects-section .card-text {
   text-align: center;
 }
+.projects-section .filter-buttons > label[for=filter-ios]::after {
+  content: "  iOS";
+}
+.projects-section .filter-buttons > label[for=filter-res]::after {
+  content: "  Research";
+}
+.projects-section .filter-buttons > label[for=filter-oss]::after {
+  content: "  FOSS";
+}
+@media (min-width: 576px) {
+  .projects-section .filter-buttons > label[for=filter-oss]::after {
+    content: "  Open Source";
+  }
+}
 
 /* Publications */
 .pubs-section .card-title {
@@ -11428,6 +11452,12 @@ section:last-of-type {
   .press-section .material-card > img, .press-section .material-card-hover > img {
     max-width: 100%;
   }
+}
+.press-section .filter-buttons > label[for=filter-local]::after {
+  content: "  Local";
+}
+.press-section .filter-buttons > label[for=filter-tech]::after {
+  content: "  Tech";
 }
 
 /* Reduced motion */
