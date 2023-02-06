@@ -440,26 +440,35 @@ section {
 		max-width: 50%;
 	}
 
-	> button {
-		flex: 1;
-		background-color: $color-lightest;
-		border-width: 0 1px;
-		border-color: rgba(0, 0, 0, 0.075);
+	> input[type=checkbox] {
+		@extend .btn-check;
 
-		/* Directly setting CSS properties resulted in oddities when clicking the button */
-		--bs-btn-active-border-color: $color-light;
-		--bs-btn-hover-border-color: $color-light;
+		+ label {
+			flex: 1;
+			border-width: 0 1px;
+			border-radius: 0;
 
-		&:first-of-type {
-			border-left-width: 0;
+			/* Directly setting CSS properties resulted in oddities when clicking the button */
+			--bs-btn-bg: #{$color-lightest};
+			--bs-btn-active-bg: #{$color-primary};
+			--bs-btn-border-color: rgba(0, 0, 0, 0.075);
+			--bs-btn-active-border-color: #{$color-light};
+
+			&:first-of-type {
+				border-left-width: 0;
+				border-top-left-radius: var(--bs-btn-border-radius);
+				border-bottom-left-radius: var(--bs-btn-border-radius);
+			}
+
+			&:last-of-type {
+				border-right-width: 0;
+				border-top-right-radius: var(--bs-btn-border-radius);
+				border-bottom-right-radius: var(--bs-btn-border-radius);
+			}
+
+			@extend .btn;
+			@extend .btn-outline-primary;
 		}
-
-		&:last-of-type {
-			border-right-width: 0;
-		}
-
-		@extend .btn;
-		@extend .btn-outline-primary;
 	}
 }
 

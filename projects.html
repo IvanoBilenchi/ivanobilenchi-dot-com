@@ -83,14 +83,17 @@
 		<div class="container">
 
 			<div class="filter-buttons">
-				<button type="button" data-bs-toggle="button" data-filter=".projects-ios"><i class="fa-brands fa-apple"></i>&nbsp;&nbsp;iOS</button>
-				<button type="button" data-bs-toggle="button" data-filter=".projects-res"><i class="fa-solid fa-flask"></i>&nbsp;&nbsp;Research</button>
-				<button type="button" data-bs-toggle="button" data-filter=".projects-oss"><i class="fa-brands fa-github"></i>&nbsp;&nbsp;Open Source</button>
+				<input type="checkbox" id="filter-ios" autocomplete="off">
+				<label for="filter-ios"><i class="fa-brands fa-apple"></i>&nbsp;&nbsp;iOS</label>
+				<input type="checkbox" id="filter-res" autocomplete="off">
+				<label for="filter-res"><i class="fa-solid fa-flask"></i>&nbsp;&nbsp;Research</label>
+				<input type="checkbox" id="filter-oss" autocomplete="off">
+				<label for="filter-oss"><i class="fa-brands fa-github"></i>&nbsp;&nbsp;Open Source</label>
 			</div>
 
 			<div class="filter-list row">
 
-				<div class="projects-ios card-container">
+				<div class="filter-ios card-container">
 					<div class="material-card-hover">
 						<a href="https://ib-soft.net/icleaner"></a>
 						<img src="img/projects/icleaner.png" alt=""/>
@@ -106,7 +109,7 @@
 					</div>
 				</div>
 
-				<div class="projects-ios card-container">
+				<div class="filter-ios card-container">
 					<div class="material-card-hover">
 						<a href="http://befree.poliba.it"></a>
 						<img src="img/projects/befree.png" alt=""/>
@@ -122,7 +125,7 @@
 					</div>
 				</div>
 
-				<div class="projects-oss card-container">
+				<div class="filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="https://github.com/IvanoBilenchi/facepy"></a>
 						<img src="img/projects/facepy.png" alt=""/>
@@ -138,7 +141,7 @@
 					</div>
 				</div>
 
-				<div class="projects-res card-container">
+				<div class="filter-res card-container">
 					<div class="material-card-hover">
 						<a href="http://swot.sisinflab.poliba.it/tinyme"></a>
 						<img src="img/projects/minime.png" alt=""/>
@@ -154,7 +157,7 @@
 					</div>
 				</div>
 
-				<div class="projects-res projects-oss card-container">
+				<div class="filter-res filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="http://swot.sisinflab.poliba.it/cowl"></a>
 						<img src="img/projects/cowl.png" alt=""/>
@@ -171,7 +174,7 @@
 					</div>
 				</div>
 
-				<div class="projects-res projects-oss card-container">
+				<div class="filter-res filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="http://swot.sisinflab.poliba.it/evowluator"></a>
 						<img src="img/projects/evowluator.png" alt=""/>
@@ -188,7 +191,7 @@
 					</div>
 				</div>
 
-				<div class="projects-oss card-container">
+				<div class="filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="https://github.com/IvanoBilenchi/ulib"></a>
 						<img src="img/projects/github.png" alt=""/>
@@ -204,7 +207,7 @@
 					</div>
 				</div>
 
-				<div class="projects-oss card-container">
+				<div class="filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="https://github.com/IvanoBilenchi/uvec"></a>
 						<img src="img/projects/uvec.png" alt=""/>
@@ -220,7 +223,7 @@
 					</div>
 				</div>
 
-				<div class="projects-oss card-container">
+				<div class="filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="https://github.com/IvanoBilenchi/uhash"></a>
 						<img src="img/projects/uhash.png" alt=""/>
@@ -236,7 +239,7 @@
 					</div>
 				</div>
 
-				<div class="projects-ios projects-res card-container">
+				<div class="filter-ios filter-res card-container">
 					<div class="material-card-hover">
 						<a href="http://swot.sisinflab.poliba.it/minime-swift"></a>
 						<img src="img/projects/minime.png" alt=""/>
@@ -253,7 +256,7 @@
 					</div>
 				</div>
 
-				<div class="projects-ios projects-oss card-container">
+				<div class="filter-ios filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="https://github.com/IvanoBilenchi/ICTextView"></a>
 						<img src="img/projects/ictextview.png" alt=""/>
@@ -270,7 +273,7 @@
 					</div>
 				</div>
 
-				<div class="projects-ios projects-oss card-container">
+				<div class="filter-ios filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="https://github.com/IvanoBilenchi/FaceAuth"></a>
 						<img src="img/projects/faceauth.png" alt=""/>
@@ -287,7 +290,7 @@
 					</div>
 				</div>
 
-				<div class="projects-ios projects-oss card-container">
+				<div class="filter-ios filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="https://github.com/IvanoBilenchi/Adaptive-Video-Player"></a>
 						<img src="img/projects/adaptive.png" alt=""/>
@@ -304,7 +307,7 @@
 					</div>
 				</div>
 
-				<div class="projects-ios projects-res projects-oss card-container">
+				<div class="filter-ios filter-res filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"></a>
 						<img src="img/projects/github.png" alt=""/>
@@ -322,7 +325,7 @@
 					</div>
 				</div>
 
-				<div class="projects-oss card-container">
+				<div class="filter-oss card-container">
 					<div class="material-card-hover">
 						<a href="https://github.com/IvanoBilenchi/umlens"></a>
 						<img src="img/projects/umlens.png" alt=""/>

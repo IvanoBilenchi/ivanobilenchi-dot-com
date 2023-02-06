@@ -2293,12 +2293,12 @@ textarea.form-control-lg {
   margin-right: 1rem;
 }
 
-.btn-check {
+.btn-check, .filter-buttons > input[type=checkbox] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
-.btn-check[disabled] + .btn, .filter-buttons > .btn-check[disabled] + button, .btn-check[disabled] + .btn-cta, .btn-check[disabled] + .profile-btn, .btn-cta-container > .btn-check[disabled] + a, .btn-check:disabled + .btn, .filter-buttons > .btn-check:disabled + button, .btn-check:disabled + .btn-cta, .btn-check:disabled + .profile-btn, .btn-cta-container > .btn-check:disabled + a {
+.btn-check[disabled] + .btn, .filter-buttons > input[disabled][type=checkbox] + .btn, .filter-buttons > input[type=checkbox][disabled] + label, .btn-check[disabled] + .btn-cta, .btn-check[disabled] + .profile-btn, .filter-buttons > input[disabled][type=checkbox] + .btn-cta, .filter-buttons > input[disabled][type=checkbox] + .profile-btn, .btn-cta-container > .btn-check[disabled] + a, .filter-buttons.btn-cta-container > input[disabled][type=checkbox] + a, .btn-check:disabled + .btn, .filter-buttons > input[type=checkbox]:disabled + .btn, .filter-buttons > input[type=checkbox]:disabled + label, .btn-check:disabled + .btn-cta, .btn-check:disabled + .profile-btn, .filter-buttons > input[type=checkbox]:disabled + .btn-cta, .filter-buttons > input[type=checkbox]:disabled + .profile-btn, .btn-cta-container > .btn-check:disabled + a, .filter-buttons.btn-cta-container > input[type=checkbox]:disabled + a {
   pointer-events: none;
   filter: none;
   opacity: 0.65;
@@ -2474,11 +2474,11 @@ textarea.form-control-lg {
 .input-group > .form-floating:focus-within {
   z-index: 5;
 }
-.input-group .btn, .input-group .filter-buttons > button, .input-group .btn-cta, .input-group .profile-btn, .input-group .btn-cta-container > a {
+.input-group .btn, .input-group .filter-buttons > input[type=checkbox] + label, .input-group .btn-cta, .input-group .profile-btn, .input-group .btn-cta-container > a {
   position: relative;
   z-index: 2;
 }
-.input-group .btn:focus, .input-group .filter-buttons > button:focus, .input-group .btn-cta:focus, .input-group .profile-btn:focus, .input-group .btn-cta-container > a:focus {
+.input-group .btn:focus, .input-group .filter-buttons > input[type=checkbox] + label:focus, .input-group .btn-cta:focus, .input-group .profile-btn:focus, .input-group .btn-cta-container > a:focus {
   z-index: 5;
 }
 
@@ -2501,7 +2501,7 @@ textarea.form-control-lg {
 .input-group-lg > .form-select,
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn,
-.filter-buttons.input-group-lg > button,
+.filter-buttons.input-group-lg > input[type=checkbox] + label,
 .input-group-lg > .btn-cta,
 .input-group-lg > .profile-btn,
 .btn-cta-container.input-group-lg > a {
@@ -2514,7 +2514,7 @@ textarea.form-control-lg {
 .input-group-sm > .form-select,
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn,
-.filter-buttons.input-group-sm > button,
+.filter-buttons.input-group-sm > input[type=checkbox] + label,
 .input-group-sm > .btn-cta,
 .input-group-sm > .profile-btn,
 .btn-cta-container.input-group-sm > a {
@@ -2733,7 +2733,7 @@ textarea.form-control-lg {
   z-index: 4;
 }
 
-.btn, .filter-buttons > button, .btn-cta, .profile-btn, .btn-cta-container > a {
+.btn, .filter-buttons > input[type=checkbox] + label, .btn-cta, .profile-btn, .btn-cta-container > a {
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
   --bs-btn-font-family: ;
@@ -2767,41 +2767,41 @@ textarea.form-control-lg {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn, .filter-buttons > button, .btn-cta, .profile-btn, .btn-cta-container > a {
+  .btn, .filter-buttons > input[type=checkbox] + label, .btn-cta, .profile-btn, .btn-cta-container > a {
     transition: none;
   }
 }
-.btn:hover, .filter-buttons > button:hover, .btn-cta:hover, .profile-btn:hover, .btn-cta-container > a:hover {
+.btn:hover, .filter-buttons > input[type=checkbox] + label:hover, .btn-cta:hover, .profile-btn:hover, .btn-cta-container > a:hover {
   color: var(--bs-btn-hover-color);
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
 }
-.btn-check + .btn:hover, .filter-buttons > .btn-check + button:hover, .btn-check + .btn-cta:hover, .btn-check + .profile-btn:hover, .btn-cta-container > .btn-check + a:hover {
+.btn-check + .btn:hover, .filter-buttons > input[type=checkbox] + .btn:hover, .filter-buttons > input[type=checkbox] + label:hover, .btn-check + .btn-cta:hover, .btn-check + .profile-btn:hover, .filter-buttons > input[type=checkbox] + .btn-cta:hover, .filter-buttons > input[type=checkbox] + .profile-btn:hover, .btn-cta-container > .btn-check + a:hover, .filter-buttons.btn-cta-container > input[type=checkbox] + a:hover {
   color: var(--bs-btn-color);
   background-color: var(--bs-btn-bg);
   border-color: var(--bs-btn-border-color);
 }
-.btn:focus-visible, .filter-buttons > button:focus-visible, .btn-cta:focus-visible, .profile-btn:focus-visible, .btn-cta-container > a:focus-visible {
+.btn:focus-visible, .filter-buttons > input[type=checkbox] + label:focus-visible, .btn-cta:focus-visible, .profile-btn:focus-visible, .btn-cta-container > a:focus-visible {
   color: var(--bs-btn-hover-color);
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:focus-visible + .btn, .filter-buttons > .btn-check:focus-visible + button, .btn-check:focus-visible + .btn-cta, .btn-check:focus-visible + .profile-btn, .btn-cta-container > .btn-check:focus-visible + a {
+.btn-check:focus-visible + .btn, .filter-buttons > input[type=checkbox]:focus-visible + .btn, .filter-buttons > input[type=checkbox]:focus-visible + label, .btn-check:focus-visible + .btn-cta, .btn-check:focus-visible + .profile-btn, .filter-buttons > input[type=checkbox]:focus-visible + .btn-cta, .filter-buttons > input[type=checkbox]:focus-visible + .profile-btn, .btn-cta-container > .btn-check:focus-visible + a, .filter-buttons.btn-cta-container > input[type=checkbox]:focus-visible + a {
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:checked + .btn, .filter-buttons > .btn-check:checked + button, .btn-check:checked + .btn-cta, .btn-check:checked + .profile-btn, .btn-cta-container > .btn-check:checked + a, :not(.btn-check) + .btn:active, .filter-buttons > :not(.btn-check) + button:active, :not(.btn-check) + .btn-cta:active, :not(.btn-check) + .profile-btn:active, .btn-cta-container > :not(.btn-check) + a:active, .btn:first-child:active, .filter-buttons > button:first-child:active, .btn-cta:first-child:active, .profile-btn:first-child:active, .btn-cta-container > a:first-child:active, .btn.active, .filter-buttons > button.active, .active.btn-cta, .active.profile-btn, .btn-cta-container > a.active, .btn.show, .filter-buttons > button.show, .show.btn-cta, .show.profile-btn, .btn-cta-container > a.show {
+.btn-check:checked + .btn, .filter-buttons > input[type=checkbox]:checked + .btn, .filter-buttons > input[type=checkbox]:checked + label, .btn-check:checked + .btn-cta, .btn-check:checked + .profile-btn, .filter-buttons > input[type=checkbox]:checked + .btn-cta, .filter-buttons > input[type=checkbox]:checked + .profile-btn, .btn-cta-container > .btn-check:checked + a, .filter-buttons.btn-cta-container > input[type=checkbox]:checked + a, :not(.btn-check) + .btn:active, .filter-buttons > input[type=checkbox]:not(.btn-check) + label:active, :not(.btn-check) + .btn-cta:active, :not(.btn-check) + .profile-btn:active, .btn-cta-container > :not(.btn-check) + a:active, .btn:first-child:active, .filter-buttons > input[type=checkbox] + label:first-child:active, .btn-cta:first-child:active, .profile-btn:first-child:active, .btn-cta-container > a:first-child:active, .btn.active, .filter-buttons > input[type=checkbox] + label.active, .active.btn-cta, .active.profile-btn, .btn-cta-container > a.active, .btn.show, .filter-buttons > input[type=checkbox] + label.show, .show.btn-cta, .show.profile-btn, .btn-cta-container > a.show {
   color: var(--bs-btn-active-color);
   background-color: var(--bs-btn-active-bg);
   border-color: var(--bs-btn-active-border-color);
 }
-.btn-check:checked + .btn:focus-visible, .filter-buttons > .btn-check:checked + button:focus-visible, .btn-check:checked + .btn-cta:focus-visible, .btn-check:checked + .profile-btn:focus-visible, .btn-cta-container > .btn-check:checked + a:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .filter-buttons > :not(.btn-check) + button:active:focus-visible, :not(.btn-check) + .btn-cta:active:focus-visible, :not(.btn-check) + .profile-btn:active:focus-visible, .btn-cta-container > :not(.btn-check) + a:active:focus-visible, .btn:first-child:active:focus-visible, .filter-buttons > button:first-child:active:focus-visible, .btn-cta:first-child:active:focus-visible, .profile-btn:first-child:active:focus-visible, .btn-cta-container > a:first-child:active:focus-visible, .btn.active:focus-visible, .filter-buttons > button.active:focus-visible, .active.btn-cta:focus-visible, .active.profile-btn:focus-visible, .btn-cta-container > a.active:focus-visible, .btn.show:focus-visible, .filter-buttons > button.show:focus-visible, .show.btn-cta:focus-visible, .show.profile-btn:focus-visible, .btn-cta-container > a.show:focus-visible {
+.btn-check:checked + .btn:focus-visible, .filter-buttons > input[type=checkbox]:checked + .btn:focus-visible, .filter-buttons > input[type=checkbox]:checked + label:focus-visible, .btn-check:checked + .btn-cta:focus-visible, .btn-check:checked + .profile-btn:focus-visible, .filter-buttons > input[type=checkbox]:checked + .btn-cta:focus-visible, .filter-buttons > input[type=checkbox]:checked + .profile-btn:focus-visible, .btn-cta-container > .btn-check:checked + a:focus-visible, .filter-buttons.btn-cta-container > input[type=checkbox]:checked + a:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .filter-buttons > input[type=checkbox]:not(.btn-check) + label:active:focus-visible, :not(.btn-check) + .btn-cta:active:focus-visible, :not(.btn-check) + .profile-btn:active:focus-visible, .btn-cta-container > :not(.btn-check) + a:active:focus-visible, .btn:first-child:active:focus-visible, .filter-buttons > input[type=checkbox] + label:first-child:active:focus-visible, .btn-cta:first-child:active:focus-visible, .profile-btn:first-child:active:focus-visible, .btn-cta-container > a:first-child:active:focus-visible, .btn.active:focus-visible, .filter-buttons > input[type=checkbox] + label.active:focus-visible, .active.btn-cta:focus-visible, .active.profile-btn:focus-visible, .btn-cta-container > a.active:focus-visible, .btn.show:focus-visible, .filter-buttons > input[type=checkbox] + label.show:focus-visible, .show.btn-cta:focus-visible, .show.profile-btn:focus-visible, .btn-cta-container > a.show:focus-visible {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn:disabled, .filter-buttons > button:disabled, .btn-cta:disabled, .profile-btn:disabled, .btn-cta-container > a:disabled, .btn.disabled, .filter-buttons > button.disabled, .disabled.btn-cta, .disabled.profile-btn, .btn-cta-container > a.disabled, fieldset:disabled .btn, fieldset:disabled .filter-buttons > button, fieldset:disabled .btn-cta, fieldset:disabled .profile-btn, fieldset:disabled .btn-cta-container > a {
+.btn:disabled, .filter-buttons > input[type=checkbox] + label:disabled, .btn-cta:disabled, .profile-btn:disabled, .btn-cta-container > a:disabled, .btn.disabled, .filter-buttons > input[type=checkbox] + label.disabled, .disabled.btn-cta, .disabled.profile-btn, .btn-cta-container > a.disabled, fieldset:disabled .btn, fieldset:disabled .filter-buttons > input[type=checkbox] + label, fieldset:disabled .btn-cta, fieldset:disabled .profile-btn, fieldset:disabled .btn-cta-container > a {
   color: var(--bs-btn-disabled-color);
   pointer-events: none;
   background-color: var(--bs-btn-disabled-bg);
@@ -2945,7 +2945,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #212529;
 }
 
-.btn-outline-primary, .filter-buttons > button {
+.btn-outline-primary, .filter-buttons > input[type=checkbox] + label {
   --bs-btn-color: #52658F;
   --bs-btn-border-color: #52658F;
   --bs-btn-hover-color: #fff;
@@ -3103,14 +3103,14 @@ textarea.form-control-lg {
   color: var(--bs-btn-hover-color);
 }
 
-.btn-lg, .btn-group-lg > .btn, .filter-buttons.btn-group-lg > button, .btn-group-lg > .btn-cta, .btn-group-lg > .profile-btn, .btn-cta-container.btn-group-lg > a {
+.btn-lg, .btn-group-lg > .btn, .filter-buttons.btn-group-lg > input[type=checkbox] + label, .btn-group-lg > .btn-cta, .btn-group-lg > .profile-btn, .btn-cta-container.btn-group-lg > a {
   --bs-btn-padding-y: 0.5rem;
   --bs-btn-padding-x: 1rem;
   --bs-btn-font-size: 1.25rem;
   --bs-btn-border-radius: 0.5rem;
 }
 
-.btn-sm, .btn-group-sm > .btn, .filter-buttons.btn-group-sm > button, .btn-group-sm > .btn-cta, .btn-group-sm > .profile-btn, .btn-cta-container.btn-group-sm > a {
+.btn-sm, .btn-group-sm > .btn, .filter-buttons.btn-group-sm > input[type=checkbox] + label, .btn-group-sm > .btn-cta, .btn-group-sm > .profile-btn, .btn-cta-container.btn-group-sm > a {
   --bs-btn-padding-y: 0.25rem;
   --bs-btn-padding-x: 0.5rem;
   --bs-btn-font-size: 0.875rem;
@@ -3476,7 +3476,7 @@ textarea.form-control-lg {
   display: inline-flex;
   vertical-align: middle;
 }
-.btn-group > .btn, .filter-buttons > .btn, .filter-buttons > button, .btn-group > .btn-cta, .btn-group > .profile-btn, .filter-buttons > .btn-cta, .filter-buttons > .profile-btn, .btn-cta-container.btn-group > a, .btn-cta-container.filter-buttons > a,
+.btn-group > .btn, .filter-buttons > .btn, .filter-buttons > input[type=checkbox] + label, .btn-group > .btn-cta, .btn-group > .profile-btn, .filter-buttons > .btn-cta, .filter-buttons > .profile-btn, .btn-cta-container.btn-group > a, .btn-cta-container.filter-buttons > a,
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-cta,
 .btn-group-vertical > .profile-btn,
@@ -3484,19 +3484,23 @@ textarea.form-control-lg {
   position: relative;
   flex: 1 1 auto;
 }
-.btn-group > .btn-check:checked + .btn, .filter-buttons > .btn-check:checked + .btn, .filter-buttons > .btn-check:checked + button, .btn-group > .btn-check:checked + .btn-cta, .btn-group > .btn-check:checked + .profile-btn, .filter-buttons > .btn-check:checked + .btn-cta, .filter-buttons > .btn-check:checked + .profile-btn, .btn-cta-container.btn-group > .btn-check:checked + a, .btn-cta-container.filter-buttons > .btn-check:checked + a,
+.btn-group > .btn-check:checked + .btn, .filter-buttons > .btn-check:checked + .btn, .filter-buttons > input[type=checkbox]:checked + .btn, .filter-buttons > input[type=checkbox]:checked + label, .btn-group > .btn-check:checked + .btn-cta, .btn-group > .btn-check:checked + .profile-btn, .filter-buttons > .btn-check:checked + .btn-cta, .filter-buttons > .btn-check:checked + .profile-btn, .filter-buttons > input[type=checkbox]:checked + .btn-cta, .filter-buttons > input[type=checkbox]:checked + .profile-btn, .btn-cta-container.btn-group > .btn-check:checked + a, .btn-cta-container.filter-buttons > .btn-check:checked + a, .filter-buttons.btn-cta-container > input[type=checkbox]:checked + a,
 .btn-group > .btn-check:focus + .btn,
 .filter-buttons > .btn-check:focus + .btn,
-.filter-buttons > .btn-check:focus + button,
+.filter-buttons > input[type=checkbox]:focus + .btn,
+.filter-buttons > input[type=checkbox]:focus + label,
 .btn-group > .btn-check:focus + .btn-cta,
 .btn-group > .btn-check:focus + .profile-btn,
 .filter-buttons > .btn-check:focus + .btn-cta,
 .filter-buttons > .btn-check:focus + .profile-btn,
+.filter-buttons > input[type=checkbox]:focus + .btn-cta,
+.filter-buttons > input[type=checkbox]:focus + .profile-btn,
 .btn-cta-container.btn-group > .btn-check:focus + a,
 .btn-cta-container.filter-buttons > .btn-check:focus + a,
+.filter-buttons.btn-cta-container > input[type=checkbox]:focus + a,
 .btn-group > .btn:hover,
 .filter-buttons > .btn:hover,
-.filter-buttons > button:hover,
+.filter-buttons > input[type=checkbox] + label:hover,
 .btn-group > .btn-cta:hover,
 .btn-group > .profile-btn:hover,
 .filter-buttons > .btn-cta:hover,
@@ -3505,7 +3509,7 @@ textarea.form-control-lg {
 .btn-cta-container.filter-buttons > a:hover,
 .btn-group > .btn:focus,
 .filter-buttons > .btn:focus,
-.filter-buttons > button:focus,
+.filter-buttons > input[type=checkbox] + label:focus,
 .btn-group > .btn-cta:focus,
 .btn-group > .profile-btn:focus,
 .filter-buttons > .btn-cta:focus,
@@ -3514,7 +3518,7 @@ textarea.form-control-lg {
 .btn-cta-container.filter-buttons > a:focus,
 .btn-group > .btn:active,
 .filter-buttons > .btn:active,
-.filter-buttons > button:active,
+.filter-buttons > input[type=checkbox] + label:active,
 .btn-group > .btn-cta:active,
 .btn-group > .profile-btn:active,
 .filter-buttons > .btn-cta:active,
@@ -3523,7 +3527,7 @@ textarea.form-control-lg {
 .btn-cta-container.filter-buttons > a:active,
 .btn-group > .btn.active,
 .filter-buttons > .btn.active,
-.filter-buttons > button.active,
+.filter-buttons > input[type=checkbox] + label.active,
 .btn-group > .active.btn-cta,
 .btn-group > .active.profile-btn,
 .filter-buttons > .active.btn-cta,
@@ -3569,17 +3573,17 @@ textarea.form-control-lg {
 .btn-group, .filter-buttons {
   border-radius: 0.375rem;
 }
-.btn-group > :not(.btn-check:first-child) + .btn, .filter-buttons > :not(.btn-check:first-child) + .btn, .filter-buttons > :not(.btn-check:first-child) + button, .btn-group > :not(.btn-check:first-child) + .btn-cta, .btn-group > :not(.btn-check:first-child) + .profile-btn, .filter-buttons > :not(.btn-check:first-child) + .btn-cta, .filter-buttons > :not(.btn-check:first-child) + .profile-btn, .btn-cta-container.btn-group > :not(.btn-check:first-child) + a, .btn-cta-container.filter-buttons > :not(.btn-check:first-child) + a,
+.btn-group > :not(.btn-check:first-child) + .btn, .filter-buttons > :not(.btn-check:first-child) + .btn, .filter-buttons > input[type=checkbox]:not(.btn-check:first-child) + label, .btn-group > :not(.btn-check:first-child) + .btn-cta, .btn-group > :not(.btn-check:first-child) + .profile-btn, .filter-buttons > :not(.btn-check:first-child) + .btn-cta, .filter-buttons > :not(.btn-check:first-child) + .profile-btn, .btn-cta-container.btn-group > :not(.btn-check:first-child) + a, .btn-cta-container.filter-buttons > :not(.btn-check:first-child) + a,
 .btn-group > .btn-group:not(:first-child),
 .filter-buttons > .btn-group:not(:first-child),
 .btn-group > .filter-buttons:not(:first-child),
 .filter-buttons > .filter-buttons:not(:first-child) {
   margin-left: -1px;
 }
-.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons > button:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-cta:not(:last-child):not(.dropdown-toggle), .btn-group > .profile-btn:not(:last-child):not(.dropdown-toggle), .filter-buttons > .btn-cta:not(:last-child):not(.dropdown-toggle), .filter-buttons > .profile-btn:not(:last-child):not(.dropdown-toggle), .btn-cta-container.btn-group > a:not(:last-child):not(.dropdown-toggle), .btn-cta-container.filter-buttons > a:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons > input[type=checkbox] + label:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-cta:not(:last-child):not(.dropdown-toggle), .btn-group > .profile-btn:not(:last-child):not(.dropdown-toggle), .filter-buttons > .btn-cta:not(:last-child):not(.dropdown-toggle), .filter-buttons > .profile-btn:not(:last-child):not(.dropdown-toggle), .btn-cta-container.btn-group > a:not(:last-child):not(.dropdown-toggle), .btn-cta-container.filter-buttons > a:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn.dropdown-toggle-split:first-child,
 .filter-buttons > .btn.dropdown-toggle-split:first-child,
-.filter-buttons > button.dropdown-toggle-split:first-child,
+.filter-buttons > input[type=checkbox] + label.dropdown-toggle-split:first-child,
 .btn-group > .dropdown-toggle-split.btn-cta:first-child,
 .btn-group > .dropdown-toggle-split.profile-btn:first-child,
 .filter-buttons > .dropdown-toggle-split.btn-cta:first-child,
@@ -3589,9 +3593,9 @@ textarea.form-control-lg {
 .btn-group > .btn-group:not(:last-child) > .btn,
 .filter-buttons > .btn-group:not(:last-child) > .btn,
 .btn-group > .filter-buttons:not(:last-child) > .btn,
-.btn-group > .filter-buttons:not(:last-child) > button,
+.btn-group > .filter-buttons:not(:last-child) > input[type=checkbox] + label,
 .filter-buttons > .filter-buttons:not(:last-child) > .btn,
-.filter-buttons > .filter-buttons:not(:last-child) > button,
+.filter-buttons > .filter-buttons:not(:last-child) > input[type=checkbox] + label,
 .btn-group > .btn-group:not(:last-child) > .btn-cta,
 .btn-group > .btn-group:not(:last-child) > .profile-btn,
 .filter-buttons > .btn-group:not(:last-child) > .btn-cta,
@@ -3607,10 +3611,10 @@ textarea.form-control-lg {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.btn-group > .btn:nth-child(n+3), .filter-buttons > .btn:nth-child(n+3), .filter-buttons > button:nth-child(n+3), .btn-group > .btn-cta:nth-child(n+3), .btn-group > .profile-btn:nth-child(n+3), .filter-buttons > .btn-cta:nth-child(n+3), .filter-buttons > .profile-btn:nth-child(n+3), .btn-cta-container.btn-group > a:nth-child(n+3), .btn-cta-container.filter-buttons > a:nth-child(n+3),
+.btn-group > .btn:nth-child(n+3), .filter-buttons > .btn:nth-child(n+3), .filter-buttons > input[type=checkbox] + label:nth-child(n+3), .btn-group > .btn-cta:nth-child(n+3), .btn-group > .profile-btn:nth-child(n+3), .filter-buttons > .btn-cta:nth-child(n+3), .filter-buttons > .profile-btn:nth-child(n+3), .btn-cta-container.btn-group > a:nth-child(n+3), .btn-cta-container.filter-buttons > a:nth-child(n+3),
 .btn-group > :not(.btn-check) + .btn,
 .filter-buttons > :not(.btn-check) + .btn,
-.filter-buttons > :not(.btn-check) + button,
+.filter-buttons > input[type=checkbox]:not(.btn-check) + label,
 .btn-group > :not(.btn-check) + .btn-cta,
 .btn-group > :not(.btn-check) + .profile-btn,
 .filter-buttons > :not(.btn-check) + .btn-cta,
@@ -3620,9 +3624,9 @@ textarea.form-control-lg {
 .btn-group > .btn-group:not(:first-child) > .btn,
 .filter-buttons > .btn-group:not(:first-child) > .btn,
 .btn-group > .filter-buttons:not(:first-child) > .btn,
-.btn-group > .filter-buttons:not(:first-child) > button,
+.btn-group > .filter-buttons:not(:first-child) > input[type=checkbox] + label,
 .filter-buttons > .filter-buttons:not(:first-child) > .btn,
-.filter-buttons > .filter-buttons:not(:first-child) > button,
+.filter-buttons > .filter-buttons:not(:first-child) > input[type=checkbox] + label,
 .btn-group > .btn-group:not(:first-child) > .btn-cta,
 .btn-group > .btn-group:not(:first-child) > .profile-btn,
 .filter-buttons > .btn-group:not(:first-child) > .btn-cta,
@@ -3650,12 +3654,12 @@ textarea.form-control-lg {
   margin-right: 0;
 }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .filter-buttons.btn-group-sm > button + .dropdown-toggle-split, .btn-group-sm > .btn-cta + .dropdown-toggle-split, .btn-group-sm > .profile-btn + .dropdown-toggle-split, .btn-cta-container.btn-group-sm > a + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .filter-buttons.btn-group-sm > input[type=checkbox] + label + .dropdown-toggle-split, .btn-group-sm > .btn-cta + .dropdown-toggle-split, .btn-group-sm > .profile-btn + .dropdown-toggle-split, .btn-cta-container.btn-group-sm > a + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
 
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .filter-buttons.btn-group-lg > button + .dropdown-toggle-split, .btn-group-lg > .btn-cta + .dropdown-toggle-split, .btn-group-lg > .profile-btn + .dropdown-toggle-split, .btn-cta-container.btn-group-lg > a + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .filter-buttons.btn-group-lg > input[type=checkbox] + label + .dropdown-toggle-split, .btn-group-lg > .btn-cta + .dropdown-toggle-split, .btn-group-lg > .profile-btn + .dropdown-toggle-split, .btn-cta-container.btn-group-lg > a + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
@@ -3665,20 +3669,20 @@ textarea.form-control-lg {
   align-items: flex-start;
   justify-content: center;
 }
-.btn-group-vertical > .btn, .filter-buttons.btn-group-vertical > button, .btn-group-vertical > .btn-cta, .btn-group-vertical > .profile-btn, .btn-cta-container.btn-group-vertical > a,
+.btn-group-vertical > .btn, .filter-buttons.btn-group-vertical > input[type=checkbox] + label, .btn-group-vertical > .btn-cta, .btn-group-vertical > .profile-btn, .btn-cta-container.btn-group-vertical > a,
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .filter-buttons {
   width: 100%;
 }
-.btn-group-vertical > .btn:not(:first-child), .filter-buttons.btn-group-vertical > button:not(:first-child), .btn-group-vertical > .btn-cta:not(:first-child), .btn-group-vertical > .profile-btn:not(:first-child), .btn-cta-container.btn-group-vertical > a:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child), .filter-buttons.btn-group-vertical > input[type=checkbox] + label:not(:first-child), .btn-group-vertical > .btn-cta:not(:first-child), .btn-group-vertical > .profile-btn:not(:first-child), .btn-cta-container.btn-group-vertical > a:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child),
 .btn-group-vertical > .filter-buttons:not(:first-child) {
   margin-top: -1px;
 }
-.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons.btn-group-vertical > button:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .btn-cta:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .profile-btn:not(:last-child):not(.dropdown-toggle), .btn-cta-container.btn-group-vertical > a:not(:last-child):not(.dropdown-toggle),
+.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .filter-buttons.btn-group-vertical > input[type=checkbox] + label:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .btn-cta:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .profile-btn:not(:last-child):not(.dropdown-toggle), .btn-cta-container.btn-group-vertical > a:not(:last-child):not(.dropdown-toggle),
 .btn-group-vertical > .btn-group:not(:last-child) > .btn,
 .btn-group-vertical > .filter-buttons:not(:last-child) > .btn,
-.btn-group-vertical > .filter-buttons:not(:last-child) > button,
+.btn-group-vertical > .filter-buttons:not(:last-child) > input[type=checkbox] + label,
 .btn-group-vertical > .btn-group:not(:last-child) > .btn-cta,
 .btn-group-vertical > .btn-group:not(:last-child) > .profile-btn,
 .btn-group-vertical > .filter-buttons:not(:last-child) > .btn-cta,
@@ -3688,10 +3692,10 @@ textarea.form-control-lg {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.btn-group-vertical > .btn ~ .btn, .filter-buttons.btn-group-vertical > button ~ .btn, .filter-buttons.btn-group-vertical > .btn ~ button, .filter-buttons.btn-group-vertical > button ~ button, .btn-group-vertical > .btn-cta ~ .btn, .btn-group-vertical > .profile-btn ~ .btn, .filter-buttons.btn-group-vertical > .btn-cta ~ button, .filter-buttons.btn-group-vertical > .profile-btn ~ button, .btn-cta-container.btn-group-vertical > a ~ .btn, .filter-buttons.btn-cta-container.btn-group-vertical > a ~ button, .btn-group-vertical > .btn ~ .btn-cta, .btn-group-vertical > .btn ~ .profile-btn, .filter-buttons.btn-group-vertical > button ~ .btn-cta, .filter-buttons.btn-group-vertical > button ~ .profile-btn, .btn-cta-container.btn-group-vertical > .btn ~ a, .filter-buttons.btn-cta-container.btn-group-vertical > button ~ a, .btn-group-vertical > .btn-cta ~ .btn-cta, .btn-group-vertical > .profile-btn ~ .btn-cta, .btn-group-vertical > .btn-cta ~ .profile-btn, .btn-group-vertical > .profile-btn ~ .profile-btn, .btn-cta-container.btn-group-vertical > a ~ .btn-cta, .btn-cta-container.btn-group-vertical > a ~ .profile-btn, .btn-cta-container.btn-group-vertical > .btn-cta ~ a, .btn-cta-container.btn-group-vertical > .profile-btn ~ a, .btn-cta-container.btn-group-vertical > a ~ a,
+.btn-group-vertical > .btn ~ .btn, .filter-buttons.btn-group-vertical > input[type=checkbox] + label ~ .btn, .filter-buttons.btn-group-vertical > .btn ~ input[type=checkbox] + label, .filter-buttons.btn-group-vertical > input[type=checkbox].btn + label, .filter-buttons.btn-group-vertical > input[type=checkbox] + label ~ input[type=checkbox] + label, .btn-group-vertical > .btn-cta ~ .btn, .btn-group-vertical > .profile-btn ~ .btn, .filter-buttons.btn-group-vertical > .btn-cta ~ input[type=checkbox] + label, .filter-buttons.btn-group-vertical > .profile-btn ~ input[type=checkbox] + label, .filter-buttons.btn-group-vertical > input[type=checkbox].btn-cta + label, .filter-buttons.btn-group-vertical > input[type=checkbox].profile-btn + label, .btn-cta-container.btn-group-vertical > a ~ .btn, .filter-buttons.btn-cta-container.btn-group-vertical > a ~ input[type=checkbox] + label, .btn-group-vertical > .btn ~ .btn-cta, .btn-group-vertical > .btn ~ .profile-btn, .filter-buttons.btn-group-vertical > input[type=checkbox] + label ~ .btn-cta, .filter-buttons.btn-group-vertical > input[type=checkbox] + label ~ .profile-btn, .btn-cta-container.btn-group-vertical > .btn ~ a, .filter-buttons.btn-cta-container.btn-group-vertical > input[type=checkbox] + label ~ a, .btn-group-vertical > .btn-cta ~ .btn-cta, .btn-group-vertical > .profile-btn ~ .btn-cta, .btn-group-vertical > .btn-cta ~ .profile-btn, .btn-group-vertical > .profile-btn ~ .profile-btn, .btn-cta-container.btn-group-vertical > a ~ .btn-cta, .btn-cta-container.btn-group-vertical > a ~ .profile-btn, .btn-cta-container.btn-group-vertical > .btn-cta ~ a, .btn-cta-container.btn-group-vertical > .profile-btn ~ a, .btn-cta-container.btn-group-vertical > a ~ a,
 .btn-group-vertical > .btn-group:not(:first-child) > .btn,
 .btn-group-vertical > .filter-buttons:not(:first-child) > .btn,
-.btn-group-vertical > .filter-buttons:not(:first-child) > button,
+.btn-group-vertical > .filter-buttons:not(:first-child) > input[type=checkbox] + label,
 .btn-group-vertical > .btn-group:not(:first-child) > .btn-cta,
 .btn-group-vertical > .btn-group:not(:first-child) > .profile-btn,
 .btn-group-vertical > .filter-buttons:not(:first-child) > .btn-cta,
@@ -4743,7 +4747,7 @@ nav > .container-xxl {
   display: none;
 }
 
-.btn .badge, .filter-buttons > button .badge, .btn .pill-list > li, .filter-buttons > button .pill-list > li, .btn-cta .badge, .profile-btn .badge, .btn-cta .pill-list > li, .profile-btn .pill-list > li, .btn-cta-container > a .badge, .btn-cta-container > a .pill-list > li {
+.btn .badge, .filter-buttons > input[type=checkbox] + label .badge, .btn .pill-list > li, .filter-buttons > input[type=checkbox] + label .pill-list > li, .btn-cta .badge, .profile-btn .badge, .btn-cta .pill-list > li, .profile-btn .pill-list > li, .btn-cta-container > a .badge, .btn-cta-container > a .pill-list > li {
   position: relative;
   top: -1px;
 }
@@ -6734,7 +6738,7 @@ nav > .container-xxl {
   background-color: currentcolor;
   opacity: 0.5;
 }
-.placeholder.btn::before, .filter-buttons > button.placeholder::before, .placeholder.btn-cta::before, .placeholder.profile-btn::before, .btn-cta-container > a.placeholder::before {
+.placeholder.btn::before, .filter-buttons > input[type=checkbox] + label.placeholder::before, .placeholder.btn-cta::before, .placeholder.profile-btn::before, .btn-cta-container > a.placeholder::before {
   display: inline-block;
   content: "";
 }
@@ -11102,7 +11106,7 @@ section:last-of-type {
 }
 
 /* Buttons */
-.btn, .filter-buttons > button, .btn-cta, .profile-btn, .btn-cta-container > a {
+.btn, .filter-buttons > input[type=checkbox] + label, .btn-cta, .profile-btn, .btn-cta-container > a {
   font-weight: 500;
   padding: 0.375rem 1rem;
 }
@@ -11267,20 +11271,25 @@ section:last-of-type {
     max-width: 50%;
   }
 }
-.filter-buttons > button {
+.filter-buttons > input[type=checkbox] + label {
   flex: 1;
-  background-color: #FFFFFF;
   border-width: 0 1px;
-  border-color: rgba(0, 0, 0, 0.075);
+  border-radius: 0;
   /* Directly setting CSS properties resulted in oddities when clicking the button */
-  --bs-btn-active-border-color: $color-light;
-  --bs-btn-hover-border-color: $color-light;
+  --bs-btn-bg: #FFFFFF;
+  --bs-btn-active-bg: #52658F;
+  --bs-btn-border-color: rgba(0, 0, 0, 0.075);
+  --bs-btn-active-border-color: #F7F7F8;
 }
-.filter-buttons > button:first-of-type {
+.filter-buttons > input[type=checkbox] + label:first-of-type {
   border-left-width: 0;
+  border-top-left-radius: var(--bs-btn-border-radius);
+  border-bottom-left-radius: var(--bs-btn-border-radius);
 }
-.filter-buttons > button:last-of-type {
+.filter-buttons > input[type=checkbox] + label:last-of-type {
   border-right-width: 0;
+  border-top-right-radius: var(--bs-btn-border-radius);
+  border-bottom-right-radius: var(--bs-btn-border-radius);
 }
 
 /* Sections */

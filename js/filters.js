@@ -10,9 +10,9 @@ function initFilters() {
   $('.filter-buttons').each((i, group) => {
     let $group = $(group);
 
-    $group.on('click', 'button', () => {
-      let filters = $group.find('.active').map((i, button) => {
-        return $(button).attr('data-filter');
+    $group.on('click', 'input', () => {
+      let filters = $group.find(':checked').map((i, button) => {
+        return '.' + $(button).attr('id');
       }).get();
       $filterList.isotope({filter: filters.length ? filters.join('') : '*'});
     });
