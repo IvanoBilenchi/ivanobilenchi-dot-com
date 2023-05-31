@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building &mdash; uLib 0.2.2 documentation</title>
+  <title>How-to &mdash; uLib 0.2.3 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Memory allocation" href="api/alloc.html" />
-    <link rel="prev" title="Welcome to ULib’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Welcome to uLib’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,7 +31,7 @@
             <a href="index.html" class="icon icon-home"> uLib
           </a>
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -41,13 +41,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Howto</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Building</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cmake-targets">CMake targets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How-to</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#building-from-source">Building from source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-the-sources">Downloading the sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling">Compiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linking">Linking</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API docs</span></p>
 <ul>
@@ -76,7 +82,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Building</li>
+      <li class="breadcrumb-item active">How-to</li>
       <li class="wy-breadcrumbs-aside">
               <!-- User defined GitHub URL -->
               <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
@@ -87,31 +93,89 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="building">
-<h1>Building<a class="headerlink" href="#building" title="Permalink to this heading"></a></h1>
-<p>You can find uLib’s code on its <a class="reference external" href="https://github.com/IvanoBilenchi/ulib">git repository</a>. If you are using <a class="reference external" href="https://cmake.org">CMake</a>
-as your build system, you can import it via the <code class="docutils literal notranslate"><span class="pre">add_subdirectory</span></code> command, then link against
-the <code class="docutils literal notranslate"><span class="pre">ulib</span></code> target. You can control the library type by setting the <code class="docutils literal notranslate"><span class="pre">ULIB_LIBRARY_TYPE</span></code>
-CMake variable, which can be either <code class="docutils literal notranslate"><span class="pre">STATIC</span></code> (default), <code class="docutils literal notranslate"><span class="pre">SHARED</span></code> or <code class="docutils literal notranslate"><span class="pre">OBJECT</span></code>.</p>
-<section id="cmake-targets">
-<h2>CMake targets<a class="headerlink" href="#cmake-targets" title="Permalink to this heading"></a></h2>
+  <section id="how-to">
+<h1>How-to<a class="headerlink" href="#how-to" title="Permalink to this heading"></a></h1>
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ulib</span></code>: builds the library.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ulib-tests</span></code>: builds the unit tests.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ulib-docs</span></code>: generates the documentation (requires <a class="reference external" href="https://doxygen.nl">Doxygen</a> and optionally <a class="reference external" href="https://www.sphinx-doc.org">Sphinx</a>).</p></li>
+<li><p><a class="reference internal" href="#building-from-source" id="id1">Building from source</a></p>
+<ul>
+<li><p><a class="reference internal" href="#requirements" id="id2">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#downloading-the-sources" id="id3">Downloading the sources</a></p></li>
+<li><p><a class="reference internal" href="#compiling" id="id4">Compiling</a></p></li>
+<li><p><a class="reference internal" href="#linking" id="id5">Linking</a></p></li>
 </ul>
+</li>
+<li><p><a class="reference internal" href="#examples" id="id6">Examples</a></p></li>
+</ul>
+</div>
+<section id="building-from-source">
+<h2><a class="toc-backref" href="#id1">Building from source</a><a class="headerlink" href="#building-from-source" title="Permalink to this heading"></a></h2>
+<p>uLib can be built and run on <strong>Windows</strong>, <strong>macOS</strong> and <strong>Linux</strong>. We have successfully deployed it
+to a wider range of platforms, including tiny microcontrollers, with relatively minor
+build system setup. It can be compiled either as a <strong>static</strong> or <strong>dynamic library</strong>.</p>
+<section id="requirements">
+<h3><a class="toc-backref" href="#id2">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h3>
+<p>In order to compile the library, you will need at a minimum:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://gcc.gnu.org">GCC</a>, <a class="reference external" href="https://llvm.org">LLVM</a> or <a class="reference external" href="https://visualstudio.microsoft.com">MSVC</a>, any fairly recent version.</p></li>
+<li><p><a class="reference external" href="https://cmake.org">CMake</a> version 3.13 or later.</p></li>
+</ul>
+<p>If you want to generate the documentation, you will also need:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://doxygen.nl">Doxygen</a> version 1.8 or later.</p></li>
+<li><p><em>(optional)</em> <a class="reference external" href="http://sphinx-doc.org">Sphinx</a> version 2.0 or later, <a class="reference external" href="https://breathe.readthedocs.io">Breathe</a> and the <a class="reference external" href="https://sphinx-rtd-theme.readthedocs.io">Read The Docs Theme</a>.</p></li>
+</ul>
+<p>Sphinx is optional as Doxygen will already generate some form of HTML docs,
+though not as fancy as the ones you are viewing.</p>
+</section>
+<section id="downloading-the-sources">
+<h3><a class="toc-backref" href="#id3">Downloading the sources</a><a class="headerlink" href="#downloading-the-sources" title="Permalink to this heading"></a></h3>
+<p>You can find uLib’s code on its <a class="reference external" href="https://github.com/IvanoBilenchi/ulib">git repository</a>. Begin by cloning it:</p>
+<pre class="literal-block">git clone <a class="reference external" href="https://github.com/IvanoBilenchi/ulib.git">https://github.com/IvanoBilenchi/ulib.git</a></pre>
+</section>
+<section id="compiling">
+<h3><a class="toc-backref" href="#id4">Compiling</a><a class="headerlink" href="#compiling" title="Permalink to this heading"></a></h3>
+<p>The following commands allow you to build uLib:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate the build system</span>
+cmake<span class="w"> </span>-B<span class="w"> </span>cmake-build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+
+<span class="c1"># [Optional] Edit build settings (library type, optimization options, etc.)</span>
+ccmake<span class="w"> </span>cmake-build
+
+<span class="c1"># Build the library and copy public headers into the output dir</span>
+cmake<span class="w"> </span>--build<span class="w"> </span>cmake-build<span class="w"> </span>--config<span class="w"> </span>Release
+
+<span class="c1"># [Optional] Build the documentation</span>
+cmake<span class="w"> </span>--build<span class="w"> </span>cmake-build<span class="w"> </span>--target<span class="w"> </span>ulib-docs
+</pre></div>
+</div>
+</section>
+<section id="linking">
+<h3><a class="toc-backref" href="#id5">Linking</a><a class="headerlink" href="#linking" title="Permalink to this heading"></a></h3>
+<p>If you’re using CMake as your build system, you can link against uLib by configuring your
+<em>CMakeLists.txt</em> file as follows:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Assuming uLib&#39;s source is under &quot;lib/ulib&quot;</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s2">&quot;lib/ulib&quot;</span><span class="w"> </span><span class="s">EXCLUDE_FROM_ALL</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">your-target</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">ulib</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For other build systems or if you are building directly through a compiler, please refer
+to their respective documentations. A relatively headache-free way to integrate uLib
+involves compiling it and then linking against the built library, making sure
+the build system or compiler is aware of uLib’s headers.</p>
 </section>
 </section>
 <section id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h1>
+<h2><a class="toc-backref" href="#id6">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
 <p>For usage examples, refer to the unit tests.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to ULib’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to uLib’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="api/alloc.html" class="btn btn-neutral float-right" title="Memory allocation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
