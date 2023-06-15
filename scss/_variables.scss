@@ -16,3 +16,16 @@ $primary: $color-primary;
 $body-bg: $color-light;
 $body-color: $color-text-dark;
 $font-family-base: 'Roboto', sans-serif;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px
+);
