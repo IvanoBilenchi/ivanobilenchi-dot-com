@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How-to &mdash; uLib 0.2.3 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Building from source &mdash; uLib 0.2.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+
+  
   <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
+    <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Memory allocation" href="api/alloc.html" />
-    <link rel="prev" title="Welcome to uLib’s documentation!" href="index.html" /> 
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=37614e8c"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Numeric types" href="../api/number.html" />
+    <link rel="prev" title="Welcome to uLib’s documentation!" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,14 +30,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> uLib
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uLib
           </a>
               <div class="version">
-                0.2.3
+                0.2.5
               </div>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -43,29 +49,27 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How-to</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#building-from-source">Building from source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#downloading-the-sources">Downloading the sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compiling">Compiling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#linking">Linking</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building from source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downloading-the-sources">Downloading the sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compiling">Compiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linking">Linking</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API docs</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api/alloc.html">Memory allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/base.html">Base Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/macros.html">Macros</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/time.html">Time</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/collections.html">Collections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/streams.html">Streams</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/rand.html">Random generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/test.html">Tests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/version.html">Version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/number.html">Numeric types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/string.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/collection.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/rand.html">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/version.html">Version</a></li>
 </ul>
 
         </div>
@@ -74,15 +78,15 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">uLib</a>
+          <a href="../index.html">uLib</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">How-to</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Building from source</li>
       <li class="wy-breadcrumbs-aside">
               <!-- User defined GitHub URL -->
               <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
@@ -93,28 +97,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to">
-<h1>How-to<a class="headerlink" href="#how-to" title="Permalink to this heading"></a></h1>
-<div class="contents local topic" id="contents">
-<ul class="simple">
-<li><p><a class="reference internal" href="#building-from-source" id="id1">Building from source</a></p>
-<ul>
-<li><p><a class="reference internal" href="#requirements" id="id2">Requirements</a></p></li>
-<li><p><a class="reference internal" href="#downloading-the-sources" id="id3">Downloading the sources</a></p></li>
-<li><p><a class="reference internal" href="#compiling" id="id4">Compiling</a></p></li>
-<li><p><a class="reference internal" href="#linking" id="id5">Linking</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#examples" id="id6">Examples</a></p></li>
-</ul>
-</div>
-<section id="building-from-source">
-<h2><a class="toc-backref" href="#id1">Building from source</a><a class="headerlink" href="#building-from-source" title="Permalink to this heading"></a></h2>
+  <section id="building-from-source">
+<h1>Building from source<a class="headerlink" href="#building-from-source" title="Link to this heading"></a></h1>
 <p>uLib can be built and run on <strong>Windows</strong>, <strong>macOS</strong> and <strong>Linux</strong>. We have successfully deployed it
 to a wider range of platforms, including tiny microcontrollers, with relatively minor
 build system setup. It can be compiled either as a <strong>static</strong> or <strong>dynamic library</strong>.</p>
 <section id="requirements">
-<h3><a class="toc-backref" href="#id2">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h3>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
 <p>In order to compile the library, you will need at a minimum:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://gcc.gnu.org">GCC</a>, <a class="reference external" href="https://llvm.org">LLVM</a> or <a class="reference external" href="https://visualstudio.microsoft.com">MSVC</a>, any fairly recent version.</p></li>
@@ -129,12 +118,12 @@ build system setup. It can be compiled either as a <strong>static</strong> or <s
 though not as fancy as the ones you are viewing.</p>
 </section>
 <section id="downloading-the-sources">
-<h3><a class="toc-backref" href="#id3">Downloading the sources</a><a class="headerlink" href="#downloading-the-sources" title="Permalink to this heading"></a></h3>
+<h2>Downloading the sources<a class="headerlink" href="#downloading-the-sources" title="Link to this heading"></a></h2>
 <p>You can find uLib’s code on its <a class="reference external" href="https://github.com/IvanoBilenchi/ulib">git repository</a>. Begin by cloning it:</p>
 <pre class="literal-block">git clone <a class="reference external" href="https://github.com/IvanoBilenchi/ulib.git">https://github.com/IvanoBilenchi/ulib.git</a></pre>
 </section>
 <section id="compiling">
-<h3><a class="toc-backref" href="#id4">Compiling</a><a class="headerlink" href="#compiling" title="Permalink to this heading"></a></h3>
+<h2>Compiling<a class="headerlink" href="#compiling" title="Link to this heading"></a></h2>
 <p>The following commands allow you to build uLib:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate the build system</span>
 cmake<span class="w"> </span>-B<span class="w"> </span>cmake-build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
@@ -142,8 +131,11 @@ cmake<span class="w"> </span>-B<span class="w"> </span>cmake-build<span class="w
 <span class="c1"># [Optional] Edit build settings (library type, optimization options, etc.)</span>
 ccmake<span class="w"> </span>cmake-build
 
-<span class="c1"># Build the library and copy public headers into the output dir</span>
+<span class="c1"># Build the library</span>
 cmake<span class="w"> </span>--build<span class="w"> </span>cmake-build<span class="w"> </span>--config<span class="w"> </span>Release
+
+<span class="c1"># [Optional] Install the library and its headers in &lt;install path&gt;</span>
+cmake<span class="w"> </span>--install<span class="w"> </span>cmake-build<span class="w"> </span>--prefix<span class="w"> </span>&lt;install<span class="w"> </span>path&gt;
 
 <span class="c1"># [Optional] Build the documentation</span>
 cmake<span class="w"> </span>--build<span class="w"> </span>cmake-build<span class="w"> </span>--target<span class="w"> </span>ulib-docs
@@ -151,7 +143,7 @@ cmake<span class="w"> </span>--build<span class="w"> </span>cmake-build<span cla
 </div>
 </section>
 <section id="linking">
-<h3><a class="toc-backref" href="#id5">Linking</a><a class="headerlink" href="#linking" title="Permalink to this heading"></a></h3>
+<h2>Linking<a class="headerlink" href="#linking" title="Link to this heading"></a></h2>
 <p>If you’re using CMake as your build system, you can link against uLib by configuring your
 <em>CMakeLists.txt</em> file as follows:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Assuming uLib&#39;s source is under &quot;lib/ulib&quot;</span>
@@ -166,23 +158,22 @@ the build system or compiler is aware of uLib’s headers.</p>
 </section>
 </section>
 <section id="examples">
-<h2><a class="toc-backref" href="#id6">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
 <p>For usage examples, refer to the unit tests.</p>
-</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to uLib’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="api/alloc.html" class="btn btn-neutral float-right" title="Memory allocation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to uLib’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api/number.html" class="btn btn-neutral float-right" title="Numeric types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2023, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
   </div>
 
    

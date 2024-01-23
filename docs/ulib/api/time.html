@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time &mdash; uLib 0.2.3 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Time &mdash; uLib 0.2.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=37614e8c"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Collections" href="collections.html" />
-    <link rel="prev" title="Macros" href="macros.html" /> 
+    <link rel="next" title="Random generators" href="rand.html" />
+    <link rel="prev" title="Streams" href="stream.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,14 +30,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> uLib
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uLib
           </a>
               <div class="version">
-                0.2.3
+                0.2.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -43,17 +49,19 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../howto.html">How-to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html#examples">Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API docs</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="base.html">Base Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="number.html">Numeric types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Time</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -71,7 +79,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Time</li>
       <li class="wy-breadcrumbs-aside">
               <!-- User defined GitHub URL -->
@@ -84,36 +92,148 @@
            <div itemprop="articleBody">
              
   <section id="time">
-<h1>Time<a class="headerlink" href="#time" title="Permalink to this heading"></a></h1>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv45UTime">
-<span id="_CPPv35UTime"></span><span id="_CPPv25UTime"></span><span id="UTime"></span><span class="target" id="struct_u_time"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTime</span></span></span><a class="headerlink" href="#_CPPv45UTime" title="Permalink to this definition"></a><br /></dt>
+<h1>Time<a class="headerlink" href="#time" title="Link to this heading"></a></h1>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.UTime">
+<span class="target" id="struct_u_time"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTime</span></span></span><a class="headerlink" href="#c.UTime" title="Link to this definition"></a><br /></dt>
 <dd><p>Date and time. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime12utime_equalsEPK5UTimePK5UTime">
-<span id="_CPPv3N5UTime12utime_equalsEPK5UTimePK5UTime"></span><span id="_CPPv2N5UTime12utime_equalsEPK5UTimePK5UTime"></span><span id="UTime::utime_equals__UTimeCP.UTimeCP"></span><span class="target" id="struct_u_time_1a900f12a84d4fd1ae78cf9873ce4db961"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_equals</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">a</span></span>, <a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5UTime12utime_equalsEPK5UTimePK5UTime" title="Permalink to this definition"></a><br /></dt>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UTime.year">
+<span class="target" id="struct_u_time_1aef9dd5d7f034b23403b94c38fb01f2bd"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">year</span></span></span><a class="headerlink" href="#c.UTime.year" title="Link to this definition"></a><br /></dt>
+<dd><p>Year. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UTime.month">
+<span class="target" id="struct_u_time_1a513540ad2dddee6331df5fb853c060d2"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">month</span></span></span><a class="headerlink" href="#c.UTime.month" title="Link to this definition"></a><br /></dt>
+<dd><p>Month. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UTime.day">
+<span class="target" id="struct_u_time_1a001c621f5bd2a296dd4fbc6920aec5ec"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">day</span></span></span><a class="headerlink" href="#c.UTime.day" title="Link to this definition"></a><br /></dt>
+<dd><p>Day. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UTime.hour">
+<span class="target" id="struct_u_time_1a20ea94d042a0266c57b3903e98f2ee20"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hour</span></span></span><a class="headerlink" href="#c.UTime.hour" title="Link to this definition"></a><br /></dt>
+<dd><p>Hour. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UTime.minute">
+<span class="target" id="struct_u_time_1a5afc4ec9619c71788cea26255ea6b103"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">minute</span></span></span><a class="headerlink" href="#c.UTime.minute" title="Link to this definition"></a><br /></dt>
+<dd><p>Minute. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UTime.second">
+<span class="target" id="struct_u_time_1ad59fac3c3ed91fe3db0ef85d3e365ce7"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">second</span></span></span><a class="headerlink" href="#c.UTime.second" title="Link to this definition"></a><br /></dt>
+<dd><p>Second. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c enum">
+<dt class="sig sig-object c" id="c.utime_unit">
+<span class="target" id="group___u_time__types_1gafdd8746b0455616e8b8a67ca8cae7a53"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_unit</span></span></span><a class="headerlink" href="#c.utime_unit" title="Link to this definition"></a><br /></dt>
+<dd><p>Time units. </p>
+<p><em>Values:</em></p>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.utime_unit.UTIME_NANOSECONDS">
+<span class="target" id="group___u_time__types_1ggafdd8746b0455616e8b8a67ca8cae7a53a56280376b5e4b683951bdddce5ad1474"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_NANOSECONDS</span></span></span><a class="headerlink" href="#c.utime_unit.UTIME_NANOSECONDS" title="Link to this definition"></a><br /></dt>
+<dd><p>Nanoseconds. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.utime_unit.UTIME_MICROSECONDS">
+<span class="target" id="group___u_time__types_1ggafdd8746b0455616e8b8a67ca8cae7a53a898fa45c4dd8bc3f393e6dc460ef1027"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_MICROSECONDS</span></span></span><a class="headerlink" href="#c.utime_unit.UTIME_MICROSECONDS" title="Link to this definition"></a><br /></dt>
+<dd><p>Microseconds. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.utime_unit.UTIME_MILLISECONDS">
+<span class="target" id="group___u_time__types_1ggafdd8746b0455616e8b8a67ca8cae7a53aaf9f53f4c83bf27e93a3513daf57dea5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_MILLISECONDS</span></span></span><a class="headerlink" href="#c.utime_unit.UTIME_MILLISECONDS" title="Link to this definition"></a><br /></dt>
+<dd><p>Milliseconds. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.utime_unit.UTIME_SECONDS">
+<span class="target" id="group___u_time__types_1ggafdd8746b0455616e8b8a67ca8cae7a53ae972f6229bb3566c4c60fe518c0868d6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_SECONDS</span></span></span><a class="headerlink" href="#c.utime_unit.UTIME_SECONDS" title="Link to this definition"></a><br /></dt>
+<dd><p>Seconds. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.utime_unit.UTIME_MINUTES">
+<span class="target" id="group___u_time__types_1ggafdd8746b0455616e8b8a67ca8cae7a53a5ea15026a80543162f3ba1abf04076bf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_MINUTES</span></span></span><a class="headerlink" href="#c.utime_unit.UTIME_MINUTES" title="Link to this definition"></a><br /></dt>
+<dd><p>Minutes. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.utime_unit.UTIME_HOURS">
+<span class="target" id="group___u_time__types_1ggafdd8746b0455616e8b8a67ca8cae7a53ac47bbbb4550f80b27d23943839982530"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_HOURS</span></span></span><a class="headerlink" href="#c.utime_unit.UTIME_HOURS" title="Link to this definition"></a><br /></dt>
+<dd><p>Hours. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.utime_unit.UTIME_DAYS">
+<span class="target" id="group___u_time__types_1ggafdd8746b0455616e8b8a67ca8cae7a53a798358d08b1519e064afae4b7cf7e2ba"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_DAYS</span></span></span><a class="headerlink" href="#c.utime_unit.UTIME_DAYS" title="Link to this definition"></a><br /></dt>
+<dd><p>Days. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.utime_unit.UTIME_MONTHS">
+<span class="target" id="group___u_time__types_1ggafdd8746b0455616e8b8a67ca8cae7a53a3985ffd8a41b6d6a471fb3efc333ec69"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_MONTHS</span></span></span><a class="headerlink" href="#c.utime_unit.UTIME_MONTHS" title="Link to this definition"></a><br /></dt>
+<dd><p>Months. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.utime_unit.UTIME_YEARS">
+<span class="target" id="group___u_time__types_1ggafdd8746b0455616e8b8a67ca8cae7a53a2d3a58ad1056a3122a075e2f7759f1a3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_YEARS</span></span></span><a class="headerlink" href="#c.utime_unit.UTIME_YEARS" title="Link to this definition"></a><br /></dt>
+<dd><p>Years. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.utime_stamp">
+<span class="target" id="group___u_time__types_1gaed97966f1494b7567bb9ef5ca6b14096"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_stamp</span></span></span><a class="headerlink" href="#c.utime_stamp" title="Link to this definition"></a><br /></dt>
+<dd><p>Timestamp expressed as seconds since January 1 1970, 00:00:00. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.utime_ns">
+<span class="target" id="group___u_time__types_1ga5d56433f7c25602b11ce0dcf0eebc9e4"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_ns</span></span></span><a class="headerlink" href="#c.utime_ns" title="Link to this definition"></a><br /></dt>
+<dd><p>Nanoseconds type, suitable for storing CPU time. </p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_equals">
+<span class="target" id="group___u_time_1ga900f12a84d4fd1ae78cf9873ce4db961"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_equals</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">a</span></span>, <a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_equals" title="Link to this definition"></a><br /></dt>
 <dd><p>Checks whether the specified dates are equal. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong> – First date. </p></li>
 <li><p><strong>b</strong> – Second date. </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the two dates are equal, false otherwise. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime22utime_normalize_to_utcEP5UTimeij">
-<span id="_CPPv3N5UTime22utime_normalize_to_utcEP5UTimeij"></span><span id="_CPPv2N5UTime22utime_normalize_to_utcEP5UTimeij"></span><span id="UTime::utime_normalize_to_utc__UTimeP.i.unsigned"></span><span class="target" id="struct_u_time_1a4a9fd8941114dd2d8e5ef59886256f0a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_normalize_to_utc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">time</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tz_hour</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tz_minute</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5UTime22utime_normalize_to_utcEP5UTimeij" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_normalize_to_utc">
+<span class="target" id="group___u_time_1ga4a9fd8941114dd2d8e5ef59886256f0a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_normalize_to_utc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">tz_hour</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">tz_minute</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_normalize_to_utc" title="Link to this definition"></a><br /></dt>
 <dd><p>Normalizes a date from the specified timezone to UTC. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>time</strong> – Date to normalize. </p></li>
 <li><p><strong>tz_hour</strong> – Timezone offset hours. </p></li>
@@ -123,40 +243,44 @@
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime18utime_to_timestampEPK5UTime">
-<span id="_CPPv3N5UTime18utime_to_timestampEPK5UTime"></span><span id="_CPPv2N5UTime18utime_to_timestampEPK5UTime"></span><span id="UTime::utime_to_timestamp__UTimeCP"></span><span class="target" id="struct_u_time_1a6abf73a17c45a4fb9fa914fb53fb44ba"></span><a class="reference internal" href="#_CPPv411utime_stamp" title="utime_stamp"><span class="n"><span class="pre">utime_stamp</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_to_timestamp</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">time</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5UTime18utime_to_timestampEPK5UTime" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_to_timestamp">
+<span class="target" id="group___u_time_1ga6abf73a17c45a4fb9fa914fb53fb44ba"></span><a class="reference internal" href="#c.utime_stamp" title="utime_stamp"><span class="n"><span class="pre">utime_stamp</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_to_timestamp</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_to_timestamp" title="Link to this definition"></a><br /></dt>
 <dd><p>Converts the specified date into a timestamp. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>time</strong> – Date to convert. </p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Date to convert. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Timestamp corresponding to the date. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime20utime_from_timestampE11utime_stamp">
-<span id="_CPPv3N5UTime20utime_from_timestampE11utime_stamp"></span><span id="_CPPv2N5UTime20utime_from_timestampE11utime_stamp"></span><span id="UTime::utime_from_timestamp__utime_stamp"></span><span class="target" id="struct_u_time_1a187bbff58686e277ddcdb8bb4b4efb4a"></span><a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_from_timestamp</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411utime_stamp" title="utime_stamp"><span class="n"><span class="pre">utime_stamp</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">ts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5UTime20utime_from_timestampE11utime_stamp" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_from_timestamp">
+<span class="target" id="group___u_time_1ga187bbff58686e277ddcdb8bb4b4efb4a"></span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_from_timestamp</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.utime_stamp" title="utime_stamp"><span class="n"><span class="pre">utime_stamp</span></span></a><span class="w"> </span><span class="n"><span class="pre">ts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_from_timestamp" title="Link to this definition"></a><br /></dt>
 <dd><p>Converts the specified timestamp into a date. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts</strong> – Timestamp to convert. </p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> – Timestamp to convert. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Date corresponding to the timestamp. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime9utime_addEP5UTimex10utime_unit">
-<span id="_CPPv3N5UTime9utime_addEP5UTimex10utime_unit"></span><span id="_CPPv2N5UTime9utime_addEP5UTimex10utime_unit"></span><span id="UTime::utime_add__UTimeP.l-l.utime_unit"></span><span class="target" id="struct_u_time_1a7a3389bd42c6488ffe3ce96ebbb5d61f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_add</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">time</span></span>, <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">quantity</span></span>, <a class="reference internal" href="#_CPPv410utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5UTime9utime_addEP5UTimex10utime_unit" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_add">
+<span class="target" id="group___u_time_1ga7a3389bd42c6488ffe3ce96ebbb5d61f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_add</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">quantity</span></span>, <a class="reference internal" href="#c.utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_add" title="Link to this definition"></a><br /></dt>
 <dd><p>Adds a certain time interval to the specified date. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>time</strong> – Date. </p></li>
 <li><p><strong>quantity</strong> – Quantity to add. </p></li>
@@ -166,49 +290,51 @@
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime10utime_diffEPK5UTimePK5UTime10utime_unit">
-<span id="_CPPv3N5UTime10utime_diffEPK5UTimePK5UTime10utime_unit"></span><span id="_CPPv2N5UTime10utime_diffEPK5UTimePK5UTime10utime_unit"></span><span id="UTime::utime_diff__UTimeCP.UTimeCP.utime_unit"></span><span class="target" id="struct_u_time_1ac9828bac89440efbc3a542dc6484e55e"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_diff</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">a</span></span>, <a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">b</span></span>, <a class="reference internal" href="#_CPPv410utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5UTime10utime_diffEPK5UTimePK5UTime10utime_unit" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_diff">
+<span class="target" id="group___u_time_1gac9828bac89440efbc3a542dc6484e55e"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_diff</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">a</span></span>, <a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">b</span></span>, <a class="reference internal" href="#c.utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_diff" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns the difference between the specified dates. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong> – First date. </p></li>
 <li><p><strong>b</strong> – Second date. </p></li>
 <li><p><strong>unit</strong> – Time unit. </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Difference between the specified dates. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime15utime_to_stringEPK5UTime">
-<span id="_CPPv3N5UTime15utime_to_stringEPK5UTime"></span><span id="_CPPv2N5UTime15utime_to_stringEPK5UTime"></span><span id="UTime::utime_to_string__UTimeCP"></span><span class="target" id="struct_u_time_1a55100d490fe7696e943078ca220e9f90"></span><a class="reference internal" href="base.html#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">time</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5UTime15utime_to_stringEPK5UTime" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_to_string">
+<span class="target" id="group___u_time_1ga55100d490fe7696e943078ca220e9f90"></span><a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_to_string" title="Link to this definition"></a><br /></dt>
 <dd><p>Converts the specified date into a human readable string. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You are responsible for deinitializing the returned string. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>time</strong> – Date. </p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Date. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Human readable date string.</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime17utime_from_stringEP5UTimePK7UString">
-<span id="_CPPv3N5UTime17utime_from_stringEP5UTimePK7UString"></span><span id="_CPPv2N5UTime17utime_from_stringEP5UTimePK7UString"></span><span id="UTime::utime_from_string__UTimeP.UStringCP"></span><span class="target" id="struct_u_time_1a55145b51914d2187851de86c5293ae77"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_from_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">time</span></span>, <a class="reference internal" href="base.html#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5UTime17utime_from_stringEP5UTimePK7UString" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_from_string">
+<span class="target" id="group___u_time_1ga55145b51914d2187851de86c5293ae77"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_from_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_from_string" title="Link to this definition"></a><br /></dt>
 <dd><p>Parses a date from the specified string. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The string must be in Y_M_D_H_M_S format, where each component is separated by any non-digit character. An optional timezone specifier can also be specified, in which case the date is automatically normalized to UTC. Examples of equivalent dates:<ul class="simple">
+<p>The string must be in <code class="docutils literal notranslate"><span class="pre">Y_M_D_H_M_S</span></code> format, where each component is separated by any non-digit character. An optional timezone specifier can also be specified, in which case the date is automatically normalized to UTC. Examples of equivalent dates:<ul class="simple">
 <li><p>1990/02/14 13:30:00</p></li>
 <li><p>1990-02-14T13:30:00Z</p></li>
 <li><p>1990 02 14 14.30.00+1:00 </p></li>
@@ -216,237 +342,126 @@
 </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>time</strong> – <strong>[out]</strong> Date. </p></li>
 <li><p><strong>string</strong> – Date string. </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the string was parsed without errors, false otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime4yearE">
-<span id="_CPPv3N5UTime4yearE"></span><span id="_CPPv2N5UTime4yearE"></span><span id="UTime::year__l-l"></span><span class="target" id="struct_u_time_1aef9dd5d7f034b23403b94c38fb01f2bd"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">year</span></span></span><a class="headerlink" href="#_CPPv4N5UTime4yearE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Year. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime5monthE">
-<span id="_CPPv3N5UTime5monthE"></span><span id="_CPPv2N5UTime5monthE"></span><span id="UTime::month__unsigned"></span><span class="target" id="struct_u_time_1a513540ad2dddee6331df5fb853c060d2"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">month</span></span></span><a class="headerlink" href="#_CPPv4N5UTime5monthE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Month. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime3dayE">
-<span id="_CPPv3N5UTime3dayE"></span><span id="_CPPv2N5UTime3dayE"></span><span id="UTime::day__unsigned"></span><span class="target" id="struct_u_time_1a001c621f5bd2a296dd4fbc6920aec5ec"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">day</span></span></span><a class="headerlink" href="#_CPPv4N5UTime3dayE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Day. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime4hourE">
-<span id="_CPPv3N5UTime4hourE"></span><span id="_CPPv2N5UTime4hourE"></span><span id="UTime::hour__unsigned"></span><span class="target" id="struct_u_time_1a20ea94d042a0266c57b3903e98f2ee20"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hour</span></span></span><a class="headerlink" href="#_CPPv4N5UTime4hourE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Hour. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime6minuteE">
-<span id="_CPPv3N5UTime6minuteE"></span><span id="_CPPv2N5UTime6minuteE"></span><span id="UTime::minute__unsigned"></span><span class="target" id="struct_u_time_1a5afc4ec9619c71788cea26255ea6b103"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">minute</span></span></span><a class="headerlink" href="#_CPPv4N5UTime6minuteE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Minute. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5UTime6secondE">
-<span id="_CPPv3N5UTime6secondE"></span><span id="_CPPv2N5UTime6secondE"></span><span id="UTime::second__unsigned"></span><span class="target" id="struct_u_time_1ad59fac3c3ed91fe3db0ef85d3e365ce7"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">second</span></span></span><a class="headerlink" href="#_CPPv4N5UTime6secondE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Second. </p>
-</dd></dl>
-
-</div>
-</dd></dl>
-
-<dl class="cpp enum">
-<dt class="sig sig-object cpp" id="_CPPv410utime_unit">
-<span id="_CPPv310utime_unit"></span><span id="_CPPv210utime_unit"></span><span class="target" id="group__time_1gafdd8746b0455616e8b8a67ca8cae7a53"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_unit</span></span></span><a class="headerlink" href="#_CPPv410utime_unit" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Time units. </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N10utime_unit17UTIME_NANOSECONDSE">
-<span id="_CPPv3N10utime_unit17UTIME_NANOSECONDSE"></span><span id="_CPPv2N10utime_unit17UTIME_NANOSECONDSE"></span><span class="target" id="group__time_1ggafdd8746b0455616e8b8a67ca8cae7a53a56280376b5e4b683951bdddce5ad1474"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_NANOSECONDS</span></span></span><a class="headerlink" href="#_CPPv4N10utime_unit17UTIME_NANOSECONDSE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Nanoseconds. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N10utime_unit18UTIME_MICROSECONDSE">
-<span id="_CPPv3N10utime_unit18UTIME_MICROSECONDSE"></span><span id="_CPPv2N10utime_unit18UTIME_MICROSECONDSE"></span><span class="target" id="group__time_1ggafdd8746b0455616e8b8a67ca8cae7a53a898fa45c4dd8bc3f393e6dc460ef1027"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_MICROSECONDS</span></span></span><a class="headerlink" href="#_CPPv4N10utime_unit18UTIME_MICROSECONDSE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Microseconds. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N10utime_unit18UTIME_MILLISECONDSE">
-<span id="_CPPv3N10utime_unit18UTIME_MILLISECONDSE"></span><span id="_CPPv2N10utime_unit18UTIME_MILLISECONDSE"></span><span class="target" id="group__time_1ggafdd8746b0455616e8b8a67ca8cae7a53aaf9f53f4c83bf27e93a3513daf57dea5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_MILLISECONDS</span></span></span><a class="headerlink" href="#_CPPv4N10utime_unit18UTIME_MILLISECONDSE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Milliseconds. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N10utime_unit13UTIME_SECONDSE">
-<span id="_CPPv3N10utime_unit13UTIME_SECONDSE"></span><span id="_CPPv2N10utime_unit13UTIME_SECONDSE"></span><span class="target" id="group__time_1ggafdd8746b0455616e8b8a67ca8cae7a53ae972f6229bb3566c4c60fe518c0868d6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_SECONDS</span></span></span><a class="headerlink" href="#_CPPv4N10utime_unit13UTIME_SECONDSE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Seconds. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N10utime_unit13UTIME_MINUTESE">
-<span id="_CPPv3N10utime_unit13UTIME_MINUTESE"></span><span id="_CPPv2N10utime_unit13UTIME_MINUTESE"></span><span class="target" id="group__time_1ggafdd8746b0455616e8b8a67ca8cae7a53a5ea15026a80543162f3ba1abf04076bf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_MINUTES</span></span></span><a class="headerlink" href="#_CPPv4N10utime_unit13UTIME_MINUTESE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Minutes. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N10utime_unit11UTIME_HOURSE">
-<span id="_CPPv3N10utime_unit11UTIME_HOURSE"></span><span id="_CPPv2N10utime_unit11UTIME_HOURSE"></span><span class="target" id="group__time_1ggafdd8746b0455616e8b8a67ca8cae7a53ac47bbbb4550f80b27d23943839982530"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_HOURS</span></span></span><a class="headerlink" href="#_CPPv4N10utime_unit11UTIME_HOURSE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Hours. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N10utime_unit10UTIME_DAYSE">
-<span id="_CPPv3N10utime_unit10UTIME_DAYSE"></span><span id="_CPPv2N10utime_unit10UTIME_DAYSE"></span><span class="target" id="group__time_1ggafdd8746b0455616e8b8a67ca8cae7a53a798358d08b1519e064afae4b7cf7e2ba"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_DAYS</span></span></span><a class="headerlink" href="#_CPPv4N10utime_unit10UTIME_DAYSE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Days. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N10utime_unit12UTIME_MONTHSE">
-<span id="_CPPv3N10utime_unit12UTIME_MONTHSE"></span><span id="_CPPv2N10utime_unit12UTIME_MONTHSE"></span><span class="target" id="group__time_1ggafdd8746b0455616e8b8a67ca8cae7a53a3985ffd8a41b6d6a471fb3efc333ec69"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_MONTHS</span></span></span><a class="headerlink" href="#_CPPv4N10utime_unit12UTIME_MONTHSE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Months. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N10utime_unit11UTIME_YEARSE">
-<span id="_CPPv3N10utime_unit11UTIME_YEARSE"></span><span id="_CPPv2N10utime_unit11UTIME_YEARSE"></span><span class="target" id="group__time_1ggafdd8746b0455616e8b8a67ca8cae7a53a2d3a58ad1056a3122a075e2f7759f1a3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_YEARS</span></span></span><a class="headerlink" href="#_CPPv4N10utime_unit11UTIME_YEARSE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Years. </p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv411utime_stamp">
-<span id="_CPPv311utime_stamp"></span><span id="_CPPv211utime_stamp"></span><span id="utime_stamp"></span><span class="target" id="group__time_1gaed97966f1494b7567bb9ef5ca6b14096"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_stamp</span></span></span><a class="headerlink" href="#_CPPv411utime_stamp" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Timestamp expressed as seconds since January 1 1970, 00:00:00. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv48utime_ns">
-<span id="_CPPv38utime_ns"></span><span id="_CPPv28utime_ns"></span><span id="utime_ns"></span><span class="target" id="group__time_1ga5d56433f7c25602b11ce0dcf0eebc9e4"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_ns</span></span></span><a class="headerlink" href="#_CPPv48utime_ns" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Nanoseconds type, suitable for storing CPU time. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv418utime_is_leap_yearx">
-<span id="_CPPv318utime_is_leap_yearx"></span><span id="_CPPv218utime_is_leap_yearx"></span><span id="utime_is_leap_year__l-l"></span><span class="target" id="group__time_1gadc230d5dc5ee0af23dc4d72036dddfbf"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_is_leap_year</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">year</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418utime_is_leap_yearx" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_is_leap_year">
+<span class="target" id="group___u_time_1ga1dde4ee06d3e10f29fc439355d3694f8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_is_leap_year</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">year</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_is_leap_year" title="Link to this definition"></a><br /></dt>
 <dd><p>Checks whether the specified year is a leap year. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>year</strong> – Year. </p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> – Year. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the specified year is a leap year, false otherwise. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv419utime_days_in_monthxj">
-<span id="_CPPv319utime_days_in_monthxj"></span><span id="_CPPv219utime_days_in_monthxj"></span><span id="utime_days_in_month__l-l.unsigned"></span><span class="target" id="group__time_1gaa4f9c551fb2cd82df48f7015aa64902a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_days_in_month</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">year</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">month</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419utime_days_in_monthxj" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_days_in_month">
+<span class="target" id="group___u_time_1gae8e686ac147a93faa212b1ccdfde0dcb"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_days_in_month</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">year</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">month</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_days_in_month" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns the number of days in the specified month. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>year</strong> – Year. </p></li>
 <li><p><strong>month</strong> – Month. </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Number of days in the specified month. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv419utime_get_timestampv">
-<span id="_CPPv319utime_get_timestampv"></span><span id="_CPPv219utime_get_timestampv"></span><span id="utime_get_timestamp__void"></span><span class="target" id="group__time_1ga99bbafdd60453810de7618046b24089b"></span><a class="reference internal" href="#_CPPv411utime_stamp" title="utime_stamp"><span class="n"><span class="pre">utime_stamp</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_get_timestamp</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419utime_get_timestampv" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_get_timestamp">
+<span class="target" id="group___u_time_1ga99bbafdd60453810de7618046b24089b"></span><a class="reference internal" href="#c.utime_stamp" title="utime_stamp"><span class="n"><span class="pre">utime_stamp</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_get_timestamp</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_get_timestamp" title="Link to this definition"></a><br /></dt>
 <dd><p>Retrieves a timestamp expressed as seconds since January 1 1970, 00:00:00. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Timestamp in days since January 1 1970, 00:00:00. </p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Timestamp. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv412utime_get_nsv">
-<span id="_CPPv312utime_get_nsv"></span><span id="_CPPv212utime_get_nsv"></span><span id="utime_get_ns__void"></span><span class="target" id="group__time_1ga3e1b9c969f2b020d9f234f78ea3a3cbd"></span><a class="reference internal" href="#_CPPv48utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_get_ns</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412utime_get_nsv" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_get_ns">
+<span class="target" id="group___u_time_1ga3e1b9c969f2b020d9f234f78ea3a3cbd"></span><a class="reference internal" href="#c.utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_get_ns</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_get_ns" title="Link to this definition"></a><br /></dt>
 <dd><p>Retrieves a timestamp in nanoseconds. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The timestamp is suitable for benchmarking purposes. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Timestamp in nanoseconds.</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv424utime_interval_unit_auto8utime_ns">
-<span id="_CPPv324utime_interval_unit_auto8utime_ns"></span><span id="_CPPv224utime_interval_unit_auto8utime_ns"></span><span id="utime_interval_unit_auto__utime_ns"></span><span class="target" id="group__time_1ga9c666e0f641536d0bed0693bf9a0ff71"></span><a class="reference internal" href="#_CPPv410utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_interval_unit_auto</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424utime_interval_unit_auto8utime_ns" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_interval_unit_auto">
+<span class="target" id="group___u_time_1ga9c666e0f641536d0bed0693bf9a0ff71"></span><a class="reference internal" href="#c.utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_interval_unit_auto</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_interval_unit_auto" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns an appropriate time unit for the specified time interval. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>t</strong> – Time interval in nanoseconds. </p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – Time interval in nanoseconds. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Appropriate time unit. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv422utime_interval_convert8utime_ns10utime_unit">
-<span id="_CPPv322utime_interval_convert8utime_ns10utime_unit"></span><span id="_CPPv222utime_interval_convert8utime_ns10utime_unit"></span><span id="utime_interval_convert__utime_ns.utime_unit"></span><span class="target" id="group__time_1ga707417cb71f5c72ff46c4df56a29a411"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_interval_convert</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="#_CPPv410utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422utime_interval_convert8utime_ns10utime_unit" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_interval_convert">
+<span class="target" id="group___u_time_1ga707417cb71f5c72ff46c4df56a29a411"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_interval_convert</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <a class="reference internal" href="#c.utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_interval_convert" title="Link to this definition"></a><br /></dt>
 <dd><p>Converts a time interval according to the specified time unit. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>t</strong> – Time interval. </p></li>
 <li><p><strong>unit</strong> – Time unit. </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Converted time interval. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv424utime_interval_to_string8utime_ns10utime_unit">
-<span id="_CPPv324utime_interval_to_string8utime_ns10utime_unit"></span><span id="_CPPv224utime_interval_to_string8utime_ns10utime_unit"></span><span id="utime_interval_to_string__utime_ns.utime_unit"></span><span class="target" id="group__time_1ga9f9b6d78f43751985b9be7e69f4c6baf"></span><a class="reference internal" href="base.html#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_interval_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="#_CPPv410utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424utime_interval_to_string8utime_ns10utime_unit" title="Permalink to this definition"></a><br /></dt>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_interval_to_string">
+<span class="target" id="group___u_time_1ga9f9b6d78f43751985b9be7e69f4c6baf"></span><a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_interval_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <a class="reference internal" href="#c.utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_interval_to_string" title="Link to this definition"></a><br /></dt>
 <dd><p>Converts a time interval into a string formatted according to the specified time unit. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You are responsible for deinitializing the returned string. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>t</strong> – Time interval in nanoseconds. </p></li>
 <li><p><strong>unit</strong> – Time unit. </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Time interval in string form.</p>
 </dd>
 </dl>
@@ -458,14 +473,14 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="macros.html" class="btn btn-neutral float-left" title="Macros" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="collections.html" class="btn btn-neutral float-right" title="Collections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="stream.html" class="btn btn-neutral float-left" title="Streams" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rand.html" class="btn btn-neutral float-right" title="Random generators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2023, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
   </div>
 
    

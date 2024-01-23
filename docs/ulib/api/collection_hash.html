@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hash table &mdash; uLib 0.2.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=37614e8c"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Streams" href="stream.html" />
+    <link rel="prev" title="Vector" href="collection_vector.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uLib
+          </a>
+              <div class="version">
+                0.2.5
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="number.html">Numeric types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="collection.html">Collections</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="collection_vector.html">Vector</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hash table</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#builtin-types">Builtin types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-new-hash-table-types">Defining new hash table types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-hash-table-operations">Common hash table operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hash-maps">Hash maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hash-sets">Hash sets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="collection.html">Collections</a></li>
+      <li class="breadcrumb-item active">Hash table</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hash-table">
+<h1>Hash table<a class="headerlink" href="#hash-table" title="Link to this heading"></a></h1>
+<section id="types">
+<h2>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h2>
+<dl class="c type type-placeholder">
+<dt class="sig sig-object c" id="c.UHash_T">
+<span class="target" id="uhash_8h_1a19f89a6b7af3cc6a1907f776ec9cc4fb"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHash_T</span></span></span><a class="headerlink" href="#c.UHash_T" title="Link to this definition"></a><br /></dt>
+<dd><p>Generic hash table type. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a placeholder for documentation purposes. You should use the <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code> macro to reference a specific hash table type. </p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHash">
+<span class="target" id="uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"></span><span class="sig-name descname"><span class="n"><span class="pre">UHash</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHash" title="Link to this definition"></a><br /></dt>
+<dd><p>References a specific hash table type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c type type-placeholder">
+<dt class="sig sig-object c" id="c.uhash_T_key">
+<span class="target" id="uhash_8h_1a3a37dcb7a415d426d223f3e3d0d32a86"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">HashTableKeyType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_T_key</span></span></span><a class="headerlink" href="#c.uhash_T_key" title="Link to this definition"></a><br /></dt>
+<dd><p>Generic hash table key type. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a placeholder for documentation purposes. </p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHashKey">
+<span class="target" id="uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"></span><span class="sig-name descname"><span class="n"><span class="pre">UHashKey</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHashKey" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash table key type. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While you can use this macro to reference the key type of a <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code>, it is usually better to directly use the type specified when defining the hash table type. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c type type-placeholder">
+<dt class="sig sig-object c" id="c.uhash_T_val">
+<span class="target" id="uhash_8h_1ab9ffb98232991ce65f33c4b3fb37fd8a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">HashTableValueType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_T_val</span></span></span><a class="headerlink" href="#c.uhash_T_val" title="Link to this definition"></a><br /></dt>
+<dd><p>Generic hash table value type. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a placeholder for documentation purposes. </p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHashVal">
+<span class="target" id="uhash_8h_1a2355f86ce732f0fa0d6f14a3732c55df"></span><span class="sig-name descname"><span class="n"><span class="pre">UHashVal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHashVal" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash table value type. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While you can use this macro to reference the value type of a <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code>, it is usually better to directly use the type specified when defining the hash table type. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.uhash_decl">
+<span class="target" id="uhash_8h_1a6db3174e9ce4a0d5284a851967fc81bf"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_decl</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_decl" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash table type forward declaration. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c enum">
+<dt class="sig sig-object c" id="c.uhash_ret">
+<span class="target" id="uhash_8h_1a18fde8009f3b280331f6c714f474fae2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_ret</span></span></span><a class="headerlink" href="#c.uhash_ret" title="Link to this definition"></a><br /></dt>
+<dd><p>Return codes. </p>
+<p><em>Values:</em></p>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.uhash_ret.UHASH_ERR">
+<span class="target" id="uhash_8h_1a18fde8009f3b280331f6c714f474fae2a1f659c29b73d184c73b6d46a41c67d4d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_ERR</span></span></span><a class="headerlink" href="#c.uhash_ret.UHASH_ERR" title="Link to this definition"></a><br /></dt>
+<dd><p>The operation failed. </p>
+<p>As of right now, it can only happen if memory cannot be allocated. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.uhash_ret.UHASH_OK">
+<span class="target" id="uhash_8h_1a18fde8009f3b280331f6c714f474fae2a8fda1e8c5ab9544cc04e708a50c0012d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_OK</span></span></span><a class="headerlink" href="#c.uhash_ret.UHASH_OK" title="Link to this definition"></a><br /></dt>
+<dd><p>The operation succeeded. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.uhash_ret.UHASH_PRESENT">
+<span class="target" id="uhash_8h_1a18fde8009f3b280331f6c714f474fae2a54d4083f6839aa04d03430a1df2fd7a4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_PRESENT</span></span></span><a class="headerlink" href="#c.uhash_ret.UHASH_PRESENT" title="Link to this definition"></a><br /></dt>
+<dd><p>The key is already present. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.uhash_ret.UHASH_INSERTED">
+<span class="target" id="uhash_8h_1a18fde8009f3b280331f6c714f474fae2aab4872074cdcc9ca99a6d48431a1005f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_INSERTED</span></span></span><a class="headerlink" href="#c.uhash_ret.UHASH_INSERTED" title="Link to this definition"></a><br /></dt>
+<dd><p>The key has been inserted (it was absent). </p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="builtin-types">
+<h2>Builtin types<a class="headerlink" href="#builtin-types" title="Link to this heading"></a></h2>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UHash_ulib_int">
+<span class="target" id="group___u_hash__builtin_1gad10b98297cfcca31a3ba13ffea2349e1"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UHash_ulib_int" title="UHash_ulib_int"><span class="n"><span class="pre">UHash_ulib_int</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHash_ulib_int</span></span></span><a class="headerlink" href="#c.UHash_ulib_int" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code> with <code class="docutils literal notranslate"><a class="reference internal" href="number.html#unumber_8h_1ac7fa5fad3bc621932f47cfa4b3e9714b"><span class="std std-ref"><span class="pre">ulib_int</span></span></a></code> keys and <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ustd_8h_1a665d250ee64a7ce81d28a13e790fa62d"><span class="std std-ref"><span class="pre">ulib_ptr</span></span></a></code> values. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UHash_ulib_uint">
+<span class="target" id="group___u_hash__builtin_1ga53f817a4966bcb2887adec2eade32151"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UHash_ulib_uint" title="UHash_ulib_uint"><span class="n"><span class="pre">UHash_ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHash_ulib_uint</span></span></span><a class="headerlink" href="#c.UHash_ulib_uint" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code> with <code class="docutils literal notranslate"><a class="reference internal" href="number.html#unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> keys and <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ustd_8h_1a665d250ee64a7ce81d28a13e790fa62d"><span class="std std-ref"><span class="pre">ulib_ptr</span></span></a></code> values. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UHash_ulib_ptr">
+<span class="target" id="group___u_hash__builtin_1ga07cfa881b7b7ec78b1aead8feea9cedf"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UHash_ulib_ptr" title="UHash_ulib_ptr"><span class="n"><span class="pre">UHash_ulib_ptr</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHash_ulib_ptr</span></span></span><a class="headerlink" href="#c.UHash_ulib_ptr" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code> with <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ustd_8h_1a665d250ee64a7ce81d28a13e790fa62d"><span class="std std-ref"><span class="pre">ulib_ptr</span></span></a></code> keys and <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ustd_8h_1a665d250ee64a7ce81d28a13e790fa62d"><span class="std std-ref"><span class="pre">ulib_ptr</span></span></a></code> values. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UHash_UString">
+<span class="target" id="group___u_hash__builtin_1ga27bfda5f2e2e442d9f62618a533d20de"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UHash_UString" title="UHash_UString"><span class="n"><span class="pre">UHash_UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UHash_UString</span></span></span><a class="headerlink" href="#c.UHash_UString" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code> with <code class="docutils literal notranslate"><a class="reference internal" href="string.html#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code> keys and <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ustd_8h_1a665d250ee64a7ce81d28a13e790fa62d"><span class="std std-ref"><span class="pre">ulib_ptr</span></span></a></code> values. </p>
+</dd></dl>
+
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_INDEX_MISSING">
+<span class="target" id="group___u_hash__constants_1ga669ddd4845a8702adb44391568ed9161"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_INDEX_MISSING</span></span></span><a class="headerlink" href="#c.UHASH_INDEX_MISSING" title="Link to this definition"></a><br /></dt>
+<dd><p>Index returned when a key is not present in the hash table. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_VAL_IGNORE">
+<span class="target" id="group___u_hash__constants_1ga07105524e18ff48d47b25467cc87912a"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_VAL_IGNORE</span></span></span><a class="headerlink" href="#c.UHASH_VAL_IGNORE" title="Link to this definition"></a><br /></dt>
+<dd><p>Use it as the value type in declarations if you’re only going to use the hash table as a set. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_MAX_LOAD">
+<span class="target" id="group___u_hash__constants_1ga9a4e0c1e370f9764f5125c3a24c32de2"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_MAX_LOAD</span></span></span><a class="headerlink" href="#c.UHASH_MAX_LOAD" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash table maximum load factor. </p>
+</dd></dl>
+
+</section>
+<section id="defining-new-hash-table-types">
+<h2>Defining new hash table types<a class="headerlink" href="#defining-new-hash-table-types" title="Link to this heading"></a></h2>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_DECL">
+<span class="target" id="group___u_hash__definitions_1gad2547706236cb663ecc9e696c59579ad"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_DECL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">uh_key</span></span>, <span class="n"><span class="pre">uh_val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHASH_DECL" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new hash table type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+<li><p><strong>uh_key</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the keys. </p></li>
+<li><p><strong>uh_val</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the values. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_DECL_SPEC">
+<span class="target" id="group___u_hash__definitions_1gaf236697045af89c935f3952eea4af8c0"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_DECL_SPEC</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">uh_key</span></span>, <span class="n"><span class="pre">uh_val</span></span>, <span class="n"><span class="pre">SPEC</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHASH_DECL_SPEC" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new hash table type, prepending a specifier to the generated declarations. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+<li><p><strong>uh_key</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the keys. </p></li>
+<li><p><strong>uh_val</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the values. </p></li>
+<li><p><strong>SPEC</strong> – <code class="docutils literal notranslate"><span class="pre">specifier</span></code> Specifier. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_DECL_PI">
+<span class="target" id="group___u_hash__definitions_1ga14b1d98b0852bc9f9da4c537fb102ad6"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_DECL_PI</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">uh_key</span></span>, <span class="n"><span class="pre">uh_val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHASH_DECL_PI" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new hash table type with per-instance hash and equality functions. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+<li><p><strong>uh_key</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the keys. </p></li>
+<li><p><strong>uh_val</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the values. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_DECL_PI_SPEC">
+<span class="target" id="group___u_hash__definitions_1ga4359e0a334cefe30616d914ed1b80768"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_DECL_PI_SPEC</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">uh_key</span></span>, <span class="n"><span class="pre">uh_val</span></span>, <span class="n"><span class="pre">SPEC</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHASH_DECL_PI_SPEC" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new hash table type with per-instance hash and equality functions, prepending a specifier to the generated declarations. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+<li><p><strong>uh_key</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the keys. </p></li>
+<li><p><strong>uh_val</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the values. </p></li>
+<li><p><strong>SPEC</strong> – <code class="docutils literal notranslate"><span class="pre">specifier</span></code> Specifier. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_IMPL">
+<span class="target" id="group___u_hash__definitions_1gaa7f2714b7c4d5d6c46bfef37aa9a9199"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_IMPL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">hash_func</span></span>, <span class="n"><span class="pre">equal_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHASH_IMPL" title="Link to this definition"></a><br /></dt>
+<dd><p>Implements a previously declared hash table type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+<li><p><strong>hash_func</strong> – <code class="docutils literal notranslate"><span class="pre">(</span><a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">)</span> <span class="pre">-&gt;</span> <a class="reference internal" href="number.html#unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> Hash function or expression. </p></li>
+<li><p><strong>equal_func</strong> – <code class="docutils literal notranslate"><span class="pre">(</span><a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">,</span> <a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Equality function or expression. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_IMPL_PI">
+<span class="target" id="group___u_hash__definitions_1gab5602257d4f35ccf3b9f9279df86bf38"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_IMPL_PI</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">default_hfunc</span></span>, <span class="n"><span class="pre">default_efunc</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHASH_IMPL_PI" title="Link to this definition"></a><br /></dt>
+<dd><p>Implements a previously declared hash table type with per-instance hash and equality functions. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+<li><p><strong>default_hfunc</strong> – <code class="docutils literal notranslate"><span class="pre">(</span><a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">)</span> <span class="pre">-&gt;</span> <a class="reference internal" href="number.html#unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> Hash function. </p></li>
+<li><p><strong>default_efunc</strong> – <code class="docutils literal notranslate"><span class="pre">(</span><a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">,</span> <a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Equality function. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_INIT">
+<span class="target" id="group___u_hash__definitions_1ga3d312795f4db52c214077d2dce536d00"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_INIT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">uh_key</span></span>, <span class="n"><span class="pre">uh_val</span></span>, <span class="n"><span class="pre">hash_func</span></span>, <span class="n"><span class="pre">equal_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHASH_INIT" title="Link to this definition"></a><br /></dt>
+<dd><p>Defines a new static hash table type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+<li><p><strong>uh_key</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the keys. </p></li>
+<li><p><strong>uh_val</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the values. </p></li>
+<li><p><strong>hash_func</strong> – <code class="docutils literal notranslate"><span class="pre">(</span><a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">)</span> <span class="pre">-&gt;</span> <a class="reference internal" href="number.html#unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> Hash function or expression. </p></li>
+<li><p><strong>equal_func</strong> – <code class="docutils literal notranslate"><span class="pre">(</span><a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">,</span> <a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Equality function or expression. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UHASH_INIT_PI">
+<span class="target" id="group___u_hash__definitions_1ga4d5cc328a6d0b646c30440ad03f80517"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_INIT_PI</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">uh_key</span></span>, <span class="n"><span class="pre">uh_val</span></span>, <span class="n"><span class="pre">default_hfunc</span></span>, <span class="n"><span class="pre">default_efunc</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UHASH_INIT_PI" title="Link to this definition"></a><br /></dt>
+<dd><p>Defines a new static hash table type with per-instance hash and equality functions. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+<li><p><strong>uh_key</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the keys. </p></li>
+<li><p><strong>uh_val</strong> – <code class="docutils literal notranslate"><span class="pre">type</span></code> Type of the values. </p></li>
+<li><p><strong>default_hfunc</strong> – <code class="docutils literal notranslate"><span class="pre">(</span><a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">)</span> <span class="pre">-&gt;</span> <a class="reference internal" href="number.html#unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> Hash function. </p></li>
+<li><p><strong>default_efunc</strong> – <code class="docutils literal notranslate"><span class="pre">(</span><a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">,</span> <a class="reference internal" href="#uhash_8h_1af6d3ef7bc324e1cd3b4c910ac95797a8"><span class="std std-ref"><span class="pre">UHashKey(T)</span></span></a><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Equality function. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="common-hash-table-operations">
+<h2>Common hash table operations<a class="headerlink" href="#common-hash-table-operations" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_identical">
+<span class="target" id="group___u_hash__common_1gaf0e9627922f3a4f4b0b6400472af0653"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_identical</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_identical" title="Link to this definition"></a><br /></dt>
+<dd><p>Identity function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – LHS of the identity. </p></li>
+<li><p><strong>b</strong> – RHS of the identity. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a == b </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_str_equals">
+<span class="target" id="group___u_hash__common_1ga251dd18ff484acbb90127312a5e1923c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_str_equals</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">a</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_str_equals" title="Link to this definition"></a><br /></dt>
+<dd><p>Equality function for strings. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – LHS of the equality relation (NULL terminated string). </p></li>
+<li><p><strong>b</strong> – RHS of the equality relation (NULL terminated string). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if a is equal to b, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_int8_hash">
+<span class="target" id="group___u_hash__common_1ga991cb1074ee91532dbf83abd9063c4db"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_int8_hash</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_int8_hash" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash function for 8 bit integers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hash value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_int16_hash">
+<span class="target" id="group___u_hash__common_1ga715a77f635e70449623542e5123b0906"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_int16_hash</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_int16_hash" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash function for 16 bit integers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hash value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_int32_hash">
+<span class="target" id="group___u_hash__common_1ga8a53b3fd8953e9a64c23c5f56123eeb6"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_int32_hash</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_int32_hash" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash function for 32 bit integers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hash value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_int64_hash">
+<span class="target" id="group___u_hash__common_1ga5c69122cfd232cf015fbb72509bb7747"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_int64_hash</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_int64_hash" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash function for 64 bit integers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hash value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_str_hash">
+<span class="target" id="group___u_hash__common_1ga2006272b42451b9347240ce8f4fe21e4"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_str_hash</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_str_hash" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash function for strings. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – Pointer to a NULL-terminated string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hash value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_ptr_hash">
+<span class="target" id="group___u_hash__common_1ga1b03e5e583e73d017abeaacfe1429a5f"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_ptr_hash</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_ptr_hash" title="Link to this definition"></a><br /></dt>
+<dd><p>Hash function for pointers. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The pointer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hash value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_combine_hash">
+<span class="target" id="group___u_hash__common_1gab9f3d40d8884a63475d789edb9e17b9d"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_combine_hash</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">hash_1</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">hash_2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_combine_hash" title="Link to this definition"></a><br /></dt>
+<dd><p>Combines two hashes. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hash_1</strong> – First hash. </p></li>
+<li><p><strong>hash_2</strong> – Second hash. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hash value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_deinit">
+<span class="target" id="group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_deinit" title="Link to this definition"></a><br /></dt>
+<dd><p>Deinitializes the specified hash table. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table to deinitialize. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_move">
+<span class="target" id="group___u_hash__common_1gaed00a6006a7f680e729aa38a86bcd220"></span><a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_move</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_move" title="Link to this definition"></a><br /></dt>
+<dd><p>Invalidates the hash table and returns its storage. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table whose storage should be returned. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hash table storage.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_copy">
+<span class="target" id="group___u_hash__common_1gaf9a24554188993f8da25cc3313f1ac91"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_copy</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_copy" title="Link to this definition"></a><br /></dt>
+<dd><p>Copies the specified hash table. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>src</strong> – Hash table to copy. </p></li>
+<li><p><strong>dest</strong> – Hash table to copy into. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a8fda1e8c5ab9544cc04e708a50c0012d"><span class="std std-ref"><span class="pre">UHASH_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a1f659c29b73d184c73b6d46a41c67d4d"><span class="std std-ref"><span class="pre">UHASH_ERR</span></span></a></code> on error. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_copy_as_set">
+<span class="target" id="group___u_hash__common_1gac79e9f0c2b12280e0d1dad826f4f56d1"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_copy_as_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_copy_as_set" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a new hash set obtained by copying the keys of another hash table. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>src</strong> – Hash table to copy. </p></li>
+<li><p><strong>dest</strong> – Hash table to copy into. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a8fda1e8c5ab9544cc04e708a50c0012d"><span class="std std-ref"><span class="pre">UHASH_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a1f659c29b73d184c73b6d46a41c67d4d"><span class="std std-ref"><span class="pre">UHASH_ERR</span></span></a></code> on error. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_resize">
+<span class="target" id="group___u_hash__common_1gafb8c49baa97e0586e75273ed0ca31636"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_resize</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_resize" title="Link to this definition"></a><br /></dt>
+<dd><p>Resizes the specified hash table. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table to resize. </p></li>
+<li><p><strong>s</strong> – Hash table size. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a8fda1e8c5ab9544cc04e708a50c0012d"><span class="std std-ref"><span class="pre">UHASH_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a1f659c29b73d184c73b6d46a41c67d4d"><span class="std std-ref"><span class="pre">UHASH_ERR</span></span></a></code> on error. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_is_map">
+<span class="target" id="group___u_hash__common_1ga2f45c04cb81506ed6d81703124e4cadb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_is_map</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_is_map" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the hash table is a map. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the hash table is a map, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_put">
+<span class="target" id="group___u_hash__common_1ga1c6a52b62f1aa4c97bc1cc9915a72a82"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_put</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_put" title="Link to this definition"></a><br /></dt>
+<dd><p>Inserts a key into the specified hash table. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – Key to insert. </p></li>
+<li><p><strong>i</strong> – <strong>[out]</strong> Index of the inserted element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_get">
+<span class="target" id="group___u_hash__common_1gaa196549032247fa3ad8c4b4765fc0691"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_get" title="Link to this definition"></a><br /></dt>
+<dd><p>Retrieves the index of the bucket associated with the specified key. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – Key whose index should be retrieved. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the key, or <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__constants_1ga669ddd4845a8702adb44391568ed9161"><span class="std std-ref"><span class="pre">UHASH_INDEX_MISSING</span></span></a></code> if it is absent. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_delete">
+<span class="target" id="group___u_hash__common_1ga735e6c86fa21acc2ddb73a1a7c27c570"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_delete</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_delete" title="Link to this definition"></a><br /></dt>
+<dd><p>Deletes the bucket at the specified index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – Index of the bucket to delete. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_contains">
+<span class="target" id="group___u_hash__common_1ga4391ddf704c91463364a799495a932bd"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_contains</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_contains" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the hash table contains the specified key. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – Key to test. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the hash table contains the specified key, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_exists">
+<span class="target" id="group___u_hash__common_1ga31e4bd88226d335b4d865494348181ef"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_exists</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_exists" title="Link to this definition"></a><br /></dt>
+<dd><p>Tests whether a bucket contains data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>x</strong> – Index of the bucket to test. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the bucket contains data, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_key">
+<span class="target" id="group___u_hash__common_1ga75127ee228eca249b5887aa544f90c85"></span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_key</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_key" title="Link to this definition"></a><br /></dt>
+<dd><p>Retrieves the key at the specified index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>x</strong> – Index of the bucket whose key should be retrieved. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Key. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_value">
+<span class="target" id="group___u_hash__common_1gad0e8d803169f1d052ac45a6f74f6606c"></span><a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_value</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_value" title="Link to this definition"></a><br /></dt>
+<dd><p>Retrieves the value at the specified index. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Undefined behavior if used on hash sets. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>x</strong> – Index of the bucket whose value should be retrieved. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_size">
+<span class="target" id="group___u_hash__common_1ga7cb64a0797b4d7ec14b6b3e3a731265c"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_size</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_size" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the maximum number of elements that can be held by the hash table. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Maximum number of elements. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_count">
+<span class="target" id="group___u_hash__common_1ga952cfd34a0f83be9d4588a1c93195cf9"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_count</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_count" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the number of elements in the hash table. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of elements. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_clear">
+<span class="target" id="group___u_hash__common_1ga320dec57906e7c750e3ea42b832246e6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_clear</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_clear" title="Link to this definition"></a><br /></dt>
+<dd><p>Resets the specified hash table without deallocating it. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_next">
+<span class="target" id="group___u_hash__common_1ga81624667f8c35b3a7010e7665f08d2d2"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_next</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_next" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the first bucket starting from (and including) <code class="docutils literal notranslate"><span class="pre">i</span></code> which contains data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>i</strong> – Index of the bucket to start searching from. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the first bucket containing data. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.uhash_foreach">
+<span class="target" id="group___u_hash__common_1ga0d943526049e34b534ff3c1402446c17"></span><span class="sig-name descname"><span class="n"><span class="pre">uhash_foreach</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">ht</span></span>, <span class="n"><span class="pre">enum_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_foreach" title="Link to this definition"></a><br /></dt>
+<dd><p>Iterates over the entries in the hash table. </p>
+<p>Usage example: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uhash_foreach</span> <span class="p">(</span><span class="n">ulib_int</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ulib_int</span> <span class="n">key</span> <span class="o">=</span> <span class="o">*</span><span class="n">entry</span><span class="o">.</span><span class="n">key</span><span class="p">;</span>
+    <span class="n">void</span> <span class="o">*</span><span class="n">val</span> <span class="o">=</span> <span class="o">*</span><span class="n">entry</span><span class="o">.</span><span class="n">val</span><span class="p">;</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Hash table type. </p></li>
+<li><p><strong>ht</strong> – <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a> <span class="pre">*</span></code> Hash table instance. </p></li>
+<li><p><strong>enum_name</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Name of the variable holding the current index, key and value. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="hash-maps">
+<h2>Hash maps<a class="headerlink" href="#hash-maps" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhmap">
+<span class="target" id="group___u_hash__map_1ga0bcf646735a98ba14e7363cfed59b940"></span><a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new hash map. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hash table instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhmap_pi">
+<span class="target" id="group___u_hash__map_1ga0b8815b6d6d8dd67e435867aad36e4dd"></span><a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_pi</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">)</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">equal_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_pi" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new hash map with per-instance hash and equality functions. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>hash_func</strong> – Hash function pointer. </p></li>
+<li><p><strong>equal_func</strong> – Equality function pointer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hash table instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhmap_get">
+<span class="target" id="group___u_hash__map_1ga161678bcfb8ca2e47e6aba3f18ad7969"></span><a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="n"><span class="pre">m</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_get" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the value associated with the specified key. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – The key. </p></li>
+<li><p><strong>m</strong> – Value to return if the key is missing. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Value associated with the specified key. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhmap_set">
+<span class="target" id="group___u_hash__map_1gac3b5fa649b45124d2d3d3fa06edb753d"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="n"><span class="pre">v</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">e</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_set" title="Link to this definition"></a><br /></dt>
+<dd><p>Adds a key:value pair to the map, returning the replaced value (if any). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – The key. </p></li>
+<li><p><strong>v</strong> – The value. </p></li>
+<li><p><strong>e</strong> – <strong>[out]</strong> Existing value, only set if key was in the map. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhmap_add">
+<span class="target" id="group___u_hash__map_1ga3254038473676def6df4f6cd43fedd27"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_add</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="n"><span class="pre">v</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">e</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_add" title="Link to this definition"></a><br /></dt>
+<dd><p>Adds a key:value pair to the map, only if the key is missing. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – The key. </p></li>
+<li><p><strong>v</strong> – The value. </p></li>
+<li><p><strong>e</strong> – <strong>[out]</strong> Existing value, only set if key was in the map. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhmap_replace">
+<span class="target" id="group___u_hash__map_1gad46d5e7a55542cfb19e57379dd6a5f69"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_replace</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="n"><span class="pre">v</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">r</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_replace" title="Link to this definition"></a><br /></dt>
+<dd><p>Replaces a value in the map, only if its associated key exists. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – The key. </p></li>
+<li><p><strong>v</strong> – The value. </p></li>
+<li><p><strong>r</strong> – <strong>[out]</strong> Replaced value, only set if key was in the map. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the value was replaced, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhmap_remove">
+<span class="target" id="group___u_hash__map_1ga1a3c14a59ce1e53a76a55bb0cc15f61d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_remove</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_remove" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes a key:value pair from the map. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – The key. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the key was removed, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhmap_pop">
+<span class="target" id="group___u_hash__map_1ga3d5eb401968e05a569eb436c6303f42d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_pop</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dk</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dv</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_pop" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes a key:value pair from the map, returning the removed key and value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – The key. </p></li>
+<li><p><strong>dk</strong> – <strong>[out]</strong> Removed key, only set if key was in the map. </p></li>
+<li><p><strong>dv</strong> – <strong>[out]</strong> Removed value, only set if key was in the map. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the key was present, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="hash-sets">
+<h2>Hash sets<a class="headerlink" href="#hash-sets" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset">
+<span class="target" id="group___u_hash__set_1gaf61fa215238c560a1c93018405ac2117"></span><a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new hash set. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hash table instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_pi">
+<span class="target" id="group___u_hash__set_1ga79c9e725e42d0f729554c6d229554aaf"></span><a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_pi</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">)</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">equal_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_pi" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new hash set with per-instance hash and equality functions. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>hash_func</strong> – Hash function pointer. </p></li>
+<li><p><strong>equal_func</strong> – Equality function pointer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hash table instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_insert">
+<span class="target" id="group___u_hash__set_1gaa79b70f0194d8b7c5472651fa0a9b620"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_insert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_insert" title="Link to this definition"></a><br /></dt>
+<dd><p>Inserts an element in the set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – Element to insert. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_insert_get_existing">
+<span class="target" id="group___u_hash__set_1gab831c8e6dec10c6dda6f9ec41a8a492e"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_insert_get_existing</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">e</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_insert_get_existing" title="Link to this definition"></a><br /></dt>
+<dd><p>Inserts an element in the set, returning the existing element if it was already present. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – Element to insert. </p></li>
+<li><p><strong>e</strong> – <strong>[out]</strong> Existing element, only set if key was in the set. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_insert_all">
+<span class="target" id="group___u_hash__set_1ga580db9d60bf102e7219d1d1bd8642f09"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_insert_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">a</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_insert_all" title="Link to this definition"></a><br /></dt>
+<dd><p>Populates the set with elements from an array. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function returns <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2aab4872074cdcc9ca99a6d48431a1005f"><span class="std std-ref"><span class="pre">UHASH_INSERTED</span></span></a></code> if at least one element in the array was missing from the set. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>a</strong> – Array of elements. </p></li>
+<li><p><strong>n</strong> – Size of the array. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_replace">
+<span class="target" id="group___u_hash__set_1ga86ecf6e27562cb5d3995a7c2a8f2f56b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_replace</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">r</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_replace" title="Link to this definition"></a><br /></dt>
+<dd><p>Replaces an element in the set, only if it exists. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – Element to replace. </p></li>
+<li><p><strong>r</strong> – <strong>[out]</strong> Replaced element, only set if key was in the set. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the element was replaced, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_remove">
+<span class="target" id="group___u_hash__set_1ga74ebc3dde894f2985f6710aa62d92b26"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_remove</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_remove" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes an element from the set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – Element to remove. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the element was removed, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_pop">
+<span class="target" id="group___u_hash__set_1ga43ad2a493af1c7712b3679431350282e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_pop</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">d</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_pop" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes and returns an element from the set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>k</strong> – Element to remove. </p></li>
+<li><p><strong>d</strong> – <strong>[out]</strong> Removed element, only set if key was in the set. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the element was removed, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_is_superset">
+<span class="target" id="group___u_hash__set_1gaaf78cd2da6385ec0930b0787ac6adf1f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_is_superset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_is_superset" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the set is a superset of another set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h1</strong> – Superset. </p></li>
+<li><p><strong>h2</strong> – Subset. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the superset relation holds, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_union">
+<span class="target" id="group___u_hash__set_1gad7ec4a84cb4509df4101bc3d1b13f8bf"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_union</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_union" title="Link to this definition"></a><br /></dt>
+<dd><p>Performs the union between two sets, mutating the first. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h1</strong> – Set to mutate. </p></li>
+<li><p><strong>h2</strong> – Other set. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a8fda1e8c5ab9544cc04e708a50c0012d"><span class="std std-ref"><span class="pre">UHASH_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a1f659c29b73d184c73b6d46a41c67d4d"><span class="std std-ref"><span class="pre">UHASH_ERR</span></span></a></code> on error. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_intersect">
+<span class="target" id="group___u_hash__set_1gaf6ffefdb4948da9f33d668425d705c8c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_intersect</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_intersect" title="Link to this definition"></a><br /></dt>
+<dd><p>Performs the intersection between two sets, mutating the first. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h1</strong> – Set to mutate. </p></li>
+<li><p><strong>h2</strong> – Other set. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_equals">
+<span class="target" id="group___u_hash__set_1ga6598c3e5989d7ea3ec6a64702f15159e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_equals</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_equals" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the set is equal to another set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h1</strong> – LHS of the equality relation. </p></li>
+<li><p><strong>h2</strong> – RHS of the equality relation. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the equality relation holds, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_hash">
+<span class="target" id="group___u_hash__set_1ga0edddf420e3ac15c8c8771f4cb2670a9"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_hash</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_hash" title="Link to this definition"></a><br /></dt>
+<dd><p>Computes the hash of the set. </p>
+<p>The computed hash does not depend on the order of the elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hash of the set. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_get_any">
+<span class="target" id="group___u_hash__set_1gaf487faabbb72a2d08ab9c9b73ff15dbc"></span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_get_any</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">m</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_get_any" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns one of the elements in the set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table instance. </p></li>
+<li><p><strong>m</strong> – Value returned if the set is empty. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>One of the elements in the set. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="collection_vector.html" class="btn btn-neutral float-left" title="Vector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stream.html" class="btn btn-neutral float-right" title="Streams" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

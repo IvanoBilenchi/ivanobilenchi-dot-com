@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Version &mdash; uLib 0.2.3 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Version &mdash; uLib 0.2.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=37614e8c"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Tests" href="test.html" /> 
@@ -27,14 +29,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> uLib
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uLib
           </a>
               <div class="version">
-                0.2.3
+                0.2.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -42,17 +48,19 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../howto.html">How-to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html#examples">Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API docs</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="base.html">Base Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="number.html">Numeric types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collections.html">Collections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Version</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#library-version">Library version</a></li>
@@ -73,7 +81,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Version</li>
       <li class="wy-breadcrumbs-aside">
               <!-- User defined GitHub URL -->
@@ -86,97 +94,97 @@
            <div itemprop="articleBody">
              
   <section id="version">
-<h1>Version<a class="headerlink" href="#version" title="Permalink to this heading"></a></h1>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv48UVersion">
-<span id="_CPPv38UVersion"></span><span id="_CPPv28UVersion"></span><span id="UVersion"></span><span class="target" id="struct_u_version"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVersion</span></span></span><a class="headerlink" href="#_CPPv48UVersion" title="Permalink to this definition"></a><br /></dt>
+<h1>Version<a class="headerlink" href="#version" title="Link to this heading"></a></h1>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.UVersion">
+<span class="target" id="struct_u_version"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVersion</span></span></span><a class="headerlink" href="#c.UVersion" title="Link to this definition"></a><br /></dt>
 <dd><p>Version information. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8UVersion16uversion_compareE8UVersion8UVersion">
-<span id="_CPPv3N8UVersion16uversion_compareE8UVersion8UVersion"></span><span id="_CPPv2N8UVersion16uversion_compareE8UVersion8UVersion"></span><span id="UVersion::uversion_compare__UVersion.UVersion"></span><span class="target" id="struct_u_version_1aeb23b438226082f6c862c6e6df152483"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uversion_compare</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">lhs</span></span>, <a class="reference internal" href="#_CPPv48UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UVersion16uversion_compareE8UVersion8UVersion" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Compares lhs and rhs. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lhs</strong> – First version. </p></li>
-<li><p><strong>rhs</strong> – Second version. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>-1 if lhs is smaller than rhs, 0 if they are equal, 1 if lhs is greater than rhs. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8UVersion18uversion_to_stringEPK8UVersion">
-<span id="_CPPv3N8UVersion18uversion_to_stringEPK8UVersion"></span><span id="_CPPv2N8UVersion18uversion_to_stringEPK8UVersion"></span><span id="UVersion::uversion_to_string__UVersionCP"></span><span class="target" id="struct_u_version_1a3c5d4b2446d26e449ade2e142b546fc0"></span><a class="reference internal" href="base.html#_CPPv47UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uversion_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">version</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UVersion18uversion_to_stringEPK8UVersion" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Converts the version into a string. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>version</strong> – Version. </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>String. </p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8UVersion5majorE">
-<span id="_CPPv3N8UVersion5majorE"></span><span id="_CPPv2N8UVersion5majorE"></span><span id="UVersion::major__unsigned"></span><span class="target" id="struct_u_version_1a0fd2a54f25a2498291c0b978b81b9cd8"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">major</span></span></span><a class="headerlink" href="#_CPPv4N8UVersion5majorE" title="Permalink to this definition"></a><br /></dt>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UVersion.major">
+<span class="target" id="struct_u_version_1a0fd2a54f25a2498291c0b978b81b9cd8"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">major</span></span></span><a class="headerlink" href="#c.UVersion.major" title="Link to this definition"></a><br /></dt>
 <dd><p>Major revision. </p>
 </dd></dl>
 
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8UVersion5minorE">
-<span id="_CPPv3N8UVersion5minorE"></span><span id="_CPPv2N8UVersion5minorE"></span><span id="UVersion::minor__unsigned"></span><span class="target" id="struct_u_version_1aa70fd7e292c35292165464ca2832266c"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">minor</span></span></span><a class="headerlink" href="#_CPPv4N8UVersion5minorE" title="Permalink to this definition"></a><br /></dt>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UVersion.minor">
+<span class="target" id="struct_u_version_1aa70fd7e292c35292165464ca2832266c"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">minor</span></span></span><a class="headerlink" href="#c.UVersion.minor" title="Link to this definition"></a><br /></dt>
 <dd><p>Minor revision. </p>
 </dd></dl>
 
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8UVersion5patchE">
-<span id="_CPPv3N8UVersion5patchE"></span><span id="_CPPv2N8UVersion5patchE"></span><span id="UVersion::patch__unsigned"></span><span class="target" id="struct_u_version_1a769877df385adf35a39fb91b14505aea"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">patch</span></span></span><a class="headerlink" href="#_CPPv4N8UVersion5patchE" title="Permalink to this definition"></a><br /></dt>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UVersion.patch">
+<span class="target" id="struct_u_version_1a769877df385adf35a39fb91b14505aea"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">patch</span></span></span><a class="headerlink" href="#c.UVersion.patch" title="Link to this definition"></a><br /></dt>
 <dd><p>Patch number. </p>
 </dd></dl>
 
 </div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8UVersion8uversionEjjj">
-<span id="_CPPv3N8UVersion8uversionEjjj"></span><span id="_CPPv2N8UVersion8uversionEjjj"></span><span id="UVersion::uversion__unsigned.unsigned.unsigned"></span><span class="target" id="struct_u_version_1acbc0291c4a99282621ff9ae3b39e1df3"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uversion</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">major</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">minor</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">patch</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8UVersion8uversionEjjj" title="Permalink to this definition"></a><br /></dt>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uversion">
+<span class="target" id="group___u_version_1ga5cab435f9fb6ca9afd783d45ee47f7e2"></span><a class="reference internal" href="#c.UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uversion</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">major</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">minor</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">patch</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uversion" title="Link to this definition"></a><br /></dt>
 <dd><p>Initializes a version struct. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>major</strong> – Major revision. </p></li>
 <li><p><strong>minor</strong> – Minor revision. </p></li>
 <li><p><strong>patch</strong> – Patch number. </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Initialized version struct. </p>
 </dd>
 </dl>
 </dd></dl>
 
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uversion_compare">
+<span class="target" id="group___u_version_1gaeb23b438226082f6c862c6e6df152483"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uversion_compare</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="n"><span class="pre">lhs</span></span>, <a class="reference internal" href="#c.UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="n"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uversion_compare" title="Link to this definition"></a><br /></dt>
+<dd><p>Compares lhs and rhs. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – First version. </p></li>
+<li><p><strong>rhs</strong> – Second version. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>-1 if <code class="docutils literal notranslate"><span class="pre">lhs</span></code> is smaller than <code class="docutils literal notranslate"><span class="pre">rhs</span></code>, 0 if they are equal, 1 if <code class="docutils literal notranslate"><span class="pre">lhs</span></code> is greater than <code class="docutils literal notranslate"><span class="pre">rhs</span></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uversion_to_string">
+<span class="target" id="group___u_version_1ga3c5d4b2446d26e449ade2e142b546fc0"></span><a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uversion_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">version</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uversion_to_string" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the version into a string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>version</strong> – Version. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <section id="library-version">
-<h2>Library version<a class="headerlink" href="#library-version" title="Permalink to this heading"></a></h2>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv416ulib_get_versionv">
-<span id="_CPPv316ulib_get_versionv"></span><span id="_CPPv216ulib_get_versionv"></span><span id="ulib_get_version__void"></span><span class="target" id="umeta_8h_1a07c9c48e53f1ea24231c2aff2f23dc90"></span><a class="reference internal" href="#_CPPv48UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_get_version</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ulib_get_versionv" title="Permalink to this definition"></a><br /></dt>
+<h2>Library version<a class="headerlink" href="#library-version" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_get_version">
+<span class="target" id="umeta_8h_1a07c9c48e53f1ea24231c2aff2f23dc90"></span><a class="reference internal" href="#c.UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_get_version</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_get_version" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns the version of the library. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Library version. </p>
 </dd>
 </dl>
@@ -195,7 +203,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2023, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
   </div>
 
    

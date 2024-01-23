@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strings &mdash; uLib 0.2.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=37614e8c"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Collections" href="collection.html" />
+    <link rel="prev" title="Numeric types" href="number.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uLib
+          </a>
+              <div class="version">
+                0.2.5
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="number.html">Numeric types</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Strings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#immutable-string">Immutable string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mutable-string-buffer">Mutable string buffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#raw-c-strings">Raw C strings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Strings</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="strings">
+<h1>Strings<a class="headerlink" href="#strings" title="Link to this heading"></a></h1>
+<section id="immutable-string">
+<h2>Immutable string<a class="headerlink" href="#immutable-string" title="Link to this heading"></a></h2>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.UString">
+<span class="target" id="struct_u_string"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UString</span></span></span><a class="headerlink" href="#c.UString" title="Link to this definition"></a><br /></dt>
+<dd><p>An immutable string. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ustring_null">
+<span class="target" id="group___u_string_1ga1a2afed1eee841893de43fbfd8c35e7a"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_null</span></span></span><a class="headerlink" href="#c.ustring_null" title="Link to this definition"></a><br /></dt>
+<dd><p>String with a NULL buffer. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ustring_empty">
+<span class="target" id="group___u_string_1gad71790eca885561f7b31975a1949619f"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_empty</span></span></span><a class="headerlink" href="#c.ustring_empty" title="Link to this definition"></a><br /></dt>
+<dd><p>Empty string. </p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_size">
+<span class="target" id="group___u_string_1ga18e73dea5ddefbe0f61a7b5396499674"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_size</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_size" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the size of the string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String size. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_length">
+<span class="target" id="group___u_string_1gad22f6c1d677d5c1b8f88ddfead46ddd0"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_length</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_length" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the length of the string, excluding the null terminator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_data">
+<span class="target" id="group___u_string_1ga9fb7f552ab2d8e2a0ff444b276f55ed3"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_data</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_data" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the buffer backing the string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String buffer. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_assign">
+<span class="target" id="group___u_string_1gab73f55eeceec111d4f38b85812d6f327"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_assign</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_assign" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by taking ownership of the specified buffer, which must have been dynamically allocated. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to the internals of <code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code>, you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+<li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_copy">
+<span class="target" id="group___u_string_1gabc6346e552ce8f7a050725b6cfa16196"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_copy</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_copy" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by copying the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+<li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_wrap">
+<span class="target" id="group___u_string_1ga6c98ce4379387715a96b89bc9f7982bb"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_wrap</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_wrap" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by wrapping the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the buffer has been dynamically allocated, you are responsible for its deallocation. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must not call <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code> on a string initialized with this function. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+<li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring">
+<span class="target" id="group___u_string_1gaaeba96a96a65ad292568b2faf9e2a662"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ustring</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string of the specified length and returns its underlying buffer. </p>
+<p>This allows direct initialization of the buffer, avoiding unnecessary allocations or copies.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned buffer is null-terminated but otherwise uninitialized. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to initialize. </p></li>
+<li><p><strong>length</strong> – Length of the string (excluding the null terminator). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Underlying buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_assign_buf">
+<span class="target" id="group___u_string_1gad118f9b20685ef7c3e0c610532674ca6"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_assign_buf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_assign_buf" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by taking ownership of the specified buffer, which must have been dynamically allocated. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to the internals of <code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code>, you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_copy_buf">
+<span class="target" id="group___u_string_1ga16b191bd38b8d829d41fb29605dfffd4"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_copy_buf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_copy_buf" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by copying the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_wrap_buf">
+<span class="target" id="group___u_string_1ga66352cd0120117e2de0c6a611591836b"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_wrap_buf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_wrap_buf" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by wrapping the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The buffer must be null-terminated. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the buffer has been dynamically allocated, you are responsible for its deallocation. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must not call <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code> on a string initialized with this function. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_dup">
+<span class="target" id="group___u_string_1ga9f0f6d96df3209499b82268e9801d0d2"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_dup</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_dup" title="Link to this definition"></a><br /></dt>
+<dd><p>Duplicates the specified string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to duplicate. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Duplicated string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_with_format">
+<span class="target" id="group___u_string_1gae945c2e5ebb0efa03e010fa9a5099ba1"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_with_format</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_with_format" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string with the specified format. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_with_format_list">
+<span class="target" id="group___u_string_1gaef8c003a942eef8fafae45bc1eecf8c7"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_with_format_list</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="n"><span class="pre">va_list</span></span><span class="w"> </span><span class="n"><span class="pre">args</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_with_format_list" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string with the specified format. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>args</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_concat">
+<span class="target" id="group___u_string_1ga77d266f33ed307bd0f392e30c3fba3f5"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_concat</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">strings</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_concat" title="Link to this definition"></a><br /></dt>
+<dd><p>Concatenates the specified strings. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strings</strong> – Strings to concatenate. </p></li>
+<li><p><strong>count</strong> – Number of strings. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Concatenation of the specified strings.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_join">
+<span class="target" id="group___u_string_1ga91a112ed873cc22b5625d48b728bc6f8"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_join</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">strings</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">count</span></span>, <a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">sep</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_join" title="Link to this definition"></a><br /></dt>
+<dd><p>Joins the specified strings with a separator. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strings</strong> – Strings to join. </p></li>
+<li><p><strong>count</strong> – Number of strings. </p></li>
+<li><p><strong>sep</strong> – Separator. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Strings joined with the specified separator.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_repeating">
+<span class="target" id="group___u_string_1ga856dde662022f0a0bdfef39abc08b8c0"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_repeating</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">times</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_repeating" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a new string obtained by repeating the specified string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to repeat. </p></li>
+<li><p><strong>times</strong> – Number of repetitions. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_is_upper">
+<span class="target" id="group___u_string_1gaf31cef7236e7fff8ee98dbf0c06e89f9"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_is_upper</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_is_upper" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if the string does not contain lowercase characters. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the string does not contain lowercase characters, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_is_lower">
+<span class="target" id="group___u_string_1ga9232ec51d6062af008948b696e1fc134"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_is_lower</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_is_lower" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if the string does not contain uppercase characters. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the string does not contain uppercase characters, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_to_upper">
+<span class="target" id="group___u_string_1ga774b9f8cfdf0a483c92c039868727516"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_to_upper</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_to_upper" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the given string to uppercase. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to convert. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Uppercase string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_to_lower">
+<span class="target" id="group___u_string_1ga3b71e8d90acc48ffb574ddd49c5fe8f7"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_to_lower</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_to_lower" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the given string to lowercase. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to convert. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lowercase string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_index_of">
+<span class="target" id="group___u_string_1ga74f4db44c296804d35733604ae0b8faf"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_index_of</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n"><span class="pre">needle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_index_of" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the first occurrence of the specified character. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to search into. </p></li>
+<li><p><strong>needle</strong> – Character to find. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the first occurrence of the specified character. If it cannot be found, returns an index greater than or equal to the string’s length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_index_of_last">
+<span class="target" id="group___u_string_1gaa6cee248f60ae35f40011da33f95fbb1"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_index_of_last</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n"><span class="pre">needle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_index_of_last" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the last occurrence of the specified character. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to search into. </p></li>
+<li><p><strong>needle</strong> – Character to find. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the last occurrence of the specified character. If it cannot be found, returns an index greater than or equal to the string’s length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_find">
+<span class="target" id="group___u_string_1gaef43c2009b3312fd537a3e46d463f536"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_find</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">needle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_find" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the first occurrence of the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to search into. </p></li>
+<li><p><strong>needle</strong> – String to find. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the first occurrence of the specified string. If it cannot be found, returns an index greater than or equal to the string’s length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_find_last">
+<span class="target" id="group___u_string_1gada92a242eb7642efd5b8e6612d71a29f"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_find_last</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">needle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_find_last" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the last occurrence of the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to search into. </p></li>
+<li><p><strong>needle</strong> – String to find. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the last occurrence of the specified string. If it cannot be found, returns an index greater than or equal to the string’s length. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_starts_with">
+<span class="target" id="group___u_string_1gaaf3354c3520b50c78845fe3ea0e65bba"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_starts_with</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">prefix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_starts_with" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the string starts with the specified prefix. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>prefix</strong> – Prefix. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the string starts with the specified prefix, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_ends_with">
+<span class="target" id="group___u_string_1ga92fb5a1f583523866ddba0db522ecac0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_ends_with</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">suffix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_ends_with" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the string ends with the specified suffix. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>suffix</strong> – Suffix. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the string ends with the specified suffix, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_equals">
+<span class="target" id="group___u_string_1gaf0de88152669519a2f0c3b561558e2b5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_equals</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">lhs</span></span>, <a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_equals" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether two strings are equal. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – First string. </p></li>
+<li><p><strong>rhs</strong> – Second string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the two strings are equal, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_precedes">
+<span class="target" id="group___u_string_1gab1d54b96971eb9c41b3d992e3668a0a4"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_precedes</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">lhs</span></span>, <a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_precedes" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether lhs precedes rhs in lexicographic order. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – First string. </p></li>
+<li><p><strong>rhs</strong> – Second string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if <code class="docutils literal notranslate"><span class="pre">lhs</span></code> precedes <code class="docutils literal notranslate"><span class="pre">rhs</span></code>, False otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_compare">
+<span class="target" id="group___u_string_1gac319860041d38e553978417dd68941b2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_compare</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">lhs</span></span>, <a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_compare" title="Link to this definition"></a><br /></dt>
+<dd><p>Compares lhs and rhs in lexicographic order. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – First string. </p></li>
+<li><p><strong>rhs</strong> – Second string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>-1 if <code class="docutils literal notranslate"><span class="pre">lhs</span></code> comes before <code class="docutils literal notranslate"><span class="pre">rhs</span></code>, 0 if they are equal, 1 if <code class="docutils literal notranslate"><span class="pre">lhs</span></code> comes after <code class="docutils literal notranslate"><span class="pre">rhs</span></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_hash">
+<span class="target" id="group___u_string_1gab31cab0063a81bd594a20318cf70e92b"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_hash</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_hash" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the hash of the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hash. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_to_int">
+<span class="target" id="group___u_string_1gaa0e24d50918997d73dcd5871f5b7df3c"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_to_int</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <a class="reference internal" href="number.html#c.ulib_int" title="ulib_int"><span class="n"><span class="pre">ulib_int</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">out</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">base</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_to_int" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the string into an integer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>out</strong> – <strong>[out]</strong> Converted value. </p></li>
+<li><p><strong>base</strong> – Numeric base. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_to_uint">
+<span class="target" id="group___u_string_1ga5f147b471f0e76e95a6e97d6efda1760"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_to_uint</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">out</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">base</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_to_uint" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the string into an unsigned integer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>out</strong> – <strong>[out]</strong> Converted value. </p></li>
+<li><p><strong>base</strong> – Numeric base. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_to_float">
+<span class="target" id="group___u_string_1ga63c89429e14c36958e3973a7fbb80b2b"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_to_float</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <a class="reference internal" href="number.html#c.ulib_float" title="ulib_float"><span class="n"><span class="pre">ulib_float</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_to_float" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the string into a float. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>out</strong> – <strong>[out]</strong> Converted value. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_deinit">
+<span class="target" id="group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_deinit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_deinit" title="Link to this definition"></a><br /></dt>
+<dd><p>Deinitializes the specified string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to deinitialize. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_deinit_return_data">
+<span class="target" id="group___u_string_1gaf4c188a5b6acef31b6da2ac913671238"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_deinit_return_data</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_deinit_return_data" title="Link to this definition"></a><br /></dt>
+<dd><p>Deinitializes the specified string, returning its underlying buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="alloc.html#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to deinitialize. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_is_null">
+<span class="target" id="group___u_string_1ga99585cd35d34d6eafc0bc4db2fc4da20"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_is_null</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_is_null" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the string has a NULL buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the string has a NULL buffer, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_is_empty">
+<span class="target" id="group___u_string_1ga6a92772f23d8ef6efcb4ffd5383e4b43"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_is_empty</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_is_empty" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the string is empty. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The null string is considered empty. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the string is empty, false otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ustring_copy_literal">
+<span class="target" id="group___u_string_1ga622a5bb8f9d4b2a88a116d3fa49bb324"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_copy_literal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">literal</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_copy_literal" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string by copying the specified string literal. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>literal</strong> – <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">[]</span></code> String literal. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code> Initialized string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ustring_literal">
+<span class="target" id="group___u_string_1ga23fadb646661e189ab2231d859b7c251"></span><span class="sig-name descname"><span class="n"><span class="pre">ustring_literal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">literal</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_literal" title="Link to this definition"></a><br /></dt>
+<dd><p>Wraps the specified literal in a string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must not call <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code> on a string initialized with this function. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>literal</strong> – <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">[]</span></code> String literal. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code> String.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="mutable-string-buffer">
+<h2>Mutable string buffer<a class="headerlink" href="#mutable-string-buffer" title="Link to this heading"></a></h2>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UStrBuf">
+<span class="target" id="ustrbuf_8h_1a43aabc12401b3245e429697440e1bb6a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="collection_vector.html#c.UVec_char" title="UVec_char"><span class="n"><span class="pre">UVec_char</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UStrBuf</span></span></span><a class="headerlink" href="#c.UStrBuf" title="Link to this definition"></a><br /></dt>
+<dd><p>A mutable string buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A string buffer is a <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> of <code class="docutils literal notranslate"><span class="pre">char</span></code> elements, so you can use any <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> API on a <code class="docutils literal notranslate"><a class="reference internal" href="#ustrbuf_8h_1a43aabc12401b3245e429697440e1bb6a"><span class="std std-ref"><span class="pre">UStrBuf</span></span></a></code> object. </p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf">
+<span class="target" id="group___u_str_buf_1ga4c00a049b57ee2e5f2a6fb7660aac22c"></span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new string buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_str_buf_1ga98722eb15bad8bb30936ed1eb63a4fe4"><span class="std std-ref"><span class="pre">ustrbuf_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Initialized string buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf_deinit">
+<span class="target" id="group___u_str_buf_1ga98722eb15bad8bb30936ed1eb63a4fe4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_deinit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_deinit" title="Link to this definition"></a><br /></dt>
+<dd><p>Deinitializes a string buffer previously initialized with <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_str_buf_1ga4c00a049b57ee2e5f2a6fb7660aac22c"><span class="std std-ref"><span class="pre">ustrbuf()</span></span></a></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf_size">
+<span class="target" id="group___u_str_buf_1ga9160f09add907884a25be71615bd1d5d"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_size</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_size" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the size of the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Size. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf_length">
+<span class="target" id="group___u_str_buf_1gabd8781aeb568167c6d72d30efc9e2bcd"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_length</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_length" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the number of characters in the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of characters. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf_data">
+<span class="target" id="group___u_str_buf_1ga0b2d59f13fee63e354000d95af9be836"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_data</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_data" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a pointer to the first character of the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pointer to the first character. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf_append_format">
+<span class="target" id="group___u_str_buf_1gad5c9fc1715be20a81508c8de90dbd5da"></span><a class="reference internal" href="collection_vector.html#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_format</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_append_format" title="Link to this definition"></a><br /></dt>
+<dd><p>Appends the specified formatted string to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf_append_format_list">
+<span class="target" id="group___u_str_buf_1ga9b2d0c1c90c4dce82f364b3b9c674c69"></span><a class="reference internal" href="collection_vector.html#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_format_list</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="n"><span class="pre">va_list</span></span><span class="w"> </span><span class="n"><span class="pre">args</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_append_format_list" title="Link to this definition"></a><br /></dt>
+<dd><p>Appends the specified formatted string to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>args</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf_to_ustring">
+<span class="target" id="group___u_str_buf_1ga690e60a86107b203b8f6ec1f87fa626e"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_to_ustring</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_to_ustring" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the string buffer into a <code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code> and deinitializes the buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After calling this function, the string buffer must not be used anymore. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf_append_string">
+<span class="target" id="group___u_str_buf_1ga49de8e2e75844a6d1165dbd736bc4664"></span><a class="reference internal" href="collection_vector.html#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_append_string" title="Link to this definition"></a><br /></dt>
+<dd><p>Appends the specified string to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+<li><p><strong>string</strong> – String to append. </p></li>
+<li><p><strong>length</strong> – Length of the string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustrbuf_append_ustring">
+<span class="target" id="group___u_str_buf_1gab298bfc423aadf2805f2da2e95404ee9"></span><a class="reference internal" href="collection_vector.html#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_ustring</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_append_ustring" title="Link to this definition"></a><br /></dt>
+<dd><p>Appends the specified uString to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – String buffer. </p></li>
+<li><p><strong>string</strong> – String to append. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ustrbuf_append_literal">
+<span class="target" id="group___u_str_buf_1ga68279f4a011056b5b0c7e75ec27486d2"></span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_append_literal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">literal</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_append_literal" title="Link to this definition"></a><br /></dt>
+<dd><p>Appends the specified string literal to the string buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buf</strong> – <code class="docutils literal notranslate"><a class="reference internal" href="#ustrbuf_8h_1a43aabc12401b3245e429697440e1bb6a"><span class="std std-ref"><span class="pre">UStrBuf</span></span></a> <span class="pre">*</span></code> String buffer. </p></li>
+<li><p><strong>literal</strong> – <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">[]</span></code> String literal to append. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331"><span class="std std-ref"><span class="pre">uvec_ret</span></span></a></code> <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="raw-c-strings">
+<h2>Raw C strings<a class="headerlink" href="#raw-c-strings" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_char_is_upper">
+<span class="target" id="group__ulib__str_1ga7adcb94de498ecebebcbddb5d2169861"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_char_is_upper</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n"><span class="pre">c</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_char_is_upper" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if the specified character is an uppercase letter. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> – Character. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the character is an uppercase letter, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_char_is_lower">
+<span class="target" id="group__ulib__str_1ga1d19444295e7128c50937235ecaf6633"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_char_is_lower</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n"><span class="pre">c</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_char_is_lower" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if the specified character is a lowercase letter. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> – Character. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the character is a lowercase letter, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_char_to_upper">
+<span class="target" id="group__ulib__str_1gaa03b8623f588166d511b83d73b5671ea"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_char_to_upper</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n"><span class="pre">c</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_char_to_upper" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the given character to uppercase. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> – Character to convert. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Uppercase character. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_char_to_lower">
+<span class="target" id="group__ulib__str_1ga871fd19f0a616e90032e7fc491ebb01b"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_char_to_lower</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n"><span class="pre">c</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_char_to_lower" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the given character to lowercase. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> – Character to convert. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lowercase character. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_dup">
+<span class="target" id="group__ulib__str_1ga4b9b7e63d5afcc61ae7f885ae584fda0"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_dup</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_dup" title="Link to this definition"></a><br /></dt>
+<dd><p>Duplicates the specified string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="alloc.html#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String to duplicate. </p></li>
+<li><p><strong>length</strong> – Length of the string to duplicate. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Duplicated string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_flength">
+<span class="target" id="group__ulib__str_1ga93b6960cf2e429d5b0424efaf8846c02"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_flength</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_flength" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the length of the specified formatted string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Length of the formatted string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_flength_list">
+<span class="target" id="group__ulib__str_1gac1b0de01a7a6cf2b3635898c070813c6"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_flength_list</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="n"><span class="pre">va_list</span></span><span class="w"> </span><span class="n"><span class="pre">args</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_flength_list" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the length of the specified formatted string. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>args</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Length of the formatted string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_is_upper">
+<span class="target" id="group__ulib__str_1gadb8d5f9b68852e91cb79eeb35056140b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_is_upper</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_is_upper" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if the string does not contain lowercase characters. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>length</strong> – String length. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the string does not contain lowercase characters, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_is_lower">
+<span class="target" id="group__ulib__str_1ga1dbe50a51192c02a19efcd550d6524aa"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_is_lower</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_is_lower" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if the string does not contain uppercase characters. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>length</strong> – String length. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the string does not contain uppercase characters, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_to_upper">
+<span class="target" id="group__ulib__str_1ga82b23048a0205ab402723f204eb4f4ce"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_to_upper</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dst</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_to_upper" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the given string to uppercase. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">dst</span></code> and <code class="docutils literal notranslate"><span class="pre">src</span></code> can be equal. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> – Destination string. </p></li>
+<li><p><strong>src</strong> – Source string. </p></li>
+<li><p><strong>length</strong> – Length of the source string.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_to_lower">
+<span class="target" id="group__ulib__str_1gab8859afe567866e963dcd3a658b3b50d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_to_lower</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dst</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_to_lower" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the given string to lowercase. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">dst</span></code> and <code class="docutils literal notranslate"><span class="pre">src</span></code> can be equal. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> – Destination string. </p></li>
+<li><p><strong>src</strong> – Source string. </p></li>
+<li><p><strong>length</strong> – Length of the source string</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_to_int">
+<span class="target" id="group__ulib__str_1gacefae70248760b291433b13bfc956956"></span><a class="reference internal" href="number.html#c.ulib_int" title="ulib_int"><span class="n"><span class="pre">ulib_int</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_to_int</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">end</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">base</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_to_int" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the given string into an integer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Size-appropriate wrapper for <code class="docutils literal notranslate"><span class="pre">strtol()</span></code> and <code class="docutils literal notranslate"><span class="pre">strtoll()</span></code>. Refer to their documentation for extended information (e.g. error handling). </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> – Source string. </p></li>
+<li><p><strong>end</strong> – <strong>[out]</strong> End pointer. </p></li>
+<li><p><strong>base</strong> – Numeric base. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_to_uint">
+<span class="target" id="group__ulib__str_1ga0550ba7467e4145cca56b563a6b953bc"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_to_uint</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">end</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">base</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_to_uint" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the given string into an unsigned integer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Size-appropriate wrapper for <code class="docutils literal notranslate"><span class="pre">strtoul()</span></code> and <code class="docutils literal notranslate"><span class="pre">strtoull()</span></code>. Refer to their documentation for extended information (e.g. error handling). </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> – Source string. </p></li>
+<li><p><strong>end</strong> – <strong>[out]</strong> End pointer. </p></li>
+<li><p><strong>base</strong> – Numeric base. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Unsigned integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_to_float">
+<span class="target" id="group__ulib__str_1ga86c30fb3924f48125075e4da79fb2fd9"></span><a class="reference internal" href="number.html#c.ulib_float" title="ulib_float"><span class="n"><span class="pre">ulib_float</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_to_float</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">end</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_to_float" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the given string into a float. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Size-appropriate wrapper for <code class="docutils literal notranslate"><span class="pre">strtof()</span></code> and <code class="docutils literal notranslate"><span class="pre">strtod()</span></code>. Refer to their documentation for extended information (e.g. error handling). </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> – Source string. </p></li>
+<li><p><strong>end</strong> – <strong>[out]</strong> End pointer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Float.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_mem_chr_last">
+<span class="target" id="group__ulib__str_1gae8bfb5abab7a6865d1bf28be3d545010"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_mem_chr_last</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">haystack</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">h_len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_mem_chr_last" title="Link to this definition"></a><br /></dt>
+<dd><p>Finds the last occurrence of a character. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>haystack</strong> – Memory area. </p></li>
+<li><p><strong>c</strong> – Character to find. </p></li>
+<li><p><strong>h_len</strong> – Length of the memory area. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pointer to the first occurrence of the character, or NULL. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_mem_mem">
+<span class="target" id="group__ulib__str_1ga674ab1dbe3f03eeb4df8fa7ac97bdaa2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_mem_mem</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">haystack</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">h_len</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">needle</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">n_len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_mem_mem" title="Link to this definition"></a><br /></dt>
+<dd><p>Finds the first occurrence of the specified substring. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>haystack</strong> – Memory area. </p></li>
+<li><p><strong>h_len</strong> – Length of the memory area. </p></li>
+<li><p><strong>needle</strong> – Substring. </p></li>
+<li><p><strong>n_len</strong> – Length of the substring. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pointer to the first occurrence of the substring, or NULL. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_mem_mem_last">
+<span class="target" id="group__ulib__str_1ga6bb25b7d8b24560f1272da12d6aa3da9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_mem_mem_last</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">haystack</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">h_len</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">needle</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">n_len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_mem_mem_last" title="Link to this definition"></a><br /></dt>
+<dd><p>Finds the last occurrence of the specified substring. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>haystack</strong> – Memory area. </p></li>
+<li><p><strong>h_len</strong> – Length of the memory area. </p></li>
+<li><p><strong>needle</strong> – Substring. </p></li>
+<li><p><strong>n_len</strong> – Length of the substring. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pointer to the last occurrence of the substring, or NULL. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="number.html" class="btn btn-neutral float-left" title="Numeric types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="collection.html" class="btn btn-neutral float-right" title="Collections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

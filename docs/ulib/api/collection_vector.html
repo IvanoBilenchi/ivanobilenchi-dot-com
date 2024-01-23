@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vector &mdash; uLib 0.2.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=37614e8c"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hash table" href="collection_hash.html" />
+    <link rel="prev" title="Collections" href="collection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uLib
+          </a>
+              <div class="version">
+                0.2.5
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="number.html">Numeric types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="collection.html">Collections</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vector</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#builtin-types">Builtin types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-new-vector-types">Defining new vector types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-vector-operations">Common vector operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#equatable-vectors">Equatable vectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparable-vectors">Comparable vectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#priority-queues">Priority queues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_hash.html">Hash table</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="collection.html">Collections</a></li>
+      <li class="breadcrumb-item active">Vector</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vector">
+<h1>Vector<a class="headerlink" href="#vector" title="Link to this heading"></a></h1>
+<section id="types">
+<h2>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h2>
+<dl class="c type type-placeholder">
+<dt class="sig sig-object c" id="c.UVec_T">
+<span class="target" id="uvec_8h_1a2f7f15f4f3b7b8b417bc2ddc72e5eeb8"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVec_T</span></span></span><a class="headerlink" href="#c.UVec_T" title="Link to this definition"></a><br /></dt>
+<dd><p>Generic vector type. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a placeholder for documentation purposes. You should use the <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> macro to reference a specific vector type. </p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVec">
+<span class="target" id="uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"></span><span class="sig-name descname"><span class="n"><span class="pre">UVec</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVec" title="Link to this definition"></a><br /></dt>
+<dd><p>References a specific vector type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.uvec_decl">
+<span class="target" id="uvec_8h_1ae893473919a3cf3680ac6508f3b4c674"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_decl</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_decl" title="Link to this definition"></a><br /></dt>
+<dd><p>Vector type forward declaration. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c enum">
+<dt class="sig sig-object c" id="c.uvec_ret">
+<span class="target" id="uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_ret</span></span></span><a class="headerlink" href="#c.uvec_ret" title="Link to this definition"></a><br /></dt>
+<dd><p>Return codes. </p>
+<p><em>Values:</em></p>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.uvec_ret.UVEC_ERR">
+<span class="target" id="uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_ERR</span></span></span><a class="headerlink" href="#c.uvec_ret.UVEC_ERR" title="Link to this definition"></a><br /></dt>
+<dd><p>The operation failed due to an error. </p>
+<p>As of right now, it can only happen if memory cannot be allocated. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.uvec_ret.UVEC_OK">
+<span class="target" id="uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_OK</span></span></span><a class="headerlink" href="#c.uvec_ret.UVEC_OK" title="Link to this definition"></a><br /></dt>
+<dd><p>The operation succeeded. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.uvec_ret.UVEC_NO">
+<span class="target" id="uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a55793cb24ffe207f65ffe1a6569e269b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_NO</span></span></span><a class="headerlink" href="#c.uvec_ret.UVEC_NO" title="Link to this definition"></a><br /></dt>
+<dd><p>The operation could not be completed. </p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="builtin-types">
+<h2>Builtin types<a class="headerlink" href="#builtin-types" title="Link to this heading"></a></h2>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UVec_char">
+<span class="target" id="group___u_vec__builtin_1gac2c6e498551a47421ac0ebcda4c531cc"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UVec_char" title="UVec_char"><span class="n"><span class="pre">UVec_char</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVec_char</span></span></span><a class="headerlink" href="#c.UVec_char" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> of <code class="docutils literal notranslate"><span class="pre">char</span></code> elements. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UVec_ulib_byte">
+<span class="target" id="group___u_vec__builtin_1gab2dfa4b204d8f158a747149578ae78c6"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UVec_ulib_byte" title="UVec_ulib_byte"><span class="n"><span class="pre">UVec_ulib_byte</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVec_ulib_byte</span></span></span><a class="headerlink" href="#c.UVec_ulib_byte" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> of <code class="docutils literal notranslate"><a class="reference internal" href="number.html#unumber_8h_1a6b30cc662e73b0c23719db807704caec"><span class="std std-ref"><span class="pre">ulib_byte</span></span></a></code> elements. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UVec_ulib_int">
+<span class="target" id="group___u_vec__builtin_1ga48e472cfc142755af96c0159a4d64b9b"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UVec_ulib_int" title="UVec_ulib_int"><span class="n"><span class="pre">UVec_ulib_int</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVec_ulib_int</span></span></span><a class="headerlink" href="#c.UVec_ulib_int" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> of <code class="docutils literal notranslate"><a class="reference internal" href="number.html#unumber_8h_1ac7fa5fad3bc621932f47cfa4b3e9714b"><span class="std std-ref"><span class="pre">ulib_int</span></span></a></code> elements. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UVec_ulib_uint">
+<span class="target" id="group___u_vec__builtin_1ga6a44a4ae721b9cd7b9f60d064a065b41"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UVec_ulib_uint" title="UVec_ulib_uint"><span class="n"><span class="pre">UVec_ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVec_ulib_uint</span></span></span><a class="headerlink" href="#c.UVec_ulib_uint" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> of <code class="docutils literal notranslate"><a class="reference internal" href="number.html#unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> elements. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UVec_ulib_float">
+<span class="target" id="group___u_vec__builtin_1gaba4a6ba00e91acbafda409768c678eb6"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UVec_ulib_float" title="UVec_ulib_float"><span class="n"><span class="pre">UVec_ulib_float</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVec_ulib_float</span></span></span><a class="headerlink" href="#c.UVec_ulib_float" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> of <code class="docutils literal notranslate"><a class="reference internal" href="number.html#unumber_8h_1a55284febfef032485d55b690fa0f59d4"><span class="std std-ref"><span class="pre">ulib_float</span></span></a></code> elements. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UVec_ulib_ptr">
+<span class="target" id="group___u_vec__builtin_1ga77abb499f00d64eec6db9258c0d28490"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UVec_ulib_ptr" title="UVec_ulib_ptr"><span class="n"><span class="pre">UVec_ulib_ptr</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVec_ulib_ptr</span></span></span><a class="headerlink" href="#c.UVec_ulib_ptr" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> of <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ustd_8h_1a665d250ee64a7ce81d28a13e790fa62d"><span class="std std-ref"><span class="pre">ulib_ptr</span></span></a></code> elements. </p>
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.UVec_UString">
+<span class="target" id="group___u_vec__builtin_1ga584379633bc7df9816cf3108bcfb1b97"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.UVec_UString" title="UVec_UString"><span class="n"><span class="pre">UVec_UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVec_UString</span></span></span><a class="headerlink" href="#c.UVec_UString" title="Link to this definition"></a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> of <code class="docutils literal notranslate"><a class="reference internal" href="string.html#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code> elements. </p>
+</dd></dl>
+
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_CACHE_LINE_SIZE">
+<span class="target" id="group___u_vec__constants_1ga2c4502c78bb2b88f4510a4357ded52e0"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_CACHE_LINE_SIZE</span></span></span><a class="headerlink" href="#c.UVEC_CACHE_LINE_SIZE" title="Link to this definition"></a><br /></dt>
+<dd><p>Cache line size (B). </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_SORT_STACK_SIZE">
+<span class="target" id="group___u_vec__constants_1ga75b26b14a590abcf3f16028bf7032690"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_SORT_STACK_SIZE</span></span></span><a class="headerlink" href="#c.UVEC_SORT_STACK_SIZE" title="Link to this definition"></a><br /></dt>
+<dd><p>Quicksort stack size. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the stack overflows, sorting falls back to insertion sort. </p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_SORT_INSERTION_THRESH">
+<span class="target" id="group___u_vec__constants_1ga1a3fd5583a7f018e139e8f3f857f91e6"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_SORT_INSERTION_THRESH</span></span></span><a class="headerlink" href="#c.UVEC_SORT_INSERTION_THRESH" title="Link to this definition"></a><br /></dt>
+<dd><p>Switch to insertion sort below this many elements. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Applies to both entire vectors and quicksort partitions. </p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_INDEX_OF_THRESH">
+<span class="target" id="group___u_vec__constants_1ga44a6e82a3fa9d187d07829f6e362e053"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_INDEX_OF_THRESH</span></span></span><a class="headerlink" href="#c.UVEC_INDEX_OF_THRESH" title="Link to this definition"></a><br /></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group__ulib__str_1ga674ab1dbe3f03eeb4df8fa7ac97bdaa2"><span class="std std-ref"><span class="pre">ulib_mem_mem()</span></span></a></code> in <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__equatable_1gacf3f24ea33729a8799eeacffb97cc39d"><span class="std std-ref"><span class="pre">uvec_index_of()</span></span></a></code> above this many elements. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only affects vectors of scalar types. </p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_BINARY_SEARCH_THRESH">
+<span class="target" id="group___u_vec__constants_1gacd68320410fe88a6abe6ff6bdc94be61"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_BINARY_SEARCH_THRESH</span></span></span><a class="headerlink" href="#c.UVEC_BINARY_SEARCH_THRESH" title="Link to this definition"></a><br /></dt>
+<dd><p>Switch from binary to linear search below this many elements. </p>
+</dd></dl>
+
+</section>
+<section id="defining-new-vector-types">
+<h2>Defining new vector types<a class="headerlink" href="#defining-new-vector-types" title="Link to this heading"></a></h2>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_DECL">
+<span class="target" id="group___u_vec__definitions_1ga054c1d61f57db978d3939d6e932c9522"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_DECL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_DECL" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new vector type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_DECL_SPEC">
+<span class="target" id="group___u_vec__definitions_1ga2e9dc104269e297178076d8869fac806"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_DECL_SPEC</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">SPEC</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_DECL_SPEC" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new vector type, prepending a specifier to the generated declarations. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+<li><p><strong>SPEC</strong> – <code class="docutils literal notranslate"><span class="pre">specifier</span></code> Specifier. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_DECL_EQUATABLE">
+<span class="target" id="group___u_vec__definitions_1gaf519fe4eb39d3ee96073e59d7748e168"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_DECL_EQUATABLE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_DECL_EQUATABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new equatable vector type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_DECL_EQUATABLE_SPEC">
+<span class="target" id="group___u_vec__definitions_1ga21a1167a995100f6c708ded7c7639f59"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_DECL_EQUATABLE_SPEC</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">SPEC</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_DECL_EQUATABLE_SPEC" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new equatable vector type, prepending a specifier to the generated declarations. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+<li><p><strong>SPEC</strong> – <code class="docutils literal notranslate"><span class="pre">specifier</span></code> Specifier. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_DECL_COMPARABLE">
+<span class="target" id="group___u_vec__definitions_1ga7aebe12e6d560ffd8c0b43e1eb8d069d"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_DECL_COMPARABLE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_DECL_COMPARABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new comparable vector type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_DECL_COMPARABLE_SPEC">
+<span class="target" id="group___u_vec__definitions_1ga511decd4b1b2df3f672c8aba9945ee72"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_DECL_COMPARABLE_SPEC</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">SPEC</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_DECL_COMPARABLE_SPEC" title="Link to this definition"></a><br /></dt>
+<dd><p>Declares a new comparable vector type, prepending a specifier to the generated declarations. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+<li><p><strong>SPEC</strong> – <code class="docutils literal notranslate"><span class="pre">specifier</span></code> Specifier. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_IMPL">
+<span class="target" id="group___u_vec__definitions_1ga21e5d0cc9c430399c1f7057d1a4ddd63"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_IMPL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_IMPL" title="Link to this definition"></a><br /></dt>
+<dd><p>Implements a previously declared vector type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_IMPL_EQUATABLE">
+<span class="target" id="group___u_vec__definitions_1gaf43568f18732ff072eba2bdeacd2e8c7"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_IMPL_EQUATABLE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">equal_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_IMPL_EQUATABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Implements a previously declared equatable vector type. </p>
+<p>Elements of an equatable vector can be checked for equality via <code class="docutils literal notranslate"><span class="pre">equal_func</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+<li><p><strong>equal_func</strong> – <code class="docutils literal notranslate"><span class="pre">(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Equality function. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_IMPL_COMPARABLE">
+<span class="target" id="group___u_vec__definitions_1gafdf8467789bdddf7807872cc555f0b59"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_IMPL_COMPARABLE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">equal_func</span></span>, <span class="n"><span class="pre">compare_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_IMPL_COMPARABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Implements a previously declared comparable vector type. </p>
+<p>Elements of a comparable vector can be checked for equality via <code class="docutils literal notranslate"><span class="pre">equal_func</span></code> and ordered via <code class="docutils literal notranslate"><span class="pre">compare_func</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+<li><p><strong>equal_func</strong> – <code class="docutils literal notranslate"><span class="pre">(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Equality function. </p></li>
+<li><p><strong>compare_func</strong> – <code class="docutils literal notranslate"><span class="pre">(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Comparison function (a &lt; b). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_IMPL_IDENTIFIABLE">
+<span class="target" id="group___u_vec__definitions_1ga390219c7e6a0716b18f89a7d7367d6fa"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_IMPL_IDENTIFIABLE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_IMPL_IDENTIFIABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Implements a previously declared comparable vector type whose elements can be checked for equality via <code class="docutils literal notranslate"><span class="pre">==</span></code> and compared via <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_INIT">
+<span class="target" id="group___u_vec__definitions_1gaff8e6deb419e0368295f85fd19a491e0"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_INIT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_INIT" title="Link to this definition"></a><br /></dt>
+<dd><p>Defines a new static vector type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_INIT_EQUATABLE">
+<span class="target" id="group___u_vec__definitions_1gadcbf59877e7596de3fe551d84fca2387"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_INIT_EQUATABLE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">equal_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_INIT_EQUATABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Defines a new static equatable vector type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+<li><p><strong>equal_func</strong> – <code class="docutils literal notranslate"><span class="pre">(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Equality function. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_INIT_COMPARABLE">
+<span class="target" id="group___u_vec__definitions_1ga7dbdb65079aa2dadafd7e84f13d168ab"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_INIT_COMPARABLE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">equal_func</span></span>, <span class="n"><span class="pre">compare_func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_INIT_COMPARABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Defines a new static comparable vector type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+<li><p><strong>equal_func</strong> – <code class="docutils literal notranslate"><span class="pre">(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Equality function. </p></li>
+<li><p><strong>compare_func</strong> – <code class="docutils literal notranslate"><span class="pre">(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> Comparison function (a &lt; b). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UVEC_INIT_IDENTIFIABLE">
+<span class="target" id="group___u_vec__definitions_1ga2c346bc959924ffd82550c56a85b9075"></span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_INIT_IDENTIFIABLE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.UVEC_INIT_IDENTIFIABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Defines a new static comparable vector type whose elements can be checked for equality via <code class="docutils literal notranslate"><span class="pre">==</span></code> and compared via <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="common-vector-operations">
+<h2>Common vector operations<a class="headerlink" href="#common-vector-operations" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec">
+<span class="target" id="group___u_vec__common_1ga0915388a08948597f026a1bcb4aaa214"></span><a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new vector. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Initialized vector instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_assign">
+<span class="target" id="group___u_vec__common_1gabe46716ac293d3bca3780587b396e073"></span><a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_assign</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.uvec_assign" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_assign" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new vector by taking ownership of the specified array, which must have been dynamically allocated. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to the internals of <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code>, you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>array</strong> – Array. </p></li>
+<li><p><strong>count</strong> – Number of elements in the array. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Initialized vector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_wrap">
+<span class="target" id="group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"></span><a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_wrap</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.uvec_wrap" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_wrap" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a new vector by wrapping the specified array. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the array has been dynamically allocated, you are responsible for its deallocation. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must not call <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit()</span></span></a></code> on a vector initialized with this function. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The array will never be resized, and it is assumed it can contain any number of elements. This is also reflected by <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaa6beff651c4eac920c0963edbaee024"><span class="std std-ref"><span class="pre">uvec_size()</span></span></a></code> returning <code class="docutils literal notranslate"><a class="reference internal" href="number.html#group__ulib__int_1gaf34471f49871ac90a530a9598ddce7c4"><span class="std std-ref"><span class="pre">ULIB_UINT_MAX</span></span></a></code> for vectors initialized with this function. It is up to you to avoid overflowing the underlying buffer. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>array</strong> – Array. </p></li>
+<li><p><strong>count</strong> – Number of elements in the array. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Initialized vector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_deinit">
+<span class="target" id="group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_deinit" title="Link to this definition"></a><br /></dt>
+<dd><p>De-initializes a vector previously initialized via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga0915388a08948597f026a1bcb4aaa214"><span class="std std-ref"><span class="pre">uvec()</span></span></a></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector to de-initialize. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_move">
+<span class="target" id="group___u_vec__common_1gad6b80b940e4bdcb34db7c6d1fc1b07fc"></span><a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_move</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_move" title="Link to this definition"></a><br /></dt>
+<dd><p>Invalidates the vector and returns its storage. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector whose storage should be returned. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Vector storage.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_copy">
+<span class="target" id="group___u_vec__common_1ga291150aba9c3066c2513269d43e33adc"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_copy</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_copy" title="Link to this definition"></a><br /></dt>
+<dd><p>Copies the specified vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>src</strong> – Vector to copy. </p></li>
+<li><p><strong>dest</strong> – Vector to copy into. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_copy_to_array">
+<span class="target" id="group___u_vec__common_1gac3915866039a7e2ed221a4199dfdc1b3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_copy_to_array</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_copy_to_array" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_copy_to_array" title="Link to this definition"></a><br /></dt>
+<dd><p>Copies the elements of the specified vector into the given array. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The array must be sufficiently large to hold all the elements. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector to copy. </p></li>
+<li><p><strong>array</strong> – Array to copy the elements into.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_reserve">
+<span class="target" id="group___u_vec__common_1ga9c1401a962873534dcd01c7411a291a2"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_reserve</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_reserve" title="Link to this definition"></a><br /></dt>
+<dd><p>Ensures the specified vector can hold at least as many elements as <code class="docutils literal notranslate"><span class="pre">size</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>size</strong> – Number of elements the vector should be able to hold. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_expand">
+<span class="target" id="group___u_vec__common_1gac6d5a31ceed6c1011c4b0a8461c6fcc9"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_expand</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_expand" title="Link to this definition"></a><br /></dt>
+<dd><p>Expands the specified vector so that it can contain additional <code class="docutils literal notranslate"><span class="pre">size</span></code> elements. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector to expand. </p></li>
+<li><p><strong>size</strong> – Number of additional elements the vector should be able to hold. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_shrink">
+<span class="target" id="group___u_vec__common_1ga3990d9eeb6bf89175fc62d9706fde22e"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_shrink</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_shrink" title="Link to this definition"></a><br /></dt>
+<dd><p>Shrinks the specified vector so that its allocated size is just large enough to hold the elements it currently contains. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector to shrink. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_data">
+<span class="target" id="group___u_vec__common_1ga0015b80bb4de067c31e4bf55dad23d89"></span><a class="reference internal" href="#c.uvec_data" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_data</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_data" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the raw array backing the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pointer to the first element of the raw array. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_get">
+<span class="target" id="group___u_vec__common_1gacaed36215b34825ad11c9780cf1fc4c9"></span><a class="reference internal" href="#c.uvec_get" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_get" title="Link to this definition"></a><br /></dt>
+<dd><p>Retrieves the element at the specified index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>idx</strong> – Index. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Element at the specified index. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_set">
+<span class="target" id="group___u_vec__common_1ga5fd01d5da7232a26878af2c6cc5a1353"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">idx</span></span>, <a class="reference internal" href="#c.uvec_set" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_set" title="Link to this definition"></a><br /></dt>
+<dd><p>Replaces the element at the specified index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>idx</strong> – Index. </p></li>
+<li><p><strong>item</strong> – Replacement element. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_first">
+<span class="target" id="group___u_vec__common_1ga76d044725f31854647679577febcbaa8"></span><a class="reference internal" href="#c.uvec_first" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_first</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_first" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the first element in the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>First element. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_last">
+<span class="target" id="group___u_vec__common_1gadcfa99fabfc154092826b46a9b69e943"></span><a class="reference internal" href="#c.uvec_last" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_last</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_last" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the last element in the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Last element. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_count">
+<span class="target" id="group___u_vec__common_1gab1971cb6b51c576da5e2e6fdcb5eaf5a"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_count</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_count" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the number of elements in the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of elements. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_size">
+<span class="target" id="group___u_vec__common_1gaaa6beff651c4eac920c0963edbaee024"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_size</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_size" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the maximum number of elements that can be held by the raw array backing the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Capacity. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_index_is_valid">
+<span class="target" id="group___u_vec__common_1gaf9a1dbe9dbd31521842b168854ad98c8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_index_is_valid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_index_is_valid" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if the specified index is valid. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>idx</strong> – Index. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the index is valid, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_push">
+<span class="target" id="group___u_vec__common_1ga4c3de06d366a1acb96f1981980f0d967"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_push" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_push" title="Link to this definition"></a><br /></dt>
+<dd><p>Pushes the specified element to the top of the vector (last element). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to push. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_pop">
+<span class="target" id="group___u_vec__common_1ga87fa1fe056762471f0787eb198f78e3f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_pop</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_pop" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_pop" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes and returns the element at the top of the vector (last element). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – <strong>[out]</strong> Removed element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if an element was removed, false if the vector was empty. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_remove_at">
+<span class="target" id="group___u_vec__common_1ga435139bc9d228cd4a659cb96f94c4ebb"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_remove_at</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_remove_at" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes the element at the specified index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>idx</strong> – Index of the element to remove. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_insert_at">
+<span class="target" id="group___u_vec__common_1ga876c84a00a9c82aa4bf991beba9eb9fc"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_at</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">idx</span></span>, <a class="reference internal" href="#c.uvec_insert_at" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_at" title="Link to this definition"></a><br /></dt>
+<dd><p>Inserts an element at the specified index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>idx</strong> – Index at which the element should be inserted. </p></li>
+<li><p><strong>item</strong> – Element to insert. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_remove_range">
+<span class="target" id="group___u_vec__common_1gab2e334d725ba894c6a9071a6b55b9f36"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_remove_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_remove_range" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes the elements in the specified range. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>start</strong> – Range start index. </p></li>
+<li><p><strong>n</strong> – Range length. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_insert_range">
+<span class="target" id="group___u_vec__common_1gab213d0c5a1b1f6578c5a09b9211fd569"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insert_range" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_range" title="Link to this definition"></a><br /></dt>
+<dd><p>Inserts the elements contained in an array at the specified index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>array</strong> – Array containing the items. </p></li>
+<li><p><strong>start</strong> – Range start index. </p></li>
+<li><p><strong>n</strong> – Number of elements in the array. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_remove_all">
+<span class="target" id="group___u_vec__common_1ga12acdda4666b3c9151d3e9832f0df9db"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_remove_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_remove_all" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes all the elements in the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_append">
+<span class="target" id="group___u_vec__common_1ga263a1f4e58fe2e0ad815440495b55094"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_append</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_append" title="Link to this definition"></a><br /></dt>
+<dd><p>Appends a vector to another. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>src</strong> – Vector to append. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_append_array">
+<span class="target" id="group___u_vec__common_1ga213d4f68304895872fb1d09638206451"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_append_array</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_append_array" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_append_array" title="Link to this definition"></a><br /></dt>
+<dd><p>Appends an array to the specified vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>array</strong> – Array to append. </p></li>
+<li><p><strong>n</strong> – Number of elements to append. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_view">
+<span class="target" id="group___u_vec__common_1ga228b4913ac35aaec34980f91e8f16cf3"></span><a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_view</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_view" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a view over a section of the specified vector. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Views are affected by the same limitations as vectors created via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"><span class="std std-ref"><span class="pre">uvec_wrap()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>start</strong> – Start index of the view. </p></li>
+<li><p><strong>len</strong> – Length of the view. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>View.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_view_from">
+<span class="target" id="group___u_vec__common_1ga9be7443234f648b119b333070c0efa26"></span><a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_view_from</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_view_from" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a view over a section of the specified vector. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Views are affected by the same limitations as vectors created via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"><span class="std std-ref"><span class="pre">uvec_wrap()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>start</strong> – Start index of the view. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>View.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_view_to">
+<span class="target" id="group___u_vec__common_1gad37fdad8ad9fe4b7a0d64e6e2a30b444"></span><a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_view_to</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_view_to" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a view over a section of the specified vector. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Views are affected by the same limitations as vectors created via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"><span class="std std-ref"><span class="pre">uvec_wrap()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>len</strong> – Length of the view. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>View.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_set_range">
+<span class="target" id="group___u_vec__common_1gae1383bc040192f806ab9aa9c829d30bb"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_set_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_set_range" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_set_range" title="Link to this definition"></a><br /></dt>
+<dd><p>Sets items in the specified range to those contained in an array. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>array</strong> – Array containing the items. </p></li>
+<li><p><strong>start</strong> – Range start index. </p></li>
+<li><p><strong>n</strong> – Number of elements in the array. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_reverse">
+<span class="target" id="group___u_vec__common_1gaa07211e57d46c14fd67df71701835526"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_reverse</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_reverse" title="Link to this definition"></a><br /></dt>
+<dd><p>Reverses the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_shuffle">
+<span class="target" id="group___u_vec__common_1ga9ea5e2ce1cc9fa0c9c3ea28303c3fabc"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_shuffle</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_shuffle" title="Link to this definition"></a><br /></dt>
+<dd><p>Randomly shuffles the elements of the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.uvec_foreach">
+<span class="target" id="group___u_vec__common_1ga68db27a3f4cb0e15e917f8043a39e209"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_foreach</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">enum_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_foreach" title="Link to this definition"></a><br /></dt>
+<dd><p>Iterates over the vector, executing the specified code block for each element. </p>
+<p>Usage example: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uvec_foreach</span> <span class="p">(</span><span class="n">ulib_int</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ulib_uint</span> <span class="n">index</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">i</span><span class="p">;</span>
+    <span class="n">ulib_int</span> <span class="n">item</span> <span class="o">=</span> <span class="o">*</span><span class="n">entry</span><span class="o">.</span><span class="n">item</span><span class="p">;</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+<li><p><strong>vec</strong> – <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a> <span class="pre">*</span></code> Vector instance. </p></li>
+<li><p><strong>enum_name</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Name of the variable holding the current item and its index. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.uvec_foreach_reverse">
+<span class="target" id="group___u_vec__common_1gabf1604e19ae2115c13dbc72b716819a8"></span><span class="sig-name descname"><span class="n"><span class="pre">uvec_foreach_reverse</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span>, <span class="n"><span class="pre">vec</span></span>, <span class="n"><span class="pre">enum_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_foreach_reverse" title="Link to this definition"></a><br /></dt>
+<dd><p>Iterates over the vector in reverse order, executing the specified code block for each element. </p>
+<p>Usage example: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uvec_foreach_reverse</span> <span class="p">(</span><span class="n">ulib_int</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ulib_uint</span> <span class="n">index</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">i</span><span class="p">;</span>
+    <span class="n">ulib_int</span> <span class="n">item</span> <span class="o">=</span> <span class="o">*</span><span class="n">entry</span><span class="o">.</span><span class="n">item</span><span class="p">;</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Vector type. </p></li>
+<li><p><strong>vec</strong> – <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a> <span class="pre">*</span></code> Vector instance. </p></li>
+<li><p><strong>enum_name</strong> – <code class="docutils literal notranslate"><span class="pre">symbol</span></code> Name of the variable holding the current item and its index. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="equatable-vectors">
+<h2>Equatable vectors<a class="headerlink" href="#equatable-vectors" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_index_of">
+<span class="target" id="group___u_vec__equatable_1gacf3f24ea33729a8799eeacffb97cc39d"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_index_of</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_index_of" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_index_of" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the first occurrence of the specified element. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to search. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the found element, or an invalid index if the element cannot be found. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_index_of_reverse">
+<span class="target" id="group___u_vec__equatable_1gaeebf03eedbfa6b8d2c2759da9babb035"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_index_of_reverse</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_index_of_reverse" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_index_of_reverse" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the last occurrence of the specified element. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to search. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the found element, or an invalid index if the element cannot be found. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_contains">
+<span class="target" id="group___u_vec__equatable_1ga56cae98e6b6efb2e7daada01cd2b77e5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_contains</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_contains" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_contains" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the vector contains the specified element. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to search. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the vector contains the specified element, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_remove">
+<span class="target" id="group___u_vec__equatable_1gad7e990fe042b61fbd583cbe59474d28c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_remove</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_remove" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_remove" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes the specified element. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to remove. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the element was found and removed, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_equals">
+<span class="target" id="group___u_vec__equatable_1ga3f0b51364bca015fe0aa3e0435c4c670"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_equals</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec_a</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec_b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_equals" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the two vectors are equal. </p>
+<p>Two vectors are considered equal if they contain the same elements in the same order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec_a</strong> – First vector. </p></li>
+<li><p><strong>vec_b</strong> – Second vector. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the vectors are equal, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_push_unique">
+<span class="target" id="group___u_vec__equatable_1gabaa3e00ffe7d3376013dd8ae748ddb8e"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_push_unique</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_push_unique" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_push_unique" title="Link to this definition"></a><br /></dt>
+<dd><p>Pushes the specified element to the top of the vector if it does not already contain it. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to push. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> if the element was pushed, <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a55793cb24ffe207f65ffe1a6569e269b"><span class="std std-ref"><span class="pre">UVEC_NO</span></span></a></code> if the element was already present, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="comparable-vectors">
+<h2>Comparable vectors<a class="headerlink" href="#comparable-vectors" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_index_of_min">
+<span class="target" id="group___u_vec__comparable_1gada3be3b90eb949a58dae2ab7c076560e"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_index_of_min</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_index_of_min" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the minimum element in the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the minimum element. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_index_of_max">
+<span class="target" id="group___u_vec__comparable_1ga6cd29686564b5d8d5bb348c78803ca44"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_index_of_max</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_index_of_max" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the maximum element in the vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the maximum element. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_sort">
+<span class="target" id="group___u_vec__comparable_1gaddf95d1d64d637d7dca90360bb347865"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_sort</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_sort" title="Link to this definition"></a><br /></dt>
+<dd><p>Sorts the vector. </p>
+<p>Average performance: <em>O(n log n)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_sort_range">
+<span class="target" id="group___u_vec__comparable_1gaffc7071ab2da42b69e8d4eee142c430a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_sort_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_sort_range" title="Link to this definition"></a><br /></dt>
+<dd><p>Sorts the elements in the specified range. </p>
+<p>Average performance: <em>O(n log n)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>start</strong> – Range start index. </p></li>
+<li><p><strong>len</strong> – Range length. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_insertion_index_sorted">
+<span class="target" id="group___u_vec__comparable_1ga3f576a18e468049db24efa4b66c3cff5"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insertion_index_sorted</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insertion_index_sorted" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insertion_index_sorted" title="Link to this definition"></a><br /></dt>
+<dd><p>Finds the insertion index for the specified item in a sorted vector. </p>
+<p>Average performance: <em>O(log n)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element whose insertion index should be found. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Insertion index. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_index_of_sorted">
+<span class="target" id="group___u_vec__comparable_1ga1443b751b0b585e4a34da384ff75658a"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_index_of_sorted</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_index_of_sorted" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_index_of_sorted" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the specified element in a sorted vector. </p>
+<p>Average performance: <em>O(log n)</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned index is not necessarily the first occurrence of the item. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to search. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the found element, or an invalid index.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_contains_sorted">
+<span class="target" id="group___u_vec__comparable_1ga9a2b76f834058aaa0d08789fe95ab977"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_contains_sorted</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_contains_sorted" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_contains_sorted" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether a sorted vector contains the specified element. </p>
+<p>Average performance: <em>O(log n)</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to search. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the vector contains the specified element, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_insert_sorted">
+<span class="target" id="group___u_vec__comparable_1ga4c4c4b9d157f048aa420810ba70c092d"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_sorted</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insert_sorted" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_sorted" title="Link to this definition"></a><br /></dt>
+<dd><p>Inserts the specified element in a sorted vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to insert. </p></li>
+<li><p><strong>idx</strong> – <strong>[out]</strong> Index of the inserted element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_insert_sorted_unique">
+<span class="target" id="group___u_vec__comparable_1gab405dfb23b5f9d393b2050013fbe6dfa"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_sorted_unique</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insert_sorted_unique" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_sorted_unique" title="Link to this definition"></a><br /></dt>
+<dd><p>Inserts the specified element in a sorted vector only if it does not already contain it. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to insert. </p></li>
+<li><p><strong>idx</strong> – <strong>[out]</strong> Index of the inserted (or that of the already present) element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> if the element was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a55793cb24ffe207f65ffe1a6569e269b"><span class="std std-ref"><span class="pre">UVEC_NO</span></span></a></code> if the element was already present, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_remove_sorted">
+<span class="target" id="group___u_vec__comparable_1ga310200c9040cc78be20070d5a9e1c09e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_remove_sorted</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_remove_sorted" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_remove_sorted" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes the specified element from a sorted vector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to remove. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the element was found and removed, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="priority-queues">
+<h2>Priority queues<a class="headerlink" href="#priority-queues" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_max_heapq_make">
+<span class="target" id="group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_max_heapq_make</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_max_heapq_make" title="Link to this definition"></a><br /></dt>
+<dd><p>Makes the specified vector a max heap queue. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All functions named <code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_*</span></code> require either:<ul class="simple">
+<li><p>an empty vector;</p></li>
+<li><p>a non-empty vector that has been mutated by <code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_*</span></code> functions only;</p></li>
+<li><p>any non-empty vector that has been transformed into a heap through this function. </p></li>
+</ul>
+</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_max_heapq_push">
+<span class="target" id="group___u_vec__heapq_1ga4c6d8e8c0f4b78769b0c55fb5adac32f"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_max_heapq_push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_max_heapq_push" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_max_heapq_push" title="Link to this definition"></a><br /></dt>
+<dd><p>Pushes the specified item into the max heap queue. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to push. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_max_heapq_pop">
+<span class="target" id="group___u_vec__heapq_1ga38bd470a2d668bacff1f4127af0a6580"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_max_heapq_pop</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_max_heapq_pop" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_max_heapq_pop" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes and returns the maximum element from the queue. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – <strong>[out]</strong> Removed element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the maximum was removed, false if the queue was empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_max_heapq_push_pop">
+<span class="target" id="group___u_vec__heapq_1ga51d35510253b76fc9dc93cb042a19156"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_max_heapq_push_pop</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_max_heapq_push_pop" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">in</span></span>, <a class="reference internal" href="#c.uvec_max_heapq_push_pop" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_max_heapq_push_pop" title="Link to this definition"></a><br /></dt>
+<dd><p>Pushes <code class="docutils literal notranslate"><span class="pre">in</span></code> into the queue, and pops the maximum. </p>
+<p>Equivalent to push followed by pop, but with better performance.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>in</strong> – Element to push. </p></li>
+<li><p><strong>out</strong> – <strong>[out]</strong> Removed element.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_max_heapq_replace">
+<span class="target" id="group___u_vec__heapq_1gaf618d6a4eece3afecc76aaf070968033"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_max_heapq_replace</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_max_heapq_replace" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">in</span></span>, <a class="reference internal" href="#c.uvec_max_heapq_replace" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_max_heapq_replace" title="Link to this definition"></a><br /></dt>
+<dd><p>Pops the maximum, and pushes <code class="docutils literal notranslate"><span class="pre">in</span></code> into the queue. </p>
+<p>Similar to pop followed by push, but with better performance.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the queue is empty, <code class="docutils literal notranslate"><span class="pre">in</span></code> is not pushed. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>in</strong> – Element to push. </p></li>
+<li><p><strong>out</strong> – <strong>[out]</strong> Removed element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the operation succeeded, false if the queue was empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_max_heapq_remove">
+<span class="target" id="group___u_vec__heapq_1ga66b0b78298005d3d19ad08e8ca67e3df"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_max_heapq_remove</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_max_heapq_remove" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_max_heapq_remove" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes the specified item from the queue. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to remove. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the element was found and removed, false otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_min_heapq_make">
+<span class="target" id="group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_min_heapq_make</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_min_heapq_make" title="Link to this definition"></a><br /></dt>
+<dd><p>Makes the specified vector a min heap queue. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All functions named <code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_*</span></code> require either:<ul class="simple">
+<li><p>an empty vector;</p></li>
+<li><p>a non-empty vector that has been mutated by <code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_*</span></code> functions only;</p></li>
+<li><p>any non-empty vector that has been transformed into a heap through this function. </p></li>
+</ul>
+</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_min_heapq_push">
+<span class="target" id="group___u_vec__heapq_1ga0b396ca7c00af87aecdaff0116847506"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_min_heapq_push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_min_heapq_push" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_min_heapq_push" title="Link to this definition"></a><br /></dt>
+<dd><p>Pushes the specified item into the min heap queue. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to push. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_min_heapq_pop">
+<span class="target" id="group___u_vec__heapq_1ga22f83966b9af4b1b6c1f4ebf84790d46"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_min_heapq_pop</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_min_heapq_pop" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_min_heapq_pop" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes and returns the minimum element from the queue. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – <strong>[out]</strong> Removed element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the minimum was removed, false if the queue was empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_min_heapq_push_pop">
+<span class="target" id="group___u_vec__heapq_1ga6eee065eb5c0029eea56522357981f84"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_min_heapq_push_pop</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_min_heapq_push_pop" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">in</span></span>, <a class="reference internal" href="#c.uvec_min_heapq_push_pop" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_min_heapq_push_pop" title="Link to this definition"></a><br /></dt>
+<dd><p>Pushes <code class="docutils literal notranslate"><span class="pre">in</span></code> into the queue, and pops the minimum. </p>
+<p>Equivalent to push followed by pop, but with better performance.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>in</strong> – Element to push. </p></li>
+<li><p><strong>out</strong> – <strong>[out]</strong> Removed element.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_min_heapq_replace">
+<span class="target" id="group___u_vec__heapq_1gaa646284f2607deb43680320c4d67d9cc"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_min_heapq_replace</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_min_heapq_replace" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">in</span></span>, <a class="reference internal" href="#c.uvec_min_heapq_replace" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_min_heapq_replace" title="Link to this definition"></a><br /></dt>
+<dd><p>Pops the minimum, and pushes <code class="docutils literal notranslate"><span class="pre">in</span></code> into the queue. </p>
+<p>Similar to pop followed by push, but with better performance.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the queue is empty, <code class="docutils literal notranslate"><span class="pre">in</span></code> is not pushed. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>in</strong> – Element to push. </p></li>
+<li><p><strong>out</strong> – <strong>[out]</strong> Removed element. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the operation succeeded, false if the queue was empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uvec_min_heapq_remove">
+<span class="target" id="group___u_vec__heapq_1gafa687a27e461482d494131f4e2555d17"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_min_heapq_remove</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_min_heapq_remove" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_min_heapq_remove" title="Link to this definition"></a><br /></dt>
+<dd><p>Removes the specified item from the queue. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Vector type. </p></li>
+<li><p><strong>vec</strong> – Vector instance. </p></li>
+<li><p><strong>item</strong> – Element to remove. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the element was found and removed, false otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="collection.html" class="btn btn-neutral float-left" title="Collections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="collection_hash.html" class="btn btn-neutral float-right" title="Hash table" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

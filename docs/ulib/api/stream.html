@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streams &mdash; uLib 0.2.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=37614e8c"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Time" href="time.html" />
+    <link rel="prev" title="Hash table" href="collection_hash.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uLib
+          </a>
+              <div class="version">
+                0.2.5
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="number.html">Numeric types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Streams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#input-stream">Input stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output-stream">Output stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#return-codes">Return codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Streams</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="streams">
+<h1>Streams<a class="headerlink" href="#streams" title="Link to this heading"></a></h1>
+<section id="input-stream">
+<h2>Input stream<a class="headerlink" href="#input-stream" title="Link to this heading"></a></h2>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.UIStream">
+<span class="target" id="struct_u_i_stream"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UIStream</span></span></span><a class="headerlink" href="#c.UIStream" title="Link to this definition"></a><br /></dt>
+<dd><p>Models an input stream. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UIStream.state">
+<span class="target" id="struct_u_i_stream_1a179312992b9cb32ab02619cde9ab1973"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">state</span></span></span><a class="headerlink" href="#c.UIStream.state" title="Link to this definition"></a><br /></dt>
+<dd><p>Stream state. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UIStream.read_bytes">
+<span class="target" id="struct_u_i_stream_1a74467c872526a815c26b19d19e3b7482"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_bytes</span></span></span><a class="headerlink" href="#c.UIStream.read_bytes" title="Link to this definition"></a><br /></dt>
+<dd><p>Bytes read since the last <code class="docutils literal notranslate"><span class="pre">reset</span></code> call. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UIStream.ctx">
+<span class="target" id="struct_u_i_stream_1a279277cbff782620fef10ae6e15abc4d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ctx</span></span></span><a class="headerlink" href="#c.UIStream.ctx" title="Link to this definition"></a><br /></dt>
+<dd><p>Stream context, can be anything. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UIStream.read">
+<span class="target" id="struct_u_i_stream_1a74378c8a7d4ac8e9b6cd641c3c355a06"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.UIStream.read" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to a function that reads <code class="docutils literal notranslate"><span class="pre">count</span></code> bytes from the stream and writes them into <code class="docutils literal notranslate"><span class="pre">buf</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param ctx<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Stream context. </p>
+</dd>
+<dt class="field-even">Param buf<span class="colon">:</span></dt>
+<dd class="field-even"><p>Buffer to write into. </p>
+</dd>
+<dt class="field-odd">Param count<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number of bytes to read. </p>
+</dd>
+<dt class="field-even">Param read<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>[out]</strong> Number of bytes actually read. </p>
+</dd>
+<dt class="field-odd">Return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UIStream.reset">
+<span class="target" id="struct_u_i_stream_1aa3948d5535f6ca26b3ae8efe20e98984"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">reset</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.UIStream.reset" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to a function that resets the stream. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Can be NULL if the stream cannot be reset. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Param ctx<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Stream context. </p>
+</dd>
+<dt class="field-even">Return<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UIStream.free">
+<span class="target" id="struct_u_i_stream_1a40c4bf5a54d8ee3c948a18be0c1d7ac7"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">free</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.UIStream.free" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to a function that releases any resource reserved by the stream. </p>
+<p>The provided function is invoked when <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_i_stream_1ga7c580f6d2366d17aed98fd4f871900a2"><span class="std std-ref"><span class="pre">uistream_deinit()</span></span></a></code> is called.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Can be NULL if the stream does not need to release resources. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Param ctx<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Stream context. </p>
+</dd>
+<dt class="field-even">Return<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream">
+<span class="target" id="group___u_i_stream_1ga207673252a0a23ffb95b995bed2891b2"></span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">reset_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">free_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes an input stream. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_i_stream_1ga7c580f6d2366d17aed98fd4f871900a2"><span class="std std-ref"><span class="pre">uistream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – Stream context. </p></li>
+<li><p><strong>read_func</strong> – <code class="docutils literal notranslate"><span class="pre">read</span></code> function pointer. </p></li>
+<li><p><strong>reset_func</strong> – <code class="docutils literal notranslate"><span class="pre">reset</span></code> function pointer. </p></li>
+<li><p><strong>free_func</strong> – <code class="docutils literal notranslate"><span class="pre">free</span></code> function pointer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Stream instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_deinit">
+<span class="target" id="group___u_i_stream_1ga7c580f6d2366d17aed98fd4f871900a2"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_deinit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_deinit" title="Link to this definition"></a><br /></dt>
+<dd><p>Deinitializes the stream, releasing any reserved resource. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_reset">
+<span class="target" id="group___u_i_stream_1gabf1248dc67dd9f81c52cf481a5ed9fa1"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_reset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_reset" title="Link to this definition"></a><br /></dt>
+<dd><p>Resets the stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_read">
+<span class="target" id="group___u_i_stream_1ga4a0f92fb5ca8950e93eaffda435159a0"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_read</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">count</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_read" title="Link to this definition"></a><br /></dt>
+<dd><p>Reads <code class="docutils literal notranslate"><span class="pre">count</span></code> bytes from the stream and writes them into <code class="docutils literal notranslate"><span class="pre">buf</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+<li><p><strong>buf</strong> – Input buffer. </p></li>
+<li><p><strong>count</strong> – Maximum number of bytes to read. </p></li>
+<li><p><strong>read</strong> – <strong>[out]</strong> Number of bytes read. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_std">
+<span class="target" id="group___u_i_stream_1ga7dcd18ebb2030ef1862696d73106750a"></span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uistream_std</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_std" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a stream that reads from the standard input. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Standard input stream. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_from_path">
+<span class="target" id="group___u_i_stream_1ga772d3609c44ce5a13e909c4d381e620b"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_from_path</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_from_path" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that reads from the file at the specified path. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_i_stream_1ga7c580f6d2366d17aed98fd4f871900a2"><span class="std std-ref"><span class="pre">uistream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+<li><p><strong>path</strong> – Path to the file to read from. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_from_file">
+<span class="target" id="group___u_i_stream_1ga28051d14c25bd6a6dd790023de797c28"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_from_file</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">file</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_from_file" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that reads from the specified file. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_i_stream_1ga7c580f6d2366d17aed98fd4f871900a2"><span class="std std-ref"><span class="pre">uistream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+<li><p><strong>file</strong> – The input file. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_from_buf">
+<span class="target" id="group___u_i_stream_1ga60200582cd9247efd6562ddac6e6824c"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_from_buf</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_from_buf" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that reads from the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_i_stream_1ga7c580f6d2366d17aed98fd4f871900a2"><span class="std std-ref"><span class="pre">uistream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+<li><p><strong>buf</strong> – The input buffer. </p></li>
+<li><p><strong>size</strong> – Size of the input buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_from_strbuf">
+<span class="target" id="group___u_i_stream_1gad7f3eec5caf8c1d685de135ad1174d4e"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_from_strbuf</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="string.html#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_from_strbuf" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that reads from the specified string buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_i_stream_1ga7c580f6d2366d17aed98fd4f871900a2"><span class="std std-ref"><span class="pre">uistream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+<li><p><strong>buf</strong> – String buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_from_string">
+<span class="target" id="group___u_i_stream_1ga8e4c1d702be660234fd8ff3398fb86d9"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_from_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_from_string" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that reads from the specified null-terminated string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_i_stream_1ga7c580f6d2366d17aed98fd4f871900a2"><span class="std std-ref"><span class="pre">uistream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+<li><p><strong>string</strong> – String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_from_ustring">
+<span class="target" id="group___u_i_stream_1ga5513b3a372f281a9950a0dbdb25d79be"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_from_ustring</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_from_ustring" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that reads from the specified string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_i_stream_1ga7c580f6d2366d17aed98fd4f871900a2"><span class="std std-ref"><span class="pre">uistream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+<li><p><strong>string</strong> – String. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="output-stream">
+<h2>Output stream<a class="headerlink" href="#output-stream" title="Link to this heading"></a></h2>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.UOStream">
+<span class="target" id="struct_u_o_stream"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UOStream</span></span></span><a class="headerlink" href="#c.UOStream" title="Link to this definition"></a><br /></dt>
+<dd><p>Models an output stream. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UOStream.state">
+<span class="target" id="struct_u_o_stream_1a74c2fae851d4ec4ba256b1271e85a145"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">state</span></span></span><a class="headerlink" href="#c.UOStream.state" title="Link to this definition"></a><br /></dt>
+<dd><p>Stream state. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UOStream.written_bytes">
+<span class="target" id="struct_u_o_stream_1a93f0c6c901aee29d3a626e5a6082e157"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">written_bytes</span></span></span><a class="headerlink" href="#c.UOStream.written_bytes" title="Link to this definition"></a><br /></dt>
+<dd><p>Bytes written since the last <code class="docutils literal notranslate"><span class="pre">flush</span></code> call. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UOStream.ctx">
+<span class="target" id="struct_u_o_stream_1ae15448281ccba99a0b918703e914e63d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ctx</span></span></span><a class="headerlink" href="#c.UOStream.ctx" title="Link to this definition"></a><br /></dt>
+<dd><p>Stream context, can be anything. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UOStream.write">
+<span class="target" id="struct_u_o_stream_1acc2e0eec58567550c459dd0bc58e9b9a"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">write</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.UOStream.write" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to a function that reads <code class="docutils literal notranslate"><span class="pre">count</span></code> bytes from <code class="docutils literal notranslate"><span class="pre">buf</span></code> and writes them into the stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param ctx<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Stream context. </p>
+</dd>
+<dt class="field-even">Param buf<span class="colon">:</span></dt>
+<dd class="field-even"><p>Buffer to read from. </p>
+</dd>
+<dt class="field-odd">Param count<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number of bytes to write. </p>
+</dd>
+<dt class="field-even">Param rcount<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>[out]</strong> Number of bytes actually written. </p>
+</dd>
+<dt class="field-odd">Return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UOStream.writef">
+<span class="target" id="struct_u_o_stream_1ab885a42debce6c7e301b7fb5394e3ed0"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">writef</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">va_list</span></span><span class="w"> </span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.UOStream.writef" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to a function that writes a formatted string into the stream. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Can be NULL, in which case the stream will fallback to <code class="docutils literal notranslate"><span class="pre">write</span></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Param ctx<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Stream context. </p>
+</dd>
+<dt class="field-even">Param written<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>[out]</strong> Number of bytes written. </p>
+</dd>
+<dt class="field-odd">Param format<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Format string. </p>
+</dd>
+<dt class="field-even">Param args<span class="colon">:</span></dt>
+<dd class="field-even"><p>Format arguments. </p>
+</dd>
+<dt class="field-odd">Return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UOStream.flush">
+<span class="target" id="struct_u_o_stream_1a59c7fa46a14a15543cbb17ab0da49af4"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">flush</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.UOStream.flush" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to a function that flushes the stream, writing any buffered data. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Can be NULL if the stream cannot be flushed. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Param ctx<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Stream context. </p>
+</dd>
+<dt class="field-even">Return<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.UOStream.free">
+<span class="target" id="struct_u_o_stream_1a65a62fc8e499a0af284f8e3799f70be9"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">free</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.UOStream.free" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to a function that releases any resource reserved by the stream. </p>
+<p>The provided function is invoked when <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"><span class="std std-ref"><span class="pre">uostream_deinit()</span></span></a></code> is called.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Can be NULL if the stream does not need to release resources. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Param ctx<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Stream context. </p>
+</dd>
+<dt class="field-even">Return<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream">
+<span class="target" id="group___u_o_stream_1gae10b8631f9f2bc9fdf201fa926914ad8"></span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">write_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">writef_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">va_list</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">flush_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span>, <a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">free_func</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes an output stream. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"><span class="std std-ref"><span class="pre">uostream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – Stream context. </p></li>
+<li><p><strong>write_func</strong> – <code class="docutils literal notranslate"><span class="pre">write</span></code> function pointer. </p></li>
+<li><p><strong>writef_func</strong> – <code class="docutils literal notranslate"><span class="pre">writef</span></code> function pointer. </p></li>
+<li><p><strong>flush_func</strong> – <code class="docutils literal notranslate"><span class="pre">flush</span></code> function pointer. </p></li>
+<li><p><strong>free_func</strong> – <code class="docutils literal notranslate"><span class="pre">free</span></code> function pointer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Stream instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_deinit">
+<span class="target" id="group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_deinit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_deinit" title="Link to this definition"></a><br /></dt>
+<dd><p>Deinitializes the stream, releasing any reserved resource. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_flush">
+<span class="target" id="group___u_o_stream_1gaabb2599950ae97d76026143ae0126cb0"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_flush</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_flush" title="Link to this definition"></a><br /></dt>
+<dd><p>Flushes the stream, writing any buffered data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_write">
+<span class="target" id="group___u_o_stream_1gaa5e5b5f49e9bbdbda15ca28065234ceb"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_write</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">count</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_write" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes <code class="docutils literal notranslate"><span class="pre">count</span></code> bytes from <code class="docutils literal notranslate"><span class="pre">buf</span></code> into the specified output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>buf</strong> – Buffer. </p></li>
+<li><p><strong>count</strong> – Number of bytes to write. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> Number of bytes written. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_writef">
+<span class="target" id="group___u_o_stream_1ga36d8e9c66e9984791484dc7717ee335d"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_writef</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_writef" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes a formatted string into the stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> Number of bytes written. </p></li>
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_writef_list">
+<span class="target" id="group___u_o_stream_1ga35cfe22112a1d3074507cfa6ebbe72ad"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_writef_list</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="n"><span class="pre">va_list</span></span><span class="w"> </span><span class="n"><span class="pre">args</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_writef_list" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes a formatted string into the stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> Number of bytes written. </p></li>
+<li><p><strong>format</strong> – Format string. </p></li>
+<li><p><strong>args</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_write_string">
+<span class="target" id="group___u_o_stream_1ga721e92c8026f37bcded6d72d643c7d52"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_write_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_write_string" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes a string into the stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> Number of bytes written. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_write_time">
+<span class="target" id="group___u_o_stream_1ga92d9222f958235242df2372ac54562ce"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_write_time</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="time.html#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_write_time" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the specified date and time into the stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>time</strong> – Date and time. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> Number of bytes written. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_write_time_interval">
+<span class="target" id="group___u_o_stream_1gab8e2b4b2916874a45b7ec8e2b04c7b11"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_write_time_interval</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="time.html#c.utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="n"><span class="pre">interval</span></span>, <a class="reference internal" href="time.html#c.utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n"><span class="pre">unit</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">decimal_digits</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_write_time_interval" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the specified time interval into the stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>interval</strong> – Time interval. </p></li>
+<li><p><strong>unit</strong> – Time unit. </p></li>
+<li><p><strong>decimal_digits</strong> – Number of decimal digits to write. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> Number of bytes written. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_write_version">
+<span class="target" id="group___u_o_stream_1gab79f639e3fa93ef339de6900ebf18704"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_write_version</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="version.html#c.UVersion" title="UVersion"><span class="n"><span class="pre">UVersion</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">version</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_write_version" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the specified version into the stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>version</strong> – Version. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> Number of bytes written. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_std">
+<span class="target" id="group___u_o_stream_1ga379baece522adcf32b9b6741fa837b38"></span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_std</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_std" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a stream that writes to the standard output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Standard output stream. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_stderr">
+<span class="target" id="group___u_o_stream_1ga4296fde9d51b7441dd8a9f8f7a09d703"></span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_stderr</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_stderr" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a stream that writes to the standard error. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Standard error stream. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_null">
+<span class="target" id="group___u_o_stream_1gafb0774b982d84fa0fd02fab2f2e49db0"></span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_null</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_null" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a stream that discards its output. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Null output stream. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_to_path">
+<span class="target" id="group___u_o_stream_1ga556c88f1c086ccde67f3cb4544dd1c1f"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_to_path</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_to_path" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that writes to the file at the specified path. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"><span class="std std-ref"><span class="pre">uostream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>path</strong> – Path to the file to write to. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_to_file">
+<span class="target" id="group___u_o_stream_1gae014980a9152ed6c15518f4fb64e6700"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_to_file</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">file</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_to_file" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that writes to the specified file. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"><span class="std std-ref"><span class="pre">uostream_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You are responsible for closing the file. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>file</strong> – The output file. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_to_buf">
+<span class="target" id="group___u_o_stream_1ga503e7574a0968972b98c444b719950fd"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_to_buf</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_to_buf" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that writes to the specified buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"><span class="std std-ref"><span class="pre">uostream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>buf</strong> – The output buffer. </p></li>
+<li><p><strong>size</strong> – Size of the output buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_to_strbuf">
+<span class="target" id="group___u_o_stream_1ga7ac3323d79fd6cf7bb06c0aa0d386e0d"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_to_strbuf</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="string.html#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_to_strbuf" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that writes to the specified string buffer. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"><span class="std std-ref"><span class="pre">uostream_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">buf</span></code> is NULL, the stream will allocate a new string buffer and set it as its context. In this case, the string buffer will be deinitialized when calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"><span class="std std-ref"><span class="pre">uostream_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>buf</strong> – The output buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_to_multi">
+<span class="target" id="group___u_o_stream_1ga293cbee518e1d63d67fee12b6343dd7f"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_to_multi</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_to_multi" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializes a stream that writes to multiple substreams. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"><span class="std std-ref"><span class="pre">uostream_deinit()</span></span></a></code>. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Multi-streams behave as follows:<ul class="simple">
+<li><p>In case of error of any of the substreams, only the first detected error code is returned. It is your responsibility to check the state of each individual substream if that is important for your use case.</p></li>
+<li><p>The reported written bytes are the maximum bytes written by any of the underlying substreams.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga2df73638fe3acc6dd103b36e1bd395da"><span class="std std-ref"><span class="pre">uostream_deinit()</span></span></a></code> deinitializes all substreams. </p></li>
+</ul>
+</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_add_substream">
+<span class="target" id="group___u_o_stream_1ga98a6d1116c2f5f44eff6580b38e6df56"></span><a class="reference internal" href="#c.ustream_ret" title="ustream_ret"><span class="n"><span class="pre">ustream_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_add_substream</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_add_substream" title="Link to this definition"></a><br /></dt>
+<dd><p>Adds a new output stream to the specified multi-stream. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both streams must have been initialized beforehand, and <code class="docutils literal notranslate"><span class="pre">stream</span></code> must have been initialized via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_o_stream_1ga293cbee518e1d63d67fee12b6343dd7f"><span class="std std-ref"><span class="pre">uostream_to_multi()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>other</strong> – Stream to add. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.uostream_write_literal">
+<span class="target" id="group___u_o_stream_1ga242e96e2c72eb2debf3c363b126ec572"></span><span class="sig-name descname"><span class="n"><span class="pre">uostream_write_literal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">stream</span></span>, <span class="n"><span class="pre">literal</span></span>, <span class="n"><span class="pre">written</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_write_literal" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the specified string literal into the stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – <code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_o_stream"><span class="std std-ref"><span class="pre">UOStream</span></span></a> <span class="pre">*</span></code> Output stream. </p></li>
+<li><p><strong>literal</strong> – <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">[]</span></code> String literal. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> <code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">*</span></code> Number of bytes written. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="return-codes">
+<h2>Return codes<a class="headerlink" href="#return-codes" title="Link to this heading"></a></h2>
+<dl class="c enum">
+<dt class="sig sig-object c" id="c.ustream_ret">
+<span class="target" id="ustream_8h_1a5c00cd2945b15785775e4e930ddb1154"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustream_ret</span></span></span><a class="headerlink" href="#c.ustream_ret" title="Link to this definition"></a><br /></dt>
+<dd><p>Return codes for IO streams. </p>
+<p><em>Values:</em></p>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ustream_ret.USTREAM_OK">
+<span class="target" id="ustream_8h_1a5c00cd2945b15785775e4e930ddb1154a73324dd1779942aa61bb94a36c1fc9ac"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USTREAM_OK</span></span></span><a class="headerlink" href="#c.ustream_ret.USTREAM_OK" title="Link to this definition"></a><br /></dt>
+<dd><p>Success. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ustream_ret.USTREAM_ERR_BOUNDS">
+<span class="target" id="ustream_8h_1a5c00cd2945b15785775e4e930ddb1154a270ed987e85883f6903cd1c9df3b0f41"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USTREAM_ERR_BOUNDS</span></span></span><a class="headerlink" href="#c.ustream_ret.USTREAM_ERR_BOUNDS" title="Link to this definition"></a><br /></dt>
+<dd><p>Buffer bounds exceeded, usually when writing to a stream backed by a fixed memory buffer. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ustream_ret.USTREAM_ERR_MEM">
+<span class="target" id="ustream_8h_1a5c00cd2945b15785775e4e930ddb1154a54aafebc5ba27a0ffda429267f32f83a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USTREAM_ERR_MEM</span></span></span><a class="headerlink" href="#c.ustream_ret.USTREAM_ERR_MEM" title="Link to this definition"></a><br /></dt>
+<dd><p>Memory error, usually caused by failed allocations. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ustream_ret.USTREAM_ERR_IO">
+<span class="target" id="ustream_8h_1a5c00cd2945b15785775e4e930ddb1154adb0e0f6c534749b150a1c2810af93198"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USTREAM_ERR_IO</span></span></span><a class="headerlink" href="#c.ustream_ret.USTREAM_ERR_IO" title="Link to this definition"></a><br /></dt>
+<dd><p>Input/output error, usually returned when a file or stream operation fails. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When this happens, <code class="docutils literal notranslate"><span class="pre">errno</span></code> is sometimes set to a more meaningful value. </p>
+</div>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ustream_ret.USTREAM_ERR">
+<span class="target" id="ustream_8h_1a5c00cd2945b15785775e4e930ddb1154a0ecc32af2eadc5ef4e7451f755b6f4bb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USTREAM_ERR</span></span></span><a class="headerlink" href="#c.ustream_ret.USTREAM_ERR" title="Link to this definition"></a><br /></dt>
+<dd><p>Generic error. </p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="collection_hash.html" class="btn btn-neutral float-left" title="Hash table" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="time.html" class="btn btn-neutral float-right" title="Time" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
