@@ -24,7 +24,7 @@ a {
 
 header {
 	background-color: $color-primary;
-	color: $white;
+	color: $color-lightest;
 }
 
 .header-intro {
@@ -178,7 +178,7 @@ section {
 	}
 
 	a {
-		color: $white;
+		color: $color-lightest;
 		width: 32px;
 		height: 32px;
 		padding-top: 5px;
@@ -572,6 +572,7 @@ h1, h2, h3, h4, h5 {
 	max-width: 250px;
 	max-height: 250px;
 	border-radius: 50%;
+	border: 5px solid $color-light;
 	margin: 0 auto 1rem;
 
 	@include media-breakpoint-up(md) {

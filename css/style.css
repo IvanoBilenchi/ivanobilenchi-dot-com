@@ -9162,7 +9162,7 @@ a {
 /* Header */
 header {
   background-color: #52658F;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 .header-intro, .profile-highlight {
@@ -9281,7 +9281,7 @@ section:last-of-type {
   margin-bottom: 0;
 }
 #nav-social-strip a {
-  color: #fff;
+  color: #FFFFFF;
   width: 32px;
   height: 32px;
   padding-top: 5px;
@@ -9568,6 +9568,7 @@ h1 .fa-solid, .h1 .fa-solid, h1 .fa-brands, .h1 .fa-brands, h2 .fa-solid, .h2 .f
   max-width: 250px;
   max-height: 250px;
   border-radius: 50%;
+  border: 5px solid #F7F7F8;
   margin: 0 auto 1rem;
 }
 @media (min-width: 768px) {
