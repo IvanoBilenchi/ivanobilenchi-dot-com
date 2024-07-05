@@ -4,8 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Macros &mdash; uLib 0.2.5 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+  <title>Macros &mdash; uLib 0.2.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
 
@@ -16,8 +16,8 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=37614e8c"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/documentation_options.js?v=9a313e40"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
@@ -37,7 +37,7 @@
             uLib
           </a>
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -63,6 +63,7 @@
 <li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Macros</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#api-attributes">API attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#warning-suppression">Warning suppression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a></li>
 </ul>
 </li>
@@ -150,9 +151,87 @@
 </dd></dl>
 
 <dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_DEPRECATED">
+<span class="target" id="group__attributes_1gab455156893592bb5ef95bd5bb9afe16a"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_DEPRECATED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_DEPRECATED" title="Link to this definition"></a><br /></dt>
+<dd><p>Marks deprecated APIs. </p>
+<p>Deprecated APIs are usually replaced by alternatives, and will be removed in later major versions of the library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> – Deprecation message. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_DEPRECATED_MACRO">
+<span class="target" id="group__attributes_1gabea70bb18175ec2b89b2e3f224526ed2"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_DEPRECATED_MACRO</span></span></span><a class="headerlink" href="#c.ULIB_DEPRECATED_MACRO" title="Link to this definition"></a><br /></dt>
+<dd><p>Marks deprecated macros. </p>
+<p>Deprecated macros are usually replaced by alternatives, and will be removed in later major versions of the library. </p>
+</dd></dl>
+
+</section>
+<section id="warning-suppression">
+<h2>Warning suppression<a class="headerlink" href="#warning-suppression" title="Link to this heading"></a></h2>
+<dl class="c macro">
 <dt class="sig sig-object c" id="c.ulib_unused">
-<span class="target" id="group__attributes_1gad04f23c1c2d84bba713397cde24a49bf"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_unused</span></span></span><a class="headerlink" href="#c.ulib_unused" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group__warnings_1gad04f23c1c2d84bba713397cde24a49bf"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_unused</span></span></span><a class="headerlink" href="#c.ulib_unused" title="Link to this definition"></a><br /></dt>
 <dd><p>Suppresses unused variable warnings. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_SUPPRESS_BEGIN">
+<span class="target" id="group__warnings_1gaf357a8a1d022994e2137d71d71f78a68"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_SUPPRESS_BEGIN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">compiler</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_SUPPRESS_BEGIN" title="Link to this definition"></a><br /></dt>
+<dd><p>Begins the suppression of compiler warnings. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>compiler</strong> – The compiler for which the warnings are being suppressed. Allowed values: GCC, CLANG, GNUC, MSVC. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_SUPPRESS">
+<span class="target" id="group__warnings_1ga0cda1b18502490e1bd4a9831091bf3c6"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_SUPPRESS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">compiler</span></span>, <span class="n"><span class="pre">warning</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_SUPPRESS" title="Link to this definition"></a><br /></dt>
+<dd><p>Suppresses the specified compiler warning. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>compiler</strong> – The compiler for which the warnings are being suppressed. Allowed values: GCC, CLANG, GNUC, MSVC. </p></li>
+<li><p><strong>warning</strong> – The warning to suppress. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_SUPPRESS_END">
+<span class="target" id="group__warnings_1ga37bcdea013432129e71ead7f6f0a4654"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_SUPPRESS_END</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">compiler</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_SUPPRESS_END" title="Link to this definition"></a><br /></dt>
+<dd><p>Ends the suppression of compiler warnings. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>compiler</strong> – The compiler for which the warnings are being suppressed. Allowed values: GCC, CLANG, GNUC, MSVC. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_SUPPRESS_ONE">
+<span class="target" id="group__warnings_1ga8533f371f5f9e13c09ca26c1262bd41d"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_SUPPRESS_ONE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">compiler</span></span>, <span class="n"><span class="pre">warning</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_SUPPRESS_ONE" title="Link to this definition"></a><br /></dt>
+<dd><p>Begins the suppression of the specified compiler warning. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>compiler</strong> – The compiler for which the warnings are being suppressed. Allowed values: GCC, CLANG, GNUC, MSVC. </p></li>
+<li><p><strong>warning</strong> – The warning to suppress. </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -190,6 +269,12 @@
 </dd></dl>
 
 <dl class="c macro">
+<dt class="sig sig-object c" id="c.ulib_struct_init">
+<span class="target" id="group__utils_1gaf18f51c2042840b5fe9ec0ca82cdd921"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_struct_init</span></span></span><a class="headerlink" href="#c.ulib_struct_init" title="Link to this definition"></a><br /></dt>
+<dd><p>C and C++ compatible struct initializer. </p>
+</dd></dl>
+
+<dl class="c macro">
 <dt class="sig sig-object c" id="c.ulib_analyzer_assert">
 <span class="target" id="group__utils_1ga8aeb697a749e4055544b8b7b8f5750b5"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_analyzer_assert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_analyzer_assert" title="Link to this definition"></a><br /></dt>
 <dd><p>Give hints to static analyzers, asserting that <code class="docutils literal notranslate"><span class="pre">exp</span></code> is true. </p>
@@ -211,6 +296,19 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong> – <code class="docutils literal notranslate"><span class="pre">token</span></code> First token. </p></li>
 <li><p><strong>b</strong> – <code class="docutils literal notranslate"><span class="pre">token</span></code> Second token. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_PRAGMA">
+<span class="target" id="group__utils_1ga615b2bf753b3807758517062d8a2ccdf"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_PRAGMA</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_PRAGMA" title="Link to this definition"></a><br /></dt>
+<dd><p>Pragma directive that allows macro expansion. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> – Pragma directive. </p></li>
 </ul>
 </dd>
 </dl>

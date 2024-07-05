@@ -4,8 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time &mdash; uLib 0.2.5 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+  <title>Time &mdash; uLib 0.2.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
 
@@ -16,8 +16,8 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=37614e8c"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/documentation_options.js?v=9a313e40"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
@@ -37,7 +37,7 @@
             uLib
           </a>
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -214,31 +214,16 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.utime_equals">
 <span class="target" id="group___u_time_1ga900f12a84d4fd1ae78cf9873ce4db961"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_equals</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">a</span></span>, <a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_equals" title="Link to this definition"></a><br /></dt>
-<dd><p>Checks whether the specified dates are equal. </p>
+<dd><p>Checks whether the specified dates and times are equal. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>a</strong> – First date. </p></li>
-<li><p><strong>b</strong> – Second date. </p></li>
+<li><p><strong>a</strong> – First date and time. </p></li>
+<li><p><strong>b</strong> – Second date and time. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if the two dates are equal, false otherwise. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="c function">
-<dt class="sig sig-object c" id="c.utime_normalize_to_utc">
-<span class="target" id="group___u_time_1ga4a9fd8941114dd2d8e5ef59886256f0a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_normalize_to_utc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">tz_hour</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">tz_minute</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_normalize_to_utc" title="Link to this definition"></a><br /></dt>
-<dd><p>Normalizes a date from the specified timezone to UTC. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>time</strong> – Date to normalize. </p></li>
-<li><p><strong>tz_hour</strong> – Timezone offset hours. </p></li>
-<li><p><strong>tz_minute</strong> – Timezone offset minutes. </p></li>
-</ul>
+<dd class="field-even"><p>True if the two dates and times are equal, false otherwise. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -246,15 +231,37 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.utime_to_timestamp">
 <span class="target" id="group___u_time_1ga6abf73a17c45a4fb9fa914fb53fb44ba"></span><a class="reference internal" href="#c.utime_stamp" title="utime_stamp"><span class="n"><span class="pre">utime_stamp</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_to_timestamp</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_to_timestamp" title="Link to this definition"></a><br /></dt>
-<dd><p>Converts the specified date into a timestamp. </p>
+<dd><p>Converts the specified UTC date abd time into a timestamp. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>time</strong> – Date to convert. </p></li>
+<li><p><strong>time</strong> – Date and time to convert. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Timestamp corresponding to the date. </p>
+<dd class="field-even"><p>Corresponding timestamp. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_now">
+<span class="target" id="group___u_time_1ga44d5abd6c5c0f35418c851bc57951438"></span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_now</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_now" title="Link to this definition"></a><br /></dt>
+<dd><p>Gets the current UTC date and time. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current UTC date and time. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_local">
+<span class="target" id="group___u_time_1gaf691e31af228e014b7b19555c0c0e20a"></span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_local</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_local" title="Link to this definition"></a><br /></dt>
+<dd><p>Gets the current local date and time. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current local date and time. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -262,7 +269,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.utime_from_timestamp">
 <span class="target" id="group___u_time_1ga187bbff58686e277ddcdb8bb4b4efb4a"></span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_from_timestamp</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.utime_stamp" title="utime_stamp"><span class="n"><span class="pre">utime_stamp</span></span></a><span class="w"> </span><span class="n"><span class="pre">ts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_from_timestamp" title="Link to this definition"></a><br /></dt>
-<dd><p>Converts the specified timestamp into a date. </p>
+<dd><p>Converts the specified timestamp into a UTC date and time. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -270,7 +277,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Date corresponding to the timestamp. </p>
+<dd class="field-even"><p>Corresponding UTC date and time. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -278,11 +285,11 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.utime_add">
 <span class="target" id="group___u_time_1ga7a3389bd42c6488ffe3ce96ebbb5d61f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_add</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">quantity</span></span>, <a class="reference internal" href="#c.utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_add" title="Link to this definition"></a><br /></dt>
-<dd><p>Adds a certain time interval to the specified date. </p>
+<dd><p>Adds a certain time interval to the specified date and time. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>time</strong> – Date. </p></li>
+<li><p><strong>time</strong> – Date and time. </p></li>
 <li><p><strong>quantity</strong> – Quantity to add. </p></li>
 <li><p><strong>unit</strong> – Time unit. </p></li>
 </ul>
@@ -291,19 +298,71 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.utime_diff">
-<span class="target" id="group___u_time_1gac9828bac89440efbc3a542dc6484e55e"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_diff</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">a</span></span>, <a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">b</span></span>, <a class="reference internal" href="#c.utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_diff" title="Link to this definition"></a><br /></dt>
-<dd><p>Returns the difference between the specified dates. </p>
+<dt class="sig sig-object c" id="c.utime_to_utc">
+<span class="target" id="group___u_time_1ga25f9940d9c120b03cf17e8fbe1cbe59e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_to_utc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">tz_hour</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">tz_minute</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_to_utc" title="Link to this definition"></a><br /></dt>
+<dd><p>Transforms a date and time from the specified timezone to UTC. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>a</strong> – First date. </p></li>
-<li><p><strong>b</strong> – Second date. </p></li>
+<li><p><strong>time</strong> – Date and time to transform. </p></li>
+<li><p><strong>tz_hour</strong> – Timezone offset hours. </p></li>
+<li><p><strong>tz_minute</strong> – Timezone offset minutes. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_to_timezone">
+<span class="target" id="group___u_time_1ga644b94ecd0850aec4b82eda0f5c4e9c9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_to_timezone</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">tz_hour</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">tz_minute</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_to_timezone" title="Link to this definition"></a><br /></dt>
+<dd><p>Transforms a date and time from UTC to the specified timezone. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Date and time to transform. </p></li>
+<li><p><strong>tz_hour</strong> – Timezone offset hours. </p></li>
+<li><p><strong>tz_minute</strong> – Timezone offset minutes. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_normalize_to_utc">
+<span class="target" id="group___u_time_1ga4a9fd8941114dd2d8e5ef59886256f0a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_normalize_to_utc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">tz_hour</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">tz_minute</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_normalize_to_utc" title="Link to this definition"></a><br /></dt>
+<dd><p>Normalizes a date and time from the specified timezone to UTC. </p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_time_1ga25f9940d9c120b03cf17e8fbe1cbe59e"><span class="std std-ref"><span class="pre">utime_to_utc()</span></span></a></code> instead. </p>
+</dd></dl>
+
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Date and time to normalize. </p></li>
+<li><p><strong>tz_hour</strong> – Timezone offset hours. </p></li>
+<li><p><strong>tz_minute</strong> – Timezone offset minutes. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utime_diff">
+<span class="target" id="group___u_time_1gac9828bac89440efbc3a542dc6484e55e"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_diff</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">a</span></span>, <a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">b</span></span>, <a class="reference internal" href="#c.utime_unit" title="utime_unit"><span class="n"><span class="pre">utime_unit</span></span></a><span class="w"> </span><span class="n"><span class="pre">unit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_diff" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the difference between the specified dates and times. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – First date and time. </p></li>
+<li><p><strong>b</strong> – Second date and time. </p></li>
 <li><p><strong>unit</strong> – Time unit. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Difference between the specified dates. </p>
+<dd class="field-even"><p>Difference between the specified dates and times. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -311,7 +370,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.utime_to_string">
 <span class="target" id="group___u_time_1ga55100d490fe7696e943078ca220e9f90"></span><a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_to_string" title="Link to this definition"></a><br /></dt>
-<dd><p>Converts the specified date into a human readable string. </p>
+<dd><p>Converts the specified date and time into a human readable string. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
@@ -319,11 +378,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>time</strong> – Date. </p></li>
+<li><p><strong>time</strong> – Date and time. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Human readable date string.</p>
+<dd class="field-even"><p>Human readable string.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -331,7 +390,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.utime_from_string">
 <span class="target" id="group___u_time_1ga55145b51914d2187851de86c5293ae77"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utime_from_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UTime" title="UTime"><span class="n"><span class="pre">UTime</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">time</span></span>, <a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_from_string" title="Link to this definition"></a><br /></dt>
-<dd><p>Parses a date from the specified string. </p>
+<dd><p>Parses a date and time from the specified string. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The string must be in <code class="docutils literal notranslate"><span class="pre">Y_M_D_H_M_S</span></code> format, where each component is separated by any non-digit character. An optional timezone specifier can also be specified, in which case the date is automatically normalized to UTC. Examples of equivalent dates:<ul class="simple">
@@ -344,7 +403,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>time</strong> – <strong>[out]</strong> Date. </p></li>
+<li><p><strong>time</strong> – <strong>[out]</strong> Date and time. </p></li>
 <li><p><strong>string</strong> – Date string. </p></li>
 </ul>
 </dd>

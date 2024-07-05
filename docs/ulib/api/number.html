@@ -4,8 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Numeric types &mdash; uLib 0.2.5 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+  <title>Numeric types &mdash; uLib 0.2.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
 
@@ -16,8 +16,8 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=37614e8c"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/documentation_options.js?v=9a313e40"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
@@ -37,7 +37,7 @@
             uLib
           </a>
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -105,7 +105,7 @@
 <h2>Integer numbers<a class="headerlink" href="#integer-numbers" title="Link to this heading"></a></h2>
 <dl class="c type">
 <dt class="sig sig-object c" id="c.ulib_int">
-<span class="target" id="unumber_8h_1ac7fa5fad3bc621932f47cfa4b3e9714b"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_int</span></span></span><a class="headerlink" href="#c.ulib_int" title="Link to this definition"></a><br /></dt>
+<span class="target" id="unumber_8h_1a87a5359dc3a5f7589d8e98cbce240938"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_int</span></span></span><a class="headerlink" href="#c.ulib_int" title="Link to this definition"></a><br /></dt>
 <dd><p>Integer type. </p>
 <p>The size of this type can be controlled through the <strong>ULIB_TINY</strong> and <strong>ULIB_HUGE</strong> preprocessor definitions:</p>
 <p><ul class="simple">
@@ -118,7 +118,7 @@
 
 <dl class="c type">
 <dt class="sig sig-object c" id="c.ulib_uint">
-<span class="target" id="unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint</span></span></span><a class="headerlink" href="#c.ulib_uint" title="Link to this definition"></a><br /></dt>
+<span class="target" id="unumber_8h_1a0f7e82eee726fb84ed5393591c3104c6"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint</span></span></span><a class="headerlink" href="#c.ulib_uint" title="Link to this definition"></a><br /></dt>
 <dd><p>Unsigned integer type. </p>
 <p>The size of this type can be controlled through the <strong>ULIB_TINY</strong> and <strong>ULIB_HUGE</strong> preprocessor definitions:</p>
 <p><ul class="simple">
@@ -127,6 +127,186 @@
 <li><p><strong>ULIB_HUGE</strong>: 8 bytes <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code></p></li>
 </ul>
 </p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_uint16_floor2">
+<span class="target" id="group__ulib__int_1gaaa469b2c84bb78e25968d071697fdb86"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint16_floor2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint16_floor2" title="Link to this definition"></a><br /></dt>
+<dd><p>Rounds <code class="docutils literal notranslate"><span class="pre">x</span></code> to the nearest power of 2 that is equal to or smaller than <code class="docutils literal notranslate"><span class="pre">x</span></code>.    </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Undefined for zero.    </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Positive unsigned integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nearest power of 2 equal to or smaller than <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_uint32_floor2">
+<span class="target" id="group__ulib__int_1ga698e82e15eaa08b85f07f0634273b1b5"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint32_floor2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint32_floor2" title="Link to this definition"></a><br /></dt>
+<dd><p>Rounds <code class="docutils literal notranslate"><span class="pre">x</span></code> to the nearest power of 2 that is equal to or smaller than <code class="docutils literal notranslate"><span class="pre">x</span></code>.    </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Undefined for zero.    </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Positive unsigned integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nearest power of 2 equal to or smaller than <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_uint64_floor2">
+<span class="target" id="group__ulib__int_1ga03a4436257ceaf97b712670cf99251fb"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint64_floor2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint64_floor2" title="Link to this definition"></a><br /></dt>
+<dd><p>Rounds <code class="docutils literal notranslate"><span class="pre">x</span></code> to the nearest power of 2 that is equal to or smaller than <code class="docutils literal notranslate"><span class="pre">x</span></code>.    </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Undefined for zero.    </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Positive unsigned integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nearest power of 2 equal to or smaller than <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_uint16_ceil2">
+<span class="target" id="group__ulib__int_1ga182ea298b0f298132837fb5d16854f24"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint16_ceil2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint16_ceil2" title="Link to this definition"></a><br /></dt>
+<dd><p>Rounds <code class="docutils literal notranslate"><span class="pre">x</span></code> to the nearest power of 2 that is equal to or greater than <code class="docutils literal notranslate"><span class="pre">x</span></code>.    </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Undefined for zero.    </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Positive unsigned integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nearest power of 2 equal to or greater than <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_uint32_ceil2">
+<span class="target" id="group__ulib__int_1gade0c502fe00b2f97b25604dcafd307ce"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint32_ceil2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint32_ceil2" title="Link to this definition"></a><br /></dt>
+<dd><p>Rounds <code class="docutils literal notranslate"><span class="pre">x</span></code> to the nearest power of 2 that is equal to or greater than <code class="docutils literal notranslate"><span class="pre">x</span></code>.    </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Undefined for zero.    </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Positive unsigned integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nearest power of 2 equal to or greater than <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_uint64_ceil2">
+<span class="target" id="group__ulib__int_1gae3f95c2fdf2f2e22d3394f85c8192713"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint64_ceil2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint64_ceil2" title="Link to this definition"></a><br /></dt>
+<dd><p>Rounds <code class="docutils literal notranslate"><span class="pre">x</span></code> to the nearest power of 2 that is equal to or greater than <code class="docutils literal notranslate"><span class="pre">x</span></code>.    </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Undefined for zero.    </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Positive unsigned integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nearest power of 2 equal to or greater than <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_uint16_log2">
+<span class="target" id="group__ulib__int_1gaf35d39c60c97bce1fd8348a05663df25"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint16_log2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint16_log2" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the integer base 2 logarithm of <code class="docutils literal notranslate"><span class="pre">x</span></code>.    </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Undefined for zero.    </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Positive unsigned integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Integer base 2 logarithm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_uint32_log2">
+<span class="target" id="group__ulib__int_1gaeb05a9fa06c2349e165deb5b12c1b111"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint32_log2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint32_log2" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the integer base 2 logarithm of <code class="docutils literal notranslate"><span class="pre">x</span></code>.    </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Undefined for zero.    </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Positive unsigned integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Integer base 2 logarithm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_uint64_log2">
+<span class="target" id="group__ulib__int_1ga3e7fae1fa74f1040242d786d3fdf19ac"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint64_log2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint64_log2" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the integer base 2 logarithm of <code class="docutils literal notranslate"><span class="pre">x</span></code>.    </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Undefined for zero.    </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Positive unsigned integer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Integer base 2 logarithm.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="c function">
@@ -171,7 +351,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.ulib_uint_log2">
-<span class="target" id="group__ulib__int_1ga50789ab25d7f544dd157c1788cc0c748"></span><a class="reference internal" href="#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint_log2</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint_log2" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group__ulib__int_1ga30bdbc48dab101abd6f4db688b9511ae"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_uint_log2</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_uint_log2" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns the integer base 2 logarithm of <code class="docutils literal notranslate"><span class="pre">x</span></code>. </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -224,37 +404,37 @@
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_INT_MIN">
 <span class="target" id="group__ulib__int_1gabaab19d200efa41f17054bdee1e92d49"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_INT_MIN</span></span></span><a class="headerlink" href="#c.ULIB_INT_MIN" title="Link to this definition"></a><br /></dt>
-<dd><p>Minimum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1ac7fa5fad3bc621932f47cfa4b3e9714b"><span class="std std-ref"><span class="pre">ulib_int</span></span></a></code> variable. </p>
+<dd><p>Minimum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a87a5359dc3a5f7589d8e98cbce240938"><span class="std std-ref"><span class="pre">ulib_int</span></span></a></code> variable. </p>
 </dd></dl>
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_INT_MAX">
 <span class="target" id="group__ulib__int_1ga4b4f635a41206ba2e1e1b2cf52981466"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_INT_MAX</span></span></span><a class="headerlink" href="#c.ULIB_INT_MAX" title="Link to this definition"></a><br /></dt>
-<dd><p>Maximum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1ac7fa5fad3bc621932f47cfa4b3e9714b"><span class="std std-ref"><span class="pre">ulib_int</span></span></a></code> variable. </p>
+<dd><p>Maximum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a87a5359dc3a5f7589d8e98cbce240938"><span class="std std-ref"><span class="pre">ulib_int</span></span></a></code> variable. </p>
 </dd></dl>
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_INT_FMT">
 <span class="target" id="group__ulib__int_1gacb27c3b5436f68c8b1abc51f6f4896e1"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_INT_FMT</span></span></span><a class="headerlink" href="#c.ULIB_INT_FMT" title="Link to this definition"></a><br /></dt>
-<dd><p>Format string for <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1ac7fa5fad3bc621932f47cfa4b3e9714b"><span class="std std-ref"><span class="pre">ulib_int</span></span></a></code> variables. </p>
+<dd><p>Format string for <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a87a5359dc3a5f7589d8e98cbce240938"><span class="std std-ref"><span class="pre">ulib_int</span></span></a></code> variables. </p>
 </dd></dl>
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_UINT_MIN">
 <span class="target" id="group__ulib__int_1ga4d6667f386b831f5799fa457ade3a9dc"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_UINT_MIN</span></span></span><a class="headerlink" href="#c.ULIB_UINT_MIN" title="Link to this definition"></a><br /></dt>
-<dd><p>Minimum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> variable. </p>
+<dd><p>Minimum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a0f7e82eee726fb84ed5393591c3104c6"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> variable. </p>
 </dd></dl>
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_UINT_MAX">
 <span class="target" id="group__ulib__int_1gaf34471f49871ac90a530a9598ddce7c4"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_UINT_MAX</span></span></span><a class="headerlink" href="#c.ULIB_UINT_MAX" title="Link to this definition"></a><br /></dt>
-<dd><p>Maximum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> variable. </p>
+<dd><p>Maximum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a0f7e82eee726fb84ed5393591c3104c6"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> variable. </p>
 </dd></dl>
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_UINT_FMT">
 <span class="target" id="group__ulib__int_1ga705934e5cd0871951e03a87f1b42da6f"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_UINT_FMT</span></span></span><a class="headerlink" href="#c.ULIB_UINT_FMT" title="Link to this definition"></a><br /></dt>
-<dd><p>Format string for <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a62787235bc3a0124ca9c57ef7852f5eb"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> variables. </p>
+<dd><p>Format string for <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a0f7e82eee726fb84ed5393591c3104c6"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> variables. </p>
 </dd></dl>
 
 </section>
@@ -262,7 +442,7 @@
 <h2>Floating point numbers<a class="headerlink" href="#floating-point-numbers" title="Link to this heading"></a></h2>
 <dl class="c type">
 <dt class="sig sig-object c" id="c.ulib_float">
-<span class="target" id="unumber_8h_1a55284febfef032485d55b690fa0f59d4"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_float</span></span></span><a class="headerlink" href="#c.ulib_float" title="Link to this definition"></a><br /></dt>
+<span class="target" id="unumber_8h_1aabe8acffb52f719def596a7aeb7b67c3"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_float</span></span></span><a class="headerlink" href="#c.ulib_float" title="Link to this definition"></a><br /></dt>
 <dd><p>Float type. </p>
 <p>The size of this type can be controlled through the <strong>ULIB_TINY</strong> and <strong>ULIB_HUGE</strong> preprocessor definitions:</p>
 <p><ul class="simple">
@@ -307,30 +487,47 @@
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_FLOAT_MIN">
 <span class="target" id="group__ulib__float_1ga2cd33022d0fb3b7beff9d756ea0cd5de"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_FLOAT_MIN</span></span></span><a class="headerlink" href="#c.ULIB_FLOAT_MIN" title="Link to this definition"></a><br /></dt>
-<dd><p>Minimum positive value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a55284febfef032485d55b690fa0f59d4"><span class="std std-ref"><span class="pre">ulib_float</span></span></a></code> variable. </p>
+<dd><p>Minimum positive value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1aabe8acffb52f719def596a7aeb7b67c3"><span class="std std-ref"><span class="pre">ulib_float</span></span></a></code> variable. </p>
 </dd></dl>
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_FLOAT_MAX">
 <span class="target" id="group__ulib__float_1gaa89c25812b3c3cc2d5dfbbb2fbf97524"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_FLOAT_MAX</span></span></span><a class="headerlink" href="#c.ULIB_FLOAT_MAX" title="Link to this definition"></a><br /></dt>
-<dd><p>Maximum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a55284febfef032485d55b690fa0f59d4"><span class="std std-ref"><span class="pre">ulib_float</span></span></a></code> variable. </p>
+<dd><p>Maximum value of a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1aabe8acffb52f719def596a7aeb7b67c3"><span class="std std-ref"><span class="pre">ulib_float</span></span></a></code> variable. </p>
 </dd></dl>
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_FLOAT_FMT">
 <span class="target" id="group__ulib__float_1gac4945863cfabe5a5ca5d1142b78c1712"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_FLOAT_FMT</span></span></span><a class="headerlink" href="#c.ULIB_FLOAT_FMT" title="Link to this definition"></a><br /></dt>
-<dd><p>Format string for <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a55284febfef032485d55b690fa0f59d4"><span class="std std-ref"><span class="pre">ulib_float</span></span></a></code> variables. </p>
+<dd><p>Format string for <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1aabe8acffb52f719def596a7aeb7b67c3"><span class="std std-ref"><span class="pre">ulib_float</span></span></a></code> variables. </p>
 </dd></dl>
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_FLOAT_EPSILON">
 <span class="target" id="group__ulib__float_1ga12af85779377695613e55bf4c629e00c"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_FLOAT_EPSILON</span></span></span><a class="headerlink" href="#c.ULIB_FLOAT_EPSILON" title="Link to this definition"></a><br /></dt>
-<dd><p>Difference between 1 and the least value greater than 1 that is representable by a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1a55284febfef032485d55b690fa0f59d4"><span class="std std-ref"><span class="pre">ulib_float</span></span></a></code> variable. </p>
+<dd><p>Difference between 1 and the least value greater than 1 that is representable by a <code class="docutils literal notranslate"><a class="reference internal" href="#unumber_8h_1aabe8acffb52f719def596a7aeb7b67c3"><span class="std std-ref"><span class="pre">ulib_float</span></span></a></code> variable. </p>
 </dd></dl>
 
 </section>
 <section id="utilities-for-numeric-types">
 <h2>Utilities for numeric types<a class="headerlink" href="#utilities-for-numeric-types" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_equals">
+<span class="target" id="group__number__utils_1ga08d71ccf867aa19dc4ba6c303d3f7a97"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_equals</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_equals" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if two numbers are equal. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – First number. </p></li>
+<li><p><strong>b</strong> – Second number. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a == b. </p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="c function">
 <dt class="sig sig-object c" id="c.ulib_min">
 <span class="target" id="group__number__utils_1ga2c8cffe3f8c8e28a49d9df99e1f25456"></span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_min</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_min" title="Link to this definition"></a><br /></dt>
@@ -716,6 +913,23 @@
 </dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.ubit_two_compl">
+<span class="target" id="group___u_bit__api_1ga68bb9b271b69cf49975ee6d0a30f8fca"></span><a class="reference internal" href="#c.UBit_N" title="UBit_N"><span class="n"><span class="pre">UBit_N</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ubit_two_compl</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">bitsize</span></span><span class="w"> </span><span class="n"><span class="pre">N</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">mask</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_two_compl" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the two’s complement of the given bitmask. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Two’s complement of the bitmask. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.ubit_count_set">
 <span class="target" id="group___u_bit__api_1ga7fd7af560dedc775b3f59fca5305251e"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ubit_count_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">bitsize</span></span><span class="w"> </span><span class="n"><span class="pre">N</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">mask</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_count_set" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns the number of bits that are set in a bitmask. </p>
@@ -735,7 +949,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.ubit_count_unset">
 <span class="target" id="group___u_bit__api_1ga047cb8f9f4ba2309bc9110ec09539010"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ubit_count_unset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">bitsize</span></span><span class="w"> </span><span class="n"><span class="pre">N</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">mask</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_count_unset" title="Link to this definition"></a><br /></dt>
-<dd><p>Returns the number of bigs that are not set in a bitmask. </p>
+<dd><p>Returns the number of bits that are not set in a bitmask. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -745,6 +959,23 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Number of unset bits. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ubit_first_set">
+<span class="target" id="group___u_bit__api_1ga2362eeb4c512f0597aedf2c7c5743293"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ubit_first_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">bitsize</span></span><span class="w"> </span><span class="n"><span class="pre">N</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">mask</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ubit_first_set" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the index of the first set bit. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> – Bitmask size in bits. </p></li>
+<li><p><strong>mask</strong> – Bitmask. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of the first set bit, or a value &gt;= N if no bits are set. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -788,8 +1019,15 @@
 
 <dl class="c type">
 <dt class="sig sig-object c" id="c.ulib_ptr">
-<span class="target" id="ustd_8h_1a665d250ee64a7ce81d28a13e790fa62d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_ptr</span></span></span><a class="headerlink" href="#c.ulib_ptr" title="Link to this definition"></a><br /></dt>
+<span class="target" id="ualloc_8h_1a665d250ee64a7ce81d28a13e790fa62d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_ptr</span></span></span><a class="headerlink" href="#c.ulib_ptr" title="Link to this definition"></a><br /></dt>
 <dd><p>Pointer type. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_MALLOC_ALIGN">
+<span class="target" id="group__ulib__ptr_1gaf4f51b0b30425c4807577c18978743f1"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_MALLOC_ALIGN</span></span></span><a class="headerlink" href="#c.ULIB_MALLOC_ALIGN" title="Link to this definition"></a><br /></dt>
+<dd><p>Alignment of pointers returned by memory allocation functions. </p>
+<p>On most platforms this is equal to the strictest alignment of any scalar type (e.g. long double). </p>
 </dd></dl>
 
 </section>

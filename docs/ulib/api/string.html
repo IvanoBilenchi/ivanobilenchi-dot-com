@@ -4,8 +4,8 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strings &mdash; uLib 0.2.5 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+  <title>Strings &mdash; uLib 0.2.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
 
@@ -16,8 +16,8 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=37614e8c"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/documentation_options.js?v=9a313e40"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
@@ -37,7 +37,7 @@
             uLib
           </a>
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -119,6 +119,25 @@
 </dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_hash_func">
+<span class="target" id="group___u_string_1ga9c6f20a0078313999b2ba1d8feade5e5"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_hash_func</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">init</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_hash_func" title="Link to this definition"></a><br /></dt>
+<dd><p>Low-level hash function used by <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1gab31cab0063a81bd594a20318cf70e92b"><span class="std std-ref"><span class="pre">ustring_hash()</span></span></a></code> . </p>
+<p>Can be customized by setting the <code class="docutils literal notranslate"><span class="pre">ustring_hash_func</span></code> macro.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>init</strong> – Hash initialization constant. </p></li>
+<li><p><strong>buf</strong> – Pointer to the start of the buffer. </p></li>
+<li><p><strong>size</strong> – Size of the buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Hash value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.ustring_size">
 <span class="target" id="group___u_string_1ga18e73dea5ddefbe0f61a7b5396499674"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_size</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_size" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns the size of the string. </p>
@@ -180,7 +199,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Due to the internals of <code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code>, you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
+<p>Due to the internals of <code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code> , you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -202,10 +221,6 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The buffer must be null-terminated. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -289,7 +304,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Due to the internals of <code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code>, you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
+<p>Due to the internals of <code class="docutils literal notranslate"><a class="reference internal" href="#struct_u_string"><span class="std std-ref"><span class="pre">UString</span></span></a></code> , you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -418,6 +433,28 @@
 </dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_range">
+<span class="target" id="group___u_string_1ga26c2053d496982bf7cc2e5bddf26ee3a"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_range</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">str</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_range" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a new string containing the characters in a range of the specified string. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>str</strong> – String. </p></li>
+<li><p><strong>start</strong> – Range start. </p></li>
+<li><p><strong>len</strong> – Range length. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.ustring_concat">
 <span class="target" id="group___u_string_1ga77d266f33ed307bd0f392e30c3fba3f5"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_concat</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">strings</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_concat" title="Link to this definition"></a><br /></dt>
 <dd><p>Concatenates the specified strings. </p>
@@ -473,6 +510,28 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>string</strong> – String to repeat. </p></li>
 <li><p><strong>times</strong> – Number of repetitions. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ustring_replacing_char">
+<span class="target" id="group___u_string_1gad27531b66a322190c497bfe4ed16e6e9"></span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustring_replacing_char</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n"><span class="pre">needle</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n"><span class="pre">replacement</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustring_replacing_char" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a new string obtained by replacing all occurrences of a character with another. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String. </p></li>
+<li><p><strong>needle</strong> – Character to replace. </p></li>
+<li><p><strong>replacement</strong> – Replacement character. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -915,7 +974,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.ustrbuf_deinit">
 <span class="target" id="group___u_str_buf_1ga98722eb15bad8bb30936ed1eb63a4fe4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ustrbuf_deinit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.UStrBuf" title="UStrBuf"><span class="n"><span class="pre">UStrBuf</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ustrbuf_deinit" title="Link to this definition"></a><br /></dt>
-<dd><p>Deinitializes a string buffer previously initialized with <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_str_buf_1ga4c00a049b57ee2e5f2a6fb7660aac22c"><span class="std std-ref"><span class="pre">ustrbuf()</span></span></a></code>. </p>
+<dd><p>Deinitializes a string buffer previously initialized with <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_str_buf_1ga4c00a049b57ee2e5f2a6fb7660aac22c"><span class="std std-ref"><span class="pre">ustrbuf()</span></span></a></code> . </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -986,7 +1045,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1004,7 +1063,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1046,7 +1105,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1063,7 +1122,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1080,7 +1139,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331"><span class="std std-ref"><span class="pre">uvec_ret</span></span></a></code> <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331"><span class="std std-ref"><span class="pre">uvec_ret</span></span></a></code> <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="collection_vector.html#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1148,6 +1207,23 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Lowercase character. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_str_equals">
+<span class="target" id="group__ulib__str_1gacbb80ee2bc95430db747353fdd26ae1b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_str_equals</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">lhs</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rhs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_str_equals" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether two strings are equal. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> – First string. </p></li>
+<li><p><strong>rhs</strong> – Second string. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the two strings are equal, false otherwise. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1285,7 +1361,7 @@
 <dd><p>Converts the given string into an integer. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Size-appropriate wrapper for <code class="docutils literal notranslate"><span class="pre">strtol()</span></code> and <code class="docutils literal notranslate"><span class="pre">strtoll()</span></code>. Refer to their documentation for extended information (e.g. error handling). </p>
+<p>Size-appropriate wrapper for <code class="docutils literal notranslate"><span class="pre">strtol()</span></code> and <code class="docutils literal notranslate"><span class="pre">strtoll()</span></code> . Refer to their documentation for extended information (e.g. error handling). </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1307,7 +1383,7 @@
 <dd><p>Converts the given string into an unsigned integer. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Size-appropriate wrapper for <code class="docutils literal notranslate"><span class="pre">strtoul()</span></code> and <code class="docutils literal notranslate"><span class="pre">strtoull()</span></code>. Refer to their documentation for extended information (e.g. error handling). </p>
+<p>Size-appropriate wrapper for <code class="docutils literal notranslate"><span class="pre">strtoul()</span></code> and <code class="docutils literal notranslate"><span class="pre">strtoull()</span></code> . Refer to their documentation for extended information (e.g. error handling). </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1329,7 +1405,7 @@
 <dd><p>Converts the given string into a float. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Size-appropriate wrapper for <code class="docutils literal notranslate"><span class="pre">strtof()</span></code> and <code class="docutils literal notranslate"><span class="pre">strtod()</span></code>. Refer to their documentation for extended information (e.g. error handling). </p>
+<p>Size-appropriate wrapper for <code class="docutils literal notranslate"><span class="pre">strtof()</span></code> and <code class="docutils literal notranslate"><span class="pre">strtod()</span></code> . Refer to their documentation for extended information (e.g. error handling). </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
