@@ -19,14 +19,14 @@ function autoScrollStart(element) {
   const duration = Math.abs(newPosition - element.scrollLeft) / AS_SPEED;
 
   $(element).animate({ scrollLeft: newPosition },
-  {
-    duration: duration,
-    complete: () => {
-      element.autoScrollLeftToRight = !leftToRight;
-      element.isAutoScrolling = false;
-      autoScrollStart(element);
-    }
-  });
+    {
+      duration: duration,
+      complete: () => {
+        element.autoScrollLeftToRight = !leftToRight;
+        element.isAutoScrolling = false;
+        autoScrollStart(element);
+      }
+    });
 }
 
 function autoScrollStop(element) {
@@ -40,27 +40,22 @@ function autoScrollInit(element) {
   element.isAutoScrolling = false;
   element.autoScrollLeftToRight = true;
 
-  $(element).hover(
-    () => autoScrollStop(element),
-    () => autoScrollStart(element)
-  );
+  $(element)
+    .on("mouseenter touchstart touchmove", () => { autoScrollStop(element); })
+    .on("mouseleave", () => { autoScrollStart(element); });
 
-  $(element).on('touchstart touchmove', () => {
-    autoScrollStop(element);
-  });
-
-  $(element).on('touchend', () => {
-    $(element).on('scrollEnded', () => {
-      $(element).off('scrollEnded');
+  $(element).on("touchend", () => {
+    $(element).on("scrollEnded", () => {
+      $(element).off("scrollEnded");
       autoScrollStart(element);
     });
   });
 
-  $(element).scroll(() => {
+  $(element).on("scroll", () => {
     if (element.timer) clearTimeout(element.timer);
 
     element.timer = setTimeout(() => {
-      $(element).trigger('scrollEnded');
+      $(element).trigger("scrollEnded");
     }, AS_SCROLL_END_TIMEOUT);
   });
 
@@ -68,18 +63,18 @@ function autoScrollInit(element) {
 }
 
 function autoScrollDeinit(element) {
-  $(element).hover(null, null);
+  $(element).off("mouseenter mouseleave touchend touchstart touchmove scroll");
   autoScrollStop(element);
 }
 
 function autoScrollDeinitAll() {
-  $(".auto-scroll").each(function() {
+  $(".auto-scroll").each(function () {
     autoScrollDeinit(this);
   });
 }
 
 function autoScrollInitAll() {
-  $(".auto-scroll").each(function() {
+  $(".auto-scroll").each(function () {
     if (this.scrollWidth - this.clientWidth > AS_THRESHOLD) {
       autoScrollInit(this);
     } else {

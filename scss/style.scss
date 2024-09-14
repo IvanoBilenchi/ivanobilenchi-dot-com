@@ -49,7 +49,7 @@ header {
 	font-size: 1.25rem;
 	max-width: 750px;
 
-	> a {
+	>a {
 		@extend %text-link;
 	}
 }
@@ -82,16 +82,18 @@ nav {
 	text-transform: uppercase;
 	@extend .navbar-collapse;
 
-	> ul {
+	>ul {
 		@include media-breakpoint-up(lg) {
 			margin-left: auto;
 		}
+
 		@extend .navbar-nav;
 
-		> li {
+		>li {
 			@include media-breakpoint-up(lg) {
 				margin-right: 1rem;
 			}
+
 			@extend .nav-item;
 
 			.fa-solid {
@@ -106,7 +108,7 @@ nav {
 		@extend .nav-link;
 	}
 
-	.active > a {
+	.active>a {
 		font-weight: 600;
 		color: rgba(255, 255, 255, 0.8);
 	}
@@ -145,6 +147,7 @@ footer {
 	.btn-cta {
 		@include media-breakpoint-up(lg) {
 			margin-right: 2rem;
+
 			&:last-of-type {
 				margin-right: 0;
 			}
@@ -225,19 +228,13 @@ section {
 }
 
 %btn-alpha {
-	background: rgba(0, 0, 0, 0.2);
-	color: $color-text-light;
 	border: none;
-
-	&:hover {
-		color: $color-text-light;
-		background: rgba(0, 0, 0, 0.3);
-	}
-
-	&:focus, &:active {
-		color: $color-text-light;
-		background: rgba(0, 0, 0, 0.35);
-	}
+	--bs-btn-bg: rgba(0, 0, 0, 0.2);
+	--bs-btn-color: $color-text-light;
+	--bs-btn-hover-bg: rgba(0, 0, 0, 0.3);
+	--bs-btn-hover-color: $color-text-light;
+	--bs-btn-active-color: $color-text-light;
+	--bs-btn-active-bg: rgba(0, 0, 0, 0.35);
 }
 
 .btn-cta-container {
@@ -246,7 +243,7 @@ section {
 
 	@extend .container;
 
-	> a {
+	>a {
 		@extend .btn-cta;
 		@extend .btn-primary;
 	}
@@ -254,12 +251,19 @@ section {
 
 /* Icons */
 
-.fa-solid, .fa-brands {
+.fa-solid,
+.fa-brands {
 	margin: 0 .2em;
 }
 
-h1, h2, h3, h4, h5 {
-	.fa-solid, .fa-brands {
+h1,
+h2,
+h3,
+h4,
+h5 {
+
+	.fa-solid,
+	.fa-brands {
 		font-size: .8em;
 		position: relative;
 		top: -.05em;
@@ -269,7 +273,7 @@ h1, h2, h3, h4, h5 {
 /* Full-div href */
 
 .full-div-href {
-	> a {
+	>a {
 		position: absolute;
 		z-index: 999;
 		top: 0;
@@ -338,20 +342,20 @@ h1, h2, h3, h4, h5 {
 	@extend .card;
 	@extend .material;
 
-	> img {
+	>img {
 		width: 100%;
 		height: auto;
 	}
 
-	> .card-body {
+	>.card-body {
 
-		> .card-title {
+		>.card-title {
 			font-weight: 500;
 			text-align: center;
 			margin-bottom: 0.5rem;
 		}
 
-		> .card-subtitle {
+		>.card-subtitle {
 			font-weight: 400;
 			margin-top: 0.5rem;
 			margin-bottom: 1rem;
@@ -376,12 +380,13 @@ h1, h2, h3, h4, h5 {
 
 	@extend .list-inline;
 
-	> li {
+	>li {
 		width: 1.3rem;
 		padding-left: 0;
 		padding-right: 0;
 
-		.fa-solid, .fa-brands {
+		.fa-solid,
+		.fa-brands {
 			margin: 0;
 		}
 
@@ -406,7 +411,7 @@ h1, h2, h3, h4, h5 {
 	&::-webkit-scrollbar {
 		display: none;
 
-		> * {
+		>* {
 			flex: 0 0 auto;
 			max-height: 100%;
 		}
@@ -426,12 +431,12 @@ h1, h2, h3, h4, h5 {
 	width: 100%;
 	height: 100%;
 	background: linear-gradient(to right,
-		rgba(255, 255, 255, 1),
-		rgba(255, 255, 255, .35) 5%,
-		rgba(255, 255, 255, 0) 10%,
-		rgba(255, 255, 255, 0) 90%,
-		rgba(255, 255, 255, .35) 95%,
-		rgba(255, 255, 255, 1) 100%);
+			rgba(255, 255, 255, 1),
+			rgba(255, 255, 255, .35) 5%,
+			rgba(255, 255, 255, 0) 10%,
+			rgba(255, 255, 255, 0) 90%,
+			rgba(255, 255, 255, .35) 95%,
+			rgba(255, 255, 255, 1) 100%);
 	pointer-events: none;
 }
 
@@ -452,10 +457,10 @@ h1, h2, h3, h4, h5 {
 		max-width: 50%;
 	}
 
-	> input[type=checkbox] {
+	>input[type=checkbox] {
 		@extend .btn-check;
 
-		+ label {
+		+label {
 			flex: 1;
 			border-width: 0 1px;
 			border-radius: 0;
@@ -493,11 +498,9 @@ h1, h2, h3, h4, h5 {
 
 .primary-section {
 	background-color: $color-light;
-	background-image: linear-gradient(
-		to top,
-		rgba(0,0,20%,0.03) 0px,
-		rgba(0,0,20%,0) 50px
-	);
+	background-image: linear-gradient(to top,
+			rgba(0, 0, 20%, 0.03) 0px,
+			rgba(0, 0, 20%, 0) 50px);
 }
 
 .secondary-section {
@@ -511,7 +514,7 @@ h1, h2, h3, h4, h5 {
 		font-weight: 700;
 	}
 
-	> a {
+	>a {
 		color: $color-text-dark;
 
 		&:hover {
@@ -519,7 +522,7 @@ h1, h2, h3, h4, h5 {
 			color: lighten($color-text-dark, 25%);
 		}
 
-		> h3:after {
+		>h3:after {
 			content: " \f054";
 			font-family: "Font Awesome 5 Free";
 			position: relative;
@@ -527,7 +530,7 @@ h1, h2, h3, h4, h5 {
 		}
 	}
 
-	> p {
+	>p {
 		font-size: 1.2rem;
 		margin-bottom: 3rem;
 	}
@@ -595,7 +598,7 @@ h1, h2, h3, h4, h5 {
 .profile-description {
 	margin-bottom: 1rem;
 
-	> a {
+	>a {
 		@extend %text-link;
 	}
 }
@@ -630,15 +633,18 @@ h1, h2, h3, h4, h5 {
 		text-align: center;
 	}
 
-	.filter-buttons > label {
+	.filter-buttons>label {
 		&[for="filter-ios"]::after {
 			content: "  iOS";
 		}
+
 		&[for="filter-res"]::after {
 			content: "  Research";
 		}
+
 		&[for="filter-oss"]::after {
 			content: "  FOSS";
+
 			@include media-breakpoint-up(sm) {
 				content: "  Open Source";
 			}
@@ -666,7 +672,7 @@ h1, h2, h3, h4, h5 {
 .press-section {
 	@extend .primary-section;
 
-	.material-card > img {
+	.material-card>img {
 		object-fit: contain;
 		width: auto;
 		height: auto;
@@ -679,10 +685,11 @@ h1, h2, h3, h4, h5 {
 		}
 	}
 
-	.filter-buttons > label {
+	.filter-buttons>label {
 		&[for="filter-local"]::after {
 			content: "  Local";
 		}
+
 		&[for="filter-tech"]::after {
 			content: "  Tech";
 		}
@@ -708,72 +715,83 @@ h1, h2, h3, h4, h5 {
 
 	$foreground-color: nth($color, 1);
 	$background-color: transparent !default;
-	@if (length($color) == 2) {
+
+	@if (length($color)==2) {
 		$background-color: nth($color, 2);
 	}
 
-	@if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) {
+	@if ($direction ==up) or ($direction ==down) or ($direction ==right) or ($direction ==left) {
 
 		$width: math.div($width, 2);
 
-		@if $direction == up {
+		@if $direction ==up {
 			border-left: $width solid $background-color;
 			border-right: $width solid $background-color;
 			border-bottom: $height solid $foreground-color;
-		} @else if $direction == right {
+		}
+
+		@else if $direction ==right {
 			border-top: $width solid $background-color;
 			border-bottom: $width solid $background-color;
 			border-left: $height solid $foreground-color;
-		} @else if $direction == down {
+		}
+
+		@else if $direction ==down {
 			border-left: $width solid $background-color;
 			border-right: $width solid $background-color;
 			border-top: $height solid $foreground-color;
-		} @else if $direction == left {
+		}
+
+		@else if $direction ==left {
 			border-top: $width solid $background-color;
 			border-bottom: $width solid $background-color;
 			border-right: $height solid $foreground-color;
 		}
 	}
 
-	@else if ($direction == up-right) or ($direction == up-left) {
+	@else if ($direction ==up-right) or ($direction ==up-left) {
 		border-top: $height solid $foreground-color;
 
-		@if $direction == up-right {
+		@if $direction ==up-right {
 			border-left: $width solid $background-color;
-		} @else if $direction == up-left {
+		}
+
+		@else if $direction ==up-left {
 			border-right: $width solid $background-color;
 		}
 	}
 
-	@else if ($direction == down-right) or ($direction == down-left) {
+	@else if ($direction ==down-right) or ($direction ==down-left) {
 		border-bottom: $height solid $foreground-color;
 
-		@if $direction == down-right {
+		@if $direction ==down-right {
 			border-left: $width solid $background-color;
-		} @else if $direction == down-left {
+		}
+
+		@else if $direction ==down-left {
 			border-right: $width solid $background-color;
 		}
 	}
 
-	@else if ($direction == inset-up) {
+	@else if ($direction ==inset-up) {
 		border-width: $height $width;
 		border-style: solid;
 		border-color: $background-color $background-color $foreground-color;
 	}
 
-	@else if ($direction == inset-down) {
+	@else if ($direction ==inset-down) {
 		border-width: $height $width;
 		border-style: solid;
 		border-color: $foreground-color $background-color $background-color;
 	}
 
-	@else if ($direction == inset-right) {
+	@else if ($direction ==inset-right) {
 		border-width: $width $height;
 		border-style: solid;
 		border-color: $background-color $background-color $background-color $foreground-color;
 	}
 
-	@else if ($direction == inset-left) {
+	@else if ($direction ==inset-left) {
 		border-width: $width $height;
 		border-style: solid;
 		border-color: $background-color $foreground-color $background-color $background-color;
@@ -792,7 +810,7 @@ h1, h2, h3, h4, h5 {
 	font-size: 14px;
 	font-weight: 700;
 	color: white;
-	text-shadow: 0px 2px 0 rgba(0,0,0,0.4);
+	text-shadow: 0px 2px 0 rgba(0, 0, 0, 0.4);
 	padding-top: 23px;
 
 	&:before {

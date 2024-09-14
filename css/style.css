@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
- * Bootstrap  v5.3.2 (https://getbootstrap.com/)
- * Copyright 2011-2023 The Bootstrap Authors
+ * Bootstrap  v5.3.3 (https://getbootstrap.com/)
+ * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root,
@@ -2599,6 +2599,9 @@ textarea.form-control-lg {
 .btn-check:checked + .btn:focus-visible, .filter-buttons > input[type=checkbox]:checked + .btn:focus-visible, .filter-buttons > input[type=checkbox]:checked + label:focus-visible, .btn-check:checked + .btn-cta:focus-visible, .btn-check:checked + .profile-btn:focus-visible, .filter-buttons > input[type=checkbox]:checked + .btn-cta:focus-visible, .filter-buttons > input[type=checkbox]:checked + .profile-btn:focus-visible, .btn-cta-container > .btn-check:checked + a:focus-visible, .filter-buttons.btn-cta-container > input[type=checkbox]:checked + a:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .filter-buttons > input[type=checkbox]:not(.btn-check) + label:active:focus-visible, :not(.btn-check) + .btn-cta:active:focus-visible, :not(.btn-check) + .profile-btn:active:focus-visible, .btn-cta-container > :not(.btn-check) + a:active:focus-visible, .btn:first-child:active:focus-visible, .filter-buttons > input[type=checkbox] + label:first-child:active:focus-visible, .btn-cta:first-child:active:focus-visible, .profile-btn:first-child:active:focus-visible, .btn-cta-container > a:first-child:active:focus-visible, .btn.active:focus-visible, .filter-buttons > input[type=checkbox] + label.active:focus-visible, .active.btn-cta:focus-visible, .active.profile-btn:focus-visible, .btn-cta-container > a.active:focus-visible, .btn.show:focus-visible, .filter-buttons > input[type=checkbox] + label.show:focus-visible, .show.btn-cta:focus-visible, .show.profile-btn:focus-visible, .btn-cta-container > a.show:focus-visible {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
+.btn-check:checked:focus-visible + .btn, .filter-buttons > input[type=checkbox]:checked:focus-visible + .btn, .filter-buttons > input[type=checkbox]:checked:focus-visible + label, .btn-check:checked:focus-visible + .btn-cta, .btn-check:checked:focus-visible + .profile-btn, .filter-buttons > input[type=checkbox]:checked:focus-visible + .btn-cta, .filter-buttons > input[type=checkbox]:checked:focus-visible + .profile-btn, .btn-cta-container > .btn-check:checked:focus-visible + a, .filter-buttons.btn-cta-container > input[type=checkbox]:checked:focus-visible + a {
+  box-shadow: var(--bs-btn-focus-box-shadow);
+}
 .btn:disabled, .filter-buttons > input[type=checkbox] + label:disabled, .btn-cta:disabled, .profile-btn:disabled, .btn-cta-container > a:disabled, .btn.disabled, .filter-buttons > input[type=checkbox] + label.disabled, .disabled.btn-cta, .disabled.profile-btn, .btn-cta-container > a.disabled, fieldset:disabled .btn, fieldset:disabled .filter-buttons > input[type=checkbox] + label, fieldset:disabled .btn-cta, fieldset:disabled .profile-btn, fieldset:disabled .btn-cta-container > a {
   color: var(--bs-btn-disabled-color);
   pointer-events: none;
@@ -4166,12 +4169,11 @@ nav > .container-lg {
   --bs-accordion-btn-padding-y: 1rem;
   --bs-accordion-btn-color: var(--bs-body-color);
   --bs-accordion-btn-bg: var(--bs-accordion-bg);
-  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23394664'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23394664' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
   --bs-accordion-btn-icon-width: 1.25rem;
   --bs-accordion-btn-icon-transform: rotate(-180deg);
   --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
-  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212839'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-  --bs-accordion-btn-focus-border-color: #a9b2c7;
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23212839' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(82, 101, 143, 0.25);
   --bs-accordion-body-padding-x: 1.25rem;
   --bs-accordion-body-padding-y: 1rem;
@@ -4229,7 +4231,6 @@ nav > .container-lg {
 }
 .accordion-button:focus {
   z-index: 3;
-  border-color: var(--bs-accordion-btn-focus-border-color);
   outline: 0;
   box-shadow: var(--bs-accordion-btn-focus-box-shadow);
 }
@@ -4247,7 +4248,7 @@ nav > .container-lg {
   border-top-left-radius: var(--bs-accordion-border-radius);
   border-top-right-radius: var(--bs-accordion-border-radius);
 }
-.accordion-item:first-of-type .accordion-button {
+.accordion-item:first-of-type > .accordion-header .accordion-button {
   border-top-left-radius: var(--bs-accordion-inner-border-radius);
   border-top-right-radius: var(--bs-accordion-inner-border-radius);
 }
@@ -4258,11 +4259,11 @@ nav > .container-lg {
   border-bottom-right-radius: var(--bs-accordion-border-radius);
   border-bottom-left-radius: var(--bs-accordion-border-radius);
 }
-.accordion-item:last-of-type .accordion-button.collapsed {
+.accordion-item:last-of-type > .accordion-header .accordion-button.collapsed {
   border-bottom-right-radius: var(--bs-accordion-inner-border-radius);
   border-bottom-left-radius: var(--bs-accordion-inner-border-radius);
 }
-.accordion-item:last-of-type .accordion-collapse {
+.accordion-item:last-of-type > .accordion-collapse {
   border-bottom-right-radius: var(--bs-accordion-border-radius);
   border-bottom-left-radius: var(--bs-accordion-border-radius);
 }
@@ -4271,21 +4272,21 @@ nav > .container-lg {
   padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x);
 }
 
-.accordion-flush .accordion-collapse {
-  border-width: 0;
-}
-.accordion-flush .accordion-item {
+.accordion-flush > .accordion-item {
   border-right: 0;
   border-left: 0;
   border-radius: 0;
 }
-.accordion-flush .accordion-item:first-child {
+.accordion-flush > .accordion-item:first-child {
   border-top: 0;
 }
-.accordion-flush .accordion-item:last-child {
+.accordion-flush > .accordion-item:last-child {
   border-bottom: 0;
 }
-.accordion-flush .accordion-item .accordion-button, .accordion-flush .accordion-item .accordion-button.collapsed {
+.accordion-flush > .accordion-item > .accordion-header .accordion-button, .accordion-flush > .accordion-item > .accordion-header .accordion-button.collapsed {
+  border-radius: 0;
+}
+.accordion-flush > .accordion-item > .accordion-collapse {
   border-radius: 0;
 }
 
@@ -5119,7 +5120,6 @@ nav > .container-lg {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
   padding: var(--bs-modal-header-padding);
   border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color);
   border-top-left-radius: var(--bs-modal-inner-border-radius);
@@ -5643,20 +5643,12 @@ nav > .container-lg {
   background-size: 100% 100%;
 }
 
-/* rtl:options: {
-  "autoRename": true,
-  "stringMap":[ {
-    "name"    : "prev-next",
-    "search"  : "prev",
-    "replace" : "next"
-  } ]
-} */
 .carousel-control-prev-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e") /*rtl:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")*/;
 }
 
 .carousel-control-next-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") /*rtl:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e")*/;
 }
 
 .carousel-indicators {
@@ -6120,14 +6112,11 @@ nav > .container-lg {
 .offcanvas-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x);
 }
 .offcanvas-header .btn-close {
   padding: calc(var(--bs-offcanvas-padding-y) * 0.5) calc(var(--bs-offcanvas-padding-x) * 0.5);
-  margin-top: calc(-0.5 * var(--bs-offcanvas-padding-y));
-  margin-right: calc(-0.5 * var(--bs-offcanvas-padding-x));
-  margin-bottom: calc(-0.5 * var(--bs-offcanvas-padding-y));
+  margin: calc(-0.5 * var(--bs-offcanvas-padding-y)) calc(-0.5 * var(--bs-offcanvas-padding-x)) calc(-0.5 * var(--bs-offcanvas-padding-y)) auto;
 }
 
 .offcanvas-title {
@@ -10346,17 +10335,13 @@ section:last-of-type {
 }
 
 .profile-btn {
-  background: rgba(0, 0, 0, 0.2);
-  color: #FFFFFF;
   border: none;
-}
-.profile-btn:hover {
-  color: #FFFFFF;
-  background: rgba(0, 0, 0, 0.3);
-}
-.profile-btn:focus, .profile-btn:active {
-  color: #FFFFFF;
-  background: rgba(0, 0, 0, 0.35);
+  --bs-btn-bg: rgba(0, 0, 0, 0.2);
+  --bs-btn-color: $color-text-light;
+  --bs-btn-hover-bg: rgba(0, 0, 0, 0.3);
+  --bs-btn-hover-color: $color-text-light;
+  --bs-btn-active-color: $color-text-light;
+  --bs-btn-active-bg: rgba(0, 0, 0, 0.35);
 }
 
 .btn-cta-container {
@@ -10364,11 +10349,30 @@ section:last-of-type {
   justify-content: center;
 }
 /* Icons */
-.fa-solid, .fa-brands {
+.fa-solid,
+.fa-brands {
   margin: 0 0.2em;
 }
 
-h1 .fa-solid, .h1 .fa-solid, h1 .fa-brands, .h1 .fa-brands, h2 .fa-solid, .h2 .fa-solid, h2 .fa-brands, .h2 .fa-brands, h3 .fa-solid, .h3 .fa-solid, h3 .fa-brands, .h3 .fa-brands, h4 .fa-solid, .h4 .fa-solid, h4 .fa-brands, .h4 .fa-brands, h5 .fa-solid, .h5 .fa-solid, h5 .fa-brands, .h5 .fa-brands {
+h1 .fa-solid, .h1 .fa-solid,
+h1 .fa-brands,
+.h1 .fa-brands,
+h2 .fa-solid,
+.h2 .fa-solid,
+h2 .fa-brands,
+.h2 .fa-brands,
+h3 .fa-solid,
+.h3 .fa-solid,
+h3 .fa-brands,
+.h3 .fa-brands,
+h4 .fa-solid,
+.h4 .fa-solid,
+h4 .fa-brands,
+.h4 .fa-brands,
+h5 .fa-solid,
+.h5 .fa-solid,
+h5 .fa-brands,
+.h5 .fa-brands {
   font-size: 0.8em;
   position: relative;
   top: -0.05em;
@@ -10449,7 +10453,8 @@ h1 .fa-solid, .h1 .fa-solid, h1 .fa-brands, .h1 .fa-brands, h2 .fa-solid, .h2 .f
   padding-left: 0;
   padding-right: 0;
 }
-.pill-list > li .fa-solid, .pill-list > li .fa-brands {
+.pill-list > li .fa-solid,
+.pill-list > li .fa-brands {
   margin: 0;
 }
 

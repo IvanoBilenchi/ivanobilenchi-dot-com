@@ -26,13 +26,12 @@ function refreshLineWithDelay() {
 
 // Hooks
 
-$(document).ready(() => {
+jQuery(() => {
   refreshLineWithDelay();
 
   $(window).on("resize", refreshLineWithDelay);
 
-  $("#navigation li").hover(
-    function() { moveLine($(this)); },
-    refreshLineWithDelay
-  );
+  $("#navigation li")
+    .on("mouseenter", function () { moveLine($(this)); })
+    .on("mouseleave", refreshLineWithDelay);
 });
