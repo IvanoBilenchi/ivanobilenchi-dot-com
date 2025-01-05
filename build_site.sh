@@ -11,5 +11,5 @@ cp -f "${NODE_DIR}/bootstrap/dist/js/bootstrap.bundle.min."* "${JS_DIR}"
 cp -f "${NODE_DIR}/isotope-layout/dist/isotope.pkgd.min."* "${JS_DIR}"
 
 # Compile css
-sass --no-source-map "${SASS_DIR}/style.scss" "${CSS_DIR}/style.css"
+sass --no-source-map --quiet-deps "${SASS_DIR}/style.scss" "${CSS_DIR}/style.css"
 open "${ROOT_DIR}/index.html"
