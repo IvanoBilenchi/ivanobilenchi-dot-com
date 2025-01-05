@@ -483,6 +483,12 @@ h5 {
 				border-bottom-right-radius: var(--bs-btn-border-radius);
 			}
 
+			&:hover {
+				--bs-btn-color: #{$color-lightest};
+				--bs-btn-bg: #{$color-primary-light};
+				--bs-btn-border-color: #{$color-light};
+			}
+
 			@include media-breakpoint-down(xs) {
 				padding-left: 0;
 				padding-right: 0;

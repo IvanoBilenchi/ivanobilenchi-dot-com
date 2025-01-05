@@ -10527,6 +10527,11 @@ h5 .fa-brands,
   border-top-right-radius: var(--bs-btn-border-radius);
   border-bottom-right-radius: var(--bs-btn-border-radius);
 }
+.filter-buttons > input[type=checkbox] + label:hover {
+  --bs-btn-color: #FFFFFF;
+  --bs-btn-bg: #7483a5;
+  --bs-btn-border-color: #F7F7F8;
+}
 
 /* Sections */
 .primary-section, .press-section, .pubs-section, .projects-section {
