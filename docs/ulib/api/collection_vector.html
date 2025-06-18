@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vector &mdash; uLib 0.2.6 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+  <title>Vector &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=9a313e40"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Hash table" href="collection_hash.html" />
@@ -36,9 +34,6 @@
           <a href="../index.html" class="icon icon-home">
             uLib
           </a>
-              <div class="version">
-                0.2.6
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -58,24 +53,144 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="collection.html">Collections</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Vector</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#builtin-types">Builtin types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#defining-new-vector-types">Defining new vector types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#common-vector-operations">Common vector operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#equatable-vectors">Equatable vectors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#comparable-vectors">Comparable vectors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#priority-queues">Priority queues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVec_T"><code class="docutils literal notranslate"><span class="pre">UVec_T</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVec"><code class="docutils literal notranslate"><span class="pre">UVec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_decl"><code class="docutils literal notranslate"><span class="pre">uvec_decl</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_ret"><code class="docutils literal notranslate"><span class="pre">uvec_ret</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#builtin-types">Builtin types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVec_char"><code class="docutils literal notranslate"><span class="pre">UVec_char</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVec_ulib_byte"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_byte</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVec_ulib_int"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVec_ulib_uint"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_uint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVec_ulib_float"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVec_ulib_ptr"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_ptr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVec_UString"><code class="docutils literal notranslate"><span class="pre">UVec_UString</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_CACHE_LINE_SIZE"><code class="docutils literal notranslate"><span class="pre">UVEC_CACHE_LINE_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_SORT_STACK_SIZE"><code class="docutils literal notranslate"><span class="pre">UVEC_SORT_STACK_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_SORT_INSERTION_THRESH"><code class="docutils literal notranslate"><span class="pre">UVEC_SORT_INSERTION_THRESH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_BINARY_SEARCH_THRESH"><code class="docutils literal notranslate"><span class="pre">UVEC_BINARY_SEARCH_THRESH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-new-vector-types">Defining new vector types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_DECL"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_DECL_SPEC"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_SPEC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_DECL_EQUATABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_EQUATABLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_DECL_EQUATABLE_SPEC"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_EQUATABLE_SPEC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_DECL_COMPARABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_COMPARABLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_DECL_COMPARABLE_SPEC"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_COMPARABLE_SPEC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_IMPL"><code class="docutils literal notranslate"><span class="pre">UVEC_IMPL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_IMPL_EQUATABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_IMPL_EQUATABLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_IMPL_COMPARABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_IMPL_COMPARABLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_IMPL_IDENTIFIABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_IMPL_IDENTIFIABLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_INIT"><code class="docutils literal notranslate"><span class="pre">UVEC_INIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_INIT_EQUATABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_INIT_EQUATABLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_INIT_COMPARABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_INIT_COMPARABLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UVEC_INIT_IDENTIFIABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_INIT_IDENTIFIABLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#common-vector-operations">Common vector operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec"><code class="docutils literal notranslate"><span class="pre">uvec()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_assign"><code class="docutils literal notranslate"><span class="pre">uvec_assign()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_wrap"><code class="docutils literal notranslate"><span class="pre">uvec_wrap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_deinit"><code class="docutils literal notranslate"><span class="pre">uvec_deinit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_move"><code class="docutils literal notranslate"><span class="pre">uvec_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_copy"><code class="docutils literal notranslate"><span class="pre">uvec_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_copy_to_array"><code class="docutils literal notranslate"><span class="pre">uvec_copy_to_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_reserve"><code class="docutils literal notranslate"><span class="pre">uvec_reserve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_expand"><code class="docutils literal notranslate"><span class="pre">uvec_expand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_shrink"><code class="docutils literal notranslate"><span class="pre">uvec_shrink()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_data"><code class="docutils literal notranslate"><span class="pre">uvec_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_get"><code class="docutils literal notranslate"><span class="pre">uvec_get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_set"><code class="docutils literal notranslate"><span class="pre">uvec_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_first"><code class="docutils literal notranslate"><span class="pre">uvec_first()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_last"><code class="docutils literal notranslate"><span class="pre">uvec_last()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_count"><code class="docutils literal notranslate"><span class="pre">uvec_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_size"><code class="docutils literal notranslate"><span class="pre">uvec_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_index_is_valid"><code class="docutils literal notranslate"><span class="pre">uvec_index_is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_push"><code class="docutils literal notranslate"><span class="pre">uvec_push()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_pop"><code class="docutils literal notranslate"><span class="pre">uvec_pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_remove_at"><code class="docutils literal notranslate"><span class="pre">uvec_remove_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_unordered_remove_at"><code class="docutils literal notranslate"><span class="pre">uvec_unordered_remove_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_insert_at"><code class="docutils literal notranslate"><span class="pre">uvec_insert_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_remove_range"><code class="docutils literal notranslate"><span class="pre">uvec_remove_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_unordered_remove_range"><code class="docutils literal notranslate"><span class="pre">uvec_unordered_remove_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_insert_range"><code class="docutils literal notranslate"><span class="pre">uvec_insert_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_clear"><code class="docutils literal notranslate"><span class="pre">uvec_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_remove_all"><code class="docutils literal notranslate"><span class="pre">uvec_remove_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_append"><code class="docutils literal notranslate"><span class="pre">uvec_append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_append_array"><code class="docutils literal notranslate"><span class="pre">uvec_append_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_view"><code class="docutils literal notranslate"><span class="pre">uvec_view()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_view_from"><code class="docutils literal notranslate"><span class="pre">uvec_view_from()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_view_to"><code class="docutils literal notranslate"><span class="pre">uvec_view_to()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_set_range"><code class="docutils literal notranslate"><span class="pre">uvec_set_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_reverse"><code class="docutils literal notranslate"><span class="pre">uvec_reverse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_shuffle"><code class="docutils literal notranslate"><span class="pre">uvec_shuffle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_foreach"><code class="docutils literal notranslate"><span class="pre">uvec_foreach</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_foreach_reverse"><code class="docutils literal notranslate"><span class="pre">uvec_foreach_reverse</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#equatable-vectors">Equatable vectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_index_of"><code class="docutils literal notranslate"><span class="pre">uvec_index_of()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_index_of_reverse"><code class="docutils literal notranslate"><span class="pre">uvec_index_of_reverse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_contains"><code class="docutils literal notranslate"><span class="pre">uvec_contains()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_remove"><code class="docutils literal notranslate"><span class="pre">uvec_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_unordered_remove"><code class="docutils literal notranslate"><span class="pre">uvec_unordered_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_equals"><code class="docutils literal notranslate"><span class="pre">uvec_equals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_push_unique"><code class="docutils literal notranslate"><span class="pre">uvec_push_unique()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#comparable-vectors">Comparable vectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_index_of_min"><code class="docutils literal notranslate"><span class="pre">uvec_index_of_min()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_index_of_max"><code class="docutils literal notranslate"><span class="pre">uvec_index_of_max()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_sort"><code class="docutils literal notranslate"><span class="pre">uvec_sort()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_sort_range"><code class="docutils literal notranslate"><span class="pre">uvec_sort_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_sorted_insertion_index"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_insertion_index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_sorted_index_of"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_index_of()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_sorted_contains"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_contains()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_sorted_insert"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_sorted_unique_insert"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_unique_insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_sorted_remove"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_insertion_index_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_insertion_index_sorted()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_index_of_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_index_of_sorted()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_contains_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_contains_sorted()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_insert_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_insert_sorted()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_insert_sorted_unique"><code class="docutils literal notranslate"><span class="pre">uvec_insert_sorted_unique()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_remove_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_remove_sorted()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#priority-queues">Priority queues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_max_heapq_make"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_make()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_max_heapq_push"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_push()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_max_heapq_pop"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_max_heapq_push_pop"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_push_pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_max_heapq_replace"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_replace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_max_heapq_remove"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_min_heapq_make"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_make()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_min_heapq_push"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_push()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_min_heapq_pop"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_min_heapq_push_pop"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_push_pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_min_heapq_replace"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_replace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uvec_min_heapq_remove"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_remove()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="collection_hash.html">Hash table</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Data compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -150,24 +265,51 @@
 <dt class="sig sig-object c" id="c.uvec_ret">
 <span class="target" id="uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_ret</span></span></span><a class="headerlink" href="#c.uvec_ret" title="Link to this definition"></a><br /></dt>
 <dd><p>Return codes. </p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a11a6f2c10fa9871a293d35c99c484c73"><span class="std std-ref"><span class="pre">ulib_ret</span></span></a></code> instead. </p>
+</dd></dl>
+
+</p>
 <p><em>Values:</em></p>
 <dl class="c enumerator">
 <dt class="sig sig-object c" id="c.uvec_ret.UVEC_ERR">
 <span class="target" id="uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_ERR</span></span></span><a class="headerlink" href="#c.uvec_ret.UVEC_ERR" title="Link to this definition"></a><br /></dt>
 <dd><p>The operation failed due to an error. </p>
-<p>As of right now, it can only happen if memory cannot be allocated. </p>
+<p>As of right now, it can only happen if memory cannot be allocated. <dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> instead. </p>
+</dd></dl>
+
+</p>
 </dd></dl>
 
 <dl class="c enumerator">
 <dt class="sig sig-object c" id="c.uvec_ret.UVEC_OK">
 <span class="target" id="uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_OK</span></span></span><a class="headerlink" href="#c.uvec_ret.UVEC_OK" title="Link to this definition"></a><br /></dt>
 <dd><p>The operation succeeded. </p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> instead. </p>
+</dd></dl>
+
+</p>
 </dd></dl>
 
 <dl class="c enumerator">
 <dt class="sig sig-object c" id="c.uvec_ret.UVEC_NO">
 <span class="target" id="uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a55793cb24ffe207f65ffe1a6569e269b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UVEC_NO</span></span></span><a class="headerlink" href="#c.uvec_ret.UVEC_NO" title="Link to this definition"></a><br /></dt>
 <dd><p>The operation could not be completed. </p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968ac7f6b56c007f858d7c2392ea36c5699b"><span class="std std-ref"><span class="pre">ULIB_NO</span></span></a></code> instead. </p>
+</dd></dl>
+
+</p>
 </dd></dl>
 
 </dd></dl>
@@ -457,7 +599,7 @@
 <dd><p>Initializes a new vector. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -477,11 +619,11 @@
 <dd><p>Initializes a new vector by taking ownership of the specified array, which must have been dynamically allocated. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit</span></span></a></code>. </p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Due to the internals of <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code> , you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
+<p>Due to the internals of <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a26121727ef28f7f607fb6d61fda3fd22"><span class="std std-ref"><span class="pre">UVec(T)</span></span></a></code>, you must not attempt to access the buffer after calling this function as it may have been deallocated. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -507,11 +649,11 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You must not call <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit()</span></span></a></code> on a vector initialized with this function. </p>
+<p>You must not call <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit</span></span></a></code> on a vector initialized with this function. </p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The array will never be resized, and it is assumed it can contain any number of elements. This is also reflected by <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaa6beff651c4eac920c0963edbaee024"><span class="std std-ref"><span class="pre">uvec_size()</span></span></a></code> returning <code class="docutils literal notranslate"><a class="reference internal" href="number.html#group__ulib__int_1gaf34471f49871ac90a530a9598ddce7c4"><span class="std std-ref"><span class="pre">ULIB_UINT_MAX</span></span></a></code> for vectors initialized with this function. It is up to you to avoid overflowing the underlying buffer. </p>
+<p>The array will never be resized, and it is assumed it can contain any number of elements. This is also reflected by <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaa6beff651c4eac920c0963edbaee024"><span class="std std-ref"><span class="pre">uvec_size</span></span></a></code> returning <code class="docutils literal notranslate"><a class="reference internal" href="number.html#group__ulib__int_1gaf34471f49871ac90a530a9598ddce7c4"><span class="std std-ref"><span class="pre">ULIB_UINT_MAX</span></span></a></code> for vectors initialized with this function. It is up to you to avoid overflowing the underlying buffer. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -530,7 +672,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_deinit">
 <span class="target" id="group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_deinit" title="Link to this definition"></a><br /></dt>
-<dd><p>De-initializes a vector previously initialized via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga0915388a08948597f026a1bcb4aaa214"><span class="std std-ref"><span class="pre">uvec()</span></span></a></code> . </p>
+<dd><p>De-initializes a vector previously initialized via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga0915388a08948597f026a1bcb4aaa214"><span class="std std-ref"><span class="pre">uvec</span></span></a></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -547,7 +689,7 @@
 <dd><p>Invalidates the vector and returns its storage. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1gaaf0f3503c9727bc31206efa37a8c49e5"><span class="std std-ref"><span class="pre">uvec_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -564,7 +706,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_copy">
-<span class="target" id="group___u_vec__common_1ga291150aba9c3066c2513269d43e33adc"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_copy</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_copy" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1gadaafe336b3977747ba5d29422e0ebcc5"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_copy</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_copy" title="Link to this definition"></a><br /></dt>
 <dd><p>Copies the specified vector. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -575,7 +717,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -601,7 +743,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_reserve">
-<span class="target" id="group___u_vec__common_1ga9c1401a962873534dcd01c7411a291a2"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_reserve</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_reserve" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1ga003546ab8f7adbb143d130bd5afdb0f4"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_reserve</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_reserve" title="Link to this definition"></a><br /></dt>
 <dd><p>Ensures the specified vector can hold at least as many elements as <code class="docutils literal notranslate"><span class="pre">size</span></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -612,14 +754,14 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_expand">
-<span class="target" id="group___u_vec__common_1gac6d5a31ceed6c1011c4b0a8461c6fcc9"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_expand</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_expand" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1ga5ae881e58ca6a75d14ab2ea3b69956a1"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_expand</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_expand" title="Link to this definition"></a><br /></dt>
 <dd><p>Expands the specified vector so that it can contain additional <code class="docutils literal notranslate"><span class="pre">size</span></code> elements. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -630,14 +772,14 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_shrink">
-<span class="target" id="group___u_vec__common_1ga3990d9eeb6bf89175fc62d9706fde22e"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_shrink</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_shrink" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1ga0fe38a14c72c001f6b7fd3ef473ccec0"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_shrink</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_shrink" title="Link to this definition"></a><br /></dt>
 <dd><p>Shrinks the specified vector so that its allocated size is just large enough to hold the elements it currently contains. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -647,7 +789,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -791,7 +933,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_push">
-<span class="target" id="group___u_vec__common_1ga4c3de06d366a1acb96f1981980f0d967"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_push" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_push" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1gab99702317774a9626789f48e951d42f8"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_push" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_push" title="Link to this definition"></a><br /></dt>
 <dd><p>Pushes the specified element to the top of the vector (last element). </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -802,7 +944,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -857,7 +999,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_insert_at">
-<span class="target" id="group___u_vec__common_1ga876c84a00a9c82aa4bf991beba9eb9fc"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_at</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">idx</span></span>, <a class="reference internal" href="#c.uvec_insert_at" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_at" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1gae208f32691b5ec44999a8890f2e2fbda"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_at</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">idx</span></span>, <a class="reference internal" href="#c.uvec_insert_at" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_at" title="Link to this definition"></a><br /></dt>
 <dd><p>Inserts an element at the specified index. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -869,7 +1011,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -908,7 +1050,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_insert_range">
-<span class="target" id="group___u_vec__common_1gab213d0c5a1b1f6578c5a09b9211fd569"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insert_range" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_range" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1ga1a5a514ece0993aeee15be65459ca291"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insert_range" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_range" title="Link to this definition"></a><br /></dt>
 <dd><p>Inserts the elements contained in an array at the specified index. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -921,7 +1063,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -947,7 +1089,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga7a6af3aa561023c6cc035be10a8bc06f"><span class="std std-ref"><span class="pre">uvec_clear()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga7a6af3aa561023c6cc035be10a8bc06f"><span class="std std-ref"><span class="pre">uvec_clear</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -963,7 +1105,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_append">
-<span class="target" id="group___u_vec__common_1ga263a1f4e58fe2e0ad815440495b55094"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_append</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_append" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1ga953480af4b6158adcb0df7a087f3c76a"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_append</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_append" title="Link to this definition"></a><br /></dt>
 <dd><p>Appends a vector to another. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -974,14 +1116,14 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_append_array">
-<span class="target" id="group___u_vec__common_1ga213d4f68304895872fb1d09638206451"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_append_array</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_append_array" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_append_array" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1ga358482ff32c78abe88d19d608a258a08"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_append_array</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_append_array" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_append_array" title="Link to this definition"></a><br /></dt>
 <dd><p>Appends an array to the specified vector. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -993,7 +1135,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1004,7 +1146,7 @@
 <dd><p>Returns a view over a section of the specified vector. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Views are affected by the same limitations as vectors created via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"><span class="std std-ref"><span class="pre">uvec_wrap()</span></span></a></code> . </p>
+<p>Views are affected by the same limitations as vectors created via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"><span class="std std-ref"><span class="pre">uvec_wrap</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1027,7 +1169,7 @@
 <dd><p>Returns a view over a section of the specified vector. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Views are affected by the same limitations as vectors created via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"><span class="std std-ref"><span class="pre">uvec_wrap()</span></span></a></code> . </p>
+<p>Views are affected by the same limitations as vectors created via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"><span class="std std-ref"><span class="pre">uvec_wrap</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1049,7 +1191,7 @@
 <dd><p>Returns a view over a section of the specified vector. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Views are affected by the same limitations as vectors created via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"><span class="std std-ref"><span class="pre">uvec_wrap()</span></span></a></code> . </p>
+<p>Views are affected by the same limitations as vectors created via <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__common_1ga58d40a1187761881ebff86716b74a19c"><span class="std std-ref"><span class="pre">uvec_wrap</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1067,7 +1209,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_set_range">
-<span class="target" id="group___u_vec__common_1gae1383bc040192f806ab9aa9c829d30bb"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_set_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_set_range" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_set_range" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__common_1ga860daf3b7cc6f1f43214e6a5f21d39f7"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_set_range</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_set_range" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">array</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_set_range" title="Link to this definition"></a><br /></dt>
 <dd><p>Sets items in the specified range to those contained in an array. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1080,7 +1222,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1273,7 +1415,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_push_unique">
-<span class="target" id="group___u_vec__equatable_1gabaa3e00ffe7d3376013dd8ae748ddb8e"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_push_unique</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_push_unique" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_push_unique" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__equatable_1gaf649624e0ccbb545642ef46eaa226d11"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_push_unique</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_push_unique" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_push_unique" title="Link to this definition"></a><br /></dt>
 <dd><p>Pushes the specified element to the top of the vector if it does not already contain it. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1284,7 +1426,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> if the element was pushed, <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a55793cb24ffe207f65ffe1a6569e269b"><span class="std std-ref"><span class="pre">UVEC_NO</span></span></a></code> if the element was already present, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the element was pushed, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968ac7f6b56c007f858d7c2392ea36c5699b"><span class="std std-ref"><span class="pre">ULIB_NO</span></span></a></code> if the element was already present, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1421,7 +1563,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_sorted_insert">
-<span class="target" id="group___u_vec__comparable_1gabab23c319bfc3a145128ca9b6d90dc67"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_sorted_insert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_sorted_insert" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_sorted_insert" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__comparable_1ga45e5057288d92a827fe25a50cfbd32c9"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_sorted_insert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_sorted_insert" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_sorted_insert" title="Link to this definition"></a><br /></dt>
 <dd><p>Inserts the specified element in a sorted vector. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1433,14 +1575,14 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_sorted_unique_insert">
-<span class="target" id="group___u_vec__comparable_1ga498c1cc3e80eb5ef42c446a90b1f8ef1"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_sorted_unique_insert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_sorted_unique_insert" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_sorted_unique_insert" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__comparable_1ga3bbaecb64ec1a49be05da471eaa57672"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_sorted_unique_insert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_sorted_unique_insert" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_sorted_unique_insert" title="Link to this definition"></a><br /></dt>
 <dd><p>Inserts the specified element in a sorted vector only if it does not already contain it. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1452,7 +1594,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> if the element was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a55793cb24ffe207f65ffe1a6569e269b"><span class="std std-ref"><span class="pre">UVEC_NO</span></span></a></code> if the element was already present, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> . </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the element was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968ac7f6b56c007f858d7c2392ea36c5699b"><span class="std std-ref"><span class="pre">ULIB_NO</span></span></a></code> if the element was already present, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1483,7 +1625,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga5c449e05ad475ec15a5aa8064e343d81"><span class="std std-ref"><span class="pre">uvec_sorted_insertion_index()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga5c449e05ad475ec15a5aa8064e343d81"><span class="std std-ref"><span class="pre">uvec_sorted_insertion_index</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -1509,7 +1651,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga939eeb8e4845680a07df00743c69d733"><span class="std std-ref"><span class="pre">uvec_sorted_index_of()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga939eeb8e4845680a07df00743c69d733"><span class="std std-ref"><span class="pre">uvec_sorted_index_of</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -1539,7 +1681,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga97b095cbb95f3364d05457c9cd705376"><span class="std std-ref"><span class="pre">uvec_sorted_contains()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga97b095cbb95f3364d05457c9cd705376"><span class="std std-ref"><span class="pre">uvec_sorted_contains</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -1559,12 +1701,12 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_insert_sorted">
-<span class="target" id="group___u_vec__comparable_1ga4c4c4b9d157f048aa420810ba70c092d"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_sorted</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insert_sorted" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_sorted" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__comparable_1gaec1bf046042a211d642ff42fe3fdc2fb"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_sorted</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insert_sorted" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_sorted" title="Link to this definition"></a><br /></dt>
 <dd><p>Inserts the specified element in a sorted vector. </p>
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1gabab23c319bfc3a145128ca9b6d90dc67"><span class="std std-ref"><span class="pre">uvec_sorted_insert()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga45e5057288d92a827fe25a50cfbd32c9"><span class="std std-ref"><span class="pre">uvec_sorted_insert</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -1578,19 +1720,19 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> .</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_insert_sorted_unique">
-<span class="target" id="group___u_vec__comparable_1gab405dfb23b5f9d393b2050013fbe6dfa"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_sorted_unique</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insert_sorted_unique" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_sorted_unique" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__comparable_1ga8d9ccefe1a7396d19ea9d82661672257"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_insert_sorted_unique</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_insert_sorted_unique" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_insert_sorted_unique" title="Link to this definition"></a><br /></dt>
 <dd><p>Inserts the specified element in a sorted vector only if it does not already contain it. </p>
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga498c1cc3e80eb5ef42c446a90b1f8ef1"><span class="std std-ref"><span class="pre">uvec_sorted_unique_insert()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga3bbaecb64ec1a49be05da471eaa57672"><span class="std std-ref"><span class="pre">uvec_sorted_unique_insert</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -1604,7 +1746,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> if the element was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a55793cb24ffe207f65ffe1a6569e269b"><span class="std std-ref"><span class="pre">UVEC_NO</span></span></a></code> if the element was already present, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> .</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> if the element was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a55793cb24ffe207f65ffe1a6569e269b"><span class="std std-ref"><span class="pre">UVEC_NO</span></span></a></code> if the element was already present, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1616,7 +1758,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga9578381a460c269103d38edb87b3e041"><span class="std std-ref"><span class="pre">uvec_sorted_remove()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__comparable_1ga9578381a460c269103d38edb87b3e041"><span class="std std-ref"><span class="pre">uvec_sorted_remove</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -1662,11 +1804,11 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_max_heapq_push">
-<span class="target" id="group___u_vec__heapq_1ga4c6d8e8c0f4b78769b0c55fb5adac32f"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_max_heapq_push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_max_heapq_push" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_max_heapq_push" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__heapq_1ga67ed660fbaf2433cc8bce263793c7ab1"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_max_heapq_push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_max_heapq_push" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_max_heapq_push" title="Link to this definition"></a><br /></dt>
 <dd><p>Pushes the specified item into the max heap queue. </p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1678,7 +1820,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> .</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1689,7 +1831,7 @@
 <dd><p>Removes and returns the maximum element from the queue. </p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1713,7 +1855,7 @@
 <p>Equivalent to push followed by pop, but with better performance.</p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1735,7 +1877,7 @@
 <p>Similar to pop followed by push, but with better performance.</p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <div class="admonition note">
@@ -1763,7 +1905,7 @@
 <dd><p>Removes the specified item from the queue. </p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga58dc5c7d1f2382ee22e06f58a69345b1"><span class="std std-ref"><span class="pre">uvec_max_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1805,11 +1947,11 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uvec_min_heapq_push">
-<span class="target" id="group___u_vec__heapq_1ga0b396ca7c00af87aecdaff0116847506"></span><a class="reference internal" href="#c.uvec_ret" title="uvec_ret"><span class="n"><span class="pre">uvec_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_min_heapq_push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_min_heapq_push" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_min_heapq_push" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_vec__heapq_1gabb8a26c722bd6a6a4b44dcda254b1db7"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uvec_min_heapq_push</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UVec_T" title="UVec_T"><span class="n"><span class="pre">UVec_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vec</span></span>, <a class="reference internal" href="#c.uvec_min_heapq_push" title="T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uvec_min_heapq_push" title="Link to this definition"></a><br /></dt>
 <dd><p>Pushes the specified item into the min heap queue. </p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1821,7 +1963,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331abd04355b23ef1811cd2f0d54ce66de6f"><span class="std std-ref"><span class="pre">UVEC_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="#uvec_8h_1a21ba9e5a6233fd55ef7fe4f24a679331a402cb0815fc74712039472db7c01ec01"><span class="std std-ref"><span class="pre">UVEC_ERR</span></span></a></code> .</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> on success, otherwise <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1832,7 +1974,7 @@
 <dd><p>Removes and returns the minimum element from the queue. </p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1856,7 +1998,7 @@
 <p>Equivalent to push followed by pop, but with better performance.</p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1878,7 +2020,7 @@
 <p>Similar to pop followed by push, but with better performance.</p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <div class="admonition note">
@@ -1906,7 +2048,7 @@
 <dd><p>Removes the specified item from the queue. </p>
 <p><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make()</span></span></a></code></p>
+<p><code class="docutils literal notranslate"><a class="reference internal" href="#group___u_vec__heapq_1ga09ac51017c39eb203cd7824142d7c927"><span class="std std-ref"><span class="pre">uvec_min_heapq_make</span></span></a></code></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1937,7 +2079,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
   </div>
 
    

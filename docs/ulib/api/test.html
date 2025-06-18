@@ -1,28 +1,26 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tests &mdash; uLib 0.2.6 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+  <title>Tests &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=9a313e40"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Version" href="version.html" />
-    <link rel="prev" title="Macros" href="macros.html" /> 
+    <link rel="prev" title="Logging" href="logging.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,9 +34,6 @@
           <a href="../index.html" class="icon icon-home">
             uLib
           </a>
-              <div class="version">
-                0.2.6
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -58,11 +53,47 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Data compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#test-framework">Test framework</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_run"><code class="docutils literal notranslate"><span class="pre">utest_run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_all_passed"><code class="docutils literal notranslate"><span class="pre">utest_all_passed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_batch_all_passed"><code class="docutils literal notranslate"><span class="pre">utest_batch_all_passed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_passed"><code class="docutils literal notranslate"><span class="pre">utest_passed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_log_failure_reason"><code class="docutils literal notranslate"><span class="pre">utest_log_failure_reason()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_fail"><code class="docutils literal notranslate"><span class="pre">utest_fail()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_msg"><code class="docutils literal notranslate"><span class="pre">utest_assert_msg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert"><code class="docutils literal notranslate"><span class="pre">utest_assert()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_false"><code class="docutils literal notranslate"><span class="pre">utest_assert_false()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_ret"><code class="docutils literal notranslate"><span class="pre">utest_assert_ret()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_ok"><code class="docutils literal notranslate"><span class="pre">utest_assert_ok()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_not_null"><code class="docutils literal notranslate"><span class="pre">utest_assert_not_null()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_fatal"><code class="docutils literal notranslate"><span class="pre">utest_assert_fatal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_critical"><code class="docutils literal notranslate"><span class="pre">utest_assert_critical()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_main"><code class="docutils literal notranslate"><span class="pre">utest_main</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_sub"><code class="docutils literal notranslate"><span class="pre">utest_sub</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_enum"><code class="docutils literal notranslate"><span class="pre">utest_assert_enum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_int"><code class="docutils literal notranslate"><span class="pre">utest_assert_int</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_uint"><code class="docutils literal notranslate"><span class="pre">utest_assert_uint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_float"><code class="docutils literal notranslate"><span class="pre">utest_assert_float</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_ptr"><code class="docutils literal notranslate"><span class="pre">utest_assert_ptr</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_string"><code class="docutils literal notranslate"><span class="pre">utest_assert_string</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_buf"><code class="docutils literal notranslate"><span class="pre">utest_assert_buf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utest_assert_ustring"><code class="docutils literal notranslate"><span class="pre">utest_assert_ustring</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-leak-detection">Memory leak detection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.uleak_detect_start"><code class="docutils literal notranslate"><span class="pre">uleak_detect_start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.uleak_detect_end"><code class="docutils literal notranslate"><span class="pre">uleak_detect_end()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
 
@@ -93,24 +124,191 @@
              
   <section id="tests">
 <h1>Tests<a class="headerlink" href="#tests" title="Link to this heading"></a></h1>
+<section id="test-framework">
+<h2>Test framework<a class="headerlink" href="#test-framework" title="Link to this heading"></a></h2>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.utest_leak_start">
-<span class="target" id="group__test_1ga7bebc72d7af8f51e47793cc2fc0d4b70"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_leak_start</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_leak_start" title="Link to this definition"></a><br /></dt>
-<dd><p>Start detection of memory leaks. </p>
+<dt class="sig sig-object c" id="c.utest_run">
+<span class="target" id="group__test_1ga208f7fb32ee78c3c58f536da3c0a0391"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_run</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">name</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_run" title="Link to this definition"></a><br /></dt>
+<dd><p>Runs a test batch. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>True if detection started successfully, false otherwise. </p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Name of the test batch. </p></li>
+<li><p><strong>...</strong> – One or more <code class="docutils literal notranslate"><span class="pre">(void)</span> <span class="pre">-&gt;</span> <span class="pre">void</span></code> test functions. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.utest_leak_end">
-<span class="target" id="group__test_1ga516aa998edd1f69cb567db85f8002daf"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_leak_end</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_leak_end" title="Link to this definition"></a><br /></dt>
-<dd><p>Ends detection of memory leaks and prints detected leaks to the console. </p>
+<dt class="sig sig-object c" id="c.utest_all_passed">
+<span class="target" id="group__test_1ga2a30c250f5d8b98d11c355fe861d1e79"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_all_passed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_all_passed" title="Link to this definition"></a><br /></dt>
+<dd><p>Whether all tests that have been run so far passed. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>True if no leaks were detected, false otherwise. </p>
+<dd class="field-odd"><p>True if all tests passed, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_batch_all_passed">
+<span class="target" id="group__test_1ga593302442ef75ade1ce4a2698143c924"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_batch_all_passed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_batch_all_passed" title="Link to this definition"></a><br /></dt>
+<dd><p>Whether all tests in the current batch passed. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if all tests in the batch passed, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_passed">
+<span class="target" id="group__test_1gab6fa3b439da35bf9360bad3dfa7af7a1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_passed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_passed" title="Link to this definition"></a><br /></dt>
+<dd><p>Whether the current test passed. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the current test passed, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_log_failure_reason">
+<span class="target" id="group__test_1ga54f2d63a4456c88ee8d3e955d612f542"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_log_failure_reason</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_log_failure_reason" title="Link to this definition"></a><br /></dt>
+<dd><p>Logs a test failure message. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fmt</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_fail">
+<span class="target" id="group__test_1ga05283caa7a5ab8a20742609c3d2b0077"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_fail</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_fail" title="Link to this definition"></a><br /></dt>
+<dd><p>Causes the test function to fail. </p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_assert_msg">
+<span class="target" id="group__test_1ga28dcbf573e5285884b79a1e8ddcb137f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_msg</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">exp</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_msg" title="Link to this definition"></a><br /></dt>
+<dd><p>Asserts that the specified expression is true. </p>
+<p>If it is not, logs a failure message and returns from the test function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Assertion condition. </p></li>
+<li><p><strong>fmt</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_assert">
+<span class="target" id="group__test_1ga53831c374fab45d8107f3737a1eaeadb"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert" title="Link to this definition"></a><br /></dt>
+<dd><p>Asserts that the specified expression is true. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Assertion condition. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_assert_false">
+<span class="target" id="group__test_1gaa8c6a9ab6a549945612ae0f6eba77072"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_false</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_false" title="Link to this definition"></a><br /></dt>
+<dd><p>Asserts that the specified expression is false. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Assertion condition. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_assert_ret">
+<span class="target" id="group__test_1gab478564c7d40d01d14da4be406071649"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_ret</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="n"><span class="pre">ret</span></span>, <a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="n"><span class="pre">val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_ret" title="Link to this definition"></a><br /></dt>
+<dd><p>Asserts that the specified return code is equal to the expected value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ret</strong> – Return code. </p></li>
+<li><p><strong>val</strong> – Expected value. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_assert_ok">
+<span class="target" id="group__test_1ga086a057be5c6986e5384d67a599c5d19"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_ok</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="n"><span class="pre">ret</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_ok" title="Link to this definition"></a><br /></dt>
+<dd><p>Asserts that the specified return code is equal to <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ret</strong> – Return code. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_assert_not_null">
+<span class="target" id="group__test_1ga30e5e0e92739e9bdb5d41d876745f7cc"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_not_null</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_not_null" title="Link to this definition"></a><br /></dt>
+<dd><p>Assert that the specified pointer must not be NULL. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ptr</strong> – Pointer. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_assert_fatal">
+<span class="target" id="group__test_1ga326d9ce386c68674d2562e7170aaffb6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_fatal</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_fatal" title="Link to this definition"></a><br /></dt>
+<dd><p>Assert that the specified expression must be true. </p>
+<p>Abort the tests if it is false.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Assertion condition. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.utest_assert_critical">
+<span class="target" id="group__test_1gafe13ce210b5fbccb3f3a3e2880ff6262"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_critical</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_critical" title="Link to this definition"></a><br /></dt>
+<dd><p>Assert that the specified expression must be true. </p>
+<p>Abort the tests if it is false.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group__test_1ga326d9ce386c68674d2562e7170aaffb6"><span class="std std-ref"><span class="pre">utest_assert_fatal</span></span></a></code> instead. </p>
+</dd></dl>
+
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Boolean expression.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -118,7 +316,7 @@
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.utest_main">
 <span class="target" id="group__test_1ga152bc6533aaa0258301687dbe91138e6"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_main</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CODE</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_main" title="Link to this definition"></a><br /></dt>
-<dd><p>Defines the main test function. </p>
+<dd><p>Defines the test driver function. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -129,53 +327,29 @@
 </dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.utest_run">
-<span class="target" id="group__test_1ga76c0c22d3be6382bfd29fcc9dae6214d"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_run</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">NAME</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_run" title="Link to this definition"></a><br /></dt>
-<dd><p>Runs a test batch. </p>
+<dt class="sig sig-object c" id="c.utest_sub">
+<span class="target" id="group__test_1gaa533f826267f3631005d779ceb111363"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_sub</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CODE</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_sub" title="Link to this definition"></a><br /></dt>
+<dd><p>Runs a test subroutine. </p>
+<p>If the test subroutine fails, the test function will return.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>NAME</strong> – <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">literal</span></code> Name of the test batch. </p></li>
-<li><p><strong>...</strong> – Comma separated list of <code class="docutils literal notranslate"><span class="pre">(void)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> test functions. </p></li>
+<li><p><strong>CODE</strong> – Code to execute, typically a call to a function containing assertions. </p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.utest_assert">
-<span class="target" id="group__test_1ga88c88a1329120fb415cbd9571eabadcc"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert" title="Link to this definition"></a><br /></dt>
-<dd><p>Assert that the specified expression must be true. </p>
+<dt class="sig sig-object c" id="c.utest_assert_enum">
+<span class="target" id="group__test_1gace9e253014178bfc55fe6552974bb3dd"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_enum</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">A</span></span>, <span class="n"><span class="pre">OP</span></span>, <span class="n"><span class="pre">B</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_enum" title="Link to this definition"></a><br /></dt>
+<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">OP</span> <span class="pre">B</span></code> must be true, where <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> are enum values. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>EXP</strong> – Boolean expression. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="c macro">
-<dt class="sig sig-object c" id="c.utest_assert_false">
-<span class="target" id="group__test_1gaedb8963a865bc73529704a28d0c2324a"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_false</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_false" title="Link to this definition"></a><br /></dt>
-<dd><p>Assert that the specified expression must be false. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>EXP</strong> – Boolean expression. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="c macro">
-<dt class="sig sig-object c" id="c.utest_assert_not_null">
-<span class="target" id="group__test_1ga03e2f81ef69989ee2639e94eabb2f64d"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_not_null</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_not_null" title="Link to this definition"></a><br /></dt>
-<dd><p>Assert that the specified expression must not be NULL. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>EXP</strong> – Expression returning any pointer. </p></li>
+<li><p><strong>A</strong> – <code class="docutils literal notranslate"><span class="pre">int</span></code> First enum value. </p></li>
+<li><p><strong>OP</strong> – Comparison operator. </p></li>
+<li><p><strong>B</strong> – <code class="docutils literal notranslate"><span class="pre">int</span></code> Second enum value. </p></li>
 </ul>
 </dd>
 </dl>
@@ -275,7 +449,7 @@
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.utest_assert_ustring">
 <span class="target" id="group__test_1ga9a29c355b6d124c2bce849f6bf28cf8b"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_ustring</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">A</span></span>, <span class="n"><span class="pre">OP</span></span>, <span class="n"><span class="pre">B</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_ustring" title="Link to this definition"></a><br /></dt>
-<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">ustring_compare(A,</span> <span class="pre">B)</span> <span class="pre">OP</span> <span class="pre">0</span></code> must be true. </p>
+<dd><p>Assert that <code class="docutils literal notranslate"><span class="pre">#ustring_compare(A,</span> <span class="pre">B)</span> <span class="pre">OP</span> <span class="pre">0</span></code> must be true. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -287,49 +461,46 @@
 </dl>
 </dd></dl>
 
-<dl class="c macro">
-<dt class="sig sig-object c" id="c.utest_assert_critical">
-<span class="target" id="group__test_1gabc14574410ca915a8dd4cb59001af888"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_critical</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_critical" title="Link to this definition"></a><br /></dt>
-<dd><p>Assert that the specified expression must be true. </p>
-<p>Abort the tests if it is false.</p>
+</section>
+<section id="memory-leak-detection">
+<h2>Memory leak detection<a class="headerlink" href="#memory-leak-detection" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uleak_detect_start">
+<span class="target" id="group__leak_1ga5bd473cd0677399b4c91fc93cf66c682"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uleak_detect_start</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uleak_detect_start" title="Link to this definition"></a><br /></dt>
+<dd><p>Starts detection of memory leaks. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>EXP</strong> – Boolean expression. </p></li>
-</ul>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if detection started successfully, false otherwise. </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="c macro">
-<dt class="sig sig-object c" id="c.utest_assert_wrap">
-<span class="target" id="group__test_1ga93bd901798b7c42b5ae1efd7b6880060"></span><span class="sig-name descname"><span class="n"><span class="pre">utest_assert_wrap</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXP</span></span>, <span class="n"><span class="pre">CODE</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utest_assert_wrap" title="Link to this definition"></a><br /></dt>
-<dd><p>Utility macro for test assertions. </p>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uleak_detect_end">
+<span class="target" id="group__leak_1ga7af64d70c5c4e718bdd7e65f4e859e16"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uleak_detect_end</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uleak_detect_end" title="Link to this definition"></a><br /></dt>
+<dd><p>Ends detection of memory leaks and logs detected leaks. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>EXP</strong> – Expression. </p></li>
-<li><p><strong>CODE</strong> – Any custom code to run after printing the failure reason. </p></li>
-<li><p><strong>...</strong> – Failure reason as printf arguments. </p></li>
-</ul>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if no leaks were detected, false otherwise. </p>
 </dd>
 </dl>
 </dd></dl>
 
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="macros.html" class="btn btn-neutral float-left" title="Macros" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="logging.html" class="btn btn-neutral float-left" title="Logging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="version.html" class="btn btn-neutral float-right" title="Version" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
   </div>
 
    

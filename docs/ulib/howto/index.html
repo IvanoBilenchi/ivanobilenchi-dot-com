@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building from source &mdash; uLib 0.2.6 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+  <title>Building from source &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=9a313e40"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Numeric types" href="../api/number.html" />
@@ -36,9 +34,6 @@
           <a href="../index.html" class="icon icon-home">
             uLib
           </a>
-              <div class="version">
-                0.2.6
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -64,10 +59,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/string.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/collection.html">Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/compression.html">Data compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/time.html">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/alloc.html">Memory allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/version.html">Version</a></li>
 </ul>
@@ -147,7 +144,7 @@ cmake<span class="w"> </span>--build<span class="w"> </span>cmake-build<span cla
 <p>If you’re using CMake as your build system, you can link against uLib by configuring your
 <em>CMakeLists.txt</em> file as follows:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Assuming uLib&#39;s source is under &quot;lib/ulib&quot;</span>
-<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s2">&quot;lib/ulib&quot;</span><span class="w"> </span><span class="s">EXCLUDE_FROM_ALL</span><span class="p">)</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s2">&quot;lib/ulib&quot;</span><span class="p">)</span>
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">your-target</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">ulib</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -173,7 +170,7 @@ the build system or compiler is aware of uLib’s headers.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
   </div>
 
    

@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memory allocation &mdash; uLib 0.2.6 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+  <title>Memory allocation &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=9a313e40"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Macros" href="macros.html" />
@@ -36,9 +34,6 @@
           <a href="../index.html" class="icon icon-home">
             uLib
           </a>
-              <div class="version">
-                0.2.6
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -58,10 +53,24 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Data compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Memory allocation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Memory allocation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_malloc"><code class="docutils literal notranslate"><span class="pre">ulib_malloc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_calloc"><code class="docutils literal notranslate"><span class="pre">ulib_calloc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_realloc"><code class="docutils literal notranslate"><span class="pre">ulib_realloc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_free"><code class="docutils literal notranslate"><span class="pre">ulib_free()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_stackalloc"><code class="docutils literal notranslate"><span class="pre">ulib_stackalloc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_stackfree"><code class="docutils literal notranslate"><span class="pre">ulib_stackfree()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_alloc"><code class="docutils literal notranslate"><span class="pre">ulib_alloc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_alloc_array"><code class="docutils literal notranslate"><span class="pre">ulib_alloc_array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_calloc_array"><code class="docutils literal notranslate"><span class="pre">ulib_calloc_array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulib_realloc_array"><code class="docutils literal notranslate"><span class="pre">ulib_realloc_array()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -99,7 +108,7 @@
 <dd><p>Allocates size bytes of uninitialized storage. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -119,7 +128,7 @@
 <dd><p>Allocates memory for an array of num objects of size and initializes all bytes in the allocated storage to zero. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -140,7 +149,7 @@
 <dd><p>Reallocates the given memory area with a new size. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -174,7 +183,11 @@
 <dd><p>Allocates size bytes of uninitialized storage on the stack. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You must not free the returned pointer. </p>
+<p>This function is a portable alternative to the non-standard <code class="docutils literal notranslate"><span class="pre">alloca</span></code>. Users are expected to pair it with a call to <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga15aff7e8911a735fceeb1b3427ca0d5c"><span class="std std-ref"><span class="pre">ulib_stackfree</span></span></a></code> within the same caller, supporting a fallback to heap allocation if stack allocation is not available. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga15aff7e8911a735fceeb1b3427ca0d5c"><span class="std std-ref"><span class="pre">ulib_stackfree</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -189,12 +202,29 @@
 </dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.ulib_stackfree">
+<span class="target" id="group__alloc_1ga15aff7e8911a735fceeb1b3427ca0d5c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_stackfree</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_stackfree" title="Link to this definition"></a><br /></dt>
+<dd><p>Deallocates the given memory area returned by <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga6a7f45b4135309a5bddc1b020c1e2070"><span class="std std-ref"><span class="pre">ulib_stackalloc</span></span></a></code>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function is a no-op if stack allocation is available, otherwise it calls <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free</span></span></a></code>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ptr</strong> – Pointer to the memory area to deallocate.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.ulib_alloc">
 <span class="target" id="group__alloc_1gab860b51625418eb0f96a96c35007a0c8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_alloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_alloc" title="Link to this definition"></a><br /></dt>
 <dd><p>Allocates memory to hold the type of the pointed variable. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -214,7 +244,7 @@
 <dd><p>Allocates an array. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -235,7 +265,7 @@
 <dd><p>Allocates an array and initializes its storage to zero. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -256,7 +286,7 @@
 <dd><p>Reallocates a previously allocated array. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group__alloc_1ga266bb9e42ae9d7836df719564040d0cc"><span class="std std-ref"><span class="pre">ulib_free</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -284,7 +314,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
   </div>
 
    

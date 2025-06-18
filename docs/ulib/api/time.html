@@ -1,28 +1,26 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time &mdash; uLib 0.2.6 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+  <title>Time &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=9a313e40"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Random generators" href="rand.html" />
-    <link rel="prev" title="Streams" href="stream.html" /> 
+    <link rel="prev" title="Data compression" href="compression.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,9 +34,6 @@
           <a href="../index.html" class="icon icon-home">
             uLib
           </a>
-              <div class="version">
-                0.2.6
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -58,10 +53,62 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Data compression</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Time</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.UTime"><code class="docutils literal notranslate"><span class="pre">UTime</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.UTime.year"><code class="docutils literal notranslate"><span class="pre">year</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.UTime.month"><code class="docutils literal notranslate"><span class="pre">month</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.UTime.day"><code class="docutils literal notranslate"><span class="pre">day</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.UTime.hour"><code class="docutils literal notranslate"><span class="pre">hour</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.UTime.minute"><code class="docutils literal notranslate"><span class="pre">minute</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.UTime.second"><code class="docutils literal notranslate"><span class="pre">second</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_unit"><code class="docutils literal notranslate"><span class="pre">utime_unit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.utime_unit.UTIME_NANOSECONDS"><code class="docutils literal notranslate"><span class="pre">UTIME_NANOSECONDS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utime_unit.UTIME_MICROSECONDS"><code class="docutils literal notranslate"><span class="pre">UTIME_MICROSECONDS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utime_unit.UTIME_MILLISECONDS"><code class="docutils literal notranslate"><span class="pre">UTIME_MILLISECONDS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utime_unit.UTIME_SECONDS"><code class="docutils literal notranslate"><span class="pre">UTIME_SECONDS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utime_unit.UTIME_MINUTES"><code class="docutils literal notranslate"><span class="pre">UTIME_MINUTES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utime_unit.UTIME_HOURS"><code class="docutils literal notranslate"><span class="pre">UTIME_HOURS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utime_unit.UTIME_DAYS"><code class="docutils literal notranslate"><span class="pre">UTIME_DAYS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utime_unit.UTIME_MONTHS"><code class="docutils literal notranslate"><span class="pre">UTIME_MONTHS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.utime_unit.UTIME_YEARS"><code class="docutils literal notranslate"><span class="pre">UTIME_YEARS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_stamp"><code class="docutils literal notranslate"><span class="pre">utime_stamp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_ns"><code class="docutils literal notranslate"><span class="pre">utime_ns</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_equals"><code class="docutils literal notranslate"><span class="pre">utime_equals()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_to_timestamp"><code class="docutils literal notranslate"><span class="pre">utime_to_timestamp()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_now"><code class="docutils literal notranslate"><span class="pre">utime_now()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_local"><code class="docutils literal notranslate"><span class="pre">utime_local()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_from_timestamp"><code class="docutils literal notranslate"><span class="pre">utime_from_timestamp()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_add"><code class="docutils literal notranslate"><span class="pre">utime_add()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_to_utc"><code class="docutils literal notranslate"><span class="pre">utime_to_utc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_to_timezone"><code class="docutils literal notranslate"><span class="pre">utime_to_timezone()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_normalize_to_utc"><code class="docutils literal notranslate"><span class="pre">utime_normalize_to_utc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_diff"><code class="docutils literal notranslate"><span class="pre">utime_diff()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_to_string"><code class="docutils literal notranslate"><span class="pre">utime_to_string()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_from_string"><code class="docutils literal notranslate"><span class="pre">utime_from_string()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_is_leap_year"><code class="docutils literal notranslate"><span class="pre">utime_is_leap_year()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_days_in_month"><code class="docutils literal notranslate"><span class="pre">utime_days_in_month()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_get_timestamp"><code class="docutils literal notranslate"><span class="pre">utime_get_timestamp()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_get_ns"><code class="docutils literal notranslate"><span class="pre">utime_get_ns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_interval_unit_auto"><code class="docutils literal notranslate"><span class="pre">utime_interval_unit_auto()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_interval_convert"><code class="docutils literal notranslate"><span class="pre">utime_interval_convert()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_interval_to_string"><code class="docutils literal notranslate"><span class="pre">utime_interval_to_string()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.UTIME_DATE_FMT"><code class="docutils literal notranslate"><span class="pre">UTIME_DATE_FMT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_date_fmt_args"><code class="docutils literal notranslate"><span class="pre">utime_date_fmt_args</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.UTIME_TIME_FMT"><code class="docutils literal notranslate"><span class="pre">UTIME_TIME_FMT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_time_fmt_args"><code class="docutils literal notranslate"><span class="pre">utime_time_fmt_args</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.UTIME_FMT"><code class="docutils literal notranslate"><span class="pre">UTIME_FMT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.utime_fmt_args"><code class="docutils literal notranslate"><span class="pre">utime_fmt_args</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -101,7 +148,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
 <dt class="sig sig-object c" id="c.UTime.year">
-<span class="target" id="struct_u_time_1aef9dd5d7f034b23403b94c38fb01f2bd"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">year</span></span></span><a class="headerlink" href="#c.UTime.year" title="Link to this definition"></a><br /></dt>
+<span class="target" id="struct_u_time_1a3f7a59a00066719205ce97c82a473544"></span><span class="kt"><span class="pre">signed</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">year</span></span></span><a class="headerlink" href="#c.UTime.year" title="Link to this definition"></a><br /></dt>
 <dd><p>Year. </p>
 </dd></dl>
 
@@ -334,7 +381,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_time_1ga25f9940d9c120b03cf17e8fbe1cbe59e"><span class="std std-ref"><span class="pre">utime_to_utc()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_time_1ga25f9940d9c120b03cf17e8fbe1cbe59e"><span class="std std-ref"><span class="pre">utime_to_utc</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -373,7 +420,7 @@
 <dd><p>Converts the specified date and time into a human readable string. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -393,7 +440,7 @@
 <dd><p>Parses a date and time from the specified string. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The string must be in <code class="docutils literal notranslate"><span class="pre">Y_M_D_H_M_S</span></code> format, where each component is separated by any non-digit character. An optional timezone specifier can also be specified, in which case the date is automatically normalized to UTC. Examples of equivalent dates:<ul class="simple">
+<p>The string must be in <code class="docutils literal notranslate"><span class="pre">Y_M_D_H_M_S</span></code> format, where each component is separated by any non-digit character. An optional timezone specifier can also be appended, in which case the date is automatically normalized to UTC. Examples of equivalent dates:<ul class="simple">
 <li><p>1990/02/14 13:30:00</p></li>
 <li><p>1990-02-14T13:30:00Z</p></li>
 <li><p>1990 02 14 14.30.00+1:00 </p></li>
@@ -511,7 +558,7 @@
 <dd><p>Converts a time interval into a string formatted according to the specified time unit. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -526,20 +573,77 @@
 </dl>
 </dd></dl>
 
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UTIME_DATE_FMT">
+<span class="target" id="group___u_time_1gac4faffff67d5ab07ceaa46a448e31f54"></span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_DATE_FMT</span></span></span><a class="headerlink" href="#c.UTIME_DATE_FMT" title="Link to this definition"></a><br /></dt>
+<dd><p>Date format string. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.utime_date_fmt_args">
+<span class="target" id="group___u_time_1gac03ce39b668a0c48b8517aa74230dea8"></span><span class="sig-name descname"><span class="n"><span class="pre">utime_date_fmt_args</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">time</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_date_fmt_args" title="Link to this definition"></a><br /></dt>
+<dd><p>Date format arguments. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Date and time. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UTIME_TIME_FMT">
+<span class="target" id="group___u_time_1gac87a1a6d34d449cb902fa5070fc7c902"></span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_TIME_FMT</span></span></span><a class="headerlink" href="#c.UTIME_TIME_FMT" title="Link to this definition"></a><br /></dt>
+<dd><p>Time of day format string. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.utime_time_fmt_args">
+<span class="target" id="group___u_time_1gab579024e19d46127e7098ba6fae1de5d"></span><span class="sig-name descname"><span class="n"><span class="pre">utime_time_fmt_args</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">time</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_time_fmt_args" title="Link to this definition"></a><br /></dt>
+<dd><p>Time of day format arguments. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Date and time. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UTIME_FMT">
+<span class="target" id="group___u_time_1ga429c260db8fa30298144e301ae230b5a"></span><span class="sig-name descname"><span class="n"><span class="pre">UTIME_FMT</span></span></span><a class="headerlink" href="#c.UTIME_FMT" title="Link to this definition"></a><br /></dt>
+<dd><p>Date and time format string. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.utime_fmt_args">
+<span class="target" id="group___u_time_1ga69216842c5158f7ffa840626ef2c5b1f"></span><span class="sig-name descname"><span class="n"><span class="pre">utime_fmt_args</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">time</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.utime_fmt_args" title="Link to this definition"></a><br /></dt>
+<dd><p>Date and time format arguments. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Date and time. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="stream.html" class="btn btn-neutral float-left" title="Streams" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="compression.html" class="btn btn-neutral float-left" title="Data compression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="rand.html" class="btn btn-neutral float-right" title="Random generators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
   </div>
 
    

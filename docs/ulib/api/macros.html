@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Macros &mdash; uLib 0.2.6 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+  <title>Macros &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=9a313e40"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tests" href="test.html" />
+    <link rel="next" title="Logging" href="logging.html" />
     <link rel="prev" title="Memory allocation" href="alloc.html" /> 
 </head>
 
@@ -36,9 +34,6 @@
           <a href="../index.html" class="icon icon-home">
             uLib
           </a>
-              <div class="version">
-                0.2.6
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -58,15 +53,65 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Data compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Macros</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#api-attributes">API attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#warning-suppression">Warning suppression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-attributes">API attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_BEGIN_DECLS"><code class="docutils literal notranslate"><span class="pre">ULIB_BEGIN_DECLS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_END_DECLS"><code class="docutils literal notranslate"><span class="pre">ULIB_END_DECLS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_API"><code class="docutils literal notranslate"><span class="pre">ULIB_API</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_INLINE"><code class="docutils literal notranslate"><span class="pre">ULIB_INLINE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_PURE"><code class="docutils literal notranslate"><span class="pre">ULIB_PURE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_CONST"><code class="docutils literal notranslate"><span class="pre">ULIB_CONST</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_NORETURN"><code class="docutils literal notranslate"><span class="pre">ULIB_NORETURN</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#debug-and-assertions">Debug and assertions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.usrc_loc_init"><code class="docutils literal notranslate"><span class="pre">usrc_loc_init</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_DEBUG"><code class="docutils literal notranslate"><span class="pre">ULIB_DEBUG</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_assert"><code class="docutils literal notranslate"><span class="pre">ulib_assert</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_analyzer_assert"><code class="docutils literal notranslate"><span class="pre">ulib_analyzer_assert</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.USrcLoc"><code class="docutils literal notranslate"><span class="pre">USrcLoc</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.USrcLoc.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.USrcLoc.func"><code class="docutils literal notranslate"><span class="pre">func</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.USrcLoc.line"><code class="docutils literal notranslate"><span class="pre">line</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#warnings">Warnings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_WARNING"><code class="docutils literal notranslate"><span class="pre">ULIB_WARNING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_ERROR"><code class="docutils literal notranslate"><span class="pre">ULIB_ERROR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_DEPRECATED"><code class="docutils literal notranslate"><span class="pre">ULIB_DEPRECATED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_DEPRECATED_MACRO"><code class="docutils literal notranslate"><span class="pre">ULIB_DEPRECATED_MACRO</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_DEPRECATED_ENUM"><code class="docutils literal notranslate"><span class="pre">ULIB_DEPRECATED_ENUM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_unused"><code class="docutils literal notranslate"><span class="pre">ulib_unused</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_SUPPRESS_BEGIN"><code class="docutils literal notranslate"><span class="pre">ULIB_SUPPRESS_BEGIN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_SUPPRESS"><code class="docutils literal notranslate"><span class="pre">ULIB_SUPPRESS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_SUPPRESS_END"><code class="docutils literal notranslate"><span class="pre">ULIB_SUPPRESS_END</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_SUPPRESS_ONE"><code class="docutils literal notranslate"><span class="pre">ULIB_SUPPRESS_ONE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_swap"><code class="docutils literal notranslate"><span class="pre">ulib_swap</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_array_count"><code class="docutils literal notranslate"><span class="pre">ulib_array_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_zero_init"><code class="docutils literal notranslate"><span class="pre">ulib_zero_init</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_struct_init"><code class="docutils literal notranslate"><span class="pre">ulib_struct_init</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_MACRO_CONCAT"><code class="docutils literal notranslate"><span class="pre">ULIB_MACRO_CONCAT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_MACRO_STRINGIZE"><code class="docutils literal notranslate"><span class="pre">ULIB_MACRO_STRINGIZE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_PRAGMA"><code class="docutils literal notranslate"><span class="pre">ULIB_PRAGMA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULIB_FILE_NAME"><code class="docutils literal notranslate"><span class="pre">ULIB_FILE_NAME</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_likely"><code class="docutils literal notranslate"><span class="pre">ulib_likely</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_unlikely"><code class="docutils literal notranslate"><span class="pre">ulib_unlikely</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_noop"><code class="docutils literal notranslate"><span class="pre">ulib_noop</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulib_noop_func"><code class="docutils literal notranslate"><span class="pre">ulib_noop_func</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -151,8 +196,118 @@
 </dd></dl>
 
 <dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_NORETURN">
+<span class="target" id="group__attributes_1ga5f3ac8f74b7c0513653959250fbbdb88"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_NORETURN</span></span></span><a class="headerlink" href="#c.ULIB_NORETURN" title="Link to this definition"></a><br /></dt>
+<dd><p>Marks functions that do not return. </p>
+</dd></dl>
+
+</section>
+<section id="debug-and-assertions">
+<h2>Debug and assertions<a class="headerlink" href="#debug-and-assertions" title="Link to this heading"></a></h2>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.usrc_loc_init">
+<span class="target" id="group__debug_1ga1dadf8ea9df23efde0a02551e5ce3d5d"></span><span class="sig-name descname"><span class="n"><span class="pre">usrc_loc_init</span></span></span><a class="headerlink" href="#c.usrc_loc_init" title="Link to this definition"></a><br /></dt>
+<dd><p>Initializer for the current source code location. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_DEBUG">
+<span class="target" id="group__debug_1ga0cbe65976197dfaeb44fc3caa75376f6"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_DEBUG</span></span></span><a class="headerlink" href="#c.ULIB_DEBUG" title="Link to this definition"></a><br /></dt>
+<dd><p>Signals that the code is compiled in debug mode. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ulib_assert">
+<span class="target" id="group__debug_1ga3084a45eae8388d9d08d089e693023fd"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_assert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_assert" title="Link to this definition"></a><br /></dt>
+<dd><p>Asserts that <code class="docutils literal notranslate"><span class="pre">exp</span></code> is true. </p>
+<p>If the assertion fails, execution is aborted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>uLib assertions are enabled only for analyzers, or if <code class="docutils literal notranslate"><a class="reference internal" href="#group__debug_1ga0cbe65976197dfaeb44fc3caa75376f6"><span class="std std-ref"><span class="pre">ULIB_DEBUG</span></span></a></code> is defined. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – <code class="docutils literal notranslate"><span class="pre">boolean</span> <span class="pre">expression</span></code> Boolean expression.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ulib_analyzer_assert">
+<span class="target" id="group__debug_1ga8aeb697a749e4055544b8b7b8f5750b5"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_analyzer_assert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_analyzer_assert" title="Link to this definition"></a><br /></dt>
+<dd><p>Give hints to static analyzers, asserting that <code class="docutils literal notranslate"><span class="pre">exp</span></code> is true. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – <code class="docutils literal notranslate"><span class="pre">boolean</span> <span class="pre">expression</span></code> Boolean expression. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.USrcLoc">
+<span class="target" id="struct_u_src_loc"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">USrcLoc</span></span></span><a class="headerlink" href="#c.USrcLoc" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include “udebug.h”</em></div>
+<p>Source code location. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.USrcLoc.file">
+<span class="target" id="struct_u_src_loc_1a6d53fe940f7cef28a47b16c77ac6fc22"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">file</span></span></span><a class="headerlink" href="#c.USrcLoc.file" title="Link to this definition"></a><br /></dt>
+<dd><p>File name. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.USrcLoc.func">
+<span class="target" id="struct_u_src_loc_1a33feb7f87854cb78cbb10b0f6ca85e7c"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">func</span></span></span><a class="headerlink" href="#c.USrcLoc.func" title="Link to this definition"></a><br /></dt>
+<dd><p>Function name. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.USrcLoc.line">
+<span class="target" id="struct_u_src_loc_1a020179bc7375986d13ddf72c479f9238"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">line</span></span></span><a class="headerlink" href="#c.USrcLoc.line" title="Link to this definition"></a><br /></dt>
+<dd><p>Line number. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="warnings">
+<h2>Warnings<a class="headerlink" href="#warnings" title="Link to this heading"></a></h2>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_WARNING">
+<span class="target" id="group__warnings_1gad9ae6217eba5dd5bd51886524f227aa2"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_WARNING</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Raises a compiler warning. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> – Warning message. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_ERROR">
+<span class="target" id="group__warnings_1ga9106fbf8d47ae5ba655963e3edc6618e"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_ERROR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Raises a compiler error. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> – Error message. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_DEPRECATED">
-<span class="target" id="group__attributes_1gab455156893592bb5ef95bd5bb9afe16a"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_DEPRECATED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_DEPRECATED" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group__warnings_1gab455156893592bb5ef95bd5bb9afe16a"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_DEPRECATED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_DEPRECATED" title="Link to this definition"></a><br /></dt>
 <dd><p>Marks deprecated APIs. </p>
 <p>Deprecated APIs are usually replaced by alternatives, and will be removed in later major versions of the library.</p>
 <dl class="field-list simple">
@@ -166,14 +321,26 @@
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ULIB_DEPRECATED_MACRO">
-<span class="target" id="group__attributes_1gabea70bb18175ec2b89b2e3f224526ed2"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_DEPRECATED_MACRO</span></span></span><a class="headerlink" href="#c.ULIB_DEPRECATED_MACRO" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group__warnings_1gabea70bb18175ec2b89b2e3f224526ed2"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_DEPRECATED_MACRO</span></span></span><a class="headerlink" href="#c.ULIB_DEPRECATED_MACRO" title="Link to this definition"></a><br /></dt>
 <dd><p>Marks deprecated macros. </p>
 <p>Deprecated macros are usually replaced by alternatives, and will be removed in later major versions of the library. </p>
 </dd></dl>
 
-</section>
-<section id="warning-suppression">
-<h2>Warning suppression<a class="headerlink" href="#warning-suppression" title="Link to this heading"></a></h2>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_DEPRECATED_ENUM">
+<span class="target" id="group__warnings_1ga015e371822855f11bd9c12aef99209b9"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_DEPRECATED_ENUM</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">old_val</span></span>, <span class="n"><span class="pre">new_val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_DEPRECATED_ENUM" title="Link to this definition"></a><br /></dt>
+<dd><p>Marks deprecated enum values. </p>
+<p>Deprecated enum values are usually replaced by alternatives, and will be removed in later major versions of the library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>old_val</strong> – Old enum value. </p></li>
+<li><p><strong>new_val</strong> – New enum value. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.ulib_unused">
 <span class="target" id="group__warnings_1gad04f23c1c2d84bba713397cde24a49bf"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_unused</span></span></span><a class="headerlink" href="#c.ulib_unused" title="Link to this definition"></a><br /></dt>
@@ -269,22 +436,22 @@
 </dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.ulib_struct_init">
-<span class="target" id="group__utils_1gaf18f51c2042840b5fe9ec0ca82cdd921"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_struct_init</span></span></span><a class="headerlink" href="#c.ulib_struct_init" title="Link to this definition"></a><br /></dt>
-<dd><p>C and C++ compatible struct initializer. </p>
+<dt class="sig sig-object c" id="c.ulib_zero_init">
+<span class="target" id="group__utils_1ga84b15edeb4faddb76802a8e0cbe01059"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_zero_init</span></span></span><a class="headerlink" href="#c.ulib_zero_init" title="Link to this definition"></a><br /></dt>
+<dd><p>C and C++ compatible zero initializer. </p>
 </dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.ulib_analyzer_assert">
-<span class="target" id="group__utils_1ga8aeb697a749e4055544b8b7b8f5750b5"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_analyzer_assert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_analyzer_assert" title="Link to this definition"></a><br /></dt>
-<dd><p>Give hints to static analyzers, asserting that <code class="docutils literal notranslate"><span class="pre">exp</span></code> is true. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>exp</strong> – <code class="docutils literal notranslate"><span class="pre">boolean</span> <span class="pre">expression</span></code> Boolean expression. </p></li>
-</ul>
-</dd>
-</dl>
+<dt class="sig sig-object c" id="c.ulib_struct_init">
+<span class="target" id="group__utils_1gaf18f51c2042840b5fe9ec0ca82cdd921"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_struct_init</span></span></span><a class="headerlink" href="#c.ulib_struct_init" title="Link to this definition"></a><br /></dt>
+<dd><p>C and C++ compatible struct initializer. </p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group__utils_1ga84b15edeb4faddb76802a8e0cbe01059"><span class="std std-ref"><span class="pre">ulib_zero_init</span></span></a></code> instead. </p>
+</dd></dl>
+
+</p>
 </dd></dl>
 
 <dl class="c macro">
@@ -296,6 +463,19 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong> – <code class="docutils literal notranslate"><span class="pre">token</span></code> First token. </p></li>
 <li><p><strong>b</strong> – <code class="docutils literal notranslate"><span class="pre">token</span></code> Second token. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_MACRO_STRINGIZE">
+<span class="target" id="group__utils_1ga68ee0f34bf347842d2ecef9219642c14"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_MACRO_STRINGIZE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ULIB_MACRO_STRINGIZE" title="Link to this definition"></a><br /></dt>
+<dd><p>Stringizes the argument, allowing it to be macro-expanded. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – <code class="docutils literal notranslate"><span class="pre">macro</span></code> Macro to be stringized. </p></li>
 </ul>
 </dd>
 </dl>
@@ -314,6 +494,57 @@
 </dl>
 </dd></dl>
 
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_FILE_NAME">
+<span class="target" id="group__utils_1ga861c4aab6ab6795bd2d01f08f70e528f"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_FILE_NAME</span></span></span><a class="headerlink" href="#c.ULIB_FILE_NAME" title="Link to this definition"></a><br /></dt>
+<dd><p>Expands to the name of the current file, if available, otherwise to its full path. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ulib_likely">
+<span class="target" id="group__utils_1ga4e8d3c07fdf2ff2365392407de67aa63"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_likely</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_likely" title="Link to this definition"></a><br /></dt>
+<dd><p>Hint the branch predictor that <code class="docutils literal notranslate"><span class="pre">exp</span></code> is likely true. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – <code class="docutils literal notranslate"><span class="pre">boolean</span> <span class="pre">expression</span></code> Boolean expression. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ulib_unlikely">
+<span class="target" id="group__utils_1ga1b5946d63badeca1f9e56eecbd9e8bf1"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_unlikely</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">exp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_unlikely" title="Link to this definition"></a><br /></dt>
+<dd><p>Hint the branch predictor that <code class="docutils literal notranslate"><span class="pre">exp</span></code> is likely false. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – <code class="docutils literal notranslate"><span class="pre">boolean</span> <span class="pre">expression</span></code> Boolean expression. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ulib_noop">
+<span class="target" id="group__utils_1gab6b5e99d40034c490d72f0ff86cf614d"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_noop</span></span></span><a class="headerlink" href="#c.ulib_noop" title="Link to this definition"></a><br /></dt>
+<dd><p>No-op macro. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ulib_noop_func">
+<span class="target" id="group__utils_1ga3365b51d061847722024f4266e4dfc18"></span><span class="sig-name descname"><span class="n"><span class="pre">ulib_noop_func</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_noop_func" title="Link to this definition"></a><br /></dt>
+<dd><p>No-op function macro. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>...</strong> – Arguments (ignored). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
@@ -322,13 +553,13 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="alloc.html" class="btn btn-neutral float-left" title="Memory allocation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="test.html" class="btn btn-neutral float-right" title="Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="logging.html" class="btn btn-neutral float-right" title="Logging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
   </div>
 
    

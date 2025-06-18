@@ -1,0 +1,1357 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logging &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tests" href="test.html" />
+    <link rel="prev" title="Macros" href="macros.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uLib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="number.html">Numeric types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Data compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Logging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.ULog"><code class="docutils literal notranslate"><span class="pre">ULog</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULog.level"><code class="docutils literal notranslate"><span class="pre">level</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULog.color"><code class="docutils literal notranslate"><span class="pre">color</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULog.stream"><code class="docutils literal notranslate"><span class="pre">stream</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULog.state"><code class="docutils literal notranslate"><span class="pre">state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULog.handler"><code class="docutils literal notranslate"><span class="pre">handler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_level_builtin"><code class="docutils literal notranslate"><span class="pre">ulog_level_builtin</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulog_level_builtin.ULOG_TRACE"><code class="docutils literal notranslate"><span class="pre">ULOG_TRACE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulog_level_builtin.ULOG_DEBUG"><code class="docutils literal notranslate"><span class="pre">ULOG_DEBUG</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulog_level_builtin.ULOG_PERF"><code class="docutils literal notranslate"><span class="pre">ULOG_PERF</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulog_level_builtin.ULOG_INFO"><code class="docutils literal notranslate"><span class="pre">ULOG_INFO</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulog_level_builtin.ULOG_WARN"><code class="docutils literal notranslate"><span class="pre">ULOG_WARN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulog_level_builtin.ULOG_ERROR"><code class="docutils literal notranslate"><span class="pre">ULOG_ERROR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ulog_level_builtin.ULOG_FATAL"><code class="docutils literal notranslate"><span class="pre">ULOG_FATAL</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_level"><code class="docutils literal notranslate"><span class="pre">ulog_level</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ULOG_ALL"><code class="docutils literal notranslate"><span class="pre">ULOG_ALL</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ULOG_DISABLED"><code class="docutils literal notranslate"><span class="pre">ULOG_DISABLED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ULogMsg"><code class="docutils literal notranslate"><span class="pre">ULogMsg</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULogMsg.fmt"><code class="docutils literal notranslate"><span class="pre">fmt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULogMsg.args"><code class="docutils literal notranslate"><span class="pre">args</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ULogTag"><code class="docutils literal notranslate"><span class="pre">ULogTag</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULogTag.string"><code class="docutils literal notranslate"><span class="pre">string</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULogTag.color"><code class="docutils literal notranslate"><span class="pre">color</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ULogEvent"><code class="docutils literal notranslate"><span class="pre">ULogEvent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULogEvent.level"><code class="docutils literal notranslate"><span class="pre">level</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULogEvent.loc"><code class="docutils literal notranslate"><span class="pre">loc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULogEvent.msg"><code class="docutils literal notranslate"><span class="pre">msg</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.ULogEvent.data"><code class="docutils literal notranslate"><span class="pre">data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_main"><code class="docutils literal notranslate"><span class="pre">ulog_main</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_level_to_string"><code class="docutils literal notranslate"><span class="pre">ulog_level_to_string()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_level_from_string"><code class="docutils literal notranslate"><span class="pre">ulog_level_from_string()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_default"><code class="docutils literal notranslate"><span class="pre">ulog_default()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_enabled"><code class="docutils literal notranslate"><span class="pre">ulog_enabled()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_disable"><code class="docutils literal notranslate"><span class="pre">ulog_disable()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog"><code class="docutils literal notranslate"><span class="pre">ulog()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_trace"><code class="docutils literal notranslate"><span class="pre">ulog_trace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_debug"><code class="docutils literal notranslate"><span class="pre">ulog_debug()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_info"><code class="docutils literal notranslate"><span class="pre">ulog_info()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_warn"><code class="docutils literal notranslate"><span class="pre">ulog_warn()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_error"><code class="docutils literal notranslate"><span class="pre">ulog_error()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_fatal"><code class="docutils literal notranslate"><span class="pre">ulog_fatal()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_ns"><code class="docutils literal notranslate"><span class="pre">ulog_ns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_event"><code class="docutils literal notranslate"><span class="pre">ulog_write_event()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_header"><code class="docutils literal notranslate"><span class="pre">ulog_write_header()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_footer"><code class="docutils literal notranslate"><span class="pre">ulog_write_footer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_msg"><code class="docutils literal notranslate"><span class="pre">ulog_write_msg()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_date"><code class="docutils literal notranslate"><span class="pre">ulog_write_date()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_level"><code class="docutils literal notranslate"><span class="pre">ulog_write_level()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_tag"><code class="docutils literal notranslate"><span class="pre">ulog_write_tag()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_loc"><code class="docutils literal notranslate"><span class="pre">ulog_write_loc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_elapsed"><code class="docutils literal notranslate"><span class="pre">ulog_write_elapsed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_color"><code class="docutils literal notranslate"><span class="pre">ulog_write_color()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_space"><code class="docutils literal notranslate"><span class="pre">ulog_write_space()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_write_newline"><code class="docutils literal notranslate"><span class="pre">ulog_write_newline()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_elapsed"><code class="docutils literal notranslate"><span class="pre">ulog_elapsed</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ulog_perf"><code class="docutils literal notranslate"><span class="pre">ulog_perf</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#colors">Colors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ansi-color-codes">ANSI color codes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BLK"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BLK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_RED"><code class="docutils literal notranslate"><span class="pre">UCOLOR_RED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_GRN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_GRN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_YEL"><code class="docutils literal notranslate"><span class="pre">UCOLOR_YEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BLU"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BLU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_MAG"><code class="docutils literal notranslate"><span class="pre">UCOLOR_MAG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_CYN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_CYN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_WHT"><code class="docutils literal notranslate"><span class="pre">UCOLOR_WHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BBLK"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BBLK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BRED"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BRED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BGRN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BGRN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BYEL"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BYEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BBLU"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BBLU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BMAG"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BMAG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BCYN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BCYN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BWHT"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BWHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_UBLK"><code class="docutils literal notranslate"><span class="pre">UCOLOR_UBLK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_URED"><code class="docutils literal notranslate"><span class="pre">UCOLOR_URED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_UGRN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_UGRN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_UYEL"><code class="docutils literal notranslate"><span class="pre">UCOLOR_UYEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_UBLU"><code class="docutils literal notranslate"><span class="pre">UCOLOR_UBLU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_UMAG"><code class="docutils literal notranslate"><span class="pre">UCOLOR_UMAG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_UCYN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_UCYN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_UWHT"><code class="docutils literal notranslate"><span class="pre">UCOLOR_UWHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BLKB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BLKB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_REDB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_REDB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_GRNB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_GRNB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_YELB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_YELB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BLUB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BLUB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_MAGB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_MAGB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_CYNB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_CYNB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_WHTB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_WHTB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BLKHB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BLKHB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_REDHB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_REDHB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_GRNHB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_GRNHB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_YELHB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_YELHB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BLUHB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BLUHB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_MAGHB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_MAGHB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_CYNHB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_CYNHB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_WHTHB"><code class="docutils literal notranslate"><span class="pre">UCOLOR_WHTHB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_HBLK"><code class="docutils literal notranslate"><span class="pre">UCOLOR_HBLK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_HRED"><code class="docutils literal notranslate"><span class="pre">UCOLOR_HRED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_HGRN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_HGRN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_HYEL"><code class="docutils literal notranslate"><span class="pre">UCOLOR_HYEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_HBLU"><code class="docutils literal notranslate"><span class="pre">UCOLOR_HBLU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_HMAG"><code class="docutils literal notranslate"><span class="pre">UCOLOR_HMAG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_HCYN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_HCYN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_HWHT"><code class="docutils literal notranslate"><span class="pre">UCOLOR_HWHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BHBLK"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BHBLK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BHRED"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BHRED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BHGRN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BHGRN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BHYEL"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BHYEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BHBLU"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BHBLU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BHMAG"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BHMAG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BHCYN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BHCYN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_BHWHT"><code class="docutils literal notranslate"><span class="pre">UCOLOR_BHWHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_RST"><code class="docutils literal notranslate"><span class="pre">UCOLOR_RST</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#semantic-colors">Semantic colors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_DIM"><code class="docutils literal notranslate"><span class="pre">UCOLOR_DIM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_OK"><code class="docutils literal notranslate"><span class="pre">UCOLOR_OK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_FAIL"><code class="docutils literal notranslate"><span class="pre">UCOLOR_FAIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_TRACE"><code class="docutils literal notranslate"><span class="pre">UCOLOR_TRACE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_DEBUG"><code class="docutils literal notranslate"><span class="pre">UCOLOR_DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_PERF"><code class="docutils literal notranslate"><span class="pre">UCOLOR_PERF</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_INFO"><code class="docutils literal notranslate"><span class="pre">UCOLOR_INFO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_WARN"><code class="docutils literal notranslate"><span class="pre">UCOLOR_WARN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_ERROR"><code class="docutils literal notranslate"><span class="pre">UCOLOR_ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UCOLOR_FATAL"><code class="docutils literal notranslate"><span class="pre">UCOLOR_FATAL</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Logging</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="logging">
+<h1>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h1>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.ULog">
+<span class="target" id="struct_u_log"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULog</span></span></span><a class="headerlink" href="#c.ULog" title="Link to this definition"></a><br /></dt>
+<dd><p>Logger object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULog.level">
+<span class="target" id="struct_u_log_1a9a4a8cd6d1c1b95d5ea33e95a5a644bf"></span><a class="reference internal" href="#c.ulog_level" title="ulog_level"><span class="n"><span class="pre">ulog_level</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">level</span></span></span><a class="headerlink" href="#c.ULog.level" title="Link to this definition"></a><br /></dt>
+<dd><p>Log level. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULog.color">
+<span class="target" id="struct_u_log_1a76f4cbc6aeffc202b9f65961e6451a33"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">color</span></span></span><a class="headerlink" href="#c.ULog.color" title="Link to this definition"></a><br /></dt>
+<dd><p>Whether color output is enabled. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULog.stream">
+<span class="target" id="struct_u_log_1a0ee1b384d6a7693f24843d1657849860"></span><a class="reference internal" href="stream.html#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stream</span></span></span><a class="headerlink" href="#c.ULog.stream" title="Link to this definition"></a><br /></dt>
+<dd><p>Logger output stream. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULog.state">
+<span class="target" id="struct_u_log_1a4632233235c7eb6bbc67abf1d253e4b2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">state</span></span></span><a class="headerlink" href="#c.ULog.state" title="Link to this definition"></a><br /></dt>
+<dd><p>Logger state. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULog.handler">
+<span class="target" id="struct_u_log_1acaf37fc9076a3f2623c31b180420f5f9"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">handler</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#c.ULogEvent" title="ULogEvent"><span class="n"><span class="pre">ULogEvent</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.ULog.handler" title="Link to this definition"></a><br /></dt>
+<dd><p>Function that handles log events. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param log<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Logger object. </p>
+</dd>
+<dt class="field-even">Param event<span class="colon">:</span></dt>
+<dd class="field-even"><p>Log event. </p>
+</dd>
+<dt class="field-odd">Return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c enum">
+<dt class="sig sig-object c" id="c.ulog_level_builtin">
+<span class="target" id="group___u_log__types_1ga33d9370c7dce5753401c1369bfa1e400"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_level_builtin</span></span></span><a class="headerlink" href="#c.ulog_level_builtin" title="Link to this definition"></a><br /></dt>
+<dd><p>Builtin log levels. </p>
+<p><em>Values:</em></p>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ulog_level_builtin.ULOG_TRACE">
+<span class="target" id="group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400aae38c01df41a915cad68a15b7a2a8f07"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULOG_TRACE</span></span></span><a class="headerlink" href="#c.ulog_level_builtin.ULOG_TRACE" title="Link to this definition"></a><br /></dt>
+<dd><p>Trace level. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ulog_level_builtin.ULOG_DEBUG">
+<span class="target" id="group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a9bc12486baea456e1a00032ffad48a70"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULOG_DEBUG</span></span></span><a class="headerlink" href="#c.ulog_level_builtin.ULOG_DEBUG" title="Link to this definition"></a><br /></dt>
+<dd><p>Debug level. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ulog_level_builtin.ULOG_PERF">
+<span class="target" id="group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a40ddbfdd6adacca42d1d1cbdb0819daa"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULOG_PERF</span></span></span><a class="headerlink" href="#c.ulog_level_builtin.ULOG_PERF" title="Link to this definition"></a><br /></dt>
+<dd><p>Performance level. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ulog_level_builtin.ULOG_INFO">
+<span class="target" id="group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400af862af6943512e8abe0ae8caf82df41f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULOG_INFO</span></span></span><a class="headerlink" href="#c.ulog_level_builtin.ULOG_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>Info level. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ulog_level_builtin.ULOG_WARN">
+<span class="target" id="group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a623696d429d5a71f3785cc516cee696a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULOG_WARN</span></span></span><a class="headerlink" href="#c.ulog_level_builtin.ULOG_WARN" title="Link to this definition"></a><br /></dt>
+<dd><p>Warning level. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ulog_level_builtin.ULOG_ERROR">
+<span class="target" id="group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a8aedeb6f30ae337a0bf68fa0c3ff10a4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULOG_ERROR</span></span></span><a class="headerlink" href="#c.ulog_level_builtin.ULOG_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Error level. </p>
+</dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ulog_level_builtin.ULOG_FATAL">
+<span class="target" id="group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a2570ff0503f0fd26ff9cf7709130b00e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULOG_FATAL</span></span></span><a class="headerlink" href="#c.ulog_level_builtin.ULOG_FATAL" title="Link to this definition"></a><br /></dt>
+<dd><p>Fatal level. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="c type">
+<dt class="sig sig-object c" id="c.ulog_level">
+<span class="target" id="group___u_log__types_1gaef15cc81923e60b8fecf7ddff8fc9c46"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_level</span></span></span><a class="headerlink" href="#c.ulog_level" title="Link to this definition"></a><br /></dt>
+<dd><p>Log level. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULOG_ALL">
+<span class="target" id="group___u_log__types_1ga667980855dd59cb97fdc78f3ea00f966"></span><span class="sig-name descname"><span class="n"><span class="pre">ULOG_ALL</span></span></span><a class="headerlink" href="#c.ULOG_ALL" title="Link to this definition"></a><br /></dt>
+<dd><p>Marker level for loggers that log everything. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULOG_DISABLED">
+<span class="target" id="group___u_log__types_1gacb69b2f6fa432407c28e9e83b67737e9"></span><span class="sig-name descname"><span class="n"><span class="pre">ULOG_DISABLED</span></span></span><a class="headerlink" href="#c.ULOG_DISABLED" title="Link to this definition"></a><br /></dt>
+<dd><p>Marker level for disabled loggers. </p>
+</dd></dl>
+
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.ULogMsg">
+<span class="target" id="struct_u_log_msg"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULogMsg</span></span></span><a class="headerlink" href="#c.ULogMsg" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include “ulog.h”</em></div>
+<p>Log message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULogMsg.fmt">
+<span class="target" id="struct_u_log_msg_1aba233f134671048fcf06816b6555b6c9"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">fmt</span></span></span><a class="headerlink" href="#c.ULogMsg.fmt" title="Link to this definition"></a><br /></dt>
+<dd><p>Format string. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULogMsg.args">
+<span class="target" id="struct_u_log_msg_1a7cc12cf0bce452ca52c16c8c5a2beba8"></span><span class="n"><span class="pre">va_list</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">args</span></span></span><a class="headerlink" href="#c.ULogMsg.args" title="Link to this definition"></a><br /></dt>
+<dd><p>Format arguments. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.ULogTag">
+<span class="target" id="struct_u_log_tag"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULogTag</span></span></span><a class="headerlink" href="#c.ULogTag" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include “ulog.h”</em></div>
+<p>Log tag. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULogTag.string">
+<span class="target" id="struct_u_log_tag_1a6d037e6a2eabc778a803aa5271a61aae"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">string</span></span></span><a class="headerlink" href="#c.ULogTag.string" title="Link to this definition"></a><br /></dt>
+<dd><p>Tag string. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULogTag.color">
+<span class="target" id="struct_u_log_tag_1a2693fb3b288962ca26827d8937856ff7"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">color</span></span></span><a class="headerlink" href="#c.ULogTag.color" title="Link to this definition"></a><br /></dt>
+<dd><p>Tag color. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.ULogEvent">
+<span class="target" id="struct_u_log_event"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ULogEvent</span></span></span><a class="headerlink" href="#c.ULogEvent" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include “ulog.h”</em></div>
+<p>Log event. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULogEvent.level">
+<span class="target" id="struct_u_log_event_1a5091c39e673ed6def30c4a6bf3df40af"></span><a class="reference internal" href="#c.ulog_level" title="ulog_level"><span class="n"><span class="pre">ulog_level</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">level</span></span></span><a class="headerlink" href="#c.ULogEvent.level" title="Link to this definition"></a><br /></dt>
+<dd><p>Log level. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULogEvent.loc">
+<span class="target" id="struct_u_log_event_1a2576f5520c3aa5b7e096573e92b08326"></span><a class="reference internal" href="macros.html#c.USrcLoc" title="USrcLoc"><span class="n"><span class="pre">USrcLoc</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loc</span></span></span><a class="headerlink" href="#c.ULogEvent.loc" title="Link to this definition"></a><br /></dt>
+<dd><p>Source code location. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULogEvent.msg">
+<span class="target" id="struct_u_log_event_1a0db745d10d354cf4b54a4d2762a7ed81"></span><a class="reference internal" href="#c.ULogMsg" title="ULogMsg"><span class="n"><span class="pre">ULogMsg</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">msg</span></span></span><a class="headerlink" href="#c.ULogEvent.msg" title="Link to this definition"></a><br /></dt>
+<dd><p>Event message. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ULogEvent.data">
+<span class="target" id="struct_u_log_event_1ac31f21f05638f57631f4fc05a8a8a4d6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><a class="headerlink" href="#c.ULogEvent.data" title="Link to this definition"></a><br /></dt>
+<dd><p>Event data. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.ulog_main">
+<span class="target" id="group___u_log_1gaf5ed7f8d5b859ab1a4692d59576083d6"></span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_main</span></span></span><a class="headerlink" href="#c.ulog_main" title="Link to this definition"></a><br /></dt>
+<dd><p>The main logger. </p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_level_to_string">
+<span class="target" id="group___u_log_1gac7f048d93bcaea3d9084f949c2b066ce"></span><a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_level_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ulog_level" title="ulog_level"><span class="n"><span class="pre">ulog_level</span></span></a><span class="w"> </span><span class="n"><span class="pre">level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_level_to_string" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns the string representation of the specified log level. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must not call <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit</span></span></a></code> on the returned string. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> – Log level. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String representation of the log level.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_level_from_string">
+<span class="target" id="group___u_log_1gab871686bbbef69036699d45531c9844d"></span><a class="reference internal" href="#c.ulog_level" title="ulog_level"><span class="n"><span class="pre">ulog_level</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_level_from_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="string.html#c.UString" title="UString"><span class="n"><span class="pre">UString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_level_from_string" title="Link to this definition"></a><br /></dt>
+<dd><p>Converts the specified string to a log level. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The match is case-insensitive and based on the beginning of the string. For example, “info” will match <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400af862af6943512e8abe0ae8caf82df41f"><span class="std std-ref"><span class="pre">ULOG_INFO</span></span></a></code>, and so will “INFO”, “Information”, etc. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – String representation of the log level. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Log level corresponding to the specified string. If the string does not match any known log level, returns <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gacb69b2f6fa432407c28e9e83b67737e9"><span class="std std-ref"><span class="pre">ULOG_DISABLED</span></span></a></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_default">
+<span class="target" id="group___u_log_1gadb1df2e9c39c2d6376eedf1a7e1a3c37"></span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_default</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_default" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a logger object initialized with the default settings. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Logger object. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_enabled">
+<span class="target" id="group___u_log_1gaf18f66333420dbdb8823296b7639bd67"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_enabled</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="#c.ulog_level" title="ulog_level"><span class="n"><span class="pre">ulog_level</span></span></a><span class="w"> </span><span class="n"><span class="pre">level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_enabled" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks whether the logger handles events at the specified log level. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>level</strong> – Log level. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the logger handles events at the specified log level, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_disable">
+<span class="target" id="group___u_log_1ga0d1c8b5ea9158c5b40cfc95eb9e521f4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_disable</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_disable" title="Link to this definition"></a><br /></dt>
+<dd><p>Disables event handling for the specified logger. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Set the log level to anything other than <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gacb69b2f6fa432407c28e9e83b67737e9"><span class="std std-ref"><span class="pre">ULOG_DISABLED</span></span></a></code> to re-enable event handling. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog">
+<span class="target" id="group___u_log_1gab1899b53dce6e1c98b5256561796872d"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="#c.ulog_level" title="ulog_level"><span class="n"><span class="pre">ulog_level</span></span></a><span class="w"> </span><span class="n"><span class="pre">level</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog" title="Link to this definition"></a><br /></dt>
+<dd><p>Raises a log event, passing some user data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>level</strong> – Event level. </p></li>
+<li><p><strong>data</strong> – User data. </p></li>
+<li><p><strong>fmt</strong> – Message format string. </p></li>
+<li><p><strong>...</strong> – Message format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_trace">
+<span class="target" id="group___u_log_1ga39c135dadafa4c745045f0c6925813df"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_trace</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_trace" title="Link to this definition"></a><br /></dt>
+<dd><p>Same as <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gab1899b53dce6e1c98b5256561796872d"><span class="std std-ref"><span class="pre">ulog</span></span></a></code>(<code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gaf5ed7f8d5b859ab1a4692d59576083d6"><span class="std std-ref"><span class="pre">ulog_main</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400aae38c01df41a915cad68a15b7a2a8f07"><span class="std std-ref"><span class="pre">ULOG_TRACE</span></span></a></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">fmt</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fmt</strong> – Message format string. </p></li>
+<li><p><strong>...</strong> – Message format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_debug">
+<span class="target" id="group___u_log_1ga93e6d16df758014f18031515bdce0731"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_debug</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_debug" title="Link to this definition"></a><br /></dt>
+<dd><p>Same as <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gab1899b53dce6e1c98b5256561796872d"><span class="std std-ref"><span class="pre">ulog</span></span></a></code>(<code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gaf5ed7f8d5b859ab1a4692d59576083d6"><span class="std std-ref"><span class="pre">ulog_main</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a9bc12486baea456e1a00032ffad48a70"><span class="std std-ref"><span class="pre">ULOG_DEBUG</span></span></a></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">fmt</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fmt</strong> – Message format string. </p></li>
+<li><p><strong>...</strong> – Message format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_info">
+<span class="target" id="group___u_log_1ga3195bfd2106aa3f351bf76291e8480b9"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_info</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_info" title="Link to this definition"></a><br /></dt>
+<dd><p>Same as <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gab1899b53dce6e1c98b5256561796872d"><span class="std std-ref"><span class="pre">ulog</span></span></a></code>(<code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gaf5ed7f8d5b859ab1a4692d59576083d6"><span class="std std-ref"><span class="pre">ulog_main</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400af862af6943512e8abe0ae8caf82df41f"><span class="std std-ref"><span class="pre">ULOG_INFO</span></span></a></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">fmt</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fmt</strong> – Message format string. </p></li>
+<li><p><strong>...</strong> – Message format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_warn">
+<span class="target" id="group___u_log_1gab198652cf92262ba90d193eb25442cf6"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_warn</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_warn" title="Link to this definition"></a><br /></dt>
+<dd><p>Same as <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gab1899b53dce6e1c98b5256561796872d"><span class="std std-ref"><span class="pre">ulog</span></span></a></code>(<code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gaf5ed7f8d5b859ab1a4692d59576083d6"><span class="std std-ref"><span class="pre">ulog_main</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a623696d429d5a71f3785cc516cee696a"><span class="std std-ref"><span class="pre">ULOG_WARN</span></span></a></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">fmt</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fmt</strong> – Message format string. </p></li>
+<li><p><strong>...</strong> – Message format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_error">
+<span class="target" id="group___u_log_1ga682b294daa750504942674aae9324e4d"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_error</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_error" title="Link to this definition"></a><br /></dt>
+<dd><p>Same as <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gab1899b53dce6e1c98b5256561796872d"><span class="std std-ref"><span class="pre">ulog</span></span></a></code>(<code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gaf5ed7f8d5b859ab1a4692d59576083d6"><span class="std std-ref"><span class="pre">ulog_main</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a8aedeb6f30ae337a0bf68fa0c3ff10a4"><span class="std std-ref"><span class="pre">ULOG_ERROR</span></span></a></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">fmt</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fmt</strong> – Message format string. </p></li>
+<li><p><strong>...</strong> – Message format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_fatal">
+<span class="target" id="group___u_log_1gae72bc54fa22b8ff25633e06fee4af30b"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_fatal</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_fatal" title="Link to this definition"></a><br /></dt>
+<dd><p>Same as <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gab1899b53dce6e1c98b5256561796872d"><span class="std std-ref"><span class="pre">ulog</span></span></a></code>(<code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gaf5ed7f8d5b859ab1a4692d59576083d6"><span class="std std-ref"><span class="pre">ulog_main</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a2570ff0503f0fd26ff9cf7709130b00e"><span class="std std-ref"><span class="pre">ULOG_FATAL</span></span></a></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">fmt</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fmt</strong> – Message format string. </p></li>
+<li><p><strong>...</strong> – Message format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_ns">
+<span class="target" id="group___u_log_1ga6c48f5c742165fcaea85b0c07456c254"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_ns</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="time.html#c.utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">nanos</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_ns" title="Link to this definition"></a><br /></dt>
+<dd><p>Same as <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gab1899b53dce6e1c98b5256561796872d"><span class="std std-ref"><span class="pre">ulog</span></span></a></code>(<code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gaf5ed7f8d5b859ab1a4692d59576083d6"><span class="std std-ref"><span class="pre">ulog_main</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log__types_1gga33d9370c7dce5753401c1369bfa1e400a40ddbfdd6adacca42d1d1cbdb0819daa"><span class="std std-ref"><span class="pre">ULOG_PERF</span></span></a></code>, <code class="docutils literal notranslate"><span class="pre">nanos</span></code>, <code class="docutils literal notranslate"><span class="pre">fmt</span></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nanos</strong> – Elapsed time in nanoseconds. </p></li>
+<li><p><strong>fmt</strong> – Message format string. </p></li>
+<li><p><strong>...</strong> – Message format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_event">
+<span class="target" id="group___u_log_1ga0d696caffde6878eec2bc7ab2a67163d"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_event</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="#c.ULogEvent" title="ULogEvent"><span class="n"><span class="pre">ULogEvent</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">event</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_event" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the specified event to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>event</strong> – Log event. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_header">
+<span class="target" id="group___u_log_1ga96f3d59d53a9055a7efb9f1ae860bb2d"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_header</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="#c.ULogEvent" title="ULogEvent"><span class="n"><span class="pre">ULogEvent</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">event</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_header" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the header of the specified event to the logger’s output stream. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The header consists of the date, time, and log level. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>event</strong> – Log event. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_footer">
+<span class="target" id="group___u_log_1gaf759bf6ab9f689349b0694795574091f"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_footer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="#c.ULogEvent" title="ULogEvent"><span class="n"><span class="pre">ULogEvent</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">event</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_footer" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the footer of the specified event to the logger’s output stream. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The footer consists of the log message and additional metadata based on the debug level. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>event</strong> – Log event. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_msg">
+<span class="target" id="group___u_log_1ga230cac56655a70e44f3cc08d84dc38e1"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_msg</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="#c.ULogMsg" title="ULogMsg"><span class="n"><span class="pre">ULogMsg</span></span></a><span class="w"> </span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_msg" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the specified message to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>msg</strong> – Log message. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_date">
+<span class="target" id="group___u_log_1gae845729f930b72663f451df70aea64cc"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_date</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_date" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the current date and time to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_level">
+<span class="target" id="group___u_log_1ga27f98299ad1b5df846f6d6cfbab6873e"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_level</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="#c.ulog_level" title="ulog_level"><span class="n"><span class="pre">ulog_level</span></span></a><span class="w"> </span><span class="n"><span class="pre">level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_level" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the specified log level to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>level</strong> – Log level. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_tag">
+<span class="target" id="group___u_log_1gaa999104b8606baf279826219b581e59f"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_tag</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="#c.ULogTag" title="ULogTag"><span class="n"><span class="pre">ULogTag</span></span></a><span class="w"> </span><span class="n"><span class="pre">tag</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_tag" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the specified tag to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>tag</strong> – Tag. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_loc">
+<span class="target" id="group___u_log_1ga062274e1261ebc85bdddfdd29a63e954"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_loc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="macros.html#c.USrcLoc" title="USrcLoc"><span class="n"><span class="pre">USrcLoc</span></span></a><span class="w"> </span><span class="n"><span class="pre">loc</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_loc" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes the specified source code location to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>loc</strong> – Source code location. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_elapsed">
+<span class="target" id="group___u_log_1ga38fd4474a1d7e05934dad67c0bc7da55"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_elapsed</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <a class="reference internal" href="time.html#c.utime_ns" title="utime_ns"><span class="n"><span class="pre">utime_ns</span></span></a><span class="w"> </span><span class="n"><span class="pre">elapsed</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_elapsed" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes elapsed time to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>elapsed</strong> – Elapsed time. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_color">
+<span class="target" id="group___u_log_1ga4bf73d6af572fbaa3a5aff4fb22c0333"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_color</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">color</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_color" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes a formatted string in the specified color to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>color</strong> – ANSI color escape code. </p></li>
+<li><p><strong>fmt</strong> – Format string. </p></li>
+<li><p><strong>...</strong> – Format arguments. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_space">
+<span class="target" id="group___u_log_1ga377c67751037e20ef50e120608ecef65"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_space</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_space" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes a space to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.ulog_write_newline">
+<span class="target" id="group___u_log_1gaf61d4320efa3e5e84ad60d341155f359"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulog_write_newline</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.ULog" title="ULog"><span class="n"><span class="pre">ULog</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">log</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_write_newline" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes a newline to the logger’s output stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ulog_elapsed">
+<span class="target" id="group___u_log_1ga887c60f0825b15e69049a30dc7023259"></span><span class="sig-name descname"><span class="n"><span class="pre">ulog_elapsed</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">log</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_elapsed" title="Link to this definition"></a><br /></dt>
+<dd><p>Measures and logs the time elapsed between the start and end of a block of code. </p>
+<p>Usage example: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ulog_elapsed</span><span class="p">(</span><span class="n">ulog_main</span><span class="p">,</span> <span class="s2">&quot;Block time&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Code</span> <span class="n">to</span> <span class="n">measure</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log</strong> – Logger object. </p></li>
+<li><p><strong>...</strong> – Format string and arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ulog_perf">
+<span class="target" id="group___u_log_1ga6f707a5ecb2ffc0a663587031a340fbd"></span><span class="sig-name descname"><span class="n"><span class="pre">ulog_perf</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulog_perf" title="Link to this definition"></a><br /></dt>
+<dd><p>Same as <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1ga887c60f0825b15e69049a30dc7023259"><span class="std std-ref"><span class="pre">ulog_elapsed</span></span></a></code>(<code class="docutils literal notranslate"><a class="reference internal" href="#group___u_log_1gaf5ed7f8d5b859ab1a4692d59576083d6"><span class="std std-ref"><span class="pre">ulog_main</span></span></a></code>, <code class="docutils literal notranslate"><span class="pre">...</span></code>). </p>
+<p>Usage example: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ulog_perf</span><span class="p">(</span><span class="s2">&quot;Block time&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Code</span> <span class="n">to</span> <span class="n">measure</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>...</strong> – Format string and arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="colors">
+<h2>Colors<a class="headerlink" href="#colors" title="Link to this heading"></a></h2>
+<section class="two-col" id="ansi-color-codes">
+<h3>ANSI color codes<a class="headerlink" href="#ansi-color-codes" title="Link to this heading"></a></h3>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BLK">
+<span class="target" id="group__color__ansi_1gac3c365580d6093580ac2af13c3efd5b1"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BLK</span></span></span><a class="headerlink" href="#c.UCOLOR_BLK" title="Link to this definition"></a><br /></dt>
+<dd><p>Black text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_RED">
+<span class="target" id="group__color__ansi_1ga30f00d31462b6c0214c2e9800e8a52b2"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_RED</span></span></span><a class="headerlink" href="#c.UCOLOR_RED" title="Link to this definition"></a><br /></dt>
+<dd><p>Red text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_GRN">
+<span class="target" id="group__color__ansi_1ga1a87dd599c97f6ff288127469582788f"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_GRN</span></span></span><a class="headerlink" href="#c.UCOLOR_GRN" title="Link to this definition"></a><br /></dt>
+<dd><p>Green text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_YEL">
+<span class="target" id="group__color__ansi_1ga61197dc0bb3d71e46c4510068bee099f"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_YEL</span></span></span><a class="headerlink" href="#c.UCOLOR_YEL" title="Link to this definition"></a><br /></dt>
+<dd><p>Yellow text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BLU">
+<span class="target" id="group__color__ansi_1gacdd5270a3dde2b7316bb64bc47c376ad"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BLU</span></span></span><a class="headerlink" href="#c.UCOLOR_BLU" title="Link to this definition"></a><br /></dt>
+<dd><p>Blue text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_MAG">
+<span class="target" id="group__color__ansi_1gaa7584f6530a19cd45197c07102a24583"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_MAG</span></span></span><a class="headerlink" href="#c.UCOLOR_MAG" title="Link to this definition"></a><br /></dt>
+<dd><p>Magenta text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_CYN">
+<span class="target" id="group__color__ansi_1gaeac96ca97ea530cefaca9dcdbd7aa77d"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_CYN</span></span></span><a class="headerlink" href="#c.UCOLOR_CYN" title="Link to this definition"></a><br /></dt>
+<dd><p>Cyan text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_WHT">
+<span class="target" id="group__color__ansi_1ga19a201590e602337ecf6bf1d11051caf"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_WHT</span></span></span><a class="headerlink" href="#c.UCOLOR_WHT" title="Link to this definition"></a><br /></dt>
+<dd><p>White text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BBLK">
+<span class="target" id="group__color__ansi_1gadeff12dab6302d67476dc70ee04c941a"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BBLK</span></span></span><a class="headerlink" href="#c.UCOLOR_BBLK" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold black text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BRED">
+<span class="target" id="group__color__ansi_1ga640508daed9a6dfbe6852593e2a5a0f9"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BRED</span></span></span><a class="headerlink" href="#c.UCOLOR_BRED" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold red text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BGRN">
+<span class="target" id="group__color__ansi_1ga67964b92b8ae52a7ea144ff1dae25b3b"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BGRN</span></span></span><a class="headerlink" href="#c.UCOLOR_BGRN" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold green text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BYEL">
+<span class="target" id="group__color__ansi_1gab1941329e091e335191994109b0a1533"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BYEL</span></span></span><a class="headerlink" href="#c.UCOLOR_BYEL" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold yellow text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BBLU">
+<span class="target" id="group__color__ansi_1gabf178f86f5fb17e46d741a6c3923ce4e"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BBLU</span></span></span><a class="headerlink" href="#c.UCOLOR_BBLU" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold blue text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BMAG">
+<span class="target" id="group__color__ansi_1gaa96445d5adf684eb12ce9441015d91ab"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BMAG</span></span></span><a class="headerlink" href="#c.UCOLOR_BMAG" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold magenta text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BCYN">
+<span class="target" id="group__color__ansi_1ga3abef202d8ec482e5530caab0f9e8b91"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BCYN</span></span></span><a class="headerlink" href="#c.UCOLOR_BCYN" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold cyan text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BWHT">
+<span class="target" id="group__color__ansi_1ga712786892268b7c2d6ac6808f84cabd5"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BWHT</span></span></span><a class="headerlink" href="#c.UCOLOR_BWHT" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold white text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_UBLK">
+<span class="target" id="group__color__ansi_1ga9b6eb2d8298844748a332b181fce527b"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_UBLK</span></span></span><a class="headerlink" href="#c.UCOLOR_UBLK" title="Link to this definition"></a><br /></dt>
+<dd><p>Underlined black text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_URED">
+<span class="target" id="group__color__ansi_1ga9abba4ff31ed6063475584b6443498fb"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_URED</span></span></span><a class="headerlink" href="#c.UCOLOR_URED" title="Link to this definition"></a><br /></dt>
+<dd><p>Underlined red text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_UGRN">
+<span class="target" id="group__color__ansi_1ga5ad92072516bdd5c53b825daaf8d457a"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_UGRN</span></span></span><a class="headerlink" href="#c.UCOLOR_UGRN" title="Link to this definition"></a><br /></dt>
+<dd><p>Underlined green text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_UYEL">
+<span class="target" id="group__color__ansi_1gae6d6104296e234fef3a4d46ba564c214"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_UYEL</span></span></span><a class="headerlink" href="#c.UCOLOR_UYEL" title="Link to this definition"></a><br /></dt>
+<dd><p>Underlined yellow text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_UBLU">
+<span class="target" id="group__color__ansi_1gaef0763f32c7b7a7826b1b7678aa9586d"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_UBLU</span></span></span><a class="headerlink" href="#c.UCOLOR_UBLU" title="Link to this definition"></a><br /></dt>
+<dd><p>Underlined blue text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_UMAG">
+<span class="target" id="group__color__ansi_1ga674fcf1b71d466eff2440a7f5845f968"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_UMAG</span></span></span><a class="headerlink" href="#c.UCOLOR_UMAG" title="Link to this definition"></a><br /></dt>
+<dd><p>Underlined magenta text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_UCYN">
+<span class="target" id="group__color__ansi_1gace884ac2be1d663ddf3a4298608bae0b"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_UCYN</span></span></span><a class="headerlink" href="#c.UCOLOR_UCYN" title="Link to this definition"></a><br /></dt>
+<dd><p>Underlined cyan text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_UWHT">
+<span class="target" id="group__color__ansi_1gad875ec3a810b7af585cde62a13d2238c"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_UWHT</span></span></span><a class="headerlink" href="#c.UCOLOR_UWHT" title="Link to this definition"></a><br /></dt>
+<dd><p>Underlined white text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BLKB">
+<span class="target" id="group__color__ansi_1gad8a952dfbed69351d61da3f7dc2f75df"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BLKB</span></span></span><a class="headerlink" href="#c.UCOLOR_BLKB" title="Link to this definition"></a><br /></dt>
+<dd><p>Black background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_REDB">
+<span class="target" id="group__color__ansi_1gab52166361335eaa8f669c4a1b33e31b4"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_REDB</span></span></span><a class="headerlink" href="#c.UCOLOR_REDB" title="Link to this definition"></a><br /></dt>
+<dd><p>Red background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_GRNB">
+<span class="target" id="group__color__ansi_1gacbe7039c973b35573a3fe09dd341e1e3"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_GRNB</span></span></span><a class="headerlink" href="#c.UCOLOR_GRNB" title="Link to this definition"></a><br /></dt>
+<dd><p>Green background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_YELB">
+<span class="target" id="group__color__ansi_1gabd1b9ae79b0a4ddf9adc62b46f4f1cec"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_YELB</span></span></span><a class="headerlink" href="#c.UCOLOR_YELB" title="Link to this definition"></a><br /></dt>
+<dd><p>Yellow background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BLUB">
+<span class="target" id="group__color__ansi_1ga3d70bb475847c20747257260ec15c6f3"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BLUB</span></span></span><a class="headerlink" href="#c.UCOLOR_BLUB" title="Link to this definition"></a><br /></dt>
+<dd><p>Blue background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_MAGB">
+<span class="target" id="group__color__ansi_1ga6cc6433f019b47b243a7583da49bff1d"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_MAGB</span></span></span><a class="headerlink" href="#c.UCOLOR_MAGB" title="Link to this definition"></a><br /></dt>
+<dd><p>Magenta background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_CYNB">
+<span class="target" id="group__color__ansi_1ga5d08e2b65104528717edb2c03afd9bb0"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_CYNB</span></span></span><a class="headerlink" href="#c.UCOLOR_CYNB" title="Link to this definition"></a><br /></dt>
+<dd><p>Cyan background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_WHTB">
+<span class="target" id="group__color__ansi_1gaefa1e96c7ef2ed18cf57798399b51f32"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_WHTB</span></span></span><a class="headerlink" href="#c.UCOLOR_WHTB" title="Link to this definition"></a><br /></dt>
+<dd><p>White background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BLKHB">
+<span class="target" id="group__color__ansi_1ga8509b6d3e40b1a9a9365225be7867c32"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BLKHB</span></span></span><a class="headerlink" href="#c.UCOLOR_BLKHB" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity black background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_REDHB">
+<span class="target" id="group__color__ansi_1ga6d158ec2d241db75c40a851b1077a677"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_REDHB</span></span></span><a class="headerlink" href="#c.UCOLOR_REDHB" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity red background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_GRNHB">
+<span class="target" id="group__color__ansi_1ga901201eb1a9e3b1d2e3fff343575397e"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_GRNHB</span></span></span><a class="headerlink" href="#c.UCOLOR_GRNHB" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity green background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_YELHB">
+<span class="target" id="group__color__ansi_1ga9e9bf3e2948014b32b80629c7ff4fc6f"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_YELHB</span></span></span><a class="headerlink" href="#c.UCOLOR_YELHB" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity yellow background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BLUHB">
+<span class="target" id="group__color__ansi_1ga29845f03dfd28739c2c77643e4531739"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BLUHB</span></span></span><a class="headerlink" href="#c.UCOLOR_BLUHB" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity blue background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_MAGHB">
+<span class="target" id="group__color__ansi_1gaa72e8d6abf71fbee727b137986897d8c"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_MAGHB</span></span></span><a class="headerlink" href="#c.UCOLOR_MAGHB" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity magenta background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_CYNHB">
+<span class="target" id="group__color__ansi_1ga5eff3f630a43a507fa612c4383ec6568"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_CYNHB</span></span></span><a class="headerlink" href="#c.UCOLOR_CYNHB" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity cyan background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_WHTHB">
+<span class="target" id="group__color__ansi_1ga121211f30bb34070c61d27870fd89c5a"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_WHTHB</span></span></span><a class="headerlink" href="#c.UCOLOR_WHTHB" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity white background. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_HBLK">
+<span class="target" id="group__color__ansi_1gaa18d4992def6aeaa2096ec044b8415b4"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_HBLK</span></span></span><a class="headerlink" href="#c.UCOLOR_HBLK" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity black text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_HRED">
+<span class="target" id="group__color__ansi_1ga8d9115dc6009ca9ee7b2906e665cb876"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_HRED</span></span></span><a class="headerlink" href="#c.UCOLOR_HRED" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity red text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_HGRN">
+<span class="target" id="group__color__ansi_1ga84f3689b29c1b5abf4ca78e50d48b47d"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_HGRN</span></span></span><a class="headerlink" href="#c.UCOLOR_HGRN" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity green text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_HYEL">
+<span class="target" id="group__color__ansi_1ga1ef6093edefda78d2dfbb27eaff84366"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_HYEL</span></span></span><a class="headerlink" href="#c.UCOLOR_HYEL" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity yellow text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_HBLU">
+<span class="target" id="group__color__ansi_1gaee66c2ebaf871e33814decab752f88f8"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_HBLU</span></span></span><a class="headerlink" href="#c.UCOLOR_HBLU" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity blue text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_HMAG">
+<span class="target" id="group__color__ansi_1ga59db35283d39466975f0f5186b092cfb"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_HMAG</span></span></span><a class="headerlink" href="#c.UCOLOR_HMAG" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity magenta text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_HCYN">
+<span class="target" id="group__color__ansi_1ga56453fe5efad7824caa08fc8ab2cddfa"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_HCYN</span></span></span><a class="headerlink" href="#c.UCOLOR_HCYN" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity cyan text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_HWHT">
+<span class="target" id="group__color__ansi_1ga200da492f6fae515c0069a2471b9537f"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_HWHT</span></span></span><a class="headerlink" href="#c.UCOLOR_HWHT" title="Link to this definition"></a><br /></dt>
+<dd><p>High intensity white text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BHBLK">
+<span class="target" id="group__color__ansi_1gaf8e83c09923948c00980bb2e43e13c30"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BHBLK</span></span></span><a class="headerlink" href="#c.UCOLOR_BHBLK" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold high intensity black text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BHRED">
+<span class="target" id="group__color__ansi_1gabda4a29add4c0a98cf30a88ae4b0cdcf"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BHRED</span></span></span><a class="headerlink" href="#c.UCOLOR_BHRED" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold high intensity red text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BHGRN">
+<span class="target" id="group__color__ansi_1ga7f90a34b8ab32274e5fac25a3b0f2e53"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BHGRN</span></span></span><a class="headerlink" href="#c.UCOLOR_BHGRN" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold high intensity green text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BHYEL">
+<span class="target" id="group__color__ansi_1ga7d0c8caf83c0f23169b9f7edd561fc3c"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BHYEL</span></span></span><a class="headerlink" href="#c.UCOLOR_BHYEL" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold high intensity yellow text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BHBLU">
+<span class="target" id="group__color__ansi_1gad9d14c48e8c2091f6cd2c207f2f139bc"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BHBLU</span></span></span><a class="headerlink" href="#c.UCOLOR_BHBLU" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold high intensity blue text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BHMAG">
+<span class="target" id="group__color__ansi_1ga4ed9cb65380738efd8a5d4956ccc0a46"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BHMAG</span></span></span><a class="headerlink" href="#c.UCOLOR_BHMAG" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold high intensity magenta text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BHCYN">
+<span class="target" id="group__color__ansi_1ga17348ea226c4b878a5a072c339d4746d"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BHCYN</span></span></span><a class="headerlink" href="#c.UCOLOR_BHCYN" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold high intensity cyan text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_BHWHT">
+<span class="target" id="group__color__ansi_1ga42a2d2dce3a3b6785e6bb9585232bd8f"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_BHWHT</span></span></span><a class="headerlink" href="#c.UCOLOR_BHWHT" title="Link to this definition"></a><br /></dt>
+<dd><p>Bold high intensity white text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_RST">
+<span class="target" id="group__color__ansi_1ga9b8a3652b48e95b1d5d1347b54b2ea14"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_RST</span></span></span><a class="headerlink" href="#c.UCOLOR_RST" title="Link to this definition"></a><br /></dt>
+<dd><p>Reset all attributes. </p>
+</dd></dl>
+
+</section>
+<section id="semantic-colors">
+<h3>Semantic colors<a class="headerlink" href="#semantic-colors" title="Link to this heading"></a></h3>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_DIM">
+<span class="target" id="group__color__semantic_1ga82c983c1fb8686b04b83a400f577336e"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_DIM</span></span></span><a class="headerlink" href="#c.UCOLOR_DIM" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for dim text. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_OK">
+<span class="target" id="group__color__semantic_1gacfebe03064651097bf006d8a20a48898"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_OK</span></span></span><a class="headerlink" href="#c.UCOLOR_OK" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for success messages. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_FAIL">
+<span class="target" id="group__color__semantic_1ga3f2542caeead4e265e3f986106ae66f6"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_FAIL</span></span></span><a class="headerlink" href="#c.UCOLOR_FAIL" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for failure messages. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_TRACE">
+<span class="target" id="group__color__semantic_1ga5902988fa2a4c31f5e0b42867eb51802"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_TRACE</span></span></span><a class="headerlink" href="#c.UCOLOR_TRACE" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for trace messages. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_DEBUG">
+<span class="target" id="group__color__semantic_1ga12a3ca9ed37d5e7b81a2fc24b870ca7c"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_DEBUG</span></span></span><a class="headerlink" href="#c.UCOLOR_DEBUG" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for debug messages. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_PERF">
+<span class="target" id="group__color__semantic_1gab564ba406a8846bc7b359a7a78bc6ce2"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_PERF</span></span></span><a class="headerlink" href="#c.UCOLOR_PERF" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for performance messages. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_INFO">
+<span class="target" id="group__color__semantic_1ga8fddfd028e9a488a996c3d553198c7d6"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_INFO</span></span></span><a class="headerlink" href="#c.UCOLOR_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for informational messages. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_WARN">
+<span class="target" id="group__color__semantic_1ga396c5eb193a8e27ba3d3bf36f0ed3392"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_WARN</span></span></span><a class="headerlink" href="#c.UCOLOR_WARN" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for warning messages. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_ERROR">
+<span class="target" id="group__color__semantic_1ga42635d8e2a1679f9e0822abe4387f383"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_ERROR</span></span></span><a class="headerlink" href="#c.UCOLOR_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for error messages. </p>
+</dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.UCOLOR_FATAL">
+<span class="target" id="group__color__semantic_1gad3ec43c8aac4c2a8845ba2f3dc6c490a"></span><span class="sig-name descname"><span class="n"><span class="pre">UCOLOR_FATAL</span></span></span><a class="headerlink" href="#c.UCOLOR_FATAL" title="Link to this definition"></a><br /></dt>
+<dd><p>Color for fatal error messages. </p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="macros.html" class="btn btn-neutral float-left" title="Macros" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="test.html" class="btn btn-neutral float-right" title="Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

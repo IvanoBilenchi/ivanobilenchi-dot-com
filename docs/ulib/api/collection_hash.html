@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hash table &mdash; uLib 0.2.6 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+  <title>Hash table &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=9a313e40"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Streams" href="stream.html" />
@@ -36,9 +34,6 @@
           <a href="../index.html" class="icon icon-home">
             uLib
           </a>
-              <div class="version">
-                0.2.6
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -59,23 +54,129 @@
 <li class="toctree-l1 current"><a class="reference internal" href="collection.html">Collections</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="collection_vector.html">Vector</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hash table</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#builtin-types">Builtin types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hash-functions">Hash functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#defining-new-hash-table-types">Defining new hash table types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#common-hash-table-operations">Common hash table operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hash-maps">Hash maps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hash-sets">Hash sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHash_T"><code class="docutils literal notranslate"><span class="pre">UHash_T</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHash"><code class="docutils literal notranslate"><span class="pre">UHash</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_T_key"><code class="docutils literal notranslate"><span class="pre">uhash_T_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHashKey"><code class="docutils literal notranslate"><span class="pre">UHashKey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_T_val"><code class="docutils literal notranslate"><span class="pre">uhash_T_val</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHashVal"><code class="docutils literal notranslate"><span class="pre">UHashVal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_decl"><code class="docutils literal notranslate"><span class="pre">uhash_decl</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_ret"><code class="docutils literal notranslate"><span class="pre">uhash_ret</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#builtin-types">Builtin types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHash_ulib_int"><code class="docutils literal notranslate"><span class="pre">UHash_ulib_int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHash_ulib_uint"><code class="docutils literal notranslate"><span class="pre">UHash_ulib_uint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHash_ulib_ptr"><code class="docutils literal notranslate"><span class="pre">UHash_ulib_ptr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHash_UString"><code class="docutils literal notranslate"><span class="pre">UHash_UString</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_upper_bound"><code class="docutils literal notranslate"><span class="pre">uhash_upper_bound()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_INDEX_MISSING"><code class="docutils literal notranslate"><span class="pre">UHASH_INDEX_MISSING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_VAL_IGNORE"><code class="docutils literal notranslate"><span class="pre">UHASH_VAL_IGNORE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hash-functions">Hash functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_int"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_int8"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int8()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_int16"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int16()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_int32"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int32()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_int64"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int64()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_ptr"><code class="docutils literal notranslate"><span class="pre">ulib_hash_ptr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_alloc_ptr"><code class="docutils literal notranslate"><span class="pre">ulib_hash_alloc_ptr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_str"><code class="docutils literal notranslate"><span class="pre">ulib_hash_str()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_kr2"><code class="docutils literal notranslate"><span class="pre">ulib_hash_kr2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_mem_kr2"><code class="docutils literal notranslate"><span class="pre">ulib_hash_mem_kr2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_djb2"><code class="docutils literal notranslate"><span class="pre">ulib_hash_djb2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_djb2_mem"><code class="docutils literal notranslate"><span class="pre">ulib_hash_djb2_mem()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.ulib_hash_combine"><code class="docutils literal notranslate"><span class="pre">ulib_hash_combine()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-new-hash-table-types">Defining new hash table types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_DECL"><code class="docutils literal notranslate"><span class="pre">UHASH_DECL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_DECL_SPEC"><code class="docutils literal notranslate"><span class="pre">UHASH_DECL_SPEC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_DECL_PI"><code class="docutils literal notranslate"><span class="pre">UHASH_DECL_PI</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_DECL_PI_SPEC"><code class="docutils literal notranslate"><span class="pre">UHASH_DECL_PI_SPEC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_IMPL"><code class="docutils literal notranslate"><span class="pre">UHASH_IMPL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_IMPL_PI"><code class="docutils literal notranslate"><span class="pre">UHASH_IMPL_PI</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_INIT"><code class="docutils literal notranslate"><span class="pre">UHASH_INIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.UHASH_INIT_PI"><code class="docutils literal notranslate"><span class="pre">UHASH_INIT_PI</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#common-hash-table-operations">Common hash table operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_identical"><code class="docutils literal notranslate"><span class="pre">uhash_identical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_str_equals"><code class="docutils literal notranslate"><span class="pre">uhash_str_equals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_int8_hash"><code class="docutils literal notranslate"><span class="pre">uhash_int8_hash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_int16_hash"><code class="docutils literal notranslate"><span class="pre">uhash_int16_hash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_int32_hash"><code class="docutils literal notranslate"><span class="pre">uhash_int32_hash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_int64_hash"><code class="docutils literal notranslate"><span class="pre">uhash_int64_hash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_ptr_hash"><code class="docutils literal notranslate"><span class="pre">uhash_ptr_hash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_combine_hash"><code class="docutils literal notranslate"><span class="pre">uhash_combine_hash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_populate"><code class="docutils literal notranslate"><span class="pre">uhash_populate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_deinit"><code class="docutils literal notranslate"><span class="pre">uhash_deinit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_move"><code class="docutils literal notranslate"><span class="pre">uhash_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_copy"><code class="docutils literal notranslate"><span class="pre">uhash_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_copy_as_set"><code class="docutils literal notranslate"><span class="pre">uhash_copy_as_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_resize"><code class="docutils literal notranslate"><span class="pre">uhash_resize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_shrink"><code class="docutils literal notranslate"><span class="pre">uhash_shrink()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_is_map"><code class="docutils literal notranslate"><span class="pre">uhash_is_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_put"><code class="docutils literal notranslate"><span class="pre">uhash_put()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_get"><code class="docutils literal notranslate"><span class="pre">uhash_get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_delete"><code class="docutils literal notranslate"><span class="pre">uhash_delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_contains"><code class="docutils literal notranslate"><span class="pre">uhash_contains()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_exists"><code class="docutils literal notranslate"><span class="pre">uhash_exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_key"><code class="docutils literal notranslate"><span class="pre">uhash_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_value"><code class="docutils literal notranslate"><span class="pre">uhash_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_size"><code class="docutils literal notranslate"><span class="pre">uhash_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_count"><code class="docutils literal notranslate"><span class="pre">uhash_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_clear"><code class="docutils literal notranslate"><span class="pre">uhash_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_next"><code class="docutils literal notranslate"><span class="pre">uhash_next()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhash_foreach"><code class="docutils literal notranslate"><span class="pre">uhash_foreach</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hash-maps">Hash maps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhmap"><code class="docutils literal notranslate"><span class="pre">uhmap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhmap_pi"><code class="docutils literal notranslate"><span class="pre">uhmap_pi()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhmap_get"><code class="docutils literal notranslate"><span class="pre">uhmap_get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhmap_set"><code class="docutils literal notranslate"><span class="pre">uhmap_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhmap_add"><code class="docutils literal notranslate"><span class="pre">uhmap_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhmap_replace"><code class="docutils literal notranslate"><span class="pre">uhmap_replace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhmap_remove"><code class="docutils literal notranslate"><span class="pre">uhmap_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhmap_pop"><code class="docutils literal notranslate"><span class="pre">uhmap_pop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hash-sets">Hash sets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset"><code class="docutils literal notranslate"><span class="pre">uhset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_pi"><code class="docutils literal notranslate"><span class="pre">uhset_pi()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_insert"><code class="docutils literal notranslate"><span class="pre">uhset_insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_insert_get_existing"><code class="docutils literal notranslate"><span class="pre">uhset_insert_get_existing()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_insert_all"><code class="docutils literal notranslate"><span class="pre">uhset_insert_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_replace"><code class="docutils literal notranslate"><span class="pre">uhset_replace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_remove"><code class="docutils literal notranslate"><span class="pre">uhset_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_pop"><code class="docutils literal notranslate"><span class="pre">uhset_pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_is_superset"><code class="docutils literal notranslate"><span class="pre">uhset_is_superset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_union"><code class="docutils literal notranslate"><span class="pre">uhset_union()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_intersect"><code class="docutils literal notranslate"><span class="pre">uhset_intersect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_diff"><code class="docutils literal notranslate"><span class="pre">uhset_diff()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_diff_intersect"><code class="docutils literal notranslate"><span class="pre">uhset_diff_intersect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_equals"><code class="docutils literal notranslate"><span class="pre">uhset_equals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_hash"><code class="docutils literal notranslate"><span class="pre">uhset_hash()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c.uhset_get_any"><code class="docutils literal notranslate"><span class="pre">uhset_get_any()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Data compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -149,7 +250,7 @@
 <dd><p>Hash table key type. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>While you can use this macro to reference the key type of a <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code> , it is usually better to directly use the type specified when defining the hash table type. </p>
+<p>While you can use this macro to reference the key type of a <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code>, it is usually better to directly use the type specified when defining the hash table type. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -176,7 +277,7 @@
 <dd><p>Hash table value type. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>While you can use this macro to reference the value type of a <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code> , it is usually better to directly use the type specified when defining the hash table type. </p>
+<p>While you can use this macro to reference the value type of a <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code>, it is usually better to directly use the type specified when defining the hash table type. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -253,7 +354,7 @@
 <dd><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code> with <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ualloc_8h_1a665d250ee64a7ce81d28a13e790fa62d"><span class="std std-ref"><span class="pre">ulib_ptr</span></span></a></code> keys and <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ualloc_8h_1a665d250ee64a7ce81d28a13e790fa62d"><span class="std std-ref"><span class="pre">ulib_ptr</span></span></a></code> values. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Expects pointers used as keys to have an alignment of <code class="docutils literal notranslate"><a class="reference internal" href="number.html#group__ulib__ptr_1gaf4f51b0b30425c4807577c18978743f1"><span class="std std-ref"><span class="pre">ULIB_MALLOC_ALIGN</span></span></a></code> . </p>
+<p>Expects pointers used as keys to have an alignment of <code class="docutils literal notranslate"><a class="reference internal" href="number.html#group__ulib__ptr_1gaf4f51b0b30425c4807577c18978743f1"><span class="std std-ref"><span class="pre">ULIB_MALLOC_ALIGN</span></span></a></code>. </p>
 </div>
 </dd></dl>
 
@@ -266,6 +367,30 @@
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_upper_bound">
+<span class="target" id="group___u_hash__constants_1gabc8e68588f7cfad64b7a82c552434373"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_upper_bound</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">buckets</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_upper_bound" title="Link to this definition"></a><br /></dt>
+<dd><p>Computes the maximum number of elements that the table can contain before it needs to be resized in order to enforce its load factor. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default load factor is 0.75. </p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Must return a value that is strictly less than the number of buckets. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buckets</strong> – Number of buckets. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Upper bound.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.UHASH_INDEX_MISSING">
 <span class="target" id="group___u_hash__constants_1ga669ddd4845a8702adb44391568ed9161"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_INDEX_MISSING</span></span></span><a class="headerlink" href="#c.UHASH_INDEX_MISSING" title="Link to this definition"></a><br /></dt>
@@ -278,19 +403,13 @@
 <dd><p>Use it as the value type in declarations if you’re only going to use the hash table as a set. </p>
 </dd></dl>
 
-<dl class="c macro">
-<dt class="sig sig-object c" id="c.UHASH_MAX_LOAD">
-<span class="target" id="group___u_hash__constants_1ga9a4e0c1e370f9764f5125c3a24c32de2"></span><span class="sig-name descname"><span class="n"><span class="pre">UHASH_MAX_LOAD</span></span></span><a class="headerlink" href="#c.UHASH_MAX_LOAD" title="Link to this definition"></a><br /></dt>
-<dd><p>Hash table maximum load factor. </p>
-</dd></dl>
-
 </section>
 <section id="hash-functions">
 <h2>Hash functions<a class="headerlink" href="#hash-functions" title="Link to this heading"></a></h2>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.ulib_hash_int">
 <span class="target" id="group___u_hash__func_1ga82febcc161786b67faee4e1fdec8835a"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_hash_int</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="number.html#c.ulib_int" title="ulib_int"><span class="n"><span class="pre">ulib_int</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_hash_int" title="Link to this definition"></a><br /></dt>
-<dd><p>Hash function for <code class="docutils literal notranslate"><span class="pre">ulib_int</span></code> and <code class="docutils literal notranslate"><span class="pre">ulib_uint</span></code> numbers. </p>
+<dd><p>Hash function for <code class="docutils literal notranslate"><a class="reference internal" href="number.html#unumber_8h_1a87a5359dc3a5f7589d8e98cbce240938"><span class="std std-ref"><span class="pre">ulib_int</span></span></a></code> and <code class="docutils literal notranslate"><a class="reference internal" href="number.html#unumber_8h_1a0f7e82eee726fb84ed5393591c3104c6"><span class="std std-ref"><span class="pre">ulib_uint</span></span></a></code> numbers. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -387,7 +506,7 @@
 <dt class="sig sig-object c" id="c.ulib_hash_alloc_ptr">
 <span class="target" id="group___u_hash__func_1ga33be91807c25881d918f5ced76da2390"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ulib_hash_alloc_ptr</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.ulib_hash_alloc_ptr" title="Link to this definition"></a><br /></dt>
 <dd><p>Hash function for pointers to allocated memory. </p>
-<p>This hash function accounts for the alignment of pointers to allocated memory returned by e.g. <code class="docutils literal notranslate"><span class="pre">malloc()</span></code> and <code class="docutils literal notranslate"><span class="pre">realloc()</span></code> by dividing them by <code class="docutils literal notranslate"><span class="pre">ULIB_MALLOC_ALIGN</span></code> . This is important because pointers to allocated memory are generally a multiple of some power of two, due to alignment requirements, making them very bad choices as hashes for hash tables whose size is a power of two (such as <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code> ).</p>
+<p>This hash function accounts for the alignment of pointers to allocated memory returned by e.g. <code class="docutils literal notranslate"><span class="pre">malloc</span></code> and <code class="docutils literal notranslate"><span class="pre">realloc</span></code> by dividing them by <code class="docutils literal notranslate"><a class="reference internal" href="number.html#group__ulib__ptr_1gaf4f51b0b30425c4807577c18978743f1"><span class="std std-ref"><span class="pre">ULIB_MALLOC_ALIGN</span></span></a></code>. This is important because pointers to allocated memory are generally a multiple of some power of two, due to alignment requirements, making them very bad choices as hashes for hash tables whose size is a power of two (such as <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a6e6598674ebd71c65ddfaedc5ccb37ac"><span class="std std-ref"><span class="pre">UHash(T)</span></span></a></code>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -644,7 +763,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="number.html#group__number__utils_1ga08d71ccf867aa19dc4ba6c303d3f7a97"><span class="std std-ref"><span class="pre">ulib_equals()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="number.html#group__number__utils_1ga4ce53bef2d5c4bc683d40219089a97d8"><span class="std std-ref"><span class="pre">ulib_eq</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -668,15 +787,15 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group__ulib__str_1gacbb80ee2bc95430db747353fdd26ae1b"><span class="std std-ref"><span class="pre">ulib_str_equals()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group__ulib__str_1gacbb80ee2bc95430db747353fdd26ae1b"><span class="std std-ref"><span class="pre">ulib_str_equals</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>a</strong> – LHS of the equality relation (NULL terminated string). </p></li>
-<li><p><strong>b</strong> – RHS of the equality relation (NULL terminated string). </p></li>
+<li><p><strong>a</strong> – LHS of the equality relation (NULL-terminated string). </p></li>
+<li><p><strong>b</strong> – RHS of the equality relation (NULL-terminated string). </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -692,7 +811,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga2d213accbb205a5788fbb160892aa712"><span class="std std-ref"><span class="pre">ulib_hash_int8()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga2d213accbb205a5788fbb160892aa712"><span class="std std-ref"><span class="pre">ulib_hash_int8</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -715,7 +834,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga90f16499c1dddbea0894fb4627da0815"><span class="std std-ref"><span class="pre">ulib_hash_int16()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga90f16499c1dddbea0894fb4627da0815"><span class="std std-ref"><span class="pre">ulib_hash_int16</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -738,7 +857,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga292aaf63eb3b691fd467e04926ef4283"><span class="std std-ref"><span class="pre">ulib_hash_int32()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga292aaf63eb3b691fd467e04926ef4283"><span class="std std-ref"><span class="pre">ulib_hash_int32</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -761,7 +880,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1gab40304efb8ca133fad84e76de137e8aa"><span class="std std-ref"><span class="pre">ulib_hash_int64()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1gab40304efb8ca133fad84e76de137e8aa"><span class="std std-ref"><span class="pre">ulib_hash_int64</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -784,7 +903,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga27ac4cd91a1087b10959598c2dbbdd17"><span class="std std-ref"><span class="pre">ulib_hash_ptr()</span></span></a></code> or <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga33be91807c25881d918f5ced76da2390"><span class="std std-ref"><span class="pre">ulib_hash_alloc_ptr()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga27ac4cd91a1087b10959598c2dbbdd17"><span class="std std-ref"><span class="pre">ulib_hash_ptr</span></span></a></code> or <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1ga33be91807c25881d918f5ced76da2390"><span class="std std-ref"><span class="pre">ulib_hash_alloc_ptr</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -807,7 +926,7 @@
 <p><dl>
 <dt class="sig sig-object cpp">
 <em><span class="pre">Deprecated:</span></em></dt>
-<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1gad9da39eaf82a896460ffb47072c2c94b"><span class="std std-ref"><span class="pre">ulib_hash_combine()</span></span></a></code> instead. </p>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__func_1gad9da39eaf82a896460ffb47072c2c94b"><span class="std std-ref"><span class="pre">ulib_hash_combine</span></span></a></code> instead. </p>
 </dd></dl>
 
 </p>
@@ -820,6 +939,30 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The hash value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_populate">
+<span class="target" id="group___u_hash__common_1gaa450794e8f584070e4d9bfe71d03075b"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_populate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">keys</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">vals</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_populate" title="Link to this definition"></a><br /></dt>
+<dd><p>Populates a hash table with the specified keys and values. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function replaces existing keys and values, though it gives no indication of which keys and values were replaced. As such, it is best used to populate an empty hash table. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table to populate. </p></li>
+<li><p><strong>keys</strong> – Array of keys to insert. </p></li>
+<li><p><strong>vals</strong> – Array of values to insert. Can be NULL if the hash table is a set. </p></li>
+<li><p><strong>n</strong> – Number of elements to insert. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> on error.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -844,7 +987,7 @@
 <dd><p>Invalidates the hash table and returns its storage. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -861,7 +1004,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhash_copy">
-<span class="target" id="group___u_hash__common_1gaf9a24554188993f8da25cc3313f1ac91"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_copy</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_copy" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__common_1ga7b8d15fbf942e3de3bd6eee5fb27ad71"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_copy</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_copy" title="Link to this definition"></a><br /></dt>
 <dd><p>Copies the specified hash table. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -872,14 +1015,14 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a8fda1e8c5ab9544cc04e708a50c0012d"><span class="std std-ref"><span class="pre">UHASH_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a1f659c29b73d184c73b6d46a41c67d4d"><span class="std std-ref"><span class="pre">UHASH_ERR</span></span></a></code> on error. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> on error. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhash_copy_as_set">
-<span class="target" id="group___u_hash__common_1gac79e9f0c2b12280e0d1dad826f4f56d1"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_copy_as_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_copy_as_set" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__common_1gaef0ea9f44e5b653799192a056628f3ec"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_copy_as_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">src</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_copy_as_set" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns a new hash set obtained by copying the keys of another hash table. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -890,14 +1033,14 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a8fda1e8c5ab9544cc04e708a50c0012d"><span class="std std-ref"><span class="pre">UHASH_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a1f659c29b73d184c73b6d46a41c67d4d"><span class="std std-ref"><span class="pre">UHASH_ERR</span></span></a></code> on error. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> on error. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhash_resize">
-<span class="target" id="group___u_hash__common_1gafb8c49baa97e0586e75273ed0ca31636"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_resize</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_resize" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__common_1ga844b307ef6b7d75a40d54fedfb41c56a"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_resize</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_resize" title="Link to this definition"></a><br /></dt>
 <dd><p>Resizes the specified hash table. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -908,7 +1051,24 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a8fda1e8c5ab9544cc04e708a50c0012d"><span class="std std-ref"><span class="pre">UHASH_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a1f659c29b73d184c73b6d46a41c67d4d"><span class="std std-ref"><span class="pre">UHASH_ERR</span></span></a></code> on error. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> on error. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhash_shrink">
+<span class="target" id="group___u_hash__common_1gae26e1383d3d4782d131b671629535045"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_shrink</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_shrink" title="Link to this definition"></a><br /></dt>
+<dd><p>Shrinks the specified hash table so that its allocated size is just large enough to hold the elements it currently contains. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h</strong> – Hash table to shrink. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> on error. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -932,7 +1092,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhash_put">
-<span class="target" id="group___u_hash__common_1ga1c6a52b62f1aa4c97bc1cc9915a72a82"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_put</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_put" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__common_1ga9a8dec2bc12e80259666c2eceec1a5a6"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_put</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_put" title="Link to this definition"></a><br /></dt>
 <dd><p>Inserts a key into the specified hash table. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -944,7 +1104,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Return code. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the key was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968ac7f6b56c007f858d7c2392ea36c5699b"><span class="std std-ref"><span class="pre">ULIB_NO</span></span></a></code> if it was already present, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> if memory could not be allocated. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1002,14 +1162,14 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhash_exists">
-<span class="target" id="group___u_hash__common_1ga31e4bd88226d335b4d865494348181ef"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_exists</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_exists" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__common_1ga5e00604c0771154af2cd23acf01dddf3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_exists</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_exists" title="Link to this definition"></a><br /></dt>
 <dd><p>Tests whether a bucket contains data. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – Hash table type. </p></li>
 <li><p><strong>h</strong> – Hash table instance. </p></li>
-<li><p><strong>x</strong> – Index of the bucket to test. </p></li>
+<li><p><strong>i</strong> – Index of the bucket to test. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1020,14 +1180,14 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhash_key">
-<span class="target" id="group___u_hash__common_1ga75127ee228eca249b5887aa544f90c85"></span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_key</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_key" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__common_1ga9b2be5ac6db399c4c3080e0a53bcbf54"></span><a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_key</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_key" title="Link to this definition"></a><br /></dt>
 <dd><p>Retrieves the key at the specified index. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – Hash table type. </p></li>
 <li><p><strong>h</strong> – Hash table instance. </p></li>
-<li><p><strong>x</strong> – Index of the bucket whose key should be retrieved. </p></li>
+<li><p><strong>i</strong> – Index of the bucket whose key should be retrieved. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1038,7 +1198,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhash_value">
-<span class="target" id="group___u_hash__common_1gad0e8d803169f1d052ac45a6f74f6606c"></span><a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_value</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_value" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__common_1gaf54c63682db0c13a476eaec3912e45f2"></span><a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhash_value</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhash_value" title="Link to this definition"></a><br /></dt>
 <dd><p>Retrieves the value at the specified index. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1049,7 +1209,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – Hash table type. </p></li>
 <li><p><strong>h</strong> – Hash table instance. </p></li>
-<li><p><strong>x</strong> – Index of the bucket whose value should be retrieved. </p></li>
+<li><p><strong>i</strong> – Index of the bucket whose value should be retrieved. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1156,7 +1316,7 @@
 <dd><p>Initializes a new hash map. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1176,7 +1336,7 @@
 <dd><p>Initializes a new hash map with per-instance hash and equality functions. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1213,8 +1373,8 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhmap_set">
-<span class="target" id="group___u_hash__map_1gac3b5fa649b45124d2d3d3fa06edb753d"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="n"><span class="pre">v</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">e</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_set" title="Link to this definition"></a><br /></dt>
-<dd><p>Adds a key:value pair to the map, returning the replaced value (if any). </p>
+<span class="target" id="group___u_hash__map_1ga72d5b23adb5b02cf6c749ec97cdc9c77"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="n"><span class="pre">v</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">e</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_set" title="Link to this definition"></a><br /></dt>
+<dd><p>Adds a key:value pair to the map, replacing existing values. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1222,19 +1382,19 @@
 <li><p><strong>h</strong> – Hash table instance. </p></li>
 <li><p><strong>k</strong> – The key. </p></li>
 <li><p><strong>v</strong> – The value. </p></li>
-<li><p><strong>e</strong> – <strong>[out]</strong> Existing value, only set if key was in the map. </p></li>
+<li><p><strong>e</strong> – <strong>[out]</strong> Existing value, only set if the key was already in the map. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Return code. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the key was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968ac7f6b56c007f858d7c2392ea36c5699b"><span class="std std-ref"><span class="pre">ULIB_NO</span></span></a></code> if it was already present, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> if memory could not be allocated. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhmap_add">
-<span class="target" id="group___u_hash__map_1ga3254038473676def6df4f6cd43fedd27"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_add</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="n"><span class="pre">v</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">e</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_add" title="Link to this definition"></a><br /></dt>
-<dd><p>Adds a key:value pair to the map, only if the key is missing. </p>
+<span class="target" id="group___u_hash__map_1gae9fdead3a4dc369594d88891e9e338e9"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhmap_add</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="n"><span class="pre">v</span></span>, <a class="reference internal" href="#c.uhash_T_val" title="uhash_T_val"><span class="n"><span class="pre">uhash_T_val</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">e</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhmap_add" title="Link to this definition"></a><br /></dt>
+<dd><p>Adds a key:value pair to the map, without replacing existing values. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1242,11 +1402,11 @@
 <li><p><strong>h</strong> – Hash table instance. </p></li>
 <li><p><strong>k</strong> – The key. </p></li>
 <li><p><strong>v</strong> – The value. </p></li>
-<li><p><strong>e</strong> – <strong>[out]</strong> Existing value, only set if key was in the map. </p></li>
+<li><p><strong>e</strong> – <strong>[out]</strong> Existing value, only set if the key was already in the map. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Return code. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the key was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968ac7f6b56c007f858d7c2392ea36c5699b"><span class="std std-ref"><span class="pre">ULIB_NO</span></span></a></code> if it was already present, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> if memory could not be allocated. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1318,7 +1478,7 @@
 <dd><p>Initializes a new hash set. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1338,7 +1498,7 @@
 <dd><p>Initializes a new hash set with per-instance hash and equality functions. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1ga8be57c856190dee0a9c614eed11d2e48"><span class="std std-ref"><span class="pre">uhash_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1356,7 +1516,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhset_insert">
-<span class="target" id="group___u_hash__set_1gaa79b70f0194d8b7c5472651fa0a9b620"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_insert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_insert" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__set_1ga49c5a8c2a40351fa118adaa894cdb489"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_insert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_insert" title="Link to this definition"></a><br /></dt>
 <dd><p>Inserts an element in the set. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1367,14 +1527,14 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Return code. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the element was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968ac7f6b56c007f858d7c2392ea36c5699b"><span class="std std-ref"><span class="pre">ULIB_NO</span></span></a></code> if it was already present, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> if memory could not be allocated. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhset_insert_get_existing">
-<span class="target" id="group___u_hash__set_1gab831c8e6dec10c6dda6f9ec41a8a492e"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_insert_get_existing</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">e</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_insert_get_existing" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__set_1ga3fa12c6dd4dfcb06defa93f44135b783"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_insert_get_existing</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="n"><span class="pre">k</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">e</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_insert_get_existing" title="Link to this definition"></a><br /></dt>
 <dd><p>Inserts an element in the set, returning the existing element if it was already present. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1386,19 +1546,22 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Return code. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the element was inserted, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968ac7f6b56c007f858d7c2392ea36c5699b"><span class="std std-ref"><span class="pre">ULIB_NO</span></span></a></code> if it was already present, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> if memory could not be allocated. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhset_insert_all">
-<span class="target" id="group___u_hash__set_1ga580db9d60bf102e7219d1d1bd8642f09"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_insert_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">a</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_insert_all" title="Link to this definition"></a><br /></dt>
+<span class="target" id="group___u_hash__set_1gab559c43f17dd37a10bf2e23871ddc3f4"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_insert_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="#c.uhash_T_key" title="uhash_T_key"><span class="n"><span class="pre">uhash_T_key</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">a</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_insert_all" title="Link to this definition"></a><br /></dt>
 <dd><p>Populates the set with elements from an array. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This function returns <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2aab4872074cdcc9ca99a6d48431a1005f"><span class="std std-ref"><span class="pre">UHASH_INSERTED</span></span></a></code> if at least one element in the array was missing from the set. </p>
-</div>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__common_1gaa450794e8f584070e4d9bfe71d03075b"><span class="std std-ref"><span class="pre">uhash_populate</span></span></a></code> instead. </p>
+</dd></dl>
+
+</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1490,33 +1653,83 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhset_union">
-<span class="target" id="group___u_hash__set_1gad7ec4a84cb4509df4101bc3d1b13f8bf"></span><a class="reference internal" href="#c.uhash_ret" title="uhash_ret"><span class="n"><span class="pre">uhash_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_union</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_union" title="Link to this definition"></a><br /></dt>
-<dd><p>Performs the union between two sets, mutating the first. </p>
+<span class="target" id="group___u_hash__set_1ga8309d045ed1fdbf8c86ee6c11f41a053"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_union</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">added</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_union" title="Link to this definition"></a><br /></dt>
+<dd><p>Performs the union between <code class="docutils literal notranslate"><span class="pre">h1</span></code> and <code class="docutils literal notranslate"><span class="pre">h2</span></code> (<code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">||</span> <span class="pre">h2</span></code>), mutating <code class="docutils literal notranslate"><span class="pre">h1</span></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – Hash table type. </p></li>
-<li><p><strong>h1</strong> – Set to mutate. </p></li>
+<li><p><strong>h1</strong> – Set to mutate, will contain <code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">||</span> <span class="pre">h2</span></code>. </p></li>
 <li><p><strong>h2</strong> – Other set. </p></li>
+<li><p><strong>added</strong> – <strong>[out]</strong> Elements added to <code class="docutils literal notranslate"><span class="pre">h1</span></code> from <code class="docutils literal notranslate"><span class="pre">h2</span></code>. Can be NULL. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a8fda1e8c5ab9544cc04e708a50c0012d"><span class="std std-ref"><span class="pre">UHASH_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="#uhash_8h_1a18fde8009f3b280331f6c714f474fae2a1f659c29b73d184c73b6d46a41c67d4d"><span class="std std-ref"><span class="pre">UHASH_ERR</span></span></a></code> on error. </p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> on error. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.uhset_intersect">
-<span class="target" id="group___u_hash__set_1gaf6ffefdb4948da9f33d668425d705c8c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_intersect</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_intersect" title="Link to this definition"></a><br /></dt>
-<dd><p>Performs the intersection between two sets, mutating the first. </p>
+<span class="target" id="group___u_hash__set_1ga2fc91d101740ce9181a97fd1fdea2b8e"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_intersect</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">diff</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_intersect" title="Link to this definition"></a><br /></dt>
+<dd><p>Performs the intersection between <code class="docutils literal notranslate"><span class="pre">h1</span></code> and <code class="docutils literal notranslate"><span class="pre">h2</span></code> (<code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">&amp;&amp;</span> <span class="pre">h2</span></code>), mutating <code class="docutils literal notranslate"><span class="pre">h1</span></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>T</strong> – Hash table type. </p></li>
-<li><p><strong>h1</strong> – Set to mutate. </p></li>
+<li><p><strong>h1</strong> – Set to mutate, will contain <code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">&amp;&amp;</span> <span class="pre">h2</span></code>. </p></li>
+<li><p><strong>h2</strong> – Other set. </p></li>
+<li><p><strong>diff</strong> – <strong>[out]</strong> Elements that were in <code class="docutils literal notranslate"><span class="pre">h1</span></code> but not in <code class="docutils literal notranslate"><span class="pre">h2</span></code>. Can be NULL. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> on error. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_diff">
+<span class="target" id="group___u_hash__set_1ga8c915918804c61064774c847663d6f62"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_diff</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inter</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_diff" title="Link to this definition"></a><br /></dt>
+<dd><p>Computes the difference between <code class="docutils literal notranslate"><span class="pre">h1</span></code> and <code class="docutils literal notranslate"><span class="pre">h2</span></code> (<code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">-</span> <span class="pre">h2</span></code>), mutating <code class="docutils literal notranslate"><span class="pre">h1</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h1</strong> – Set to mutate, will contain <code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">-</span> <span class="pre">h2</span></code>. </p></li>
+<li><p><strong>h2</strong> – Other set. </p></li>
+<li><p><strong>inter</strong> – <strong>[out]</strong> Elements of <code class="docutils literal notranslate"><span class="pre">h1</span></code> that were also in <code class="docutils literal notranslate"><span class="pre">h2</span></code>. Can be NULL. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> on error. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uhset_diff_intersect">
+<span class="target" id="group___u_hash__set_1ga97919a75b67828ddba94e5a8bfcf7f31"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uhset_diff_intersect</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">symbol</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h1</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h12</span></span>, <a class="reference internal" href="#c.UHash_T" title="UHash_T"><span class="n"><span class="pre">UHash_T</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">h2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uhset_diff_intersect" title="Link to this definition"></a><br /></dt>
+<dd><p>Splits <code class="docutils literal notranslate"><span class="pre">h1</span></code> into two sets: one containing the elements that are in <code class="docutils literal notranslate"><span class="pre">h1</span></code> but not in <code class="docutils literal notranslate"><span class="pre">h2</span></code> (<code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">-</span> <span class="pre">h2</span></code>), and one containing the elements that are in both <code class="docutils literal notranslate"><span class="pre">h1</span></code> and <code class="docutils literal notranslate"><span class="pre">h2</span></code> (<code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">&amp;&amp;</span> <span class="pre">h2</span></code>). </p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>Use <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__set_1ga8c915918804c61064774c847663d6f62"><span class="std std-ref"><span class="pre">uhset_diff</span></span></a></code> or <code class="docutils literal notranslate"><a class="reference internal" href="#group___u_hash__set_1ga2fc91d101740ce9181a97fd1fdea2b8e"><span class="std std-ref"><span class="pre">uhset_intersect</span></span></a></code> instead. </p>
+</dd></dl>
+
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – Hash table type. </p></li>
+<li><p><strong>h1</strong> – Set to mutate, will contain <code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">-</span> <span class="pre">h2</span></code>. </p></li>
+<li><p><strong>h12</strong> – Set that will contain <code class="docutils literal notranslate"><span class="pre">h1</span> <span class="pre">&amp;&amp;</span> <span class="pre">h2</span></code>. </p></li>
 <li><p><strong>h2</strong> – Other set. </p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a9cb41f9129216a24106d2970615b07c5"><span class="std std-ref"><span class="pre">ULIB_OK</span></span></a></code> if the operation succeeded, <code class="docutils literal notranslate"><a class="reference internal" href="number.html#ulib__ret__t_8h_1a484e87ddc5e969b748de1f2651a54968a359ae48332307ea90608bd2e24d291c1"><span class="std std-ref"><span class="pre">ULIB_ERR_MEM</span></span></a></code> on error.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1589,7 +1802,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
   </div>
 
    

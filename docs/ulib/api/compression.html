@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data compression &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Time" href="time.html" />
+    <link rel="prev" title="Streams" href="stream.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uLib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html#examples">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="number.html">Numeric types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data compression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#variable-length-integers">Variable length integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.uistream_read_varint"><code class="docutils literal notranslate"><span class="pre">uistream_read_varint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.uistream_read_svarint"><code class="docutils literal notranslate"><span class="pre">uistream_read_svarint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.uostream_write_varint"><code class="docutils literal notranslate"><span class="pre">uostream_write_varint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.uostream_write_svarint"><code class="docutils literal notranslate"><span class="pre">uostream_write_svarint()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uLib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data compression</li>
+      <li class="wy-breadcrumbs-aside">
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/IvanoBilenchi/ulib" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-compression">
+<h1>Data compression<a class="headerlink" href="#data-compression" title="Link to this heading"></a></h1>
+<section id="variable-length-integers">
+<h2>Variable length integers<a class="headerlink" href="#variable-length-integers" title="Link to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_read_varint">
+<span class="target" id="group__varint_1ga1ef81f1b39ac15cdabd169f61903885d"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_read_varint</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="stream.html#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_read_varint" title="Link to this definition"></a><br /></dt>
+<dd><p>Reads a variable-length unsigned integer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+<li><p><strong>value</strong> – <strong>[out]</strong> Decoded value. </p></li>
+<li><p><strong>read</strong> – <strong>[out]</strong> Number of bytes read. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uistream_read_svarint">
+<span class="target" id="group__varint_1ga365a0d82dfec791c3d5a67d5bcd66c2b"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uistream_read_svarint</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="stream.html#c.UIStream" title="UIStream"><span class="n"><span class="pre">UIStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="number.html#c.ulib_int" title="ulib_int"><span class="n"><span class="pre">ulib_int</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uistream_read_svarint" title="Link to this definition"></a><br /></dt>
+<dd><p>Reads a variable-length signed integer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Input stream. </p></li>
+<li><p><strong>value</strong> – <strong>[out]</strong> Decoded value. </p></li>
+<li><p><strong>read</strong> – <strong>[out]</strong> Number of bytes read. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_write_varint">
+<span class="target" id="group__varint_1ga1ecdcf66821161cd5b08a8623784cbbf"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_write_varint</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="stream.html#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="n"><span class="pre">value</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_write_varint" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes a variable-length unsigned integer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>value</strong> – Value to encode. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> Number of bytes written. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.uostream_write_svarint">
+<span class="target" id="group__varint_1ga87ba8d052d951090b200f4be40189913"></span><a class="reference internal" href="number.html#c.ulib_ret" title="ulib_ret"><span class="n"><span class="pre">ulib_ret</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uostream_write_svarint</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="stream.html#c.UOStream" title="UOStream"><span class="n"><span class="pre">UOStream</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="number.html#c.ulib_int" title="ulib_int"><span class="n"><span class="pre">ulib_int</span></span></a><span class="w"> </span><span class="n"><span class="pre">value</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">written</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.uostream_write_svarint" title="Link to this definition"></a><br /></dt>
+<dd><p>Writes a variable-length signed integer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> – Output stream. </p></li>
+<li><p><strong>value</strong> – Value to encode. </p></li>
+<li><p><strong>written</strong> – <strong>[out]</strong> Number of bytes written. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stream.html" class="btn btn-neutral float-left" title="Streams" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="time.html" class="btn btn-neutral float-right" title="Time" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

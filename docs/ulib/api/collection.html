@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collections &mdash; uLib 0.2.6 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+  <title>Collections &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=9a313e40"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Vector" href="collection_vector.html" />
@@ -36,9 +34,6 @@
           <a href="../index.html" class="icon icon-home">
             uLib
           </a>
-              <div class="version">
-                0.2.6
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -62,10 +57,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Data compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rand.html">Random generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -100,25 +97,258 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="collection_vector.html">Vector</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#types">Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#builtin-types">Builtin types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#constants">Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#defining-new-vector-types">Defining new vector types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#common-vector-operations">Common vector operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#equatable-vectors">Equatable vectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#comparable-vectors">Comparable vectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#priority-queues">Priority queues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#types">Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVec_T"><code class="docutils literal notranslate"><span class="pre">UVec_T</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVec"><code class="docutils literal notranslate"><span class="pre">UVec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_decl"><code class="docutils literal notranslate"><span class="pre">uvec_decl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_ret"><code class="docutils literal notranslate"><span class="pre">uvec_ret</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="collection_vector.html#c.uvec_ret.UVEC_ERR"><code class="docutils literal notranslate"><span class="pre">UVEC_ERR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="collection_vector.html#c.uvec_ret.UVEC_OK"><code class="docutils literal notranslate"><span class="pre">UVEC_OK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="collection_vector.html#c.uvec_ret.UVEC_NO"><code class="docutils literal notranslate"><span class="pre">UVEC_NO</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#builtin-types">Builtin types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVec_char"><code class="docutils literal notranslate"><span class="pre">UVec_char</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVec_ulib_byte"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_byte</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVec_ulib_int"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_int</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVec_ulib_uint"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_uint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVec_ulib_float"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_float</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVec_ulib_ptr"><code class="docutils literal notranslate"><span class="pre">UVec_ulib_ptr</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVec_UString"><code class="docutils literal notranslate"><span class="pre">UVec_UString</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#constants">Constants</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_CACHE_LINE_SIZE"><code class="docutils literal notranslate"><span class="pre">UVEC_CACHE_LINE_SIZE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_SORT_STACK_SIZE"><code class="docutils literal notranslate"><span class="pre">UVEC_SORT_STACK_SIZE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_SORT_INSERTION_THRESH"><code class="docutils literal notranslate"><span class="pre">UVEC_SORT_INSERTION_THRESH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_BINARY_SEARCH_THRESH"><code class="docutils literal notranslate"><span class="pre">UVEC_BINARY_SEARCH_THRESH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#defining-new-vector-types">Defining new vector types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_DECL"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_DECL_SPEC"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_SPEC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_DECL_EQUATABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_EQUATABLE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_DECL_EQUATABLE_SPEC"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_EQUATABLE_SPEC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_DECL_COMPARABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_COMPARABLE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_DECL_COMPARABLE_SPEC"><code class="docutils literal notranslate"><span class="pre">UVEC_DECL_COMPARABLE_SPEC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_IMPL"><code class="docutils literal notranslate"><span class="pre">UVEC_IMPL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_IMPL_EQUATABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_IMPL_EQUATABLE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_IMPL_COMPARABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_IMPL_COMPARABLE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_IMPL_IDENTIFIABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_IMPL_IDENTIFIABLE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_INIT"><code class="docutils literal notranslate"><span class="pre">UVEC_INIT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_INIT_EQUATABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_INIT_EQUATABLE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_INIT_COMPARABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_INIT_COMPARABLE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.UVEC_INIT_IDENTIFIABLE"><code class="docutils literal notranslate"><span class="pre">UVEC_INIT_IDENTIFIABLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#common-vector-operations">Common vector operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec"><code class="docutils literal notranslate"><span class="pre">uvec()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_assign"><code class="docutils literal notranslate"><span class="pre">uvec_assign()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_wrap"><code class="docutils literal notranslate"><span class="pre">uvec_wrap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_deinit"><code class="docutils literal notranslate"><span class="pre">uvec_deinit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_move"><code class="docutils literal notranslate"><span class="pre">uvec_move()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_copy"><code class="docutils literal notranslate"><span class="pre">uvec_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_copy_to_array"><code class="docutils literal notranslate"><span class="pre">uvec_copy_to_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_reserve"><code class="docutils literal notranslate"><span class="pre">uvec_reserve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_expand"><code class="docutils literal notranslate"><span class="pre">uvec_expand()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_shrink"><code class="docutils literal notranslate"><span class="pre">uvec_shrink()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_data"><code class="docutils literal notranslate"><span class="pre">uvec_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_get"><code class="docutils literal notranslate"><span class="pre">uvec_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_set"><code class="docutils literal notranslate"><span class="pre">uvec_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_first"><code class="docutils literal notranslate"><span class="pre">uvec_first()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_last"><code class="docutils literal notranslate"><span class="pre">uvec_last()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_count"><code class="docutils literal notranslate"><span class="pre">uvec_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_size"><code class="docutils literal notranslate"><span class="pre">uvec_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_index_is_valid"><code class="docutils literal notranslate"><span class="pre">uvec_index_is_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_push"><code class="docutils literal notranslate"><span class="pre">uvec_push()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_pop"><code class="docutils literal notranslate"><span class="pre">uvec_pop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_remove_at"><code class="docutils literal notranslate"><span class="pre">uvec_remove_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_unordered_remove_at"><code class="docutils literal notranslate"><span class="pre">uvec_unordered_remove_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_insert_at"><code class="docutils literal notranslate"><span class="pre">uvec_insert_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_remove_range"><code class="docutils literal notranslate"><span class="pre">uvec_remove_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_unordered_remove_range"><code class="docutils literal notranslate"><span class="pre">uvec_unordered_remove_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_insert_range"><code class="docutils literal notranslate"><span class="pre">uvec_insert_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_clear"><code class="docutils literal notranslate"><span class="pre">uvec_clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_remove_all"><code class="docutils literal notranslate"><span class="pre">uvec_remove_all()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_append"><code class="docutils literal notranslate"><span class="pre">uvec_append()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_append_array"><code class="docutils literal notranslate"><span class="pre">uvec_append_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_view"><code class="docutils literal notranslate"><span class="pre">uvec_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_view_from"><code class="docutils literal notranslate"><span class="pre">uvec_view_from()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_view_to"><code class="docutils literal notranslate"><span class="pre">uvec_view_to()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_set_range"><code class="docutils literal notranslate"><span class="pre">uvec_set_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_reverse"><code class="docutils literal notranslate"><span class="pre">uvec_reverse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_shuffle"><code class="docutils literal notranslate"><span class="pre">uvec_shuffle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_foreach"><code class="docutils literal notranslate"><span class="pre">uvec_foreach</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_foreach_reverse"><code class="docutils literal notranslate"><span class="pre">uvec_foreach_reverse</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#equatable-vectors">Equatable vectors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_index_of"><code class="docutils literal notranslate"><span class="pre">uvec_index_of()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_index_of_reverse"><code class="docutils literal notranslate"><span class="pre">uvec_index_of_reverse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_contains"><code class="docutils literal notranslate"><span class="pre">uvec_contains()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_remove"><code class="docutils literal notranslate"><span class="pre">uvec_remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_unordered_remove"><code class="docutils literal notranslate"><span class="pre">uvec_unordered_remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_equals"><code class="docutils literal notranslate"><span class="pre">uvec_equals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_push_unique"><code class="docutils literal notranslate"><span class="pre">uvec_push_unique()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#comparable-vectors">Comparable vectors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_index_of_min"><code class="docutils literal notranslate"><span class="pre">uvec_index_of_min()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_index_of_max"><code class="docutils literal notranslate"><span class="pre">uvec_index_of_max()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_sort"><code class="docutils literal notranslate"><span class="pre">uvec_sort()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_sort_range"><code class="docutils literal notranslate"><span class="pre">uvec_sort_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_sorted_insertion_index"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_insertion_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_sorted_index_of"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_index_of()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_sorted_contains"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_contains()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_sorted_insert"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_insert()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_sorted_unique_insert"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_unique_insert()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_sorted_remove"><code class="docutils literal notranslate"><span class="pre">uvec_sorted_remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_insertion_index_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_insertion_index_sorted()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_index_of_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_index_of_sorted()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_contains_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_contains_sorted()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_insert_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_insert_sorted()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_insert_sorted_unique"><code class="docutils literal notranslate"><span class="pre">uvec_insert_sorted_unique()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_remove_sorted"><code class="docutils literal notranslate"><span class="pre">uvec_remove_sorted()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_vector.html#priority-queues">Priority queues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_max_heapq_make"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_make()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_max_heapq_push"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_push()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_max_heapq_pop"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_pop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_max_heapq_push_pop"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_push_pop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_max_heapq_replace"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_replace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_max_heapq_remove"><code class="docutils literal notranslate"><span class="pre">uvec_max_heapq_remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_min_heapq_make"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_make()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_min_heapq_push"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_push()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_min_heapq_pop"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_pop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_min_heapq_push_pop"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_push_pop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_min_heapq_replace"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_replace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_vector.html#c.uvec_min_heapq_remove"><code class="docutils literal notranslate"><span class="pre">uvec_min_heapq_remove()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="collection_hash.html">Hash table</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#types">Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#builtin-types">Builtin types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#constants">Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#hash-functions">Hash functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#defining-new-hash-table-types">Defining new hash table types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#common-hash-table-operations">Common hash table operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#hash-maps">Hash maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#hash-sets">Hash sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#types">Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHash_T"><code class="docutils literal notranslate"><span class="pre">UHash_T</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHash"><code class="docutils literal notranslate"><span class="pre">UHash</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_T_key"><code class="docutils literal notranslate"><span class="pre">uhash_T_key</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHashKey"><code class="docutils literal notranslate"><span class="pre">UHashKey</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_T_val"><code class="docutils literal notranslate"><span class="pre">uhash_T_val</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHashVal"><code class="docutils literal notranslate"><span class="pre">UHashVal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_decl"><code class="docutils literal notranslate"><span class="pre">uhash_decl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_ret"><code class="docutils literal notranslate"><span class="pre">uhash_ret</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="collection_hash.html#c.uhash_ret.UHASH_ERR"><code class="docutils literal notranslate"><span class="pre">UHASH_ERR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="collection_hash.html#c.uhash_ret.UHASH_OK"><code class="docutils literal notranslate"><span class="pre">UHASH_OK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="collection_hash.html#c.uhash_ret.UHASH_PRESENT"><code class="docutils literal notranslate"><span class="pre">UHASH_PRESENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="collection_hash.html#c.uhash_ret.UHASH_INSERTED"><code class="docutils literal notranslate"><span class="pre">UHASH_INSERTED</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#builtin-types">Builtin types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHash_ulib_int"><code class="docutils literal notranslate"><span class="pre">UHash_ulib_int</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHash_ulib_uint"><code class="docutils literal notranslate"><span class="pre">UHash_ulib_uint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHash_ulib_ptr"><code class="docutils literal notranslate"><span class="pre">UHash_ulib_ptr</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHash_UString"><code class="docutils literal notranslate"><span class="pre">UHash_UString</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#constants">Constants</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_upper_bound"><code class="docutils literal notranslate"><span class="pre">uhash_upper_bound()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_INDEX_MISSING"><code class="docutils literal notranslate"><span class="pre">UHASH_INDEX_MISSING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_VAL_IGNORE"><code class="docutils literal notranslate"><span class="pre">UHASH_VAL_IGNORE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#hash-functions">Hash functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_int"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_int8"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int8()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_int16"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int16()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_int32"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int32()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_int64"><code class="docutils literal notranslate"><span class="pre">ulib_hash_int64()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_ptr"><code class="docutils literal notranslate"><span class="pre">ulib_hash_ptr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_alloc_ptr"><code class="docutils literal notranslate"><span class="pre">ulib_hash_alloc_ptr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_str"><code class="docutils literal notranslate"><span class="pre">ulib_hash_str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_kr2"><code class="docutils literal notranslate"><span class="pre">ulib_hash_kr2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_mem_kr2"><code class="docutils literal notranslate"><span class="pre">ulib_hash_mem_kr2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_djb2"><code class="docutils literal notranslate"><span class="pre">ulib_hash_djb2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_djb2_mem"><code class="docutils literal notranslate"><span class="pre">ulib_hash_djb2_mem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.ulib_hash_combine"><code class="docutils literal notranslate"><span class="pre">ulib_hash_combine()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#defining-new-hash-table-types">Defining new hash table types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_DECL"><code class="docutils literal notranslate"><span class="pre">UHASH_DECL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_DECL_SPEC"><code class="docutils literal notranslate"><span class="pre">UHASH_DECL_SPEC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_DECL_PI"><code class="docutils literal notranslate"><span class="pre">UHASH_DECL_PI</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_DECL_PI_SPEC"><code class="docutils literal notranslate"><span class="pre">UHASH_DECL_PI_SPEC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_IMPL"><code class="docutils literal notranslate"><span class="pre">UHASH_IMPL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_IMPL_PI"><code class="docutils literal notranslate"><span class="pre">UHASH_IMPL_PI</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_INIT"><code class="docutils literal notranslate"><span class="pre">UHASH_INIT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.UHASH_INIT_PI"><code class="docutils literal notranslate"><span class="pre">UHASH_INIT_PI</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#common-hash-table-operations">Common hash table operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_identical"><code class="docutils literal notranslate"><span class="pre">uhash_identical()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_str_equals"><code class="docutils literal notranslate"><span class="pre">uhash_str_equals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_int8_hash"><code class="docutils literal notranslate"><span class="pre">uhash_int8_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_int16_hash"><code class="docutils literal notranslate"><span class="pre">uhash_int16_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_int32_hash"><code class="docutils literal notranslate"><span class="pre">uhash_int32_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_int64_hash"><code class="docutils literal notranslate"><span class="pre">uhash_int64_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_ptr_hash"><code class="docutils literal notranslate"><span class="pre">uhash_ptr_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_combine_hash"><code class="docutils literal notranslate"><span class="pre">uhash_combine_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_populate"><code class="docutils literal notranslate"><span class="pre">uhash_populate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_deinit"><code class="docutils literal notranslate"><span class="pre">uhash_deinit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_move"><code class="docutils literal notranslate"><span class="pre">uhash_move()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_copy"><code class="docutils literal notranslate"><span class="pre">uhash_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_copy_as_set"><code class="docutils literal notranslate"><span class="pre">uhash_copy_as_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_resize"><code class="docutils literal notranslate"><span class="pre">uhash_resize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_shrink"><code class="docutils literal notranslate"><span class="pre">uhash_shrink()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_is_map"><code class="docutils literal notranslate"><span class="pre">uhash_is_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_put"><code class="docutils literal notranslate"><span class="pre">uhash_put()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_get"><code class="docutils literal notranslate"><span class="pre">uhash_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_delete"><code class="docutils literal notranslate"><span class="pre">uhash_delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_contains"><code class="docutils literal notranslate"><span class="pre">uhash_contains()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_exists"><code class="docutils literal notranslate"><span class="pre">uhash_exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_key"><code class="docutils literal notranslate"><span class="pre">uhash_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_value"><code class="docutils literal notranslate"><span class="pre">uhash_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_size"><code class="docutils literal notranslate"><span class="pre">uhash_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_count"><code class="docutils literal notranslate"><span class="pre">uhash_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_clear"><code class="docutils literal notranslate"><span class="pre">uhash_clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_next"><code class="docutils literal notranslate"><span class="pre">uhash_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhash_foreach"><code class="docutils literal notranslate"><span class="pre">uhash_foreach</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#hash-maps">Hash maps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhmap"><code class="docutils literal notranslate"><span class="pre">uhmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhmap_pi"><code class="docutils literal notranslate"><span class="pre">uhmap_pi()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhmap_get"><code class="docutils literal notranslate"><span class="pre">uhmap_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhmap_set"><code class="docutils literal notranslate"><span class="pre">uhmap_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhmap_add"><code class="docutils literal notranslate"><span class="pre">uhmap_add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhmap_replace"><code class="docutils literal notranslate"><span class="pre">uhmap_replace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhmap_remove"><code class="docutils literal notranslate"><span class="pre">uhmap_remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhmap_pop"><code class="docutils literal notranslate"><span class="pre">uhmap_pop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="collection_hash.html#hash-sets">Hash sets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset"><code class="docutils literal notranslate"><span class="pre">uhset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_pi"><code class="docutils literal notranslate"><span class="pre">uhset_pi()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_insert"><code class="docutils literal notranslate"><span class="pre">uhset_insert()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_insert_get_existing"><code class="docutils literal notranslate"><span class="pre">uhset_insert_get_existing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_insert_all"><code class="docutils literal notranslate"><span class="pre">uhset_insert_all()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_replace"><code class="docutils literal notranslate"><span class="pre">uhset_replace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_remove"><code class="docutils literal notranslate"><span class="pre">uhset_remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_pop"><code class="docutils literal notranslate"><span class="pre">uhset_pop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_is_superset"><code class="docutils literal notranslate"><span class="pre">uhset_is_superset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_union"><code class="docutils literal notranslate"><span class="pre">uhset_union()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_intersect"><code class="docutils literal notranslate"><span class="pre">uhset_intersect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_diff"><code class="docutils literal notranslate"><span class="pre">uhset_diff()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_diff_intersect"><code class="docutils literal notranslate"><span class="pre">uhset_diff_intersect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_equals"><code class="docutils literal notranslate"><span class="pre">uhset_equals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_hash"><code class="docutils literal notranslate"><span class="pre">uhset_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection_hash.html#c.uhset_get_any"><code class="docutils literal notranslate"><span class="pre">uhset_get_any()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -136,7 +366,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
   </div>
 
    

@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Random generators &mdash; uLib 0.2.6 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=65949680" />
+  <title>Random generators &mdash; uLib 0.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=f6114eb6" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=9a313e40"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6de935c7"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Memory allocation" href="alloc.html" />
@@ -36,9 +34,6 @@
           <a href="../index.html" class="icon icon-home">
             uLib
           </a>
-              <div class="version">
-                0.2.6
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -58,10 +53,24 @@
 <li class="toctree-l1"><a class="reference internal" href="string.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection.html">Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stream.html">Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Data compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Random generators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Random generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.urand_set_seed"><code class="docutils literal notranslate"><span class="pre">urand_set_seed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.urand_default_charset"><code class="docutils literal notranslate"><span class="pre">urand_default_charset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.urand"><code class="docutils literal notranslate"><span class="pre">urand()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.urand_range"><code class="docutils literal notranslate"><span class="pre">urand_range()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.urand_float"><code class="docutils literal notranslate"><span class="pre">urand_float()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.urand_float_range"><code class="docutils literal notranslate"><span class="pre">urand_float_range()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.urand_string"><code class="docutils literal notranslate"><span class="pre">urand_string()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.urand_str"><code class="docutils literal notranslate"><span class="pre">urand_str()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.urand_shuffle"><code class="docutils literal notranslate"><span class="pre">urand_shuffle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.ULIB_RAND_MAX"><code class="docutils literal notranslate"><span class="pre">ULIB_RAND_MAX</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="alloc.html">Memory allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="macros.html">Macros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version</a></li>
 </ul>
@@ -119,8 +128,8 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.urand">
-<span class="target" id="group__rand_1ga780d723850cc813a837d2c3e77926e8e"></span><a class="reference internal" href="number.html#c.ulib_int" title="ulib_int"><span class="n"><span class="pre">ulib_int</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">urand</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.urand" title="Link to this definition"></a><br /></dt>
-<dd><p>Returns a random integer. </p>
+<span class="target" id="group__rand_1ga408f19f5bd7129823354c8b88700d796"></span><a class="reference internal" href="number.html#c.ulib_uint" title="ulib_uint"><span class="n"><span class="pre">ulib_uint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">urand</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.urand" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns a random integer between 0 and <code class="docutils literal notranslate"><a class="reference internal" href="#group__rand_1gad45e10418290b1547f3b3f73ba3df725"><span class="std std-ref"><span class="pre">ULIB_RAND_MAX</span></span></a></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Random integer. </p>
@@ -179,7 +188,7 @@
 <dd><p>Returns a random string. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit()</span></span></a></code>. </p>
+<p>The returned object must be destroyed by calling <code class="docutils literal notranslate"><a class="reference internal" href="string.html#group___u_string_1ga636ee46a77e44dfd40def8433a0dcd91"><span class="std std-ref"><span class="pre">ustring_deinit</span></span></a></code>. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -224,6 +233,12 @@
 </dl>
 </dd></dl>
 
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ULIB_RAND_MAX">
+<span class="target" id="group__rand_1gad45e10418290b1547f3b3f73ba3df725"></span><span class="sig-name descname"><span class="n"><span class="pre">ULIB_RAND_MAX</span></span></span><a class="headerlink" href="#c.ULIB_RAND_MAX" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum value returned by <code class="docutils literal notranslate"><a class="reference internal" href="#group__rand_1ga408f19f5bd7129823354c8b88700d796"><span class="std std-ref"><span class="pre">urand</span></span></a></code>. </p>
+</dd></dl>
+
 </section>
 
 
@@ -237,7 +252,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Ivano Bilenchi.</p>
+    <p>&#169; Copyright 2018-2025, Ivano Bilenchi.</p>
   </div>
 
    
